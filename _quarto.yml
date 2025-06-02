@@ -1,0 +1,57 @@
+project:
+  type: website
+  output-dir: _site
+
+date: today
+
+website:
+  title: "Real World Evidence Summer School"
+  open-graph: true # https://quarto.org/docs/websites/website-tools.html#open-graph
+  repo-url: https://github.com/oxford-pharmacoepi/RealWordlEvidenceSummerSchool2025
+  repo-actions: [issue]
+  page-footer:
+    center: "Rendered on {{< meta date >}}"
+    left: "Copyright 2025, Oxinfer"
+    right:
+      - text: Website
+        href: https://oxford-pharmacoepi.github.io/Oxinfer/
+        icon: circle-info
+      - text: Github
+        href: https://github.com/oxford-pharmacoepi
+        icon: github
+      - text: Youtube Channel
+        href: https://www.youtube.com/@oxinfer
+        icon: youtube
+  navbar:
+    search: false
+    left:
+      - text: Program
+        href: program.qmd
+      - text: Setup
+        href: setup.qmd
+      - text: Practicals
+        menu:
+          - text: Introduction
+            href: Practicals/index.qmd
+    right:
+      - text: Website
+        href: https://oxford-pharmacoepi.github.io/Oxinfer/
+        icon: circle-info
+      - text: Github
+        href: https://github.com/oxford-pharmacoepi
+        icon: github
+      - text: Youtube Channel
+        href: https://www.youtube.com/@oxinfer
+        icon: youtube
+
+format:
+  html:
+    toc: true
+    #fontcolor: black
+    #linkcolor: blue
+    #backgroundcolor: black
+    #mainfont: Roboto
+    #monofont: to edit fonts
+    theme:
+      light: [flatly]
+      dark: [darkly]
