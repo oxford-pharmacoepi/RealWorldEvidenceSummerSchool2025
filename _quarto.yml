@@ -31,7 +31,7 @@ website:
         href: setup.qmd
       - text: Practicals
         menu:
-          - text: Introduction
+          - text: Introduction to OMOP and CDMConnector
             href: Practicals/index.qmd
     right:
       - text: Website
@@ -47,11 +47,6 @@ website:
 format:
   html:
     toc: true
-    #fontcolor: black
-    #linkcolor: blue
-    #backgroundcolor: black
-    #mainfont: Roboto
-    #monofont: to edit fonts
     theme:
       light: [flatly]
       dark: [darkly]
