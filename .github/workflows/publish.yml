@@ -1,5 +1,5 @@
 on:
-  workflow_dispatch: null
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
@@ -10,29 +10,31 @@ name: Quarto Publish
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
 
-      - uses: rstudio/shiny-workflows/setup-r-package@v1
+      - name: Set up R and cache base packages
+        uses: rstudio/shiny-workflows/setup-r-package@v1
         with:
           packages: |
             renv
             sessioninfo
+            pak
+          cache-version: v1  # Change this to invalidate cache manually
 
-      - name: Find package dependencies
+      - name: Install project-specific R dependencies
         shell: Rscript {0}
-        id: packages
         run: |
-          # Find package dependencies using {renv} and install with {pak}
-          pak::pak(
-            unique(renv::dependencies(".")$Package)
-          )
+          deps <- unique(renv::dependencies()$Package)
+          message("Installing dependencies: ", paste(deps, collapse = ", "))
+          pak::pak(deps)
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render quarto website
+      - name: Render Quarto website
         run: quarto render
 
       - name: Publish
