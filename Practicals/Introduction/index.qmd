@@ -1,0 +1,465 @@
+# OMOP and CDMConnector
+
+## Introduction: The OMOP Common Data Model
+
+-   Every time that someone goes to the doctor and something happens the doctors write it into their records.
+
+-   Each annotation of the doctor is translated into a code, combination of letters and numbers that refers to a condition. There exist several different codding languages: SNOMED, read codes, ICD10, ICD9, RxNorm, ATC, ... It depends on the region, language, type of record and others which one is used. This makes that the same condition or drug can be coded in different ways.
+
+-   A compilation of these records for a group of people is what we call the medical databases. Depending on the origin and purpose of these data there are different groups of databases: electronic health records, claims data, registries... This databases can be structured by several different tables.
+
+-   The Observational Medical Outcomes Partnership (OMOP) Common Data Model (CDM) is an open community data standard, designed to standardise the structure and content of observational data and to enable efficient analyses that can produce reliable evidence.
+
+## Standarisation of the data format
+
+![Tables and relation in the OMOP Common Data Model](https://ohdsi.github.io/TheBookOfOhdsi/images/CommonDataModel/cdmDiagram.png)
+
+## Mapping a database to the OMOP CDM
+
+![Mapping process](mapping1.png)
+
+## Mapping a database to the OMOP CDM
+
+![Mapping process](mapping2.png)
+
+## Mapping a database to the OMOP CDM
+
+![Mapping process](mapping3.png)
+
+## Standarisation of the vocabularies
+
+From all the vocabularies OMOP CDM uses only a few as `Standard`: SNOMED for conditions, RxNorm for drugs, ...
+
+. . .
+
+The process to obtain an standard code from non standard one is called mapping. We can find the mapping in the concept_relationship table.
+
+. . .
+
+Each one of the records in clinical data tables (condition_occurrence, drug_exposure, measurement, observation, ...) will be coded by two codes:
+
+-   Source concept: particular to each database, it is the `original` code.
+
+-   Standard concept: equivalent code from the standard vocabulary.
+
+## Example of mapping
+
+In concept relationship we can find different information such as:
+
+![Concept relationship](concept_relationship.png)
+
+. . .
+
+In particular, we have the `Maps to` and `Mapped from` relations that can help us to see the mapping between codes.
+
+## Example of mapping
+
+![Mapping process](example_mapping1.png)
+
+## Example of mapping
+
+![Mapping process](example_mapping2.png)
+
+## Example of mapping
+
+![Mapping process](example_mapping3.png)
+
+## More details
+
+. . .
+
+For more details on how the vocabularies work you can check: [Vocabulary course in EHDEN academy](https://academy.ehden.eu/course/view.php?id=4#section-0)
+
+. . .
+
+All details about OMOP CDM and more can be found in: [the book of ohdsi](https://ohdsi.github.io/TheBookOfOhdsi/).
+
+![The book of ohdsi cover](https://ohdsi.github.io/TheBookOfOhdsi/images/Cover/Cover.png){width="300"}
+
+## Connecting to a database from R (the DBI package)
+
+. . .
+
+Database connections from R can be made using the [DBI package](https://dbi.r-dbi.org/).
+
+```{r, echo = FALSE}
+options(width = 120)
+```
+
+```{r, eval=FALSE}
+library(DBI)
+```
+
+. . .
+
+Connect to postgres:
+
+```{r, eval=FALSE}
+db <- DBI::dbConnect(
+  RPostgres::Postgres(),
+  dbname = "...",
+  host = "...",
+  user = "...",
+  password = "..."
+)
+```
+
+## Connecting to a database from R (the DBI package)
+
+Connect to Sql server:
+
+```{r, eval = FALSE}
+db <- DBI::dbConnect(
+  odbc::odbc(),
+  Driver   = "ODBC Driver 18 for SQL Server",
+  Server   = "...",
+  Database = "...",
+  UID      = "...",
+  PWD      = "...",
+  TrustServerCertificate = "yes",
+  Port     = "..."
+)
+```
+
+. . .
+
+In this [CDMConnector article](https://darwin-eu.github.io/CDMConnector/articles/a04_DBI_connection_examples.html) you can see how to connect to the different supported DBMS.
+
+## Connect to eunomia
+
+. . .
+
+Eunomia is a synthetic OMOP database with \~2,600 individuals. It is freely available and you can download it as:
+
+. . .
+
+```{r}
+dbName <- "GiBleed"
+CDMConnector::requireEunomia(datasetName = dbName)
+```
+
+. . .
+
+To connect to this database we are going to use `duckdb`
+
+```{r}
+db <- DBI::dbConnect(duckdb::duckdb(), dbdir = CDMConnector::eunomiaDir(datasetName = dbName))
+db
+```
+
+## Databases organisation
+
+. . .
+
+Databases are organised by `schemas` (blueprint or plan that defines how the data will be organised and structured within the database).
+
+. . .
+
+In general, OMOP databases have two schemas:
+
+-   `cdm schema`: it contains all the tables of the cdm. Usually we only will have reading permission for this schema.
+
+-   `write schema`: it is a place where we can store tables (like cohorts). We need writing permissions to this schema.
+
+. . .
+
+Eunomia only has a single schema (**main**) that will be used as cdm schema and write schema.
+
+## [CDMConnector](https://cran.r-project.org/package=CDMConnector)
+
+![](cdmconnector_hex.png){fig-align="center"}
+
+## Creating a reference to the OMOP common data model
+
+We already know what the structure of the OMOP CDM looks like. The `CDMConnector` package was made to help you to quickly create a reference to the OMOP CDM data as a whole.
+
+```{r, eval=FALSE}
+library(CDMConnector)
+```
+
+-   To install any of these packages that we use you can type: `install.packages("CDMConnector")` in the console.
+
+## Let's create our first cdm reference
+
+```{r, message=TRUE}
+cdm <- CDMConnector::cdmFromCon(con = db, cdmSchema = "main", writeSchema = "main")
+cdm
+```
+
+## Access to tables of the cdm reference
+
+```{r}
+cdm$person
+```
+
+## Read tables in Eunomia
+
+. . .
+
+Once we read a table we can operate with it and for example count the number of rows of person table.
+
+```{r}
+cdm$person |>
+  dplyr::count()
+```
+
+## Operation with tidyverse
+
+If you are familiarised with [tidyverse](https://www.tidyverse.org/) you can use any of the usual `dplyr` commands in you database tables.
+
+. . .
+
+```{r}
+cdm$drug_exposure |>
+  dplyr::group_by(drug_concept_id) |>
+  dplyr::summarise(number_persons = dplyr::n_distinct(person_id)) |>
+  dplyr::collect() |>
+  dplyr::arrange(dplyr::desc(number_persons))
+```
+
+## Database name
+
+When we have a cdm object we can check which is the name of that database using:
+
+<br/>
+
+. . .
+
+```{r}
+CDMConnector::cdmName(cdm)
+```
+
+<br/>
+
+. . .
+
+In some cases we want to give a database a name that we want, this can be done at the connection stage:
+
+<br/>
+
+. . .
+
+```{r}
+cdm <- CDMConnector::cdmFromCon(
+  con = db, cdmSchema = "main", writeSchema = "main", cdmName = "EUNOMIA"
+)
+```
+
+<br/>
+
+. . .
+
+```{r}
+CDMConnector::cdmName(cdm)
+```
+
+## Create a new table
+
+Let's say I want to subset the `condition_occurrence` table to a certain rows and certain columns and save it so I can later access it.
+
+. . .
+
+temporary table (default):
+
+```{r}
+CDMConnector::listSourceTables(cdm)
+```
+
+. . .
+
+```{r}
+cdm$my_saved_table <- cdm$condition_occurrence |>
+  dplyr::filter(condition_concept_id == 4112343) |>
+  dplyr::select(person_id, condition_start_date) |>
+  dplyr::compute()
+CDMConnector::listSourceTables(cdm)
+```
+
+## Create a new table
+
+. . .
+
+permanent table:
+
+```{r}
+cdm$my_saved_table <- cdm$condition_occurrence |>
+  dplyr::filter(condition_concept_id == 4112343) |>
+  dplyr::select(person_id, condition_start_date) |>
+  dplyr::compute(name = "my_saved_table", temporary = FALSE)
+CDMConnector::listSourceTables(cdm)
+```
+
+## Create a new table
+
+```{r, message=TRUE}
+cdm
+cdm$my_saved_table
+```
+
+## Drop an existing table
+
+To drop an existing table:
+
+-   Eliminate the table from the cdm object.
+
+-   Eliminate the table from the database.
+
+. . .
+
+```{r, message=TRUE}
+cdm <- CDMConnector::dropSourceTable(cdm = cdm, name = "my_saved_table")
+cdm
+```
+
+## Drop an existing table
+
+. . .
+
+```{r}
+CDMConnector::listSourceTables(cdm)
+```
+
+## Drop an existing table
+
+Let's drop also the other table that we created:
+
+```{r, message=TRUE}
+cdm <- CDMConnector::dropSourceTable(cdm = cdm, name = dplyr::starts_with("og_"))
+cdm
+```
+
+## Drop an existing table
+
+```{r}
+CDMConnector::listSourceTables(cdm)
+```
+
+## Insert a table
+
+Let's say we have a local tibble and we want to insert it in the cdm:
+
+```{r, message=TRUE}
+cdm <- CDMConnector::insertTable(cdm = cdm, name = "my_test_table", table = cars)
+cdm
+```
+
+## Insert a table
+
+```{r}
+CDMConnector::listSourceTables(cdm)
+cdm$my_test_table
+```
+
+## Use a prefix
+
+It is **VERY IMPORTANT** that when we create the cdm object we use a prefix:
+
+```{r, echo = FALSE}
+cdm <- CDMConnector::dropSourceTable(cdm = cdm, name = "my_test_table")
+```
+
+```{r, message=TRUE}
+cdm <- CDMConnector::cdmFromCon(
+  con = db, 
+  cdmSchema = "main", 
+  writeSchema = "main", 
+  writePrefix = "my_prefix_"
+)
+cdm
+```
+
+## Use a prefix
+
+Now when we create a new table the prefix will be automatically added:
+
+```{r, message=TRUE}
+cdm <- CDMConnector::insertTable(cdm = cdm, name = "my_test_table", table = cars)
+cdm
+```
+
+## Use a prefix
+
+```{r}
+CDMConnector::listSourceTables(cdm = cdm)
+cdm$my_test_table
+```
+
+## Use a prefix
+
+**DO NOT** use the prefix to drop tables, you only care about the prefix at the connection stage!
+
+```{r, message=TRUE}
+cdm <- CDMConnector::dropSourceTable(cdm = cdm, name = "my_prefix_my_test_table")
+CDMConnector::listSourceTables(cdm = cdm)
+```
+
+## Use a prefix
+
+```{r, message=TRUE}
+cdm
+```
+
+## Use a prefix
+
+**DO NOT** use the prefix to drop tables, you only care about the prefix at the connection stage!
+
+```{r, message=TRUE}
+cdm <- CDMConnector::dropSourceTable(cdm = cdm, name = "my_test_table")
+CDMConnector::listSourceTables(cdm = cdm)
+```
+
+## Use a prefix
+
+```{r, message=TRUE}
+cdm
+```
+
+## Consistency rules
+
+We use compute() to compute the result into a temporary (temporary = TRUE) or permanent (temporary = FALSE) table.
+
+If it is a temporary table we can assign assign it to where I want for example:
+
+```{r}
+cdm$my_custom_name <- cdm$person |> 
+  dplyr::compute()
+```
+
+. . .
+
+If it is a permanent table we can only assign it to the same name:
+
+error:
+
+```{r, error = TRUE}
+cdm$my_custom_name <- cdm$person |> 
+  dplyr::compute(name = "not_my_custom_name", temporary = FALSE)
+```
+
+. . .
+
+no error:
+
+```{r}
+cdm$my_custom_name <- cdm$person |> 
+  dplyr::compute(name = "my_custom_name", temporary = FALSE)
+```
+
+## Consistency rules
+
+Omop names are reserved words, e.g. we can not assign a table that is not the person table to `cdm$person`.
+
+. . .
+
+```{r, error = TRUE}
+cdm$person <- cdm$drug_exposure |> 
+  dplyr::compute(name = "person", temporary = FALSE)
+```
+
+. . .
+
+```{r, error = TRUE}
+cdm$drug_exposure <- cdm$drug_exposure |> 
+  dplyr::rename("my_id" = "person_id") |> 
+  dplyr::compute(name = "drug_exposure", temporary = FALSE)
+```
