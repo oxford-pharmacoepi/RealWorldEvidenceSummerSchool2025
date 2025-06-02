@@ -576,7 +576,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dbName <span class="ot">&lt;-</span> <span class="st">"GiBleed"</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>CDMConnector<span class="sc">::</span><span class="fu">requireEunomia</span>(<span class="at">datasetName =</span> dbName)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>ℹ `EUNOMIA_DATA_FOLDER` set to: '/tmp/RtmpSLR7YK'.</code></pre>
+<pre><code>ℹ `EUNOMIA_DATA_FOLDER` set to: '/tmp/Rtmp0V9Ciw'.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -588,11 +588,11 @@ Download completed!</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(duckdb<span class="sc">::</span><span class="fu">duckdb</span>(), <span class="at">dbdir =</span> CDMConnector<span class="sc">::</span><span class="fu">eunomiaDir</span>(<span class="at">datasetName =</span> dbName))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Creating CDM database /tmp/RtmpSLR7YK/GiBleed_5.3.zip</code></pre>
+<pre><code>Creating CDM database /tmp/Rtmp0V9Ciw/GiBleed_5.3.zip</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>db</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>&lt;duckdb_connection 2a760 driver=&lt;duckdb_driver dbdir='/tmp/RtmpSLR7YK/file2c981af8053e.duckdb' read_only=FALSE bigint=numeric&gt;&gt;</code></pre>
+<pre><code>&lt;duckdb_connection 57fa0 driver=&lt;duckdb_driver dbdir='/tmp/Rtmp0V9Ciw/file2cd838c073d5.duckdb' read_only=FALSE bigint=numeric&gt;&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -662,7 +662,7 @@ source_to_concept_map, drug_strength</code></pre>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>cdm<span class="sc">$</span>person</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   table&lt;person&gt; [?? x 18]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmpSLR7YK/file2c981af8053e.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/Rtmp0V9Ciw/file2cd838c073d5.duckdb]
    person_id gender_concept_id year_of_birth month_of_birth day_of_birth birth_datetime      race_concept_id
        &lt;int&gt;             &lt;int&gt;         &lt;int&gt;          &lt;int&gt;        &lt;int&gt; &lt;dttm&gt;                        &lt;int&gt;
  1         6              8532          1963             12           31 1963-12-31 00:00:00            8516
@@ -691,7 +691,7 @@ source_to_concept_map, drug_strength</code></pre>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [?? x 1]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmpSLR7YK/file2c981af8053e.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/Rtmp0V9Ciw/file2cd838c073d5.duckdb]
       n
   &lt;dbl&gt;
 1  2694</code></pre>
@@ -791,7 +791,7 @@ source_to_concept_map, drug_strength</code></pre>
 [21] "metadata"              "note"                  "note_nlp"              "observation"          
 [25] "observation_period"    "payer_plan_period"     "person"                "procedure_occurrence" 
 [29] "provider"              "relationship"          "source_to_concept_map" "specimen"             
-[33] "visit_detail"          "visit_occurrence"      "vocabulary"            "og_001_1748877433"    </code></pre>
+[33] "visit_detail"          "visit_occurrence"      "vocabulary"            "og_001_1748881460"    </code></pre>
 </div>
 </div>
 </section>
@@ -815,7 +815,7 @@ source_to_concept_map, drug_strength</code></pre>
 [25] "observation"           "observation_period"    "payer_plan_period"     "person"               
 [29] "procedure_occurrence"  "provider"              "relationship"          "source_to_concept_map"
 [33] "specimen"              "visit_detail"          "visit_occurrence"      "vocabulary"           
-[37] "og_001_1748877433"    </code></pre>
+[37] "og_001_1748881460"    </code></pre>
 </div>
 </div>
 </section>
@@ -848,7 +848,7 @@ source_to_concept_map, drug_strength</code></pre>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>cdm<span class="sc">$</span>my_saved_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   table&lt;my_saved_table&gt; [?? x 2]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmpSLR7YK/file2c981af8053e.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/Rtmp0V9Ciw/file2cd838c073d5.duckdb]
    person_id condition_start_date
        &lt;int&gt; &lt;date&gt;              
  1       263 2015-10-02          
@@ -914,7 +914,7 @@ source_to_concept_map, drug_strength</code></pre>
 [21] "metadata"              "note"                  "note_nlp"              "observation"          
 [25] "observation_period"    "payer_plan_period"     "person"                "procedure_occurrence" 
 [29] "provider"              "relationship"          "source_to_concept_map" "specimen"             
-[33] "visit_detail"          "visit_occurrence"      "vocabulary"            "og_001_1748877433"    </code></pre>
+[33] "visit_detail"          "visit_occurrence"      "vocabulary"            "og_001_1748881460"    </code></pre>
 </div>
 </div>
 </section>
@@ -1013,7 +1013,7 @@ source_to_concept_map, drug_strength</code></pre>
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>cdm<span class="sc">$</span>my_test_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   table&lt;my_test_table&gt; [?? x 2]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmpSLR7YK/file2c981af8053e.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/Rtmp0V9Ciw/file2cd838c073d5.duckdb]
    speed  dist
    &lt;dbl&gt; &lt;dbl&gt;
  1     4     2
@@ -1105,7 +1105,7 @@ source_to_concept_map, drug_strength</code></pre>
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>cdm<span class="sc">$</span>my_test_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   table&lt;my_prefix_my_test_table&gt; [?? x 2]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmpSLR7YK/file2c981af8053e.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/Rtmp0V9Ciw/file2cd838c073d5.duckdb]
    speed  dist
    &lt;dbl&gt; &lt;dbl&gt;
  1     4     2
