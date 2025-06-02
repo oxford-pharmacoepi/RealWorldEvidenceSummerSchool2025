@@ -1,0 +1,15 @@
+
+# Program
+
+## Monday
+
+| Time | Session |
+| ----- | ----- |
+| 13:30-14:00 | Welcome and Set up |
+| 14:00-14:45 | Introduction to OMOP and **CDMConnector** |
+| *14:45-15:00* | *Break* |
+| 15:00-15:30 | Character a database using **OmopSketch** |
+| 15:30-15:45 | General practical introduction |
+| 15:45-16:30 | General practical |
+
+## Tuesday
