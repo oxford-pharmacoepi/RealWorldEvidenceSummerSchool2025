@@ -365,7 +365,7 @@ source_to_concept_map, drug_strength</code></pre>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">person</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   table&lt;person&gt; [?? x 18]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmptAVCC4/file20f2769c9fed.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/Rtmp3jTiKk/file20bf3db350b8.duckdb]
    person_id gender_concept_id year_of_birth month_of_birth day_of_birth birth_datetime      race_concept_id
        &lt;int&gt;             &lt;int&gt;         &lt;int&gt;          &lt;int&gt;        &lt;int&gt; &lt;dttm&gt;                        &lt;int&gt;
  1         6              8532          1963             12           31 1963-12-31 00:00:00            8516
@@ -392,7 +392,7 @@ source_to_concept_map, drug_strength</code></pre>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [?? x 1]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmptAVCC4/file20f2769c9fed.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/Rtmp3jTiKk/file20bf3db350b8.duckdb]
       n
   &lt;dbl&gt;
 1  2694</code></pre>
@@ -493,7 +493,7 @@ source_to_concept_map, drug_strength</code></pre>
 [21] "metadata"              "note"                  "note_nlp"              "observation"          
 [25] "observation_period"    "payer_plan_period"     "person"                "procedure_occurrence" 
 [29] "provider"              "relationship"          "source_to_concept_map" "specimen"             
-[33] "visit_detail"          "visit_occurrence"      "vocabulary"            "og_001_1749064333"    </code></pre>
+[33] "visit_detail"          "visit_occurrence"      "vocabulary"            "og_001_1749067400"    </code></pre>
 </div>
 </div>
 </div>
@@ -516,7 +516,7 @@ source_to_concept_map, drug_strength</code></pre>
 [25] "observation"           "observation_period"    "payer_plan_period"     "person"               
 [29] "procedure_occurrence"  "provider"              "relationship"          "source_to_concept_map"
 [33] "specimen"              "visit_detail"          "visit_occurrence"      "vocabulary"           
-[37] "og_001_1749064333"    </code></pre>
+[37] "og_001_1749067400"    </code></pre>
 </div>
 </div>
 </div>
@@ -548,7 +548,7 @@ source_to_concept_map, drug_strength</code></pre>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">my_saved_table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   table&lt;my_saved_table&gt; [?? x 2]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmptAVCC4/file20f2769c9fed.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/Rtmp3jTiKk/file20bf3db350b8.duckdb]
    person_id condition_start_date
        &lt;int&gt; &lt;date&gt;              
  1       263 2015-10-02          
@@ -611,7 +611,7 @@ source_to_concept_map, drug_strength</code></pre>
 [21] "metadata"              "note"                  "note_nlp"              "observation"          
 [25] "observation_period"    "payer_plan_period"     "person"                "procedure_occurrence" 
 [29] "provider"              "relationship"          "source_to_concept_map" "specimen"             
-[33] "visit_detail"          "visit_occurrence"      "vocabulary"            "og_001_1749064333"    </code></pre>
+[33] "visit_detail"          "visit_occurrence"      "vocabulary"            "og_001_1749067400"    </code></pre>
 </div>
 </div>
 </div>
@@ -703,7 +703,7 @@ source_to_concept_map, drug_strength</code></pre>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">my_test_table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   table&lt;my_test_table&gt; [?? x 2]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmptAVCC4/file20f2769c9fed.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/Rtmp3jTiKk/file20bf3db350b8.duckdb]
    speed  dist
    &lt;dbl&gt; &lt;dbl&gt;
  1     4     2
@@ -789,7 +789,7 @@ source_to_concept_map, drug_strength</code></pre>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">my_test_table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   table&lt;my_prefix_my_test_table&gt; [?? x 2]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmptAVCC4/file20f2769c9fed.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/Rtmp3jTiKk/file20bf3db350b8.duckdb]
    speed  dist
    &lt;dbl&gt; &lt;dbl&gt;
  1     4     2
@@ -930,7 +930,14 @@ source_to_concept_map, drug_strength</code></pre>
 </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Real World Evidence Summer School 2025</p>
+<div style="position: relative; width: 100%;">
+<div style="text-align: center; font-weight: 500;">
+Real World Evidence Summer School 2025
+</div>
+<div style="position: absolute; right: 20px; top: -800px;">
+<a href="../../Practicals/index.html" style="text-decoration: none;">⬅ Back to Practicals</a>
+</div>
+</div>
 </div>
 </div></div>
 
