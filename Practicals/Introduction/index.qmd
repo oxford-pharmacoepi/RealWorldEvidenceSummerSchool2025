@@ -3,7 +3,7 @@ title: "OMOP and CDMConnector"
 subtitle: "The OMOP Common Data Model"
 format:
   revealjs: 
-    theme: [simple, styleSS25.scss]
+    theme: [simple, ../../styleSS25.scss]
     incremental: true   
     slide-number: true
     chalkboard: true
