@@ -1,0 +1,27 @@
+---
+title: "CodelistGenerator"
+subtitle: "Create codelists"
+format:
+  revealjs: 
+    theme: [simple, ../../styleSS25.scss]
+    incremental: true   
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    margin: 0.07
+    code-link: true
+    code-line-numbers: false
+    height: 900
+    width: 1600
+    footer: |
+      <div style="position: relative; width: 100%;">
+        <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2025</div>
+        <div style="position: absolute; right: 20px; top: -800px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Practicals</a></div>
+      </div>
+execute:
+  echo: true
+  eval: true
+editor: visual
+---
+
+## CodelistGenerator
