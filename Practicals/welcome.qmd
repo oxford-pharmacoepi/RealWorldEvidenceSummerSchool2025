@@ -16,7 +16,7 @@ format:
     footer: |
       <div style="position: relative; width: 100%;">
         <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2025</div>
-        <div style="position: absolute; right: 20px; top: -800px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Practicals</a></div>
+        <div style="position: absolute; right: 20px; top: -800px;"><a href="index.qmd" style="text-decoration: none;">⬅ Back to Practicals</a></div>
       </div>
 execute:
   echo: true
