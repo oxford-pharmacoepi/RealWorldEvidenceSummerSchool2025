@@ -9,9 +9,10 @@ for (practical in practicals) {
 }
 
 # copy logo
-logoPath <- here::here("images", "hds_logo.svg")
+logoPath <- here::here("images", "hds_logo.png")
 for (practical in practicals) {
-  logoPractical <- file.path(practical, "hds_logo.svg")
+  logoPractical <- file.path(practical, "images", "hds_logo.png")
+  dir.create(file.path(practical, "images"), showWarnings = FALSE)
   file.copy(from = logoPath, to = logoPractical)
 }
 
