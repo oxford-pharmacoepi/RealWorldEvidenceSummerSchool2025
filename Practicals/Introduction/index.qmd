@@ -1,4 +1,24 @@
-# OMOP and CDMConnector
+---
+title: "OMOP and CDMConnector"
+subtitle: "The OMOP Common Data Model"
+format:
+  revealjs: 
+    theme: [simple, styleSS24.scss]
+    incremental: true   
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    margin: 0.07
+    code-link: true
+    code-line-numbers: false
+    height: 900
+    width: 1600
+    footer: "HERON-UK Training"
+execute:
+  echo: true
+  eval: true
+editor: visual
+---
 
 ## Introduction: The OMOP Common Data Model
 
