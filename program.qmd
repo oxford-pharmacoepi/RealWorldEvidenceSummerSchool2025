@@ -7,9 +7,39 @@
 | ----- | ----- |
 | 13:30-14:00 | Welcome and Set up |
 | 14:00-14:45 | Introduction to OMOP and **CDMConnector** |
-| *14:45-15:00* | *Break* |
-| 15:00-15:30 | Character a database using **OmopSketch** |
-| 15:30-15:45 | General practical introduction |
+| *14:45-14:55* | *Break* |
+| 14:55-15:25 | Character a database using **OmopSketch** |
+| *15:25-15:35* | *Break* |
+| 15:35-15:45 | General practical introduction |
 | 15:45-16:30 | General practical |
 
 ## Tuesday
+
+| Time | Session |
+| ----- | ----- |
+| 13:30-14:10 | Create codelist using **CodelistGenerator** |
+| *14:10-14:20* | *Break* |
+| 14:20-15:05 | Create cohorts using **CohortConstructor** |
+| *15:05-15:15* | *Break* |
+| 15:15-15:45 | Review codelists and cohorts using **PhenotypeR** |
+| 15:45-16:30 | General practical |
+
+## Wednesday
+
+| Time | Session |
+| ----- | ----- |
+| 13:30-14:20 | Characterise cohorts using **CohortCharacteristics** |
+| *14:20-14:30* | *Break* |
+| 14:30-15:20 | Estimate Incidence and Prevalence using **IncidencePrevalence** |
+| *15:20-15:30* | *Break* |
+| 15:30-16:30 | General practical |
+
+## Thursday
+
+| Time | Session |
+| ----- | ----- |
+| 13:30-14:20 | Conducting Drug Utilisation studies with **DrugUtilisation** |
+| *14:20-14:30* | *Break* |
+| 14:30-15:00 | Estimate Survival **CohortSurvival** |
+| *15:00-15:10* | *Break* |
+| 15:30-16:30 | General practical |

@@ -1,0 +1,6 @@
+
+# Practical sessions
+
+## Monday
+
+- [**Introduction**](Introduction/index.qmd)

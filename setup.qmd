@@ -108,5 +108,4 @@ Sys.getenv("EUNOMIA_DATA_FOLDER")
 ```{r, echo=FALSE}
 print("path/to/data/folder")
 ```
-
 :::
