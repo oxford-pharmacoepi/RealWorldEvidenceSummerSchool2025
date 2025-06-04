@@ -3,7 +3,7 @@ title: "OMOP and CDMConnector"
 subtitle: "The OMOP Common Data Model"
 format:
   revealjs: 
-    theme: [simple, styleSS24.scss]
+    theme: [simple, styleSS25.scss]
     incremental: true   
     slide-number: true
     chalkboard: true
@@ -13,7 +13,7 @@ format:
     code-line-numbers: false
     height: 900
     width: 1600
-    footer: "HERON-UK Training"
+    footer: "Real World Evidence Summer School 2025"
 execute:
   echo: true
   eval: true
