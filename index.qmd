@@ -1,9 +1,12 @@
-
-# Real World Evidence Summer School 2025 
+# Real World Evidence Summer School 2025
 
 This website is used for the **Analytical track** practical sessions.
 
-- [**Program**](program.qmd) contains the schedule of the practical sessions.
-- [**Set up**](setup.qmd) contains the steps to set up your laptop or desktop to conduct the practical sessions.
-- [**Practicals**](Practicals/index.qmd) contains the practical sessions that will be conducted during the Summer School.
-- [**My first study**](my_first_study.qmd) contains the details of the final practical session conducted during the Summer School.
+-   [**Program**](program.qmd) contains the schedule of the practical sessions.
+-   [**Set up**](setup.qmd) contains the steps to set up your laptop or desktop to conduct the practical sessions.
+-   [**Practicals**](Practicals/index.qmd) contains the practical sessions that will be conducted during the Summer School.
+-   [**My first study**](my_first_study.qmd) contains the details of the final practical session conducted during the Summer School.
+
+<div style="text-align: center;">
+  <img src="images/hds_logo.svg" width="150" />
+</div>
