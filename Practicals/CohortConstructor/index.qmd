@@ -24,7 +24,6 @@ execute:
 editor: visual
 ---
 
-
 ## Introduction
 
 -   CohortConstructor package is designed to support cohort building pipelines in R, using data mapped to the OMOP Common Data Model.
@@ -43,7 +42,6 @@ editor: visual
 :::
 
 -   Vignettes with further information can be found in the package [website](https://ohdsi.github.io/CohortConstructor/index.html){.link}.
-
 
 ## CohortConstructor pipeline
 
@@ -67,7 +65,6 @@ Tranform base cohorts to meet study-specific inclusion criteria.
 
 ::: {style="margin-bottom: 25px;"}
 :::
-
 
 ## Function Sets
 
@@ -183,8 +180,6 @@ cdm <- cdmFromCon(
 
 ## Demographics based - Example
 
-
-
 ::: {style="margin-bottom: 15px;"}
 :::
 
@@ -206,8 +201,6 @@ settings(cdm$age_cohort)
 
 ## Demographics based - Example
 
-
-
 ::: {style="margin-bottom: 20px;"}
 :::
 
@@ -226,29 +219,17 @@ attrition(cdm$age_cohort)
 
 ## Demographics based - Example
 
-
-
 ::: {style="margin-bottom: 20px;"}
 :::
 
-To better visualise the **attrition**, we can use the package `CohortCharacteristics` to either create a **flow diagram** or a **formatted table**:
+To better visualise the **attrition**, we can use the package `CohortCharacteristics` to create a **formatted table**:
 
-```{r}
-cdm$age_cohort |> summariseCohortAttrition() |> plotCohortAttrition(type = "png")
-```
-
-## Demographics based - Example
-
-::: {style="margin-bottom: 20px;"}
-:::
 
 ```{r}
 cdm$age_cohort |> summariseCohortAttrition() |> tableCohortAttrition()
 ```
 
 ## Concept based - Example {.incremental:FALSE}
-
-
 
 ::: {style="margin-bottom: 20px;"}
 :::
@@ -275,8 +256,6 @@ drug_codes
 
 ## Concept based - Example {.incremental:FALSE}
 
-
-
 2)  Create concept based cohorts
 
 . . .
@@ -292,8 +271,6 @@ settings(cdm$medications)
 ```
 
 ## Concept based - Example
-
-
 
 ::: {style="margin-bottom: 15px;"}
 :::
@@ -324,7 +301,6 @@ result |>
 ```{r}
 attr(cdm$medications, "cohort_codelist")
 ```
-
 
 # Your turn!
 
@@ -377,8 +353,6 @@ summariseCohortCount(cdm$aspirin) |> tableCohortCount()
 # Requirements and Filtering
 
 ## Functions to apply requirements and filter
-
-
 
 ::: {style="margin-bottom: 10px;"}
 :::
@@ -490,7 +464,6 @@ result |>
 )
 ```
 
-
 ## Requirement functions - Example
 
 ::: {style="margin-bottom: 10px;"}
@@ -574,7 +547,6 @@ cdm$aspirin_last <- cdm$aspirin |>
 summariseCohortAttrition(cdm$aspirin_last) |> tableCohortAttrition()
 ```
 
-
 # Update cohort entry and exit
 
 ## Functions to update cohort start and end dates
@@ -584,7 +556,6 @@ summariseCohortAttrition(cdm$aspirin_last) |> tableCohortAttrition()
 
 ::::::: columns
 :::: {.column width="50%"}
-
 -   Cohort exit
 
     -   `exitAtObservationEnd()`
@@ -627,8 +598,6 @@ summariseCohortAttrition(cdm$aspirin_last) |> tableCohortAttrition()
 
 ## Update cohort entry and exit - Example
 
-
-
 ::: {style="margin-bottom: 10px;"}
 :::
 
@@ -653,7 +622,6 @@ cdm$medications_trimmed <- cdm$medications |>
 
 ## Update cohort entry and exit - Example
 
-
 ::: {style="margin-bottom: 10px;"}
 :::
 
@@ -666,7 +634,6 @@ result |>
   hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
 )
 ```
-
 
 # Your turn!
 
@@ -684,12 +651,9 @@ cdm$ibuprofen_death <- cdm$ibuprofen |>
 summariseCohortAttrition(cdm$ibuprofen_death) |> tableCohortAttrition()
 ```
 
-
 # Transformation and Combination
 
 ## Functions for Cohort Transformation and Combination
-
-
 
 ::::::::: columns
 ::::: {.column width="50%"}
@@ -741,16 +705,12 @@ summariseCohortAttrition(cdm$ibuprofen_death) |> tableCohortAttrition()
 :::::
 :::::::::
 
-
-
 ## Cohort combinations - Example
-
-
 
 ::: {style="margin-bottom: 10px;"}
 :::
 
-1) Collapse drug exposures that are within a gap of 7 days.
+1)  Collapse drug exposures that are within a gap of 7 days.
 
 . . .
 
@@ -765,7 +725,6 @@ summariseCohortAttrition(cdm$ibuprofen_death) |> tableCohortAttrition()
 cdm$medications_collapsed <- cdm$medications |>
   collapseCohorts(gap = 7, name = "medications_collapsed")
 ```
-
 
 ```{r, echo=FALSE}
 result <- cdm$medications_collapsed |> 
@@ -782,7 +741,7 @@ result |>
 ::: {style="margin-bottom: 10px;"}
 :::
 
-2) Create a new cohort that contains people who had an exposure to both **diclofenac and acetaminophen** at the same time using.
+2)  Create a new cohort that contains people who had an exposure to both **diclofenac and acetaminophen** at the same time using.
 
 . . .
 
@@ -801,8 +760,6 @@ settings(cdm$intersection)
 ```
 
 ## Cohort combinations - Example
-
-
 
 ::: {style="margin-bottom: 10px;"}
 :::
@@ -829,7 +786,7 @@ cdm$ibuprofen_years <- cdm$ibuprofen |>
 summariseCohortCount(cdm$ibuprofen_years) |> tableCohortCount()
 ```
 
-## Exercise 5 
+## Exercise 5
 
 **Use CohortConstructor to create a cohort with the following criteria:**
 
@@ -881,9 +838,6 @@ cdm$diclofenac <- conceptCohort(
 summariseCohortAttrition(cdm$diclofenac) |> tableCohortAttrition()
 ```
 
-
-# Thank you! 
+# Thank you!
 
 **Questions?**
-
-
