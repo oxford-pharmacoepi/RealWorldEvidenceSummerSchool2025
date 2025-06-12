@@ -1,24 +1,10 @@
 [
   {
-    "objectID": "Practicals/IncidencePrevalence/index.html#incidenceprevalence",
-    "href": "Practicals/IncidencePrevalence/index.html#incidenceprevalence",
-    "title": "IncidencePrevalence",
-    "section": "IncidencePrevalence",
-    "text": "IncidencePrevalence"
-  },
-  {
-    "objectID": "Practicals/DrugUtilisation/index.html#drugutilisation",
-    "href": "Practicals/DrugUtilisation/index.html#drugutilisation",
-    "title": "DrugUtilisation",
-    "section": "DrugUtilisation",
-    "text": "DrugUtilisation"
-  },
-  {
-    "objectID": "Practicals/PhenotypeR/index.html#phenotyper",
-    "href": "Practicals/PhenotypeR/index.html#phenotyper",
-    "title": "PhenotypeR",
-    "section": "PhenotypeR",
-    "text": "PhenotypeR"
+    "objectID": "Practicals/CodelistGenerator/index.html#codelistgenerator",
+    "href": "Practicals/CodelistGenerator/index.html#codelistgenerator",
+    "title": "CodelistGenerator",
+    "section": "CodelistGenerator",
+    "text": "CodelistGenerator"
   },
   {
     "objectID": "Practicals/Introduction/index.html#introduction-the-omop-common-data-model",
@@ -151,14 +137,14 @@
     "href": "Practicals/Introduction/index.html#access-to-tables-of-the-cdm-reference",
     "title": "OMOP and CDMConnector",
     "section": "Access to tables of the cdm reference",
-    "text": "Access to tables of the cdm reference\n\ncdm$person\n\n# Source:   table&lt;person&gt; [?? x 18]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmpBqxVHk/file20c73f564228.duckdb]\n   person_id gender_concept_id year_of_birth month_of_birth day_of_birth birth_datetime      race_concept_id\n       &lt;int&gt;             &lt;int&gt;         &lt;int&gt;          &lt;int&gt;        &lt;int&gt; &lt;dttm&gt;                        &lt;int&gt;\n 1         6              8532          1963             12           31 1963-12-31 00:00:00            8516\n 2       123              8507          1950              4           12 1950-04-12 00:00:00            8527\n 3       129              8507          1974             10            7 1974-10-07 00:00:00            8527\n 4        16              8532          1971             10           13 1971-10-13 00:00:00            8527\n 5        65              8532          1967              3           31 1967-03-31 00:00:00            8516\n 6        74              8532          1972              1            5 1972-01-05 00:00:00            8527\n 7        42              8532          1909             11            2 1909-11-02 00:00:00            8527\n 8       187              8507          1945              7           23 1945-07-23 00:00:00            8527\n 9        18              8532          1965             11           17 1965-11-17 00:00:00            8527\n10       111              8532          1975              5            2 1975-05-02 00:00:00            8527\n# ℹ more rows\n# ℹ 11 more variables: ethnicity_concept_id &lt;int&gt;, location_id &lt;int&gt;, provider_id &lt;int&gt;, care_site_id &lt;int&gt;,\n#   person_source_value &lt;chr&gt;, gender_source_value &lt;chr&gt;, gender_source_concept_id &lt;int&gt;, race_source_value &lt;chr&gt;,\n#   race_source_concept_id &lt;int&gt;, ethnicity_source_value &lt;chr&gt;, ethnicity_source_concept_id &lt;int&gt;"
+    "text": "Access to tables of the cdm reference\n\ncdm$person\n\n# Source:   table&lt;person&gt; [?? x 18]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.0//tmp/RtmpWYJ2Sv/file215d75a53f8c.duckdb]\n   person_id gender_concept_id year_of_birth month_of_birth day_of_birth birth_datetime      race_concept_id\n       &lt;int&gt;             &lt;int&gt;         &lt;int&gt;          &lt;int&gt;        &lt;int&gt; &lt;dttm&gt;                        &lt;int&gt;\n 1         6              8532          1963             12           31 1963-12-31 00:00:00            8516\n 2       123              8507          1950              4           12 1950-04-12 00:00:00            8527\n 3       129              8507          1974             10            7 1974-10-07 00:00:00            8527\n 4        16              8532          1971             10           13 1971-10-13 00:00:00            8527\n 5        65              8532          1967              3           31 1967-03-31 00:00:00            8516\n 6        74              8532          1972              1            5 1972-01-05 00:00:00            8527\n 7        42              8532          1909             11            2 1909-11-02 00:00:00            8527\n 8       187              8507          1945              7           23 1945-07-23 00:00:00            8527\n 9        18              8532          1965             11           17 1965-11-17 00:00:00            8527\n10       111              8532          1975              5            2 1975-05-02 00:00:00            8527\n# ℹ more rows\n# ℹ 11 more variables: ethnicity_concept_id &lt;int&gt;, location_id &lt;int&gt;, provider_id &lt;int&gt;, care_site_id &lt;int&gt;,\n#   person_source_value &lt;chr&gt;, gender_source_value &lt;chr&gt;, gender_source_concept_id &lt;int&gt;, race_source_value &lt;chr&gt;,\n#   race_source_concept_id &lt;int&gt;, ethnicity_source_value &lt;chr&gt;, ethnicity_source_concept_id &lt;int&gt;"
   },
   {
     "objectID": "Practicals/Introduction/index.html#read-tables-in-eunomia",
     "href": "Practicals/Introduction/index.html#read-tables-in-eunomia",
     "title": "OMOP and CDMConnector",
     "section": "Read tables in Eunomia",
-    "text": "Read tables in Eunomia\n\nOnce we read a table we can operate with it and for example count the number of rows of person table.\n\ncdm$person |&gt;\n  dplyr::count()\n\n# Source:   SQL [?? x 1]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmpBqxVHk/file20c73f564228.duckdb]\n      n\n  &lt;dbl&gt;\n1  2694"
+    "text": "Read tables in Eunomia\n\nOnce we read a table we can operate with it and for example count the number of rows of person table.\n\ncdm$person |&gt;\n  dplyr::count()\n\n# Source:   SQL [?? x 1]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.0//tmp/RtmpWYJ2Sv/file215d75a53f8c.duckdb]\n      n\n  &lt;dbl&gt;\n1  2694"
   },
   {
     "objectID": "Practicals/Introduction/index.html#operation-with-tidyverse",
@@ -179,21 +165,21 @@
     "href": "Practicals/Introduction/index.html#create-a-new-table",
     "title": "OMOP and CDMConnector",
     "section": "Create a new table",
-    "text": "Create a new table\nLet’s say I want to subset the condition_occurrence table to a certain rows and certain columns and save it so I can later access it.\n\ntemporary table (default):\n\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"note\"                  \"note_nlp\"              \"observation\"          \n[25] \"observation_period\"    \"payer_plan_period\"     \"person\"                \"procedure_occurrence\" \n[29] \"provider\"              \"relationship\"          \"source_to_concept_map\" \"specimen\"             \n[33] \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"           \n\n\n\n\n\ncdm$my_saved_table &lt;- cdm$condition_occurrence |&gt;\n  dplyr::filter(condition_concept_id == 4112343) |&gt;\n  dplyr::select(person_id, condition_start_date) |&gt;\n  dplyr::compute()\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"note\"                  \"note_nlp\"              \"observation\"          \n[25] \"observation_period\"    \"payer_plan_period\"     \"person\"                \"procedure_occurrence\" \n[29] \"provider\"              \"relationship\"          \"source_to_concept_map\" \"specimen\"             \n[33] \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"            \"og_001_1749069481\""
+    "text": "Create a new table\nLet’s say I want to subset the condition_occurrence table to a certain rows and certain columns and save it so I can later access it.\n\ntemporary table (default):\n\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"note\"                  \"note_nlp\"              \"observation\"          \n[25] \"observation_period\"    \"payer_plan_period\"     \"person\"                \"procedure_occurrence\" \n[29] \"provider\"              \"relationship\"          \"source_to_concept_map\" \"specimen\"             \n[33] \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"           \n\n\n\n\n\ncdm$my_saved_table &lt;- cdm$condition_occurrence |&gt;\n  dplyr::filter(condition_concept_id == 4112343) |&gt;\n  dplyr::select(person_id, condition_start_date) |&gt;\n  dplyr::compute()\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"note\"                  \"note_nlp\"              \"observation\"          \n[25] \"observation_period\"    \"payer_plan_period\"     \"person\"                \"procedure_occurrence\" \n[29] \"provider\"              \"relationship\"          \"source_to_concept_map\" \"specimen\"             \n[33] \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"            \"og_001_1749742581\""
   },
   {
     "objectID": "Practicals/Introduction/index.html#create-a-new-table-1",
     "href": "Practicals/Introduction/index.html#create-a-new-table-1",
     "title": "OMOP and CDMConnector",
     "section": "Create a new table",
-    "text": "Create a new table\n\npermanent table:\n\ncdm$my_saved_table &lt;- cdm$condition_occurrence |&gt;\n  dplyr::filter(condition_concept_id == 4112343) |&gt;\n  dplyr::select(person_id, condition_start_date) |&gt;\n  dplyr::compute(name = \"my_saved_table\", temporary = FALSE)\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"my_saved_table\"        \"note\"                  \"note_nlp\"             \n[25] \"observation\"           \"observation_period\"    \"payer_plan_period\"     \"person\"               \n[29] \"procedure_occurrence\"  \"provider\"              \"relationship\"          \"source_to_concept_map\"\n[33] \"specimen\"              \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"           \n[37] \"og_001_1749069481\""
+    "text": "Create a new table\n\npermanent table:\n\ncdm$my_saved_table &lt;- cdm$condition_occurrence |&gt;\n  dplyr::filter(condition_concept_id == 4112343) |&gt;\n  dplyr::select(person_id, condition_start_date) |&gt;\n  dplyr::compute(name = \"my_saved_table\", temporary = FALSE)\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"my_saved_table\"        \"note\"                  \"note_nlp\"             \n[25] \"observation\"           \"observation_period\"    \"payer_plan_period\"     \"person\"               \n[29] \"procedure_occurrence\"  \"provider\"              \"relationship\"          \"source_to_concept_map\"\n[33] \"specimen\"              \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"           \n[37] \"og_001_1749742581\""
   },
   {
     "objectID": "Practicals/Introduction/index.html#create-a-new-table-2",
     "href": "Practicals/Introduction/index.html#create-a-new-table-2",
     "title": "OMOP and CDMConnector",
     "section": "Create a new table",
-    "text": "Create a new table\n\ncdm\n\n\n\n\n── # OMOP CDM reference (duckdb) of EUNOMIA ────────────────────────────────────────────────────────────────────────────\n\n\n• omop tables: person, observation_period, visit_occurrence, visit_detail, condition_occurrence, drug_exposure,\nprocedure_occurrence, device_exposure, measurement, observation, death, note, note_nlp, specimen, fact_relationship,\nlocation, care_site, provider, payer_plan_period, cost, drug_era, dose_era, condition_era, metadata, cdm_source,\nconcept, vocabulary, domain, concept_class, concept_relationship, relationship, concept_synonym, concept_ancestor,\nsource_to_concept_map, drug_strength\n\n\n• cohort tables: -\n\n\n• achilles tables: -\n\n\n• other tables: my_saved_table\n\ncdm$my_saved_table\n\n# Source:   table&lt;my_saved_table&gt; [?? x 2]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmpBqxVHk/file20c73f564228.duckdb]\n   person_id condition_start_date\n       &lt;int&gt; &lt;date&gt;              \n 1       263 2015-10-02          \n 2       439 1990-03-20          \n 3       449 1999-12-12          \n 4       515 1961-11-14          \n 5        17 1963-12-02          \n 6        30 1993-03-19          \n 7        90 1970-01-15          \n 8       116 1959-06-11          \n 9       137 2005-11-15          \n10       176 1986-10-08          \n# ℹ more rows"
+    "text": "Create a new table\n\ncdm\n\n\n\n\n── # OMOP CDM reference (duckdb) of EUNOMIA ────────────────────────────────────────────────────────────────────────────\n\n\n• omop tables: person, observation_period, visit_occurrence, visit_detail, condition_occurrence, drug_exposure,\nprocedure_occurrence, device_exposure, measurement, observation, death, note, note_nlp, specimen, fact_relationship,\nlocation, care_site, provider, payer_plan_period, cost, drug_era, dose_era, condition_era, metadata, cdm_source,\nconcept, vocabulary, domain, concept_class, concept_relationship, relationship, concept_synonym, concept_ancestor,\nsource_to_concept_map, drug_strength\n\n\n• cohort tables: -\n\n\n• achilles tables: -\n\n\n• other tables: my_saved_table\n\ncdm$my_saved_table\n\n# Source:   table&lt;my_saved_table&gt; [?? x 2]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.0//tmp/RtmpWYJ2Sv/file215d75a53f8c.duckdb]\n   person_id condition_start_date\n       &lt;int&gt; &lt;date&gt;              \n 1       263 2015-10-02          \n 2       439 1990-03-20          \n 3       449 1999-12-12          \n 4       515 1961-11-14          \n 5        17 1963-12-02          \n 6        30 1993-03-19          \n 7        90 1970-01-15          \n 8       116 1959-06-11          \n 9       137 2005-11-15          \n10       176 1986-10-08          \n# ℹ more rows"
   },
   {
     "objectID": "Practicals/Introduction/index.html#drop-an-existing-table",
@@ -207,7 +193,7 @@
     "href": "Practicals/Introduction/index.html#drop-an-existing-table-1",
     "title": "OMOP and CDMConnector",
     "section": "Drop an existing table",
-    "text": "Drop an existing table\n\n\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"note\"                  \"note_nlp\"              \"observation\"          \n[25] \"observation_period\"    \"payer_plan_period\"     \"person\"                \"procedure_occurrence\" \n[29] \"provider\"              \"relationship\"          \"source_to_concept_map\" \"specimen\"             \n[33] \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"            \"og_001_1749069481\""
+    "text": "Drop an existing table\n\n\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"note\"                  \"note_nlp\"              \"observation\"          \n[25] \"observation_period\"    \"payer_plan_period\"     \"person\"                \"procedure_occurrence\" \n[29] \"provider\"              \"relationship\"          \"source_to_concept_map\" \"specimen\"             \n[33] \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"            \"og_001_1749742581\""
   },
   {
     "objectID": "Practicals/Introduction/index.html#drop-an-existing-table-2",
@@ -235,7 +221,7 @@
     "href": "Practicals/Introduction/index.html#insert-a-table-1",
     "title": "OMOP and CDMConnector",
     "section": "Insert a table",
-    "text": "Insert a table\n\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"my_test_table\"         \"note\"                  \"note_nlp\"             \n[25] \"observation\"           \"observation_period\"    \"payer_plan_period\"     \"person\"               \n[29] \"procedure_occurrence\"  \"provider\"              \"relationship\"          \"source_to_concept_map\"\n[33] \"specimen\"              \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"           \n\ncdm$my_test_table\n\n# Source:   table&lt;my_test_table&gt; [?? x 2]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmpBqxVHk/file20c73f564228.duckdb]\n   speed  dist\n   &lt;dbl&gt; &lt;dbl&gt;\n 1     4     2\n 2     4    10\n 3     7     4\n 4     7    22\n 5     8    16\n 6     9    10\n 7    10    18\n 8    10    26\n 9    10    34\n10    11    17\n# ℹ more rows"
+    "text": "Insert a table\n\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"my_test_table\"         \"note\"                  \"note_nlp\"             \n[25] \"observation\"           \"observation_period\"    \"payer_plan_period\"     \"person\"               \n[29] \"procedure_occurrence\"  \"provider\"              \"relationship\"          \"source_to_concept_map\"\n[33] \"specimen\"              \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"           \n\ncdm$my_test_table\n\n# Source:   table&lt;my_test_table&gt; [?? x 2]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.0//tmp/RtmpWYJ2Sv/file215d75a53f8c.duckdb]\n   speed  dist\n   &lt;dbl&gt; &lt;dbl&gt;\n 1     4     2\n 2     4    10\n 3     7     4\n 4     7    22\n 5     8    16\n 6     9    10\n 7    10    18\n 8    10    26\n 9    10    34\n10    11    17\n# ℹ more rows"
   },
   {
     "objectID": "Practicals/Introduction/index.html#use-a-prefix",
@@ -256,7 +242,7 @@
     "href": "Practicals/Introduction/index.html#use-a-prefix-2",
     "title": "OMOP and CDMConnector",
     "section": "Use a prefix",
-    "text": "Use a prefix\n\nCDMConnector::listSourceTables(cdm = cdm)\n\n[1] \"my_test_table\"\n\ncdm$my_test_table\n\n# Source:   table&lt;my_prefix_my_test_table&gt; [?? x 2]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1014-azure:R 4.5.0//tmp/RtmpBqxVHk/file20c73f564228.duckdb]\n   speed  dist\n   &lt;dbl&gt; &lt;dbl&gt;\n 1     4     2\n 2     4    10\n 3     7     4\n 4     7    22\n 5     8    16\n 6     9    10\n 7    10    18\n 8    10    26\n 9    10    34\n10    11    17\n# ℹ more rows"
+    "text": "Use a prefix\n\nCDMConnector::listSourceTables(cdm = cdm)\n\n[1] \"my_test_table\"\n\ncdm$my_test_table\n\n# Source:   table&lt;my_prefix_my_test_table&gt; [?? x 2]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.0//tmp/RtmpWYJ2Sv/file215d75a53f8c.duckdb]\n   speed  dist\n   &lt;dbl&gt; &lt;dbl&gt;\n 1     4     2\n 2     4    10\n 3     7     4\n 4     7    22\n 5     8    16\n 6     9    10\n 7    10    18\n 8    10    26\n 9    10    34\n10    11    17\n# ℹ more rows"
   },
   {
     "objectID": "Practicals/Introduction/index.html#use-a-prefix-3",
@@ -301,18 +287,25 @@
     "text": "Consistency rules\nOmop names are reserved words, e.g. we can not assign a table that is not the person table to cdm$person.\n\n\ncdm$person &lt;- cdm$drug_exposure |&gt; \n  dplyr::compute(name = \"person\", temporary = FALSE)\n\nError in `newOmopTable()`:\n! gender_concept_id, year_of_birth, race_concept_id and ethnicity_concept_id are not present in table person\n\n\n\n\n\ncdm$drug_exposure &lt;- cdm$drug_exposure |&gt; \n  dplyr::rename(\"my_id\" = \"person_id\") |&gt; \n  dplyr::compute(name = \"drug_exposure\", temporary = FALSE)\n\nError in `newOmopTable()`:\n! person_id is not present in table drug_exposure"
   },
   {
-    "objectID": "Practicals/OmopSketch/index.html#omopsketch",
-    "href": "Practicals/OmopSketch/index.html#omopsketch",
-    "title": "OmopSketch",
-    "section": "OmopSketch",
-    "text": "OmopSketch"
+    "objectID": "Practicals/IncidencePrevalence/index.html#incidenceprevalence",
+    "href": "Practicals/IncidencePrevalence/index.html#incidenceprevalence",
+    "title": "IncidencePrevalence",
+    "section": "IncidencePrevalence",
+    "text": "IncidencePrevalence"
   },
   {
-    "objectID": "Practicals/CohortSurvival/index.html#cohortsurvival",
-    "href": "Practicals/CohortSurvival/index.html#cohortsurvival",
-    "title": "CohortSurvival",
-    "section": "CohortSurvival",
-    "text": "CohortSurvival"
+    "objectID": "Practicals/CohortCharacteristics/index.html#cohortcharacteristics",
+    "href": "Practicals/CohortCharacteristics/index.html#cohortcharacteristics",
+    "title": "CohortCharacteristics",
+    "section": "CohortCharacteristics",
+    "text": "CohortCharacteristics"
+  },
+  {
+    "objectID": "Practicals/PhenotypeR/index.html#phenotyper",
+    "href": "Practicals/PhenotypeR/index.html#phenotyper",
+    "title": "PhenotypeR",
+    "section": "PhenotypeR",
+    "text": "PhenotypeR"
   },
   {
     "objectID": "Practicals/welcome.html#welcome",
@@ -364,24 +357,269 @@
     "text": "Set up"
   },
   {
-    "objectID": "Practicals/CohortCharacteristics/index.html#cohortcharacteristics",
-    "href": "Practicals/CohortCharacteristics/index.html#cohortcharacteristics",
-    "title": "CohortCharacteristics",
-    "section": "CohortCharacteristics",
-    "text": "CohortCharacteristics"
+    "objectID": "Practicals/CohortSurvival/index.html#cohortsurvival",
+    "href": "Practicals/CohortSurvival/index.html#cohortsurvival",
+    "title": "CohortSurvival",
+    "section": "CohortSurvival",
+    "text": "CohortSurvival"
   },
   {
-    "objectID": "Practicals/CohortConstructor/index.html#cohortconstructor",
-    "href": "Practicals/CohortConstructor/index.html#cohortconstructor",
+    "objectID": "Practicals/OmopSketch/index.html#omopsketch",
+    "href": "Practicals/OmopSketch/index.html#omopsketch",
+    "title": "OmopSketch",
+    "section": "OmopSketch",
+    "text": "OmopSketch"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#introduction",
+    "href": "Practicals/CohortConstructor/index.html#introduction",
     "title": "CohortConstructor",
-    "section": "CohortConstructor",
-    "text": "CohortConstructor"
+    "section": "Introduction",
+    "text": "Introduction\n\nCohortConstructor package is designed to support cohort building pipelines in R, using data mapped to the OMOP Common Data Model.\n\n\n\n\n\nThe code is publicly available in OHDSI’s GitHub repository CohortConstructor.\n\n\n\n\n\nCohortConstructor v0.4.0 is available in CRAN.\n\n\n\n\n\nVignettes with further information can be found in the package website."
   },
   {
-    "objectID": "Practicals/CodelistGenerator/index.html#codelistgenerator",
-    "href": "Practicals/CodelistGenerator/index.html#codelistgenerator",
-    "title": "CodelistGenerator",
-    "section": "CodelistGenerator",
-    "text": "CodelistGenerator"
+    "objectID": "Practicals/CohortConstructor/index.html#cohortconstructor-pipeline",
+    "href": "Practicals/CohortConstructor/index.html#cohortconstructor-pipeline",
+    "title": "CohortConstructor",
+    "section": "CohortConstructor pipeline",
+    "text": "CohortConstructor pipeline\n\n\n\n\n1) Create base cohorts\nCohorts defined using clinical concepts (e.g., asthma diagnoses) or demographics (e.g., females aged &gt;18)\n\n\n\n\n\n2) Cohort-curation\nTranform base cohorts to meet study-specific inclusion criteria."
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#function-sets",
+    "href": "Practicals/CohortConstructor/index.html#function-sets",
+    "title": "CohortConstructor",
+    "section": "Function Sets",
+    "text": "Function Sets\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nBase cohorts Cohort construction based on clinical concepts or demographics.\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nRequirements and Filtering Demographic restrictions, event presence/absence conditions, and filtering specific records.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nUpdate cohort entry and exit Adjusting entry and exit dates to align with study periods, observation windows, or key events.\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nTransformation and Combination Merging, stratifying, collapsing, matching, or intersecting cohorts."
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#functions-to-build-base-cohorts",
+    "href": "Practicals/CohortConstructor/index.html#functions-to-build-base-cohorts",
+    "title": "CohortConstructor",
+    "section": "Functions to build base cohorts",
+    "text": "Functions to build base cohorts\n\n\n\n\ndemographicsCohort()\n\n\n\n\n\nconceptCohort()\n\n\n\n\n\nmeasurementCohort()\n\n\n\n\n\ndeathCohort()\n\n\n\n\nDownload completed!"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#demographics-based---example",
+    "href": "Practicals/CohortConstructor/index.html#demographics-based---example",
+    "title": "CohortConstructor",
+    "section": "Demographics based - Example",
+    "text": "Demographics based - Example\n\n\n\n\nTwo cohorts, females and males, both aged 18 to 60 years old, with at least 365 days of previous observation in the database.\n\n\n\ncdm$age_cohort &lt;- demographicsCohort(\n  cdm = cdm, \n  ageRange = c(18, 60), \n  sex = c(\"Female\", \"Male\"),\n  minPriorObservation = 365,\n  name = \"age_cohort\"\n)\n\nsettings(cdm$age_cohort)\n\n# A tibble: 2 × 5\n  cohort_definition_id cohort_name    age_range sex    min_prior_observation\n                 &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;                  &lt;dbl&gt;\n1                    1 demographics_1 18_60     Female                   365\n2                    2 demographics_2 18_60     Male                     365"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#demographics-based---example-1",
+    "href": "Practicals/CohortConstructor/index.html#demographics-based---example-1",
+    "title": "CohortConstructor",
+    "section": "Demographics based - Example",
+    "text": "Demographics based - Example\n\n\n\n\ncohortCount(cdm$age_cohort)\n\n# A tibble: 2 × 3\n  cohort_definition_id number_records number_subjects\n                 &lt;int&gt;          &lt;int&gt;           &lt;int&gt;\n1                    1           1373            1373\n2                    2           1321            1321\n\n\n\n\n\n\n\nattrition(cdm$age_cohort)\n\n# A tibble: 8 × 7\n  cohort_definition_id number_records number_subjects reason_id reason          \n                 &lt;int&gt;          &lt;int&gt;           &lt;int&gt;     &lt;int&gt; &lt;chr&gt;           \n1                    1           2694            2694         1 Initial qualify…\n2                    1           1373            1373         2 Sex requirement…\n3                    1           1373            1373         3 Age requirement…\n4                    1           1373            1373         4 Prior observati…\n5                    2           2694            2694         1 Initial qualify…\n6                    2           1321            1321         2 Sex requirement…\n7                    2           1321            1321         3 Age requirement…\n8                    2           1321            1321         4 Prior observati…\n# ℹ 2 more variables: excluded_records &lt;int&gt;, excluded_subjects &lt;int&gt;"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#demographics-based---example-2",
+    "href": "Practicals/CohortConstructor/index.html#demographics-based---example-2",
+    "title": "CohortConstructor",
+    "section": "Demographics based - Example",
+    "text": "Demographics based - Example\n\n\n\nTo better visualise the attrition, we can use the package CohortCharacteristics to create a formatted table:\n\ncdm$age_cohort |&gt; summariseCohortAttrition() |&gt; tableCohortAttrition()\n\n\n\n\n\n\n\n\n\n\n\n\n\nReason\n\nVariable name\n\n\n\nnumber_records\nnumber_subjects\nexcluded_records\nexcluded_subjects\n\n\n\n\nSynthea; demographics_1\n\n\nInitial qualifying events\n2,694\n2,694\n0\n0\n\n\nSex requirement: Female\n1,373\n1,373\n1,321\n1,321\n\n\nAge requirement: 18 to 60\n1,373\n1,373\n0\n0\n\n\nPrior observation requirement: 365 days\n1,373\n1,373\n0\n0\n\n\nSynthea; demographics_2\n\n\nInitial qualifying events\n2,694\n2,694\n0\n0\n\n\nSex requirement: Male\n1,321\n1,321\n1,373\n1,373\n\n\nAge requirement: 18 to 60\n1,321\n1,321\n0\n0\n\n\nPrior observation requirement: 365 days\n1,321\n1,321\n0\n0"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#concept-based---example",
+    "href": "Practicals/CohortConstructor/index.html#concept-based---example",
+    "title": "CohortConstructor",
+    "section": "Concept based - Example",
+    "text": "Concept based - Example\n\n\n\n\nLet’s create a cohort of medications that contains two drugs: diclofenac, and acetaminophen.\n\n\n\n\nGet relevant codelists with CodelistGenerator\n\n\n\n\n\ndrug_codes &lt;- getDrugIngredientCodes(\n  cdm = cdm, \n  name = c(\"diclofenac\", \"acetaminophen\"),\n  nameStyle = \"{concept_name}\"\n)\ndrug_codes\n\n\n- acetaminophen (7 codes)\n- diclofenac (1 codes)"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#concept-based---example-1",
+    "href": "Practicals/CohortConstructor/index.html#concept-based---example-1",
+    "title": "CohortConstructor",
+    "section": "Concept based - Example",
+    "text": "Concept based - Example\n\nCreate concept based cohorts\n\n\n\ncdm$medications &lt;- conceptCohort(\n  cdm = cdm, \n  conceptSet = drug_codes, \n  name = \"medications\"\n)\n\nsettings(cdm$medications)\n\n# A tibble: 2 × 4\n  cohort_definition_id cohort_name   cdm_version vocabulary_version\n                 &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;             \n1                    1 acetaminophen 5.3         v5.0 18-JAN-19    \n2                    2 diclofenac    5.3         v5.0 18-JAN-19"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#concept-based---example-2",
+    "href": "Practicals/CohortConstructor/index.html#concept-based---example-2",
+    "title": "CohortConstructor",
+    "section": "Concept based - Example",
+    "text": "Concept based - Example\n\n\n\n\nAttrition\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReason\n\nVariable name\n\n\n\nnumber_records\nnumber_subjects\nexcluded_records\nexcluded_subjects\n\n\n\n\nacetaminophen\n\n\nInitial qualifying events\n14,205\n2,679\n0\n0\n\n\nRecord start &lt;= record end\n14,205\n2,679\n0\n0\n\n\nRecord in observation\n14,205\n2,679\n0\n0\n\n\nNon-missing sex\n14,205\n2,679\n0\n0\n\n\nNon-missing year of birth\n14,205\n2,679\n0\n0\n\n\nMerge overlapping records\n13,908\n2,679\n297\n0\n\n\ndiclofenac\n\n\nInitial qualifying events\n850\n850\n0\n0\n\n\nRecord start &lt;= record end\n850\n850\n0\n0\n\n\nRecord in observation\n830\n830\n20\n20\n\n\nNon-missing sex\n830\n830\n0\n0\n\n\nNon-missing year of birth\n830\n830\n0\n0\n\n\nMerge overlapping records\n830\n830\n0\n0"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#concept-based---example-3",
+    "href": "Practicals/CohortConstructor/index.html#concept-based---example-3",
+    "title": "CohortConstructor",
+    "section": "Concept based - Example",
+    "text": "Concept based - Example\n\n\n\n\nCohort codelist as an attribute\n\n\n\nattr(cdm$medications, \"cohort_codelist\")\n\n# Source:   table&lt;my_study_medications_codelist&gt; [?? x 4]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.0//tmp/RtmpTca7le/file20e646da1055.duckdb]\n  cohort_definition_id codelist_name concept_id codelist_type\n                 &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;        \n1                    1 acetaminophen    1125315 index event  \n2                    1 acetaminophen    1127078 index event  \n3                    1 acetaminophen    1127433 index event  \n4                    1 acetaminophen   40229134 index event  \n5                    1 acetaminophen   40231925 index event  \n6                    1 acetaminophen   40162522 index event  \n7                    1 acetaminophen   19133768 index event  \n8                    2 diclofenac       1124300 index event"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#get-started-connecto-to-eunomia",
+    "href": "Practicals/CohortConstructor/index.html#get-started-connecto-to-eunomia",
+    "title": "CohortConstructor",
+    "section": "Get started: connecto to Eunomia",
+    "text": "Get started: connecto to Eunomia\n\n\n\n\n# Load relevant packages\nlibrary(CDMConnector)\nlibrary(CodelistGenerator)\nlibrary(CohortConstructor)\nlibrary(CohortCharacteristics)\nlibrary(dplyr)\n\n\n# Download Eunomia \nrequireEunomia()\n\n# Create duckdb connection with Eunomia\ncon &lt;- DBI::dbConnect(duckdb::duckdb(), dbdir = eunomiaDir())\n\n# Create CDM reference object\ncdm &lt;- cdmFromCon(\n  con, \n  cdmSchema = \"main\", \n  writeSchema = \"main\",\n  writePrefix = \"my_study_\"\n)"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#exercise-1---base-cohorts",
+    "href": "Practicals/CohortConstructor/index.html#exercise-1---base-cohorts",
+    "title": "CohortConstructor",
+    "section": "Exercise 1 - Base cohorts",
+    "text": "Exercise 1 - Base cohorts\n\n\n\nCreate a cohort of aspirin use.\n\nHow many records does it have? And how many subjects?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCDM name\nVariable name\nEstimate name\n\nCohort name\n\n\n\naspirin\n\n\n\n\nSynthea\nNumber records\nN\n4,379\n\n\n\nNumber subjects\nN\n1,927"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#functions-to-apply-requirements-and-filter",
+    "href": "Practicals/CohortConstructor/index.html#functions-to-apply-requirements-and-filter",
+    "title": "CohortConstructor",
+    "section": "Functions to apply requirements and filter",
+    "text": "Functions to apply requirements and filter\n\n\n\n\n\n\n\nOn demographics\n\nrequireDemographics()\nrequireAge()\nrequireSex()\nrequirePriorObservation()\nrequireFutureObservation()\n\n\n\n\n\n\n\n\nOn cohort entries\n\nrequireIsFirstEntry()\nrequireIsLastEntry()\nrequireIsEntry()\n\n\n\n\n\n\nRequire presence or absence based on other cohorts, concepts, and tables\n\nrequireCohortIntersect()\nrequireConceptIntersect()\nrequireTableIntersect()\n\n\n\n\n\n\n\n\nOther\n\nrequireInDateRange()\nrequireMinCohortCount()"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#requirement-functions---example",
+    "href": "Practicals/CohortConstructor/index.html#requirement-functions---example",
+    "title": "CohortConstructor",
+    "section": "Requirement functions - Example",
+    "text": "Requirement functions - Example\n\n\n\n\n\nWe can apply different inclusion criteria using CohortConstructor’s functions in a pipe-line fashion. For instance, in what follows we require\n\nonly first record per person\nsubjects 18 years old or more at cohort start date\nonly females\nat least 30 days of prior observation at cohort start date\n\n\n\n\n\ncdm$medications_requirement &lt;- cdm$medications |&gt; \n  requireIsFirstEntry(name = \"medications_requirement\") |&gt; \n  requireDemographics(\n    ageRange = list(c(18, 150)),\n    sex = \"Female\", \n    minPriorObservation = 30\n  )"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#requirement-functions---example-1",
+    "href": "Practicals/CohortConstructor/index.html#requirement-functions---example-1",
+    "title": "CohortConstructor",
+    "section": "Requirement functions - Example",
+    "text": "Requirement functions - Example\n\n\n\nAttrition Acetaminophen\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReason\n\nVariable name\n\n\n\nnumber_records\nnumber_subjects\nexcluded_records\nexcluded_subjects\n\n\n\n\nacetaminophen\n\n\nInitial qualifying events\n14,205\n2,679\n0\n0\n\n\nRecord start &lt;= record end\n14,205\n2,679\n0\n0\n\n\nRecord in observation\n14,205\n2,679\n0\n0\n\n\nNon-missing sex\n14,205\n2,679\n0\n0\n\n\nNon-missing year of birth\n14,205\n2,679\n0\n0\n\n\nMerge overlapping records\n13,908\n2,679\n297\n0\n\n\nRestricted to first entry\n2,679\n2,679\n11,229\n0\n\n\nAge requirement: 18 to 150\n309\n309\n2,370\n2,370\n\n\nSex requirement: Female\n176\n176\n133\n133\n\n\nPrior observation requirement: 30 days\n176\n176\n0\n0\n\n\nFuture observation requirement: 0 days\n176\n176\n0\n0"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#requirement-functions---example-2",
+    "href": "Practicals/CohortConstructor/index.html#requirement-functions---example-2",
+    "title": "CohortConstructor",
+    "section": "Requirement functions - Example",
+    "text": "Requirement functions - Example\n\n\n\nAttrition Diclofenac\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReason\n\nVariable name\n\n\n\nnumber_records\nnumber_subjects\nexcluded_records\nexcluded_subjects\n\n\n\n\ndiclofenac\n\n\nInitial qualifying events\n850\n850\n0\n0\n\n\nRecord start &lt;= record end\n850\n850\n0\n0\n\n\nRecord in observation\n830\n830\n20\n20\n\n\nNon-missing sex\n830\n830\n0\n0\n\n\nNon-missing year of birth\n830\n830\n0\n0\n\n\nMerge overlapping records\n830\n830\n0\n0\n\n\nRestricted to first entry\n830\n830\n0\n0\n\n\nAge requirement: 18 to 150\n830\n830\n0\n0\n\n\nSex requirement: Female\n435\n435\n395\n395\n\n\nPrior observation requirement: 30 days\n435\n435\n0\n0\n\n\nFuture observation requirement: 0 days\n435\n435\n0\n0"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#requirement-functions---example-3",
+    "href": "Practicals/CohortConstructor/index.html#requirement-functions---example-3",
+    "title": "CohortConstructor",
+    "section": "Requirement functions - Example",
+    "text": "Requirement functions - Example\n\n\n\n\nNow, we only want to keep those exposures coinciding with at least one healthcare visit on that same day:\n\n\n\ncdm$medications_requirement &lt;- cdm$medications_requirement |&gt; \n  requireTableIntersect(\n    tableName = \"visit_occurrence\",\n    window = c(0, 0),\n    intersections = c(1, Inf)\n  )"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#requirement-functions---example-4",
+    "href": "Practicals/CohortConstructor/index.html#requirement-functions---example-4",
+    "title": "CohortConstructor",
+    "section": "Requirement functions - Example",
+    "text": "Requirement functions - Example\n\n\n\nAttrition Acetaminophen\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReason\n\nVariable name\n\n\n\nnumber_records\nnumber_subjects\nexcluded_records\nexcluded_subjects\n\n\n\n\nacetaminophen\n\n\nInitial qualifying events\n14,205\n2,679\n0\n0\n\n\nRecord start &lt;= record end\n14,205\n2,679\n0\n0\n\n\nRecord in observation\n14,205\n2,679\n0\n0\n\n\nNon-missing sex\n14,205\n2,679\n0\n0\n\n\nNon-missing year of birth\n14,205\n2,679\n0\n0\n\n\nMerge overlapping records\n13,908\n2,679\n297\n0\n\n\nRestricted to first entry\n2,679\n2,679\n11,229\n0\n\n\nAge requirement: 18 to 150\n309\n309\n2,370\n2,370\n\n\nSex requirement: Female\n176\n176\n133\n133\n\n\nPrior observation requirement: 30 days\n176\n176\n0\n0\n\n\nFuture observation requirement: 0 days\n176\n176\n0\n0\n\n\nIn table visit_occurrence between 0 & 0 days relative to cohort_start_date between 1 and Inf\n1\n1\n175\n175"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#requirement-functions---example-5",
+    "href": "Practicals/CohortConstructor/index.html#requirement-functions---example-5",
+    "title": "CohortConstructor",
+    "section": "Requirement functions - Example",
+    "text": "Requirement functions - Example\n\n\n\nAttrition Diclofenac\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReason\n\nVariable name\n\n\n\nnumber_records\nnumber_subjects\nexcluded_records\nexcluded_subjects\n\n\n\n\ndiclofenac\n\n\nInitial qualifying events\n850\n850\n0\n0\n\n\nRecord start &lt;= record end\n850\n850\n0\n0\n\n\nRecord in observation\n830\n830\n20\n20\n\n\nNon-missing sex\n830\n830\n0\n0\n\n\nNon-missing year of birth\n830\n830\n0\n0\n\n\nMerge overlapping records\n830\n830\n0\n0\n\n\nRestricted to first entry\n830\n830\n0\n0\n\n\nAge requirement: 18 to 150\n830\n830\n0\n0\n\n\nSex requirement: Female\n435\n435\n395\n395\n\n\nPrior observation requirement: 30 days\n435\n435\n0\n0\n\n\nFuture observation requirement: 0 days\n435\n435\n0\n0\n\n\nIn table visit_occurrence between 0 & 0 days relative to cohort_start_date between 1 and Inf\n0\n0\n435\n435"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#exercise-2---requirement-and-filtering",
+    "href": "Practicals/CohortConstructor/index.html#exercise-2---requirement-and-filtering",
+    "title": "CohortConstructor",
+    "section": "Exercise 2 - Requirement and filtering",
+    "text": "Exercise 2 - Requirement and filtering\nCreate a new cohort named “aspirin_last” by applying the following criteria to the base aspirin cohort:\n\nInclude only the last drug exposure for each subject.\nInclude exposures that start between January 1, 1960, and December 31, 1979.\nExclude individuals with an amoxicillin exposure in the 7 days prior to the aspirin exposure.\n\n\nMove to the next slide to see the attrition."
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#exercise-2---requirement-and-filtering-1",
+    "href": "Practicals/CohortConstructor/index.html#exercise-2---requirement-and-filtering-1",
+    "title": "CohortConstructor",
+    "section": "Exercise 2 - Requirement and filtering",
+    "text": "Exercise 2 - Requirement and filtering\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReason\n\nVariable name\n\n\n\nnumber_records\nnumber_subjects\nexcluded_records\nexcluded_subjects\n\n\n\n\nSynthea; aspirin\n\n\nInitial qualifying events\n4,380\n1,927\n0\n0\n\n\nRecord start &lt;= record end\n4,380\n1,927\n0\n0\n\n\nRecord in observation\n4,380\n1,927\n0\n0\n\n\nNon-missing sex\n4,380\n1,927\n0\n0\n\n\nNon-missing year of birth\n4,380\n1,927\n0\n0\n\n\nMerge overlapping records\n4,379\n1,927\n1\n0\n\n\nRestricted to last entry\n1,927\n1,927\n2,452\n0\n\n\ncohort_start_date after 1960-01-01\n1,511\n1,511\n416\n416\n\n\ncohort_start_date before 1979-12-31\n1,174\n1,174\n337\n337\n\n\nNot in concept amoxicillin between -7 & 0 days relative to cohort_start_date\n1,163\n1,163\n11\n11"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#functions-to-update-cohort-start-and-end-dates",
+    "href": "Practicals/CohortConstructor/index.html#functions-to-update-cohort-start-and-end-dates",
+    "title": "CohortConstructor",
+    "section": "Functions to update cohort start and end dates",
+    "text": "Functions to update cohort start and end dates\n\n\n\n\n\n\n\nCohort exit\n\nexitAtObservationEnd()\nexitAtDeath()\nexitAtFirstDate()\nexitAtLastDate()\n\n\n\n\n\n\n\n\nCohort entry\n\nentryAtFirstDate()\nentryAtLastDate()\n\n\n\n\n\n\nTrim start and end dates\n\ntrimDemographics()\ntrimToDateRange()\n\n\n\n\n\n\n\n\nPad start and end dates\n\npadCohortDate()\npadCohortEnd()\npadCohortStart()"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#update-cohort-entry-and-exit---example",
+    "href": "Practicals/CohortConstructor/index.html#update-cohort-entry-and-exit---example",
+    "title": "CohortConstructor",
+    "section": "Update cohort entry and exit - Example",
+    "text": "Update cohort entry and exit - Example\n\n\n\n\nWe can trim start and end dates to match demographic requirements.\n\nFor instance, cohort dates can be trimmed so the subject contributes time while:\n\nAged 20 to 40 years old\nPrior observation of at least 365 days\n\n\n\n\n\ncdm$medications_trimmed &lt;- cdm$medications |&gt;\n  trimDemographics(\n    ageRange = list(c(20, 40)),\n    minPriorObservation = 365,\n    name = \"medications_trimmed\"\n  )"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#update-cohort-entry-and-exit---example-1",
+    "href": "Practicals/CohortConstructor/index.html#update-cohort-entry-and-exit---example-1",
+    "title": "CohortConstructor",
+    "section": "Update cohort entry and exit - Example",
+    "text": "Update cohort entry and exit - Example\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReason\n\nVariable name\n\n\n\nnumber_records\nnumber_subjects\nexcluded_records\nexcluded_subjects\n\n\n\n\nacetaminophen\n\n\nInitial qualifying events\n14,205\n2,679\n0\n0\n\n\nRecord start &lt;= record end\n14,205\n2,679\n0\n0\n\n\nRecord in observation\n14,205\n2,679\n0\n0\n\n\nNon-missing sex\n14,205\n2,679\n0\n0\n\n\nNon-missing year of birth\n14,205\n2,679\n0\n0\n\n\nMerge overlapping records\n13,908\n2,679\n297\n0\n\n\nAge requirement: 20 to 40\n4,049\n2,124\n9,859\n555\n\n\nPrior observation requirement: 365 days\n4,049\n2,124\n0\n0"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#exercise-3---update-cohort-entry-and-exit",
+    "href": "Practicals/CohortConstructor/index.html#exercise-3---update-cohort-entry-and-exit",
+    "title": "CohortConstructor",
+    "section": "Exercise 3 - Update cohort entry and exit",
+    "text": "Exercise 3 - Update cohort entry and exit\nCreate a cohort of ibuprofen. From it, create an “ibuprofen_death” cohort which includes only subjects that have a future record of death in the database, and update cohort end date to be the death date.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReason\n\nVariable name\n\n\n\nnumber_records\nnumber_subjects\nexcluded_records\nexcluded_subjects\n\n\n\n\nSynthea; ibuprofen\n\n\nInitial qualifying events\n2,148\n1,451\n0\n0\n\n\nRecord start &lt;= record end\n2,148\n1,451\n0\n0\n\n\nRecord in observation\n2,148\n1,451\n0\n0\n\n\nNon-missing sex\n2,148\n1,451\n0\n0\n\n\nNon-missing year of birth\n2,148\n1,451\n0\n0\n\n\nMerge overlapping records\n2,148\n1,451\n0\n0\n\n\nNo death recorded\n0\n0\n2,148\n1,451\n\n\nExit at death\n0\n0\n0\n0"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#functions-for-cohort-transformation-and-combination",
+    "href": "Practicals/CohortConstructor/index.html#functions-for-cohort-transformation-and-combination",
+    "title": "CohortConstructor",
+    "section": "Functions for Cohort Transformation and Combination",
+    "text": "Functions for Cohort Transformation and Combination\n\n\n\n\nSplit cohorts\n\nyearCohorts()\nstratifyCohorts()\n\n\n\n\n\n\n\n\nCombine cohorts\n\nunionCohorts()\nintersectCohorts()\n\n\n\n\n\n\n\n\nFilter cohorts\n\nsubsetCohorts()\nsampleCohorts()\n\n\n\n\n\n\nMatch cohorts\n\nmatchCohorts()\n\n\n\n\n\n\n\n\nConcatenate entries\n\ncollapseCohorts()\n\n\n\n\n\n\n\n\nCopy and rename cohorts\n\nrenameCohort()\ncopyCohorts()"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#cohort-combinations---example",
+    "href": "Practicals/CohortConstructor/index.html#cohort-combinations---example",
+    "title": "CohortConstructor",
+    "section": "Cohort combinations - Example",
+    "text": "Cohort combinations - Example\n\n\n\n\nCollapse drug exposures that are within a gap of 7 days."
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#cohort-combinations---example-1",
+    "href": "Practicals/CohortConstructor/index.html#cohort-combinations---example-1",
+    "title": "CohortConstructor",
+    "section": "Cohort combinations - Example",
+    "text": "Cohort combinations - Example\n\n\n\n\ncdm$medications_collapsed &lt;- cdm$medications |&gt;\n  collapseCohorts(gap = 7, name = \"medications_collapsed\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReason\n\nVariable name\n\n\n\nnumber_records\nnumber_subjects\nexcluded_records\nexcluded_subjects\n\n\n\n\nacetaminophen\n\n\nInitial qualifying events\n14,205\n2,679\n0\n0\n\n\nRecord start &lt;= record end\n14,205\n2,679\n0\n0\n\n\nRecord in observation\n14,205\n2,679\n0\n0\n\n\nNon-missing sex\n14,205\n2,679\n0\n0\n\n\nNon-missing year of birth\n14,205\n2,679\n0\n0\n\n\nMerge overlapping records\n13,908\n2,679\n297\n0\n\n\nCollapse cohort with a gap of 7 days.\n13,899\n2,679\n9\n0"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#cohort-combinations---example-2",
+    "href": "Practicals/CohortConstructor/index.html#cohort-combinations---example-2",
+    "title": "CohortConstructor",
+    "section": "Cohort combinations - Example",
+    "text": "Cohort combinations - Example\n\n\n\n\nCreate a new cohort that contains people who had an exposure to both diclofenac and acetaminophen at the same time using."
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#cohort-combinations---example-3",
+    "href": "Practicals/CohortConstructor/index.html#cohort-combinations---example-3",
+    "title": "CohortConstructor",
+    "section": "Cohort combinations - Example",
+    "text": "Cohort combinations - Example\n\n\n\n\ncdm$intersection &lt;- cdm$medications_collapsed |&gt;\n  CohortConstructor::intersectCohorts(name = \"intersection\")\n\nsettings(cdm$intersection)\n\n# A tibble: 1 × 5\n  cohort_definition_id cohort_name                gap acetaminophen diclofenac\n                 &lt;int&gt; &lt;chr&gt;                    &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;\n1                    1 acetaminophen_diclofenac     0             1          1"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#cohort-combinations---example-4",
+    "href": "Practicals/CohortConstructor/index.html#cohort-combinations---example-4",
+    "title": "CohortConstructor",
+    "section": "Cohort combinations - Example",
+    "text": "Cohort combinations - Example\n\n\n\n\nattr(cdm$intersection, \"cohort_codelist\")\n\n# Source:   table&lt;my_study_intersection_codelist&gt; [?? x 4]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.0//tmp/RtmpTca7le/file20e646da1055.duckdb]\n  cohort_definition_id codelist_name concept_id codelist_type\n                 &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;        \n1                    1 acetaminophen    1125315 index event  \n2                    1 acetaminophen    1127078 index event  \n3                    1 acetaminophen    1127433 index event  \n4                    1 acetaminophen   40229134 index event  \n5                    1 acetaminophen   40231925 index event  \n6                    1 acetaminophen   40162522 index event  \n7                    1 acetaminophen   19133768 index event  \n8                    1 diclofenac       1124300 index event"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#exercise-4---transformation-and-combination",
+    "href": "Practicals/CohortConstructor/index.html#exercise-4---transformation-and-combination",
+    "title": "CohortConstructor",
+    "section": "Exercise 4 - Transformation and Combination",
+    "text": "Exercise 4 - Transformation and Combination\nFrom the ibuprofen base cohort (not subseted to death), create five separate cohorts. Each cohort should include records for one specific year from the following list: 1975, 1976, 1977, 1978, 1979, and 1980.\n\n\nHow many records and subjects are in each cohort?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCDM name\nVariable name\nEstimate name\n\nCohort name\n\n\n\nibuprofen_1975\nibuprofen_1976\nibuprofen_1977\nibuprofen_1978\nibuprofen_1979\nibuprofen_1980\n\n\n\n\nSynthea\nNumber records\nN\n71\n64\n60\n75\n66\n63\n\n\n\nNumber subjects\nN\n68\n61\n60\n74\n66\n63"
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#exercise-5",
+    "href": "Practicals/CohortConstructor/index.html#exercise-5",
+    "title": "CohortConstructor",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nUse CohortConstructor to create a cohort with the following criteria:\n\nUsers of diclofenac\nFemales aged 16 or older\nWith at least 365 days of continuous observation prior to exposure\nWithout prior exposure to amoxicillin\nWith cohort exit defined as first discontinuation of exposure. An exposure being define as recorded exposures within 7-days gap\n\n\nMove to the next slide to see the attrition."
+  },
+  {
+    "objectID": "Practicals/CohortConstructor/index.html#exercise-5-1",
+    "href": "Practicals/CohortConstructor/index.html#exercise-5-1",
+    "title": "CohortConstructor",
+    "section": "Exercise 5",
+    "text": "Exercise 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReason\n\nVariable name\n\n\n\nnumber_records\nnumber_subjects\nexcluded_records\nexcluded_subjects\n\n\n\n\nSynthea; diclofenac\n\n\nInitial qualifying events\n850\n850\n0\n0\n\n\nRecord start &lt;= record end\n850\n850\n0\n0\n\n\nRecord in observation\n830\n830\n20\n20\n\n\nNon-missing sex\n830\n830\n0\n0\n\n\nNon-missing year of birth\n830\n830\n0\n0\n\n\nMerge overlapping records\n830\n830\n0\n0\n\n\nAge requirement: 16 to 150\n830\n830\n0\n0\n\n\nSex requirement: Female\n435\n435\n395\n395\n\n\nPrior observation requirement: 365 days\n435\n435\n0\n0\n\n\nFuture observation requirement: 0 days\n435\n435\n0\n0\n\n\nNot in concept amoxicillin between -Inf & -1 days relative to cohort_start_date\n161\n161\n274\n274\n\n\nCollapse cohort with a gap of 7 days.\n161\n161\n0\n0\n\n\nRestricted to first entry\n161\n161\n0\n0"
+  },
+  {
+    "objectID": "Practicals/DrugUtilisation/index.html#drugutilisation",
+    "href": "Practicals/DrugUtilisation/index.html#drugutilisation",
+    "title": "DrugUtilisation",
+    "section": "DrugUtilisation",
+    "text": "DrugUtilisation"
   }
 ]
