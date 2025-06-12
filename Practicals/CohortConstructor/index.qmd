@@ -161,6 +161,7 @@ library(CodelistGenerator)
 library(CohortConstructor)
 library(CohortCharacteristics)
 library(dplyr)
+library(gt)
 ```
 
 ```{r, echo=FALSE}
@@ -223,7 +224,6 @@ attrition(cdm$age_cohort)
 :::
 
 To better visualise the **attrition**, we can use the package `CohortCharacteristics` to create a **formatted table**:
-
 
 ```{r}
 cdm$age_cohort |> summariseCohortAttrition() |> tableCohortAttrition()
