@@ -6,17 +6,17 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
-
-  <meta name="dcterms.date" content="2025-06-14">
-  <title>Real World Evidence Summer School – PhenotypeR</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
-  <style>
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+<meta name="dcterms.date" content="2025-06-14">
+<title>Real World Evidence Summer School – PhenotypeR</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -28,15 +28,81 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-8db7232787301159a947427aeaa91801.css">
-  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-8db7232787301159a947427aeaa91801.css">
+<link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -131,21 +197,165 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">PhenotypeR</h1>
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">PhenotypeR</h1>
   <p class="subtitle">Review codelists and cohorts in OMOP CDM</p>
 
 <div class="quarto-title-authors">
 </div>
 
   <p class="date">2025-06-14</p>
-</section>
-<section id="phenotyper" class="slide level2">
-<h2>PhenotypeR</h2>
+</section><section id="introduction" class="slide level2"><h2>Introduction</h2>
+<ul>
+<li class="fragment">PhenotypeR package is designed to review cohorts in OMOP CDM.</li>
+</ul>
+<div style="margin-bottom: 10px;">
+
+</div>
+<ul>
+<li class="fragment">The code is publicly available in OHDSI’s GitHub repository <a href="https://github.com/OHDSI/PhenotypeR">PhenoypeR</a>.</li>
+</ul>
+<div style="margin-bottom: 10px;">
+
+</div>
+<ul>
+<li class="fragment">PhenotypeR 0.1.5 is available in <a href="https://cran.r-project.org/web/packages/PhenotypeR/index.html" class="link">CRAN</a>.</li>
+</ul>
+<div style="margin-bottom: 10px;">
+
+</div>
+<ul>
+<li class="fragment">Vignettes with further information can be found in the package <a href="https://ohdsi.github.io/PhenotypeR/" class="link">website</a>.</li>
+</ul></section><section id="set-of-functions-individual-diagnostics-assessment" class="slide level2"><h2>Set of Functions: Individual Diagnostics Assessment</h2>
+<div style="margin-bottom: 10px;">
+
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">
+<p><strong>Database diagnostics</strong></p>
+<ul>
+<li class="fragment">Summarises the databases metadata and the observation period.</li>
+<li class="fragment"><code>databaseDiagnostics()</code></li>
+</ul>
+</li>
+</ul>
+<div style="margin-bottom: 10px;">
+
+</div>
+<ul>
+<li class="fragment">
+<p><strong>Codelist diagnostics</strong></p>
+<ul>
+<li class="fragment">Summarises the codelist use associated to our cohort.</li>
+<li class="fragment"><code>codelistDiagnostics()</code></li>
+</ul>
+</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment">
+<p><strong>Cohort diagnostics</strong></p>
+<ul>
+<li class="fragment">Summarises baseline characteristics, attrition, overlap, and large-scale characteristics. It also allows to compare our results with a matched cohort.</li>
+<li class="fragment"><code>cohortDiagnostics()</code></li>
+</ul>
+</li>
+</ul>
+<div style="margin-bottom: 10px;">
+
+</div>
+<ul>
+<li class="fragment">
+<p><strong>Population diagnostics</strong></p>
+<ul>
+<li class="fragment">Incidence and prevalence of our cohort in the database.</li>
+<li class="fragment"><code>populationDiagnostics()</code></li>
+</ul>
+</li>
+</ul>
+</div></div>
+</section><section id="set-of-functions-phenotype-diagnostics" class="slide level2"><h2>Set of Functions: Phenotype Diagnostics</h2>
+<ul>
+<li class="fragment">Comprises all the diagnostics that are being offered in this package.</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">phenotypeDiagnostics</span><span class="op">(</span></span>
+<span>  <span class="va">cohort</span>,</span>
+<span>  databaseDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  codelistDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  cohortDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  match <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  matchedSample <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  populationDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  populationSample <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  populationDateRange <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li class="fragment">Create a shiny app to visualize all the results</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">shinyDiagnostics</span><span class="op">(</span><span class="va">result</span>, directory <span class="op">=</span> <span class="fu">here</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section><section id="run-phenotype-diagnostics---example" class="title-slide slide level1 center"><h1>Run Phenotype Diagnostics - Example</h1>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"PhenotypeR"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://darwin-eu.github.io/CDMConnector/">CDMConnector</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://darwin-eu.github.io/CodelistGenerator/">CodelistGenerator</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ohdsi.github.io/CohortConstructor/">CohortConstructor</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://darwin-eu.github.io/CohortCharacteristics/">CohortCharacteristics</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ohdsi.github.io/PhenotypeR/">PhenotypeR</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://darwin-eu.github.io/CDMConnector/reference/requireEunomia.html">requireEunomia</a></span><span class="op">(</span>datasetName <span class="op">=</span> <span class="st">"synpuf-1k"</span>, cdmVersion <span class="op">=</span> <span class="st">"5.3"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu"><a href="https://r.duckdb.org/reference/duckdb.html">duckdb</a></span><span class="op">(</span><span class="op">)</span>, dbdir <span class="op">=</span> <span class="fu"><a href="https://darwin-eu.github.io/CDMConnector/reference/eunomiaDir.html">eunomiaDir</a></span><span class="op">(</span>datasetName <span class="op">=</span> <span class="st">"synpuf-1k"</span>, cdmVersion <span class="op">=</span> <span class="st">"5.3"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://darwin-eu.github.io/CDMConnector/reference/cdmFromCon.html">cdmFromCon</a></span><span class="op">(</span></span>
+<span>  <span class="va">con</span>, </span>
+<span>  cdmSchema <span class="op">=</span> <span class="st">"main"</span>, </span>
+<span>  writeSchema <span class="op">=</span> <span class="st">"main"</span>,</span>
+<span>  writePrefix <span class="op">=</span> <span class="st">"my_study_"</span>,</span>
+<span>  achillesSchema <span class="op">=</span> <span class="st">"main"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">drug_codes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://darwin-eu.github.io/CodelistGenerator/reference/getDrugIngredientCodes.html">getDrugIngredientCodes</a></span><span class="op">(</span></span>
+<span>  cdm <span class="op">=</span> <span class="va">cdm</span>, </span>
+<span>  name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"diclofenac"</span>, <span class="st">"acetaminophen"</span><span class="op">)</span>,</span>
+<span>  nameStyle <span class="op">=</span> <span class="st">"{concept_name}"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cdm</span><span class="op">$</span><span class="va">medications</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/conceptCohort.html">conceptCohort</a></span><span class="op">(</span></span>
+<span>  cdm <span class="op">=</span> <span class="va">cdm</span>, </span>
+<span>  conceptSet <span class="op">=</span> <span class="va">drug_codes</span>, </span>
+<span>  name <span class="op">=</span> <span class="st">"medications"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Run Phenotype Diagnostics </span></span>
+<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">phenotypeDiagnostics</span><span class="op">(</span><span class="va">cdm</span><span class="op">$</span><span class="va">medications</span>,</span>
+<span>                     databaseDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     codelistDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     cohortDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     matchedAnalysis <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     matchedSample <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                     populationDiagnostics <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     populationSample <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                     populationDateRange <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="cn">NA</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">shinyDiagnostics</span><span class="op">(</span><span class="va">result</span>, <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="visualise-the-results" class="title-slide slide level1 center"><h1>Visualise the results</h1>
+<p>See the results in the <a href="https://dpa-pde-oxford.shinyapps.io/PhenotypeR_RWESummerSchool/">shiny app</a></p>
 
 
 </section>
-    </div>
+</div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
 <div style="position: relative; width: 100%;">
@@ -159,24 +369,7 @@ Real World Evidence Summer School 2025
 </div>
 </div></div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../../site_libs/revealjs/plugin/search/search.js"></script><script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -368,8 +561,42 @@ Real World Evidence Summer School 2025
           RevealZoom
         ]
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
         tabsets.forEach(function(tabset) {
@@ -536,6 +763,6 @@ Real World Evidence Summer School 2025
         }
       });
       </script>
-    
+
 
 </body></html>
