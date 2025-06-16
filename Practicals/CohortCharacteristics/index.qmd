@@ -1,6 +1,6 @@
 ---
 title: "CohortCharacteristics"
-subtitle: "A R package to characterise cohorts for data mapped to OMOP CDM"
+subtitle: "Characterise cohorts"
 format:
   revealjs: 
     theme: [simple, ../../styleSS25.scss]
