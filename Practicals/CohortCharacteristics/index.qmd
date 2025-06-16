@@ -41,6 +41,8 @@ library(PatientProfiles)
 library(dplyr)
 library(ggplot2)
 
+requireEunomia()
+
 con <- dbConnect(duckdb(), eunomiaDir())
 cdm <- cdmFromCon(con = con, cdmSchema = "main", writeSchema = "main")
 cdm <- generateConceptCohortSet(
