@@ -131,6 +131,7 @@ library(DrugUtilisation)
 library(dplyr)
 library(gt)
 library(CohortSurvival)
+library(ggplot2)
 ```
 
 ```{r}
