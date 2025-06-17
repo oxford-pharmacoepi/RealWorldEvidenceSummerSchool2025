@@ -132,6 +132,7 @@ library(dplyr)
 library(gt)
 library(CohortSurvival)
 library(ggplot2)
+library(patchwork)
 ```
 
 ```{r}
