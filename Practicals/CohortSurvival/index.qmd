@@ -125,13 +125,11 @@ Use the in-built visualisation functions from the package to plot the survival e
 ## Create cdm and get cohorts
 
 ```{r, echo=FALSE}
-# Load relevant packages
+# Load relevant packages (make sure you have the latest versions of all of them)
 library(CDMConnector)
 library(DrugUtilisation)
 library(dplyr)
 library(gt)
-# devtools::install_github("darwin-eu-dev/CohortSurvival")
-# Change after next week's release 1.1.0
 library(CohortSurvival)
 ```
 
@@ -455,13 +453,8 @@ omopgenerics::bind(survivalResultAspirin, survivalResultAspirinTuned) |>
 ## Exercise 3 - Changing inputs
 
 ```{r}
-g2 <- plotSurvival(survivalResultAspirinTuned, colour = "outcome") + 
-  ggplot2::theme(legend.position = "none") + 
-  ggplot2::ggtitle("Aspirin use with 5-year washout")
-
-plotSurvival(survivalResultAspirin) + 
-  ggplot2::ggtitle("Aspirin use with infinite washout") + 
-  g2
+plotSurvival(omopgenerics::bind(survivalResultAspirin, survivalResultAspirinTuned), 
+             colour = "outcome_washout")
 ```
 
 ## Exercise 4 - Survival with different exposure and outcome
