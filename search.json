@@ -137,14 +137,14 @@
     "href": "Practicals/Introduction/index.html#access-to-tables-of-the-cdm-reference",
     "title": "OMOP and CDMConnector",
     "section": "Access to tables of the cdm reference",
-    "text": "Access to tables of the cdm reference\n\ncdm$person\n\n# Source:   table&lt;person&gt; [?? x 18]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpDIAnqq/file218d1972d04.duckdb]\n   person_id gender_concept_id year_of_birth month_of_birth day_of_birth birth_datetime      race_concept_id\n       &lt;int&gt;             &lt;int&gt;         &lt;int&gt;          &lt;int&gt;        &lt;int&gt; &lt;dttm&gt;                        &lt;int&gt;\n 1         6              8532          1963             12           31 1963-12-31 00:00:00            8516\n 2       123              8507          1950              4           12 1950-04-12 00:00:00            8527\n 3       129              8507          1974             10            7 1974-10-07 00:00:00            8527\n 4        16              8532          1971             10           13 1971-10-13 00:00:00            8527\n 5        65              8532          1967              3           31 1967-03-31 00:00:00            8516\n 6        74              8532          1972              1            5 1972-01-05 00:00:00            8527\n 7        42              8532          1909             11            2 1909-11-02 00:00:00            8527\n 8       187              8507          1945              7           23 1945-07-23 00:00:00            8527\n 9        18              8532          1965             11           17 1965-11-17 00:00:00            8527\n10       111              8532          1975              5            2 1975-05-02 00:00:00            8527\n# ℹ more rows\n# ℹ 11 more variables: ethnicity_concept_id &lt;int&gt;, location_id &lt;int&gt;, provider_id &lt;int&gt;, care_site_id &lt;int&gt;,\n#   person_source_value &lt;chr&gt;, gender_source_value &lt;chr&gt;, gender_source_concept_id &lt;int&gt;, race_source_value &lt;chr&gt;,\n#   race_source_concept_id &lt;int&gt;, ethnicity_source_value &lt;chr&gt;, ethnicity_source_concept_id &lt;int&gt;"
+    "text": "Access to tables of the cdm reference\n\ncdm$person\n\n# Source:   table&lt;person&gt; [?? x 18]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpK0BL4u/file224739401c63.duckdb]\n   person_id gender_concept_id year_of_birth month_of_birth day_of_birth birth_datetime      race_concept_id\n       &lt;int&gt;             &lt;int&gt;         &lt;int&gt;          &lt;int&gt;        &lt;int&gt; &lt;dttm&gt;                        &lt;int&gt;\n 1         6              8532          1963             12           31 1963-12-31 00:00:00            8516\n 2       123              8507          1950              4           12 1950-04-12 00:00:00            8527\n 3       129              8507          1974             10            7 1974-10-07 00:00:00            8527\n 4        16              8532          1971             10           13 1971-10-13 00:00:00            8527\n 5        65              8532          1967              3           31 1967-03-31 00:00:00            8516\n 6        74              8532          1972              1            5 1972-01-05 00:00:00            8527\n 7        42              8532          1909             11            2 1909-11-02 00:00:00            8527\n 8       187              8507          1945              7           23 1945-07-23 00:00:00            8527\n 9        18              8532          1965             11           17 1965-11-17 00:00:00            8527\n10       111              8532          1975              5            2 1975-05-02 00:00:00            8527\n# ℹ more rows\n# ℹ 11 more variables: ethnicity_concept_id &lt;int&gt;, location_id &lt;int&gt;, provider_id &lt;int&gt;, care_site_id &lt;int&gt;,\n#   person_source_value &lt;chr&gt;, gender_source_value &lt;chr&gt;, gender_source_concept_id &lt;int&gt;, race_source_value &lt;chr&gt;,\n#   race_source_concept_id &lt;int&gt;, ethnicity_source_value &lt;chr&gt;, ethnicity_source_concept_id &lt;int&gt;"
   },
   {
     "objectID": "Practicals/Introduction/index.html#read-tables-in-eunomia",
     "href": "Practicals/Introduction/index.html#read-tables-in-eunomia",
     "title": "OMOP and CDMConnector",
     "section": "Read tables in Eunomia",
-    "text": "Read tables in Eunomia\n\nOnce we read a table we can operate with it and for example count the number of rows of person table.\n\ncdm$person |&gt;\n  dplyr::count()\n\n# Source:   SQL [?? x 1]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpDIAnqq/file218d1972d04.duckdb]\n      n\n  &lt;dbl&gt;\n1  2694"
+    "text": "Read tables in Eunomia\n\nOnce we read a table we can operate with it and for example count the number of rows of person table.\n\ncdm$person |&gt;\n  dplyr::count()\n\n# Source:   SQL [?? x 1]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpK0BL4u/file224739401c63.duckdb]\n      n\n  &lt;dbl&gt;\n1  2694"
   },
   {
     "objectID": "Practicals/Introduction/index.html#operation-with-tidyverse",
@@ -165,21 +165,21 @@
     "href": "Practicals/Introduction/index.html#create-a-new-table",
     "title": "OMOP and CDMConnector",
     "section": "Create a new table",
-    "text": "Create a new table\nLet’s say I want to subset the condition_occurrence table to a certain rows and certain columns and save it so I can later access it.\n\ntemporary table (default):\n\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"note\"                  \"note_nlp\"              \"observation\"          \n[25] \"observation_period\"    \"payer_plan_period\"     \"person\"                \"procedure_occurrence\" \n[29] \"provider\"              \"relationship\"          \"source_to_concept_map\" \"specimen\"             \n[33] \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"           \n\n\n\n\n\ncdm$my_saved_table &lt;- cdm$condition_occurrence |&gt;\n  dplyr::filter(condition_concept_id == 4112343) |&gt;\n  dplyr::select(person_id, condition_start_date) |&gt;\n  dplyr::compute()\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"note\"                  \"note_nlp\"              \"observation\"          \n[25] \"observation_period\"    \"payer_plan_period\"     \"person\"                \"procedure_occurrence\" \n[29] \"provider\"              \"relationship\"          \"source_to_concept_map\" \"specimen\"             \n[33] \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"            \"og_001_1750068966\""
+    "text": "Create a new table\nLet’s say I want to subset the condition_occurrence table to a certain rows and certain columns and save it so I can later access it.\n\ntemporary table (default):\n\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"note\"                  \"note_nlp\"              \"observation\"          \n[25] \"observation_period\"    \"payer_plan_period\"     \"person\"                \"procedure_occurrence\" \n[29] \"provider\"              \"relationship\"          \"source_to_concept_map\" \"specimen\"             \n[33] \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"           \n\n\n\n\n\ncdm$my_saved_table &lt;- cdm$condition_occurrence |&gt;\n  dplyr::filter(condition_concept_id == 4112343) |&gt;\n  dplyr::select(person_id, condition_start_date) |&gt;\n  dplyr::compute()\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"note\"                  \"note_nlp\"              \"observation\"          \n[25] \"observation_period\"    \"payer_plan_period\"     \"person\"                \"procedure_occurrence\" \n[29] \"provider\"              \"relationship\"          \"source_to_concept_map\" \"specimen\"             \n[33] \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"            \"og_001_1750280230\""
   },
   {
     "objectID": "Practicals/Introduction/index.html#create-a-new-table-1",
     "href": "Practicals/Introduction/index.html#create-a-new-table-1",
     "title": "OMOP and CDMConnector",
     "section": "Create a new table",
-    "text": "Create a new table\n\npermanent table:\n\ncdm$my_saved_table &lt;- cdm$condition_occurrence |&gt;\n  dplyr::filter(condition_concept_id == 4112343) |&gt;\n  dplyr::select(person_id, condition_start_date) |&gt;\n  dplyr::compute(name = \"my_saved_table\", temporary = FALSE)\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"my_saved_table\"        \"note\"                  \"note_nlp\"             \n[25] \"observation\"           \"observation_period\"    \"payer_plan_period\"     \"person\"               \n[29] \"procedure_occurrence\"  \"provider\"              \"relationship\"          \"source_to_concept_map\"\n[33] \"specimen\"              \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"           \n[37] \"og_001_1750068966\""
+    "text": "Create a new table\n\npermanent table:\n\ncdm$my_saved_table &lt;- cdm$condition_occurrence |&gt;\n  dplyr::filter(condition_concept_id == 4112343) |&gt;\n  dplyr::select(person_id, condition_start_date) |&gt;\n  dplyr::compute(name = \"my_saved_table\", temporary = FALSE)\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"my_saved_table\"        \"note\"                  \"note_nlp\"             \n[25] \"observation\"           \"observation_period\"    \"payer_plan_period\"     \"person\"               \n[29] \"procedure_occurrence\"  \"provider\"              \"relationship\"          \"source_to_concept_map\"\n[33] \"specimen\"              \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"           \n[37] \"og_001_1750280230\""
   },
   {
     "objectID": "Practicals/Introduction/index.html#create-a-new-table-2",
     "href": "Practicals/Introduction/index.html#create-a-new-table-2",
     "title": "OMOP and CDMConnector",
     "section": "Create a new table",
-    "text": "Create a new table\n\ncdm\n\n\n\n\n── # OMOP CDM reference (duckdb) of EUNOMIA ────────────────────────────────────────────────────────────────────────────\n\n\n• omop tables: person, observation_period, visit_occurrence, visit_detail, condition_occurrence, drug_exposure,\nprocedure_occurrence, device_exposure, measurement, observation, death, note, note_nlp, specimen, fact_relationship,\nlocation, care_site, provider, payer_plan_period, cost, drug_era, dose_era, condition_era, metadata, cdm_source,\nconcept, vocabulary, domain, concept_class, concept_relationship, relationship, concept_synonym, concept_ancestor,\nsource_to_concept_map, drug_strength\n\n\n• cohort tables: -\n\n\n• achilles tables: -\n\n\n• other tables: my_saved_table\n\ncdm$my_saved_table\n\n# Source:   table&lt;my_saved_table&gt; [?? x 2]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpDIAnqq/file218d1972d04.duckdb]\n   person_id condition_start_date\n       &lt;int&gt; &lt;date&gt;              \n 1       263 2015-10-02          \n 2       439 1990-03-20          \n 3       449 1999-12-12          \n 4       515 1961-11-14          \n 5        17 1963-12-02          \n 6        30 1993-03-19          \n 7        90 1970-01-15          \n 8       116 1959-06-11          \n 9       137 2005-11-15          \n10       176 1986-10-08          \n# ℹ more rows"
+    "text": "Create a new table\n\ncdm\n\n\n\n\n── # OMOP CDM reference (duckdb) of EUNOMIA ────────────────────────────────────────────────────────────────────────────\n\n\n• omop tables: person, observation_period, visit_occurrence, visit_detail, condition_occurrence, drug_exposure,\nprocedure_occurrence, device_exposure, measurement, observation, death, note, note_nlp, specimen, fact_relationship,\nlocation, care_site, provider, payer_plan_period, cost, drug_era, dose_era, condition_era, metadata, cdm_source,\nconcept, vocabulary, domain, concept_class, concept_relationship, relationship, concept_synonym, concept_ancestor,\nsource_to_concept_map, drug_strength\n\n\n• cohort tables: -\n\n\n• achilles tables: -\n\n\n• other tables: my_saved_table\n\ncdm$my_saved_table\n\n# Source:   table&lt;my_saved_table&gt; [?? x 2]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpK0BL4u/file224739401c63.duckdb]\n   person_id condition_start_date\n       &lt;int&gt; &lt;date&gt;              \n 1       263 2015-10-02          \n 2       439 1990-03-20          \n 3       449 1999-12-12          \n 4       515 1961-11-14          \n 5        17 1963-12-02          \n 6        30 1993-03-19          \n 7        90 1970-01-15          \n 8       116 1959-06-11          \n 9       137 2005-11-15          \n10       176 1986-10-08          \n# ℹ more rows"
   },
   {
     "objectID": "Practicals/Introduction/index.html#drop-an-existing-table",
@@ -193,7 +193,7 @@
     "href": "Practicals/Introduction/index.html#drop-an-existing-table-1",
     "title": "OMOP and CDMConnector",
     "section": "Drop an existing table",
-    "text": "Drop an existing table\n\n\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"note\"                  \"note_nlp\"              \"observation\"          \n[25] \"observation_period\"    \"payer_plan_period\"     \"person\"                \"procedure_occurrence\" \n[29] \"provider\"              \"relationship\"          \"source_to_concept_map\" \"specimen\"             \n[33] \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"            \"og_001_1750068966\""
+    "text": "Drop an existing table\n\n\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"note\"                  \"note_nlp\"              \"observation\"          \n[25] \"observation_period\"    \"payer_plan_period\"     \"person\"                \"procedure_occurrence\" \n[29] \"provider\"              \"relationship\"          \"source_to_concept_map\" \"specimen\"             \n[33] \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"            \"og_001_1750280230\""
   },
   {
     "objectID": "Practicals/Introduction/index.html#drop-an-existing-table-2",
@@ -221,7 +221,7 @@
     "href": "Practicals/Introduction/index.html#insert-a-table-1",
     "title": "OMOP and CDMConnector",
     "section": "Insert a table",
-    "text": "Insert a table\n\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"my_test_table\"         \"note\"                  \"note_nlp\"             \n[25] \"observation\"           \"observation_period\"    \"payer_plan_period\"     \"person\"               \n[29] \"procedure_occurrence\"  \"provider\"              \"relationship\"          \"source_to_concept_map\"\n[33] \"specimen\"              \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"           \n\ncdm$my_test_table\n\n# Source:   table&lt;my_test_table&gt; [?? x 2]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpDIAnqq/file218d1972d04.duckdb]\n   speed  dist\n   &lt;dbl&gt; &lt;dbl&gt;\n 1     4     2\n 2     4    10\n 3     7     4\n 4     7    22\n 5     8    16\n 6     9    10\n 7    10    18\n 8    10    26\n 9    10    34\n10    11    17\n# ℹ more rows"
+    "text": "Insert a table\n\nCDMConnector::listSourceTables(cdm)\n\n [1] \"care_site\"             \"cdm_source\"            \"concept\"               \"concept_ancestor\"     \n [5] \"concept_class\"         \"concept_relationship\"  \"concept_synonym\"       \"condition_era\"        \n [9] \"condition_occurrence\"  \"cost\"                  \"death\"                 \"device_exposure\"      \n[13] \"domain\"                \"dose_era\"              \"drug_era\"              \"drug_exposure\"        \n[17] \"drug_strength\"         \"fact_relationship\"     \"location\"              \"measurement\"          \n[21] \"metadata\"              \"my_test_table\"         \"note\"                  \"note_nlp\"             \n[25] \"observation\"           \"observation_period\"    \"payer_plan_period\"     \"person\"               \n[29] \"procedure_occurrence\"  \"provider\"              \"relationship\"          \"source_to_concept_map\"\n[33] \"specimen\"              \"visit_detail\"          \"visit_occurrence\"      \"vocabulary\"           \n\ncdm$my_test_table\n\n# Source:   table&lt;my_test_table&gt; [?? x 2]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpK0BL4u/file224739401c63.duckdb]\n   speed  dist\n   &lt;dbl&gt; &lt;dbl&gt;\n 1     4     2\n 2     4    10\n 3     7     4\n 4     7    22\n 5     8    16\n 6     9    10\n 7    10    18\n 8    10    26\n 9    10    34\n10    11    17\n# ℹ more rows"
   },
   {
     "objectID": "Practicals/Introduction/index.html#use-a-prefix",
@@ -242,7 +242,7 @@
     "href": "Practicals/Introduction/index.html#use-a-prefix-2",
     "title": "OMOP and CDMConnector",
     "section": "Use a prefix",
-    "text": "Use a prefix\n\nCDMConnector::listSourceTables(cdm = cdm)\n\n[1] \"my_test_table\"\n\ncdm$my_test_table\n\n# Source:   table&lt;my_prefix_my_test_table&gt; [?? x 2]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpDIAnqq/file218d1972d04.duckdb]\n   speed  dist\n   &lt;dbl&gt; &lt;dbl&gt;\n 1     4     2\n 2     4    10\n 3     7     4\n 4     7    22\n 5     8    16\n 6     9    10\n 7    10    18\n 8    10    26\n 9    10    34\n10    11    17\n# ℹ more rows"
+    "text": "Use a prefix\n\nCDMConnector::listSourceTables(cdm = cdm)\n\n[1] \"my_test_table\"\n\ncdm$my_test_table\n\n# Source:   table&lt;my_prefix_my_test_table&gt; [?? x 2]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpK0BL4u/file224739401c63.duckdb]\n   speed  dist\n   &lt;dbl&gt; &lt;dbl&gt;\n 1     4     2\n 2     4    10\n 3     7     4\n 4     7    22\n 5     8    16\n 6     9    10\n 7    10    18\n 8    10    26\n 9    10    34\n10    11    17\n# ℹ more rows"
   },
   {
     "objectID": "Practicals/Introduction/index.html#use-a-prefix-3",
@@ -371,11 +371,214 @@
     "text": "Set up"
   },
   {
-    "objectID": "Practicals/CohortSurvival/index.html#cohortsurvival",
-    "href": "Practicals/CohortSurvival/index.html#cohortsurvival",
+    "objectID": "Practicals/CohortSurvival/index.html#introduction",
+    "href": "Practicals/CohortSurvival/index.html#introduction",
     "title": "CohortSurvival",
-    "section": "CohortSurvival",
-    "text": "CohortSurvival"
+    "section": "Introduction",
+    "text": "Introduction\n\nCohortSurvival is a package designed to support descriptive survival studies in R, using data mapped to the OMOP Common Data Model.\n\n\n\n\n\nThe code is publicly available in the DARWIN EU’s GitHub repository CohortSurvival.\n\n\n\n\n\nCohortSurvival v1.0.1 is available in CRAN.\n\n\n\n\n\nVignettes with further information can be found in the package website."
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#how-do-you-use-cohortsurvival",
+    "href": "Practicals/CohortSurvival/index.html#how-do-you-use-cohortsurvival",
+    "title": "CohortSurvival",
+    "section": "How do you use CohortSurvival?",
+    "text": "How do you use CohortSurvival?\n\n\n\n\n1) Create a cdm object with the cohorts of interest\nYou only need to specify the exposure and the outcome cohort names.\n\n\n\n\n\n2) Run the survival estimation\nAdd any additional strata or input parameters necessary for your study.\n\n\n\n\n\n3) Plot and tabulate the results\nUse the in-built visualisation functions from the package to plot the survival estimates and display the survival summary in a neat table."
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#cohortsurvivals-main-functionality",
+    "href": "Practicals/CohortSurvival/index.html#cohortsurvivals-main-functionality",
+    "title": "CohortSurvival",
+    "section": "CohortSurvival’s main functionality",
+    "text": "CohortSurvival’s main functionality\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nEstimate single event survival Specify exposure and outcome cohorts.\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nEstimate competing risk survival Specify exposure, outcome and competing outcome cohorts.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nDo further survival analyses Add survival information to the cohort of interest to run survival models using other well-known packages (i.e. survival)."
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#create-cdm-and-get-cohorts",
+    "href": "Practicals/CohortSurvival/index.html#create-cdm-and-get-cohorts",
+    "title": "CohortSurvival",
+    "section": "Create cdm and get cohorts",
+    "text": "Create cdm and get cohorts\n\n# Download Eunomia \nrequireEunomia()\n\n\nDownload completed!\n\n# Connect to the \"database\"\ncon &lt;- DBI::dbConnect(duckdb::duckdb(), dbdir = eunomiaDir())\n# Create CDM reference object\ncdm &lt;- cdmFromCon(\n  con, \n  cdmSchema = \"main\", \n  writeSchema = \"main\",\n  writePrefix = \"my_study_\"\n)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#use-estimatesinglesurvival-for-treatment-adherence",
+    "href": "Practicals/CohortSurvival/index.html#use-estimatesinglesurvival-for-treatment-adherence",
+    "title": "CohortSurvival",
+    "section": "Use estimateSingleSurvival() for treatment adherence",
+    "text": "Use estimateSingleSurvival() for treatment adherence\nSingle event survival estimation function, with all its input parameters.\n\nestimateSingleEventSurvival(\n  cdm,\n  targetCohortTable,\n  outcomeCohortTable,\n  outcomeDateVariable = \"cohort_start_date\",\n  outcomeWashout = Inf,\n  censorOnCohortExit = FALSE,\n  censorOnDate = NULL,\n  followUpDays = Inf,\n  strata = NULL,\n  eventGap = 30,\n  estimateGap = 1,\n  restrictedMeanFollowUp = NULL,\n  minimumSurvivalDays = 1\n)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#use-estimatesinglesurvival-for-treatment-adherence-1",
+    "href": "Practicals/CohortSurvival/index.html#use-estimatesinglesurvival-for-treatment-adherence-1",
+    "title": "CohortSurvival",
+    "section": "Use estimateSingleSurvival() for treatment adherence",
+    "text": "Use estimateSingleSurvival() for treatment adherence\nPlotting function, with all its input parameters.\n\nplotSurvival(\n  result,\n  ribbon = TRUE,\n  facet = NULL,\n  colour = NULL,\n  cumulativeFailure = FALE,\n  riskTable = FALSE,\n  riskTable(30)\n)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#use-estimatesinglesurvival-for-treatment-adherence-2",
+    "href": "Practicals/CohortSurvival/index.html#use-estimatesinglesurvival-for-treatment-adherence-2",
+    "title": "CohortSurvival",
+    "section": "Use estimateSingleSurvival() for treatment adherence",
+    "text": "Use estimateSingleSurvival() for treatment adherence\nMain tabulating function, with all its input parameters.\n\ntableSurvival(\n  x,\n  times = NULL,\n  timeScale = \"days\",\n  header = c(\"estimate\"),\n  type = \"gt\",\n  groupColumn = NULL,\n  .options = list()\n)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#use-estimatesinglesurvival-for-treatment-adherence-3",
+    "href": "Practicals/CohortSurvival/index.html#use-estimatesinglesurvival-for-treatment-adherence-3",
+    "title": "CohortSurvival",
+    "section": "Use estimateSingleSurvival() for treatment adherence",
+    "text": "Use estimateSingleSurvival() for treatment adherence\nIn our case, we will study discontinuation of ibuprofen. Therefore, we will use the same cohort as both target and outcome. Additionally, we will need to change outcomeDateVariable to cohort_end_date.\n\n\ncdm &lt;- generateIngredientCohortSet(\n  cdm = cdm,\n  name = \"ibuprofen\",\n  ingredient = \"ibuprofen\",\n  gapEra = 7\n)\n\nsurvivalResult &lt;- estimateSingleEventSurvival(\n  cdm = cdm, \n  targetCohortTable = \"ibuprofen\",\n  outcomeCohortTable = \"ibuprofen\",\n  outcomeDateVariable = \"cohort_end_date\"\n)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#use-estimatesinglesurvival-for-treatment-adherence-4",
+    "href": "Practicals/CohortSurvival/index.html#use-estimatesinglesurvival-for-treatment-adherence-4",
+    "title": "CohortSurvival",
+    "section": "Use estimateSingleSurvival() for treatment adherence",
+    "text": "Use estimateSingleSurvival() for treatment adherence\n\nglimpse(survivalResult, width = 100)\n\nRows: 325\nColumns: 13\n$ result_id        &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ cdm_name         &lt;chr&gt; \"Synthea\", \"Synthea\", \"Synthea\", \"Synthea\", \"Synthea\", \"Synthea\", \"Synthe…\n$ group_name       &lt;chr&gt; \"target_cohort\", \"target_cohort\", \"target_cohort\", \"target_cohort\", \"targ…\n$ group_level      &lt;chr&gt; \"ibuprofen\", \"ibuprofen\", \"ibuprofen\", \"ibuprofen\", \"ibuprofen\", \"ibuprof…\n$ strata_name      &lt;chr&gt; \"overall\", \"overall\", \"overall\", \"overall\", \"overall\", \"overall\", \"overal…\n$ strata_level     &lt;chr&gt; \"overall\", \"overall\", \"overall\", \"overall\", \"overall\", \"overall\", \"overal…\n$ variable_name    &lt;chr&gt; \"outcome\", \"outcome\", \"outcome\", \"outcome\", \"outcome\", \"outcome\", \"outcom…\n$ variable_level   &lt;chr&gt; \"ibuprofen\", \"ibuprofen\", \"ibuprofen\", \"ibuprofen\", \"ibuprofen\", \"ibuprof…\n$ estimate_name    &lt;chr&gt; \"estimate\", \"estimate_95CI_lower\", \"estimate_95CI_upper\", \"estimate\", \"es…\n$ estimate_type    &lt;chr&gt; \"numeric\", \"numeric\", \"numeric\", \"numeric\", \"numeric\", \"numeric\", \"numeri…\n$ estimate_value   &lt;chr&gt; \"1\", \"1\", \"1\", \"0.9979\", \"0.9956\", \"1\", \"0.9979\", \"0.9956\", \"1\", \"0.9979\"…\n$ additional_name  &lt;chr&gt; \"time\", \"time\", \"time\", \"time\", \"time\", \"time\", \"time\", \"time\", \"time\", \"…\n$ additional_level &lt;chr&gt; \"0\", \"0\", \"0\", \"1\", \"1\", \"1\", \"2\", \"2\", \"2\", \"3\", \"3\", \"3\", \"4\", \"4\", \"4\"…"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#use-estimatesinglesurvival-for-treatment-adherence-5",
+    "href": "Practicals/CohortSurvival/index.html#use-estimatesinglesurvival-for-treatment-adherence-5",
+    "title": "CohortSurvival",
+    "section": "Use estimateSingleSurvival() for treatment adherence",
+    "text": "Use estimateSingleSurvival() for treatment adherence\n\nplotSurvival(survivalResult)\n\n\n\n\ntableSurvival(survivalResult, times = c(7, 30, 75))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCDM name\nTarget cohort\nOutcome name\n\nEstimate name\n\n\n\nNumber records\nNumber events\nMedian survival (95% CI)\nRestricted mean survival (95% CI)\n7 days survival estimate\n30 days survival estimate\n75 days survival estimate\n\n\n\nSynthea\nibuprofen\nibuprofen\n1,448\n1,448\n21.00 (21.00, 21.00)\n29.00 (28.00, 31.00)\n99.79 (99.56, 100.00)\n24.65 (22.53, 26.98)\n7.18 (5.97, 8.64)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#use-estimatesinglesurvival-for-treatment-adherence-6",
+    "href": "Practicals/CohortSurvival/index.html#use-estimatesinglesurvival-for-treatment-adherence-6",
+    "title": "CohortSurvival",
+    "section": "Use estimateSingleSurvival() for treatment adherence",
+    "text": "Use estimateSingleSurvival() for treatment adherence\n\n\n\nYou can also visualise the risk table, with information on number of people at risk, number of events and number of people censored by event timepoint (defined by eventGap).\n\nriskTable(survivalResult)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCDM name\nTarget cohort\nOutcome name\nTime\nEvent gap\n\nEstimate name\n\n\n\nNumber at risk\nNumber events\nNumber censored\n\n\n\n\nSynthea\nibuprofen\nibuprofen\n0\n30\n1,448\n0\n0\n\n\n\n\n\n30\n30\n456\n1,091\n0\n\n\n\n\n\n60\n30\n222\n236\n0\n\n\n\n\n\n90\n30\n104\n121\n0"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#exercise-1---estimate-treatment-adherence-of-aspirin-users",
+    "href": "Practicals/CohortSurvival/index.html#exercise-1---estimate-treatment-adherence-of-aspirin-users",
+    "title": "CohortSurvival",
+    "section": "Exercise 1 - Estimate treatment adherence of aspirin users",
+    "text": "Exercise 1 - Estimate treatment adherence of aspirin users\nCreate a cohort of aspirin use and estimate treatment adherence.\n\nHow many people are at risk at cohort entry, and how many are left at risk after a month?\nPlot the drug discontinuation curve and compare it to the ibuprofen one. If you can, plot both Kaplan-Meier curves in the same survival plot.\n\n\nHint: use omopgenerics::bind() and the colour option in plotSurvival() for the two outcomes."
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#exercise-1---estimate-treatment-adherence-of-aspirin-users-1",
+    "href": "Practicals/CohortSurvival/index.html#exercise-1---estimate-treatment-adherence-of-aspirin-users-1",
+    "title": "CohortSurvival",
+    "section": "Exercise 1 - Estimate treatment adherence of aspirin users",
+    "text": "Exercise 1 - Estimate treatment adherence of aspirin users\n\ncdm &lt;- generateIngredientCohortSet(\n  cdm = cdm,\n  name = \"aspirin\",\n  ingredient = \"aspirin\",\n  gapEra = 7\n)\n\nsurvivalResultAspirin &lt;- estimateSingleEventSurvival(\n  cdm,\n  \"aspirin\",\n  \"aspirin\",\n  outcomeDateVariable = \"cohort_end_date\"\n)\n\nsurvivalResultAll &lt;- omopgenerics::bind(\n  survivalResult,\n  survivalResultAspirin\n)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#exercise-1---estimate-treatment-adherence-of-aspirin-users-2",
+    "href": "Practicals/CohortSurvival/index.html#exercise-1---estimate-treatment-adherence-of-aspirin-users-2",
+    "title": "CohortSurvival",
+    "section": "Exercise 1 - Estimate treatment adherence of aspirin users",
+    "text": "Exercise 1 - Estimate treatment adherence of aspirin users\n\nriskTable(survivalResultAll)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCDM name\nTarget cohort\nOutcome name\nTime\nEvent gap\n\nEstimate name\n\n\n\nNumber at risk\nNumber events\nNumber censored\n\n\n\n\nSynthea\nibuprofen\nibuprofen\n0\n30\n1,448\n0\n0\n\n\n\n\n\n30\n30\n456\n1,091\n0\n\n\n\n\n\n60\n30\n222\n236\n0\n\n\n\n\n\n90\n30\n104\n121\n0\n\n\n\naspirin\naspirin\n0\n30\n1,927\n0\n0\n\n\n\n\n\n30\n30\n349\n1,651\n0\n\n\n\n\n\n60\n30\n180\n176\n0\n\n\n\n\n\n90\n30\n87\n100\n0"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#exercise-1---estimate-treatment-adherence-of-aspirin-users-3",
+    "href": "Practicals/CohortSurvival/index.html#exercise-1---estimate-treatment-adherence-of-aspirin-users-3",
+    "title": "CohortSurvival",
+    "section": "Exercise 1 - Estimate treatment adherence of aspirin users",
+    "text": "Exercise 1 - Estimate treatment adherence of aspirin users\n\nplotSurvival(survivalResultAll, colour = \"outcome\")"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#adding-strata---example",
+    "href": "Practicals/CohortSurvival/index.html#adding-strata---example",
+    "title": "CohortSurvival",
+    "section": "Adding strata - Example",
+    "text": "Adding strata - Example\n\n\n\n\nWe can stratify our survival study by any variables available in the target cohort provided. We can use PatientProfiles to add, for instance, demographic information.\n\n\n\ncdm$ibuprofen_strata &lt;- cdm$ibuprofen |&gt; \n  PatientProfiles::addAge(\n    ageGroup = list(c(0,40),c(41,70),c(71,150))\n  ) |&gt;\n  compute(name = \"ibuprofen_strata\")\n\ncdm$ibuprofen_strata |&gt;\n  dplyr::select(-\"age\") |&gt;\n  head()\n\n# Source:   SQL [?? x 5]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/Rtmpr5aZiQ/file2142577b9f61.duckdb]\n  cohort_definition_id subject_id cohort_start_date cohort_end_date age_group\n                 &lt;int&gt;      &lt;int&gt; &lt;date&gt;            &lt;date&gt;          &lt;chr&gt;    \n1                    1          6 1976-05-01        1976-06-30      0 to 40  \n2                    1         16 2004-01-21        2004-03-21      0 to 40  \n3                    1        114 1988-08-14        1988-08-28      0 to 40  \n4                    1         40 2018-06-14        2018-07-14      41 to 70 \n5                    1         72 2008-06-19        2008-07-17      41 to 70 \n6                    1         53 1974-05-05        1974-06-04      0 to 40"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#adding-strata---example-1",
+    "href": "Practicals/CohortSurvival/index.html#adding-strata---example-1",
+    "title": "CohortSurvival",
+    "section": "Adding strata - Example",
+    "text": "Adding strata - Example\n\nsurvivalResultStrata &lt;- estimateSingleEventSurvival(\n   cdm,\n  \"ibuprofen_strata\",\n  \"ibuprofen_strata\",\n  outcomeDateVariable = \"cohort_end_date\",\n  strata = list(\"age_group\")\n)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#adding-strata---example-2",
+    "href": "Practicals/CohortSurvival/index.html#adding-strata---example-2",
+    "title": "CohortSurvival",
+    "section": "Adding strata - Example",
+    "text": "Adding strata - Example\n\nplotSurvival(survivalResultStrata, colour = \"age_group\", riskTable = TRUE)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#exercise-2---stratification",
+    "href": "Practicals/CohortSurvival/index.html#exercise-2---stratification",
+    "title": "CohortSurvival",
+    "section": "Exercise 2 - Stratification",
+    "text": "Exercise 2 - Stratification\nUse the same aspirin cohort as before.\n\nAdd both sex and age_group information.\nEstimate treatment adherence and plot all Kaplan-Meier curves in one plot."
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#exercise-2---stratification-1",
+    "href": "Practicals/CohortSurvival/index.html#exercise-2---stratification-1",
+    "title": "CohortSurvival",
+    "section": "Exercise 2 - Stratification",
+    "text": "Exercise 2 - Stratification\n\ncdm$aspirin_strata &lt;- cdm$aspirin |&gt; \n  PatientProfiles::addDemographics(\n    ageGroup = list(\"kids\" = c(0,18), \"adults\" = c(19,150))\n  ) |&gt;\n  compute(name = \"aspirin_strata\")\n\nsurvivalResultStrata &lt;- estimateSingleEventSurvival(\n   cdm,\n  \"aspirin_strata\",\n  \"aspirin_strata\",\n  outcomeDateVariable = \"cohort_end_date\",\n  strata = list(\"age_group\", \"sex\", c(\"age_group\", \"sex\"))\n)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#exercise-2---stratification-2",
+    "href": "Practicals/CohortSurvival/index.html#exercise-2---stratification-2",
+    "title": "CohortSurvival",
+    "section": "Exercise 2 - Stratification",
+    "text": "Exercise 2 - Stratification\n\nplotSurvival(survivalResultStrata, colour = \"age_group\", facet = \"sex\")"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#lets-play-with-the-parameters-of-the-survival-estimation-function",
+    "href": "Practicals/CohortSurvival/index.html#lets-play-with-the-parameters-of-the-survival-estimation-function",
+    "title": "CohortSurvival",
+    "section": "Let’s play with the parameters of the survival estimation function",
+    "text": "Let’s play with the parameters of the survival estimation function\nReminder of all possible ways we can tweak our analysis:\n\n# don't run\nestimateSingleEventSurvival(\n  cdm = cdm,\n  targetCohortTable = \"ibuprofen\",\n  outcomeCohortTable = \"ibuprofen\",\n  outcomeDateVariable = \"cohort_end_date\",\n  outcomeWashout = Inf,\n  censorOnCohortExit = FALSE,\n  censorOnDate = NULL,\n  followUpDays = Inf,\n  strata = NULL,\n  eventGap = 30,\n  estimateGap = 1,\n  restrictedMeanFollowUp = NULL,\n  minimumSurvivalDays = 1\n)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#changing-inputs---example",
+    "href": "Practicals/CohortSurvival/index.html#changing-inputs---example",
+    "title": "CohortSurvival",
+    "section": "Changing inputs - Example",
+    "text": "Changing inputs - Example\n\n\n\nLet’s change the event gap to a weekly aggregation and display the risk table under the plot.\n\n\nsurvivalResultEventGap &lt;- estimateSingleEventSurvival(\n   cdm,\n  \"ibuprofen\",\n  \"ibuprofen\",\n  outcomeDateVariable = \"cohort_end_date\",\n  eventGap = 7\n)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#changing-inputs---example-1",
+    "href": "Practicals/CohortSurvival/index.html#changing-inputs---example-1",
+    "title": "CohortSurvival",
+    "section": "Changing inputs - Example",
+    "text": "Changing inputs - Example\n\nplotSurvival(survivalResultEventGap, riskTable = TRUE, riskInterval = 7)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#exercise-3---changing-inputs",
+    "href": "Practicals/CohortSurvival/index.html#exercise-3---changing-inputs",
+    "title": "CohortSurvival",
+    "section": "Exercise 3 - Changing inputs",
+    "text": "Exercise 3 - Changing inputs\nKeep working with the cohort of individuals starting aspirin prescription.\n\nNow estimate survival with a 5-year washout period, instead of considering first events."
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#exercise-3---changing-inputs-1",
+    "href": "Practicals/CohortSurvival/index.html#exercise-3---changing-inputs-1",
+    "title": "CohortSurvival",
+    "section": "Exercise 3 - Changing inputs",
+    "text": "Exercise 3 - Changing inputs\n\nsurvivalResultAspirinTuned &lt;- estimateSingleEventSurvival(\n   cdm,\n  \"aspirin\",\n  \"aspirin\",\n  outcomeDateVariable = \"cohort_end_date\",\n  outcomeWashout = 1825\n)\n\nomopgenerics::bind(survivalResultAspirin, survivalResultAspirinTuned) |&gt; \n  tableSurvival()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCDM name\nTarget cohort\nOutcome name\nOutcome washout\n\nEstimate name\n\n\n\nNumber records\nNumber events\nMedian survival (95% CI)\nRestricted mean survival (95% CI)\n\n\n\n\nSynthea\naspirin\naspirin\nInf\n1,927\n1,927\n14.00 (14.00, 14.00)\n23.00 (22.00, 23.00)\n\n\n\n\n\n1825\n3,020\n3,020\n14.00 (14.00, 14.00)\n25.00 (25.00, 26.00)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#exercise-3---changing-inputs-2",
+    "href": "Practicals/CohortSurvival/index.html#exercise-3---changing-inputs-2",
+    "title": "CohortSurvival",
+    "section": "Exercise 3 - Changing inputs",
+    "text": "Exercise 3 - Changing inputs\n\nplotSurvival(omopgenerics::bind(survivalResultAspirin, survivalResultAspirinTuned), \n             colour = \"outcome_washout\")"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#exercise-4---survival-with-different-exposure-and-outcome",
+    "href": "Practicals/CohortSurvival/index.html#exercise-4---survival-with-different-exposure-and-outcome",
+    "title": "CohortSurvival",
+    "section": "Exercise 4 - Survival with different exposure and outcome",
+    "text": "Exercise 4 - Survival with different exposure and outcome\nWhat is the time to first myocardial infraction after starting simvastatin or aspirin treatment, and how does this differ between both prescription drugs?"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#exercise-4---mi-after-start-of-simvastatin-or-aspirin",
+    "href": "Practicals/CohortSurvival/index.html#exercise-4---mi-after-start-of-simvastatin-or-aspirin",
+    "title": "CohortSurvival",
+    "section": "Exercise 4 - MI after start of simvastatin or aspirin",
+    "text": "Exercise 4 - MI after start of simvastatin or aspirin\n\nconceptSetMI &lt;- CodelistGenerator::getCandidateCodes(cdm, keywords = \"myocardial\")\nmi &lt;- list(\"mi\" = conceptSetMI$concept_id)\ncdm$mi &lt;- CohortConstructor::conceptCohort(\n  cdm, conceptSet = mi, name = \"mi\"\n)\n\ncdm &lt;- DrugUtilisation::generateIngredientCohortSet(\n  cdm, \n  name = \"statins\",\n  ingredient = c(\"simvastatin\", \"aspirin\"),\n  gapEra = 7\n)\n\nsurvivalStatin &lt;- estimateSingleEventSurvival(\n  cdm,\n  \"statins\",\n  \"mi\"\n)"
+  },
+  {
+    "objectID": "Practicals/CohortSurvival/index.html#exercise-4---mi-after-start-of-simvastatin-or-aspirin-1",
+    "href": "Practicals/CohortSurvival/index.html#exercise-4---mi-after-start-of-simvastatin-or-aspirin-1",
+    "title": "CohortSurvival",
+    "section": "Exercise 4 - MI after start of simvastatin or aspirin",
+    "text": "Exercise 4 - MI after start of simvastatin or aspirin\n\nplotSurvival(survivalStatin, colour = \"target_cohort\")"
   },
   {
     "objectID": "Practicals/OmopSketch/index.html#omopsketch",
@@ -459,7 +662,7 @@
     "href": "Practicals/CohortConstructor/index.html#concept-based---example-3",
     "title": "CohortConstructor",
     "section": "Concept based - Example",
-    "text": "Concept based - Example\n\n\n\n\nCohort codelist as an attribute\n\n\n\nattr(cdm$medications, \"cohort_codelist\")\n\n# Source:   table&lt;my_study_medications_codelist&gt; [?? x 4]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/Rtmpjwhk64/file21283645ff60.duckdb]\n  cohort_definition_id codelist_name concept_id codelist_type\n                 &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;        \n1                    1 acetaminophen    1125315 index event  \n2                    1 acetaminophen    1127078 index event  \n3                    1 acetaminophen    1127433 index event  \n4                    1 acetaminophen   40229134 index event  \n5                    1 acetaminophen   40231925 index event  \n6                    1 acetaminophen   40162522 index event  \n7                    1 acetaminophen   19133768 index event  \n8                    2 diclofenac       1124300 index event"
+    "text": "Concept based - Example\n\n\n\n\nCohort codelist as an attribute\n\n\n\nattr(cdm$medications, \"cohort_codelist\")\n\n# Source:   table&lt;my_study_medications_codelist&gt; [?? x 4]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpFDo7PG/file21e37ba77b30.duckdb]\n  cohort_definition_id codelist_name concept_id codelist_type\n                 &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;        \n1                    1 acetaminophen    1125315 index event  \n2                    1 acetaminophen    1127078 index event  \n3                    1 acetaminophen    1127433 index event  \n4                    1 acetaminophen   40229134 index event  \n5                    1 acetaminophen   40231925 index event  \n6                    1 acetaminophen   40162522 index event  \n7                    1 acetaminophen   19133768 index event  \n8                    2 diclofenac       1124300 index event"
   },
   {
     "objectID": "Practicals/CohortConstructor/index.html#get-started-connecto-to-eunomia",
@@ -606,7 +809,7 @@
     "href": "Practicals/CohortConstructor/index.html#cohort-combinations---example-4",
     "title": "CohortConstructor",
     "section": "Cohort combinations - Example",
-    "text": "Cohort combinations - Example\n\n\n\n\nattr(cdm$intersection, \"cohort_codelist\")\n\n# Source:   table&lt;my_study_intersection_codelist&gt; [?? x 4]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/Rtmpjwhk64/file21283645ff60.duckdb]\n  cohort_definition_id codelist_name concept_id codelist_type\n                 &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;        \n1                    1 acetaminophen    1125315 index event  \n2                    1 acetaminophen    1127078 index event  \n3                    1 acetaminophen    1127433 index event  \n4                    1 acetaminophen   40229134 index event  \n5                    1 acetaminophen   40231925 index event  \n6                    1 acetaminophen   40162522 index event  \n7                    1 acetaminophen   19133768 index event  \n8                    1 diclofenac       1124300 index event"
+    "text": "Cohort combinations - Example\n\n\n\n\nattr(cdm$intersection, \"cohort_codelist\")\n\n# Source:   table&lt;my_study_intersection_codelist&gt; [?? x 4]\n# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpFDo7PG/file21e37ba77b30.duckdb]\n  cohort_definition_id codelist_name concept_id codelist_type\n                 &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;        \n1                    1 acetaminophen    1125315 index event  \n2                    1 acetaminophen    1127078 index event  \n3                    1 acetaminophen    1127433 index event  \n4                    1 acetaminophen   40229134 index event  \n5                    1 acetaminophen   40231925 index event  \n6                    1 acetaminophen   40162522 index event  \n7                    1 acetaminophen   19133768 index event  \n8                    1 diclofenac       1124300 index event"
   },
   {
     "objectID": "Practicals/CohortConstructor/index.html#exercise-4---transformation-and-combination",

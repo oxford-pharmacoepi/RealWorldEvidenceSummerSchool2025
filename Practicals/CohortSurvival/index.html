@@ -6,17 +6,17 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
-
-  <meta name="dcterms.date" content="2025-06-16">
-  <title>Real World Evidence Summer School – CohortSurvival</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
-  <style>
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+<meta name="dcterms.date" content="2025-06-18">
+<title>Real World Evidence Summer School – CohortSurvival</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -28,15 +28,81 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-8db7232787301159a947427aeaa91801.css">
-  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-8db7232787301159a947427aeaa91801.css">
+<link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -131,21 +197,2604 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">CohortSurvival</h1>
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">CohortSurvival</h1>
   <p class="subtitle">Conduct survival analyses</p>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-06-16</p>
-</section>
-<section id="cohortsurvival" class="slide level2">
-<h2>CohortSurvival</h2>
+  <p class="date">2025-06-18</p>
+</section><section id="introduction" class="slide level2"><h2>Introduction</h2>
+<ul>
+<li class="fragment">CohortSurvival is a package designed to support descriptive survival studies in R, using data mapped to the OMOP Common Data Model.</li>
+</ul>
+<div style="margin-bottom: 10px;">
+
+</div>
+<ul>
+<li class="fragment">The code is publicly available in the DARWIN EU’s GitHub repository <a href="https://github.com/darwin-eu/CohortSurvival">CohortSurvival</a>.</li>
+</ul>
+<div style="margin-bottom: 10px;">
+
+</div>
+<ul>
+<li class="fragment">CohortSurvival v1.0.1 is available in <a href="https://cran.r-project.org/web/packages/CohortSurvival/CohortSurvival.pdf" class="link">CRAN</a>.</li>
+</ul>
+<div style="margin-bottom: 10px;">
+
+</div>
+<ul>
+<li class="fragment">Vignettes with further information can be found in the package <a href="https://ohdsi.github.io/CohortSurvival/index.html" class="link">website</a>.</li>
+</ul></section><section id="how-do-you-use-cohortsurvival" class="slide level2"><h2>How do you use CohortSurvival?</h2>
+<div class="fragment">
+<div style="margin-bottom: 15px;">
+
+</div>
+<p><strong>1) Create a cdm object with the cohorts of interest</strong></p>
+<p>You only need to specify the exposure and the outcome cohort names.</p>
+</div>
+<div class="fragment">
+<div style="margin-bottom: 25px;">
+
+</div>
+<p><strong>2) Run the survival estimation</strong></p>
+<p>Add any additional strata or input parameters necessary for your study.</p>
+</div>
+<div class="fragment">
+<div style="margin-bottom: 25px;">
+
+</div>
+<p><strong>3) Plot and tabulate the results</strong></p>
+<p>Use the in-built visualisation functions from the package to plot the survival estimates and display the survival summary in a neat table.</p>
+</div>
+</section><section id="cohortsurvivals-main-functionality" class="slide level2"><h2>CohortSurvival’s main functionality</h2>
+<div class="columns">
+<div class="column" style="width:10%;">
+
+</div><div class="column" style="width:40%;">
+<div class="bulletbox">
+<div class="fragment fade-in-then-semi-out">
+<div class="quarto-layout-panel" data-layout="[[-1], [1], [-1]]">
+<div class="quarto-layout-row">
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<p><strong>Estimate single event survival</strong> <em>Specify exposure and outcome cohorts.</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:40%;">
+<div class="bulletbox">
+<div class="fragment fade-in-then-semi-out">
+<div class="quarto-layout-panel" data-layout="[[-1], [1], [-1]]">
+<div class="quarto-layout-row">
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<p><strong>Estimate competing risk survival</strong> <em>Specify exposure, outcome and competing outcome cohorts.</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div></div>
+<div class="columns">
+<div class="column" style="width:30%;">
+
+</div><div class="column" style="width:40%;">
+<div class="bulletbox">
+<div class="fragment fade-in-then-semi-out">
+<div class="quarto-layout-panel" data-layout="[[-1], [1], [-1]]">
+<div class="quarto-layout-row">
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<p><strong>Do further survival analyses</strong> <em>Add survival information to the cohort of interest to run survival models using other well-known packages (i.e.&nbsp;survival).</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section><section><section id="estimate-survival" class="title-slide slide level1 center"><h1>Estimate survival</h1>
+
+</section><section id="create-cdm-and-get-cohorts" class="slide level2"><h2>Create cdm and get cohorts</h2>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Download Eunomia </span></span>
+<span><span class="fu">requireEunomia</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Download completed!</code></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Connect to the "database"</span></span>
+<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu"><a href="https://r.duckdb.org/reference/duckdb.html">duckdb</a></span><span class="op">(</span><span class="op">)</span>, dbdir <span class="op">=</span> <span class="fu">eunomiaDir</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Create CDM reference object</span></span>
+<span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu">cdmFromCon</span><span class="op">(</span></span>
+<span>  <span class="va">con</span>, </span>
+<span>  cdmSchema <span class="op">=</span> <span class="st">"main"</span>, </span>
+<span>  writeSchema <span class="op">=</span> <span class="st">"main"</span>,</span>
+<span>  writePrefix <span class="op">=</span> <span class="st">"my_study_"</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="use-estimatesinglesurvival-for-treatment-adherence" class="slide level2"><h2>Use estimateSingleSurvival() for treatment adherence</h2>
+<p>Single event survival estimation function, with all its input parameters.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
+<span>  <span class="va">cdm</span>,</span>
+<span>  <span class="va">targetCohortTable</span>,</span>
+<span>  <span class="va">outcomeCohortTable</span>,</span>
+<span>  outcomeDateVariable <span class="op">=</span> <span class="st">"cohort_start_date"</span>,</span>
+<span>  outcomeWashout <span class="op">=</span> <span class="cn">Inf</span>,</span>
+<span>  censorOnCohortExit <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  censorOnDate <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  followUpDays <span class="op">=</span> <span class="cn">Inf</span>,</span>
+<span>  strata <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  eventGap <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>  estimateGap <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  restrictedMeanFollowUp <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  minimumSurvivalDays <span class="op">=</span> <span class="fl">1</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="use-estimatesinglesurvival-for-treatment-adherence-1" class="slide level2"><h2>Use estimateSingleSurvival() for treatment adherence</h2>
+<p>Plotting function, with all its input parameters.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span></span>
+<span>  <span class="va">result</span>,</span>
+<span>  ribbon <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  facet <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  colour <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  cumulativeFailure <span class="op">=</span> <span class="va">FALE</span>,</span>
+<span>  riskTable <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="fu">riskTable</span><span class="op">(</span><span class="fl">30</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="use-estimatesinglesurvival-for-treatment-adherence-2" class="slide level2"><h2>Use estimateSingleSurvival() for treatment adherence</h2>
+<p>Main tabulating function, with all its input parameters.</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tableSurvival</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  times <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  timeScale <span class="op">=</span> <span class="st">"days"</span>,</span>
+<span>  header <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"estimate"</span><span class="op">)</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"gt"</span>,</span>
+<span>  groupColumn <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="use-estimatesinglesurvival-for-treatment-adherence-3" class="slide level2"><h2>Use estimateSingleSurvival() for treatment adherence</h2>
+<p>In our case, we will study discontinuation of ibuprofen. Therefore, we will use the same cohort as both target and outcome. Additionally, we will need to change <code>outcomeDateVariable</code> to <code>cohort_end_date</code>.</p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu">generateIngredientCohortSet</span><span class="op">(</span></span>
+<span>  cdm <span class="op">=</span> <span class="va">cdm</span>,</span>
+<span>  name <span class="op">=</span> <span class="st">"ibuprofen"</span>,</span>
+<span>  ingredient <span class="op">=</span> <span class="st">"ibuprofen"</span>,</span>
+<span>  gapEra <span class="op">=</span> <span class="fl">7</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">survivalResult</span> <span class="op">&lt;-</span> <span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
+<span>  cdm <span class="op">=</span> <span class="va">cdm</span>, </span>
+<span>  targetCohortTable <span class="op">=</span> <span class="st">"ibuprofen"</span>,</span>
+<span>  outcomeCohortTable <span class="op">=</span> <span class="st">"ibuprofen"</span>,</span>
+<span>  outcomeDateVariable <span class="op">=</span> <span class="st">"cohort_end_date"</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section><section id="use-estimatesinglesurvival-for-treatment-adherence-4" class="slide level2"><h2>Use estimateSingleSurvival() for treatment adherence</h2>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">survivalResult</span>, width <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 325
+Columns: 13
+$ result_id        &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+$ cdm_name         &lt;chr&gt; "Synthea", "Synthea", "Synthea", "Synthea", "Synthea", "Synthea", "Synthe…
+$ group_name       &lt;chr&gt; "target_cohort", "target_cohort", "target_cohort", "target_cohort", "targ…
+$ group_level      &lt;chr&gt; "ibuprofen", "ibuprofen", "ibuprofen", "ibuprofen", "ibuprofen", "ibuprof…
+$ strata_name      &lt;chr&gt; "overall", "overall", "overall", "overall", "overall", "overall", "overal…
+$ strata_level     &lt;chr&gt; "overall", "overall", "overall", "overall", "overall", "overall", "overal…
+$ variable_name    &lt;chr&gt; "outcome", "outcome", "outcome", "outcome", "outcome", "outcome", "outcom…
+$ variable_level   &lt;chr&gt; "ibuprofen", "ibuprofen", "ibuprofen", "ibuprofen", "ibuprofen", "ibuprof…
+$ estimate_name    &lt;chr&gt; "estimate", "estimate_95CI_lower", "estimate_95CI_upper", "estimate", "es…
+$ estimate_type    &lt;chr&gt; "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeri…
+$ estimate_value   &lt;chr&gt; "1", "1", "1", "0.9979", "0.9956", "1", "0.9979", "0.9956", "1", "0.9979"…
+$ additional_name  &lt;chr&gt; "time", "time", "time", "time", "time", "time", "time", "time", "time", "…
+$ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3", "3", "3", "4", "4", "4"…</code></pre>
+</div>
+</div>
+</section><section id="use-estimatesinglesurvival-for-treatment-adherence-5" class="slide level2"><h2>Use estimateSingleSurvival() for treatment adherence</h2>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResult</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"><div class="fragment">
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tableSurvival</span><span class="op">(</span><span class="va">survivalResult</span>, times <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">30</span>, <span class="fl">75</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fautxadglj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fautxadglj table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#fautxadglj thead, #fautxadglj tbody, #fautxadglj tfoot, #fautxadglj tr, #fautxadglj td, #fautxadglj th {
+  border-style: none;
+}
+
+#fautxadglj p {
+  margin: 0;
+  padding: 0;
+}
+
+#fautxadglj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #D9D9D9;
+  border-right-style: solid;
+  border-right-width: 3px;
+  border-right-color: #D9D9D9;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: #D9D9D9;
+  border-left-style: solid;
+  border-left-width: 3px;
+  border-left-color: #D9D9D9;
+}
+
+#fautxadglj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#fautxadglj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fautxadglj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fautxadglj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fautxadglj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fautxadglj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fautxadglj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#fautxadglj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fautxadglj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fautxadglj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fautxadglj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fautxadglj .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#fautxadglj .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#fautxadglj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fautxadglj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fautxadglj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fautxadglj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fautxadglj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fautxadglj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#fautxadglj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#fautxadglj .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#fautxadglj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fautxadglj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#fautxadglj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#fautxadglj .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fautxadglj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fautxadglj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fautxadglj .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fautxadglj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fautxadglj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #D9D9D9;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fautxadglj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fautxadglj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fautxadglj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fautxadglj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fautxadglj .gt_left {
+  text-align: left;
+}
+
+#fautxadglj .gt_center {
+  text-align: center;
+}
+
+#fautxadglj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fautxadglj .gt_font_normal {
+  font-weight: normal;
+}
+
+#fautxadglj .gt_font_bold {
+  font-weight: bold;
+}
+
+#fautxadglj .gt_font_italic {
+  font-style: italic;
+}
+
+#fautxadglj .gt_super {
+  font-size: 65%;
+}
+
+#fautxadglj .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#fautxadglj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#fautxadglj .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#fautxadglj .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#fautxadglj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#fautxadglj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#fautxadglj .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#fautxadglj .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#fautxadglj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top" style="width:100%;" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="CDM-name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">CDM name</th>
+<th rowspan="2" id="Target-cohort" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Target cohort</th>
+<th rowspan="2" id="Outcome-name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Outcome name</th>
+<th colspan="7" id="spanner-[header_name]Estimate name
+[header_level]Number records" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="text-align: center; background-color: #D9D9D9; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="colgroup"><div class="gt_column_spanner">
+Estimate name
+</div></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="[header_name]Estimate-name-[header_level]Number-records" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Number records</th>
+<th id="[header_name]Estimate-name-[header_level]Number-events" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Number events</th>
+<th id="[header_name]Estimate-name-[header_level]Median-survival-(95%-CI)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Median survival (95% CI)</th>
+<th id="[header_name]Estimate-name-[header_level]Restricted-mean-survival-(95%-CI)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Restricted mean survival (95% CI)</th>
+<th id="[header_name]Estimate-name-[header_level]7-days-survival-estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">7 days survival estimate</th>
+<th id="[header_name]Estimate-name-[header_level]30-days-survival-estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">30 days survival estimate</th>
+<th id="[header_name]Estimate-name-[header_level]75-days-survival-estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">75 days survival estimate</th>
+</tr>
+</thead>
+<tbody class="gt_table_body"><tr class="odd">
+<td class="gt_row gt_left" style="text-align: left;" headers="CDM name">Synthea</td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">ibuprofen</td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">ibuprofen</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number records" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">1,448</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">1,448</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Median survival (95% CI)" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">21.00 (21.00, 21.00)</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Restricted mean survival (95% CI)" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">29.00 (28.00, 31.00)</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]7 days survival estimate" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">99.79 (99.56, 100.00)</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]30 days survival estimate" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">24.65 (22.53, 26.98)</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]75 days survival estimate">7.18 (5.97, 8.64)</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section><section id="use-estimatesinglesurvival-for-treatment-adherence-6" class="slide level2"><h2>Use estimateSingleSurvival() for treatment adherence</h2>
+<div style="margin-bottom: 20px;">
+
+</div>
+<p>You can also visualise the risk table, with information on number of people at risk, number of events and number of people censored by event timepoint (defined by <code>eventGap</code>).</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">riskTable</span><span class="op">(</span><span class="va">survivalResult</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="vhrvrfbemc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vhrvrfbemc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#vhrvrfbemc thead, #vhrvrfbemc tbody, #vhrvrfbemc tfoot, #vhrvrfbemc tr, #vhrvrfbemc td, #vhrvrfbemc th {
+  border-style: none;
+}
+
+#vhrvrfbemc p {
+  margin: 0;
+  padding: 0;
+}
+
+#vhrvrfbemc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #D9D9D9;
+  border-right-style: solid;
+  border-right-width: 3px;
+  border-right-color: #D9D9D9;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: #D9D9D9;
+  border-left-style: solid;
+  border-left-width: 3px;
+  border-left-color: #D9D9D9;
+}
+
+#vhrvrfbemc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#vhrvrfbemc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#vhrvrfbemc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#vhrvrfbemc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vhrvrfbemc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vhrvrfbemc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vhrvrfbemc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#vhrvrfbemc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#vhrvrfbemc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#vhrvrfbemc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#vhrvrfbemc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#vhrvrfbemc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#vhrvrfbemc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#vhrvrfbemc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vhrvrfbemc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#vhrvrfbemc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#vhrvrfbemc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#vhrvrfbemc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vhrvrfbemc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#vhrvrfbemc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#vhrvrfbemc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#vhrvrfbemc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vhrvrfbemc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#vhrvrfbemc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#vhrvrfbemc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vhrvrfbemc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vhrvrfbemc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#vhrvrfbemc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vhrvrfbemc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#vhrvrfbemc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #D9D9D9;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vhrvrfbemc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vhrvrfbemc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vhrvrfbemc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vhrvrfbemc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vhrvrfbemc .gt_left {
+  text-align: left;
+}
+
+#vhrvrfbemc .gt_center {
+  text-align: center;
+}
+
+#vhrvrfbemc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#vhrvrfbemc .gt_font_normal {
+  font-weight: normal;
+}
+
+#vhrvrfbemc .gt_font_bold {
+  font-weight: bold;
+}
+
+#vhrvrfbemc .gt_font_italic {
+  font-style: italic;
+}
+
+#vhrvrfbemc .gt_super {
+  font-size: 65%;
+}
+
+#vhrvrfbemc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#vhrvrfbemc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#vhrvrfbemc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#vhrvrfbemc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#vhrvrfbemc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#vhrvrfbemc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#vhrvrfbemc .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#vhrvrfbemc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#vhrvrfbemc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="CDM-name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">CDM name</th>
+<th rowspan="2" id="Target-cohort" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Target cohort</th>
+<th rowspan="2" id="Outcome-name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Outcome name</th>
+<th rowspan="2" id="Time" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Time</th>
+<th rowspan="2" id="Event-gap" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Event gap</th>
+<th colspan="3" id="spanner-[header_name]Estimate name
+[header_level]Number at risk" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="text-align: center; background-color: #D9D9D9; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="colgroup"><div class="gt_column_spanner">
+Estimate name
+</div></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="[header_name]Estimate-name-[header_level]Number-at-risk" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Number at risk</th>
+<th id="[header_name]Estimate-name-[header_level]Number-events" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Number events</th>
+<th id="[header_name]Estimate-name-[header_level]Number-censored" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Number censored</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: left;" headers="CDM name">Synthea</td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">ibuprofen</td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">ibuprofen</td>
+<td class="gt_row gt_right" headers="Time" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">0</td>
+<td class="gt_row gt_right" headers="Event gap" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number at risk" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">1,448</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">0</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]Number censored">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CDM name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_right" headers="Time" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="Event gap" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number at risk" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">456</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">1,091</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]Number censored">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="CDM name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_right" headers="Time" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">60</td>
+<td class="gt_row gt_right" headers="Event gap" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number at risk" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">222</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">236</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]Number censored">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CDM name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_right" headers="Time" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">90</td>
+<td class="gt_row gt_right" headers="Event gap" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number at risk" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">104</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">121</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]Number censored">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section></section><section><section id="your-turn" class="title-slide slide level1 center"><h1>Your turn!</h1>
+
+</section><section id="exercise-1---estimate-treatment-adherence-of-aspirin-users" class="slide level2"><h2>Exercise 1 - Estimate treatment adherence of aspirin users</h2>
+<p><strong>Create a cohort of aspirin use and estimate treatment adherence.</strong></p>
+<ul>
+<li class="fragment">How many people are at risk at cohort entry, and how many are left at risk after a month?</li>
+<li class="fragment">Plot the drug discontinuation curve and compare it to the ibuprofen one. If you can, plot both Kaplan-Meier curves in the same survival plot.</li>
+</ul>
+<div class="fragment">
+<p><em>Hint:</em> use <code><a href="https://darwin-eu.github.io/omopgenerics/reference/bind.html">omopgenerics::bind()</a></code> and the <code>colour</code> option in <code>plotSurvival()</code> for the two outcomes.</p>
+</div>
+</section><section id="exercise-1---estimate-treatment-adherence-of-aspirin-users-1" class="slide level2"><h2>Exercise 1 - Estimate treatment adherence of aspirin users</h2>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu">generateIngredientCohortSet</span><span class="op">(</span></span>
+<span>  cdm <span class="op">=</span> <span class="va">cdm</span>,</span>
+<span>  name <span class="op">=</span> <span class="st">"aspirin"</span>,</span>
+<span>  ingredient <span class="op">=</span> <span class="st">"aspirin"</span>,</span>
+<span>  gapEra <span class="op">=</span> <span class="fl">7</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">survivalResultAspirin</span> <span class="op">&lt;-</span> <span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
+<span>  <span class="va">cdm</span>,</span>
+<span>  <span class="st">"aspirin"</span>,</span>
+<span>  <span class="st">"aspirin"</span>,</span>
+<span>  outcomeDateVariable <span class="op">=</span> <span class="st">"cohort_end_date"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">survivalResultAll</span> <span class="op">&lt;-</span> <span class="fu">omopgenerics</span><span class="fu">::</span><span class="fu"><a href="https://darwin-eu.github.io/omopgenerics/reference/bind.html">bind</a></span><span class="op">(</span></span>
+<span>  <span class="va">survivalResult</span>,</span>
+<span>  <span class="va">survivalResultAspirin</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="exercise-1---estimate-treatment-adherence-of-aspirin-users-2" class="slide level2"><h2>Exercise 1 - Estimate treatment adherence of aspirin users</h2>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">riskTable</span><span class="op">(</span><span class="va">survivalResultAll</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="vjozgntaje" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vjozgntaje table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#vjozgntaje thead, #vjozgntaje tbody, #vjozgntaje tfoot, #vjozgntaje tr, #vjozgntaje td, #vjozgntaje th {
+  border-style: none;
+}
+
+#vjozgntaje p {
+  margin: 0;
+  padding: 0;
+}
+
+#vjozgntaje .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #D9D9D9;
+  border-right-style: solid;
+  border-right-width: 3px;
+  border-right-color: #D9D9D9;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: #D9D9D9;
+  border-left-style: solid;
+  border-left-width: 3px;
+  border-left-color: #D9D9D9;
+}
+
+#vjozgntaje .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#vjozgntaje .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#vjozgntaje .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#vjozgntaje .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vjozgntaje .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vjozgntaje .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vjozgntaje .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#vjozgntaje .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#vjozgntaje .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#vjozgntaje .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#vjozgntaje .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#vjozgntaje .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#vjozgntaje .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#vjozgntaje .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vjozgntaje .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#vjozgntaje .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#vjozgntaje .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#vjozgntaje .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vjozgntaje .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#vjozgntaje .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#vjozgntaje .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#vjozgntaje .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vjozgntaje .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#vjozgntaje .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#vjozgntaje .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vjozgntaje .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vjozgntaje .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#vjozgntaje .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vjozgntaje .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#vjozgntaje .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #D9D9D9;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vjozgntaje .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vjozgntaje .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vjozgntaje .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vjozgntaje .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vjozgntaje .gt_left {
+  text-align: left;
+}
+
+#vjozgntaje .gt_center {
+  text-align: center;
+}
+
+#vjozgntaje .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#vjozgntaje .gt_font_normal {
+  font-weight: normal;
+}
+
+#vjozgntaje .gt_font_bold {
+  font-weight: bold;
+}
+
+#vjozgntaje .gt_font_italic {
+  font-style: italic;
+}
+
+#vjozgntaje .gt_super {
+  font-size: 65%;
+}
+
+#vjozgntaje .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#vjozgntaje .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#vjozgntaje .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#vjozgntaje .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#vjozgntaje .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#vjozgntaje .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#vjozgntaje .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#vjozgntaje .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#vjozgntaje div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="CDM-name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">CDM name</th>
+<th rowspan="2" id="Target-cohort" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Target cohort</th>
+<th rowspan="2" id="Outcome-name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Outcome name</th>
+<th rowspan="2" id="Time" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Time</th>
+<th rowspan="2" id="Event-gap" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Event gap</th>
+<th colspan="3" id="spanner-[header_name]Estimate name
+[header_level]Number at risk" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="text-align: center; background-color: #D9D9D9; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="colgroup"><div class="gt_column_spanner">
+Estimate name
+</div></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="[header_name]Estimate-name-[header_level]Number-at-risk" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Number at risk</th>
+<th id="[header_name]Estimate-name-[header_level]Number-events" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Number events</th>
+<th id="[header_name]Estimate-name-[header_level]Number-censored" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Number censored</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: left;" headers="CDM name">Synthea</td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">ibuprofen</td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">ibuprofen</td>
+<td class="gt_row gt_right" headers="Time" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">0</td>
+<td class="gt_row gt_right" headers="Event gap" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number at risk" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">1,448</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">0</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]Number censored">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CDM name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_right" headers="Time" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="Event gap" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number at risk" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">456</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">1,091</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]Number censored">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="CDM name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_right" headers="Time" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">60</td>
+<td class="gt_row gt_right" headers="Event gap" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number at risk" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">222</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">236</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]Number censored">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CDM name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_right" headers="Time" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">90</td>
+<td class="gt_row gt_right" headers="Event gap" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number at risk" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">104</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">121</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]Number censored">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="CDM name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">aspirin</td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">aspirin</td>
+<td class="gt_row gt_right" headers="Time" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">0</td>
+<td class="gt_row gt_right" headers="Event gap" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number at risk" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">1,927</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">0</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]Number censored">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CDM name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_right" headers="Time" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="Event gap" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number at risk" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">349</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">1,651</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]Number censored">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="CDM name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_right" headers="Time" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">60</td>
+<td class="gt_row gt_right" headers="Event gap" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number at risk" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">180</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">176</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]Number censored">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CDM name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_right" headers="Time" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">90</td>
+<td class="gt_row gt_right" headers="Event gap" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">30</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number at risk" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">87</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">100</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]Number censored">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section><section id="exercise-1---estimate-treatment-adherence-of-aspirin-users-3" class="slide level2"><h2>Exercise 1 - Estimate treatment adherence of aspirin users</h2>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResultAll</span>, colour <span class="op">=</span> <span class="st">"outcome"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section></section><section><section id="stratification" class="title-slide slide level1 center"><h1>Stratification</h1>
+
+</section><section id="adding-strata---example" class="slide level2"><h2>Adding strata - Example</h2>
+<div style="margin-bottom: 10px;">
+
+</div>
+<ul>
+<li class="fragment">We can stratify our survival study by any variables available in the target cohort provided. We can use <code>PatientProfiles</code> to add, for instance, demographic information.</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">ibuprofen_strata</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">ibuprofen</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">PatientProfiles</span><span class="fu">::</span><span class="fu"><a href="https://darwin-eu.github.io/PatientProfiles/reference/addAge.html">addAge</a></span><span class="op">(</span></span>
+<span>    ageGroup <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">40</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">41</span>,<span class="fl">70</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">71</span>,<span class="fl">150</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">compute</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"ibuprofen_strata"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cdm</span><span class="op">$</span><span class="va">ibuprofen_strata</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="st">"age"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Source:   SQL [?? x 5]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/Rtmpr5aZiQ/file2142577b9f61.duckdb]
+  cohort_definition_id subject_id cohort_start_date cohort_end_date age_group
+                 &lt;int&gt;      &lt;int&gt; &lt;date&gt;            &lt;date&gt;          &lt;chr&gt;    
+1                    1          6 1976-05-01        1976-06-30      0 to 40  
+2                    1         16 2004-01-21        2004-03-21      0 to 40  
+3                    1        114 1988-08-14        1988-08-28      0 to 40  
+4                    1         40 2018-06-14        2018-07-14      41 to 70 
+5                    1         72 2008-06-19        2008-07-17      41 to 70 
+6                    1         53 1974-05-05        1974-06-04      0 to 40  </code></pre>
+</div>
+</div>
+</div>
+</section><section id="adding-strata---example-1" class="slide level2"><h2>Adding strata - Example</h2>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">survivalResultStrata</span> <span class="op">&lt;-</span> <span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
+<span>   <span class="va">cdm</span>,</span>
+<span>  <span class="st">"ibuprofen_strata"</span>,</span>
+<span>  <span class="st">"ibuprofen_strata"</span>,</span>
+<span>  outcomeDateVariable <span class="op">=</span> <span class="st">"cohort_end_date"</span>,</span>
+<span>  strata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"age_group"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="adding-strata---example-2" class="slide level2"><h2>Adding strata - Example</h2>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResultStrata</span>, colour <span class="op">=</span> <span class="st">"age_group"</span>, riskTable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section></section><section><section id="your-turn-1" class="title-slide slide level1 center"><h1>Your turn!</h1>
+
+</section><section id="exercise-2---stratification" class="slide level2"><h2>Exercise 2 - Stratification</h2>
+<p><strong>Use the same aspirin cohort as before.</strong></p>
+<ul>
+<li class="fragment"><p>Add both sex and age_group information.</p></li>
+<li class="fragment"><p>Estimate treatment adherence and plot all Kaplan-Meier curves in one plot.</p></li>
+</ul></section><section id="exercise-2---stratification-1" class="slide level2"><h2>Exercise 2 - Stratification</h2>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">aspirin_strata</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">aspirin</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">PatientProfiles</span><span class="fu">::</span><span class="fu"><a href="https://darwin-eu.github.io/PatientProfiles/reference/addDemographics.html">addDemographics</a></span><span class="op">(</span></span>
+<span>    ageGroup <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"kids"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">18</span><span class="op">)</span>, <span class="st">"adults"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">19</span>,<span class="fl">150</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">compute</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"aspirin_strata"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">survivalResultStrata</span> <span class="op">&lt;-</span> <span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
+<span>   <span class="va">cdm</span>,</span>
+<span>  <span class="st">"aspirin_strata"</span>,</span>
+<span>  <span class="st">"aspirin_strata"</span>,</span>
+<span>  outcomeDateVariable <span class="op">=</span> <span class="st">"cohort_end_date"</span>,</span>
+<span>  strata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"age_group"</span>, <span class="st">"sex"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"age_group"</span>, <span class="st">"sex"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="exercise-2---stratification-2" class="slide level2"><h2>Exercise 2 - Stratification</h2>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResultStrata</span>, colour <span class="op">=</span> <span class="st">"age_group"</span>, facet <span class="op">=</span> <span class="st">"sex"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section></section><section><section id="additional-input-choices" class="title-slide slide level1 center"><h1>Additional input choices</h1>
+
+</section><section id="lets-play-with-the-parameters-of-the-survival-estimation-function" class="slide level2"><h2>Let’s play with the parameters of the survival estimation function</h2>
+<p>Reminder of all possible ways we can tweak our analysis:</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># don't run</span></span>
+<span><span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
+<span>  cdm <span class="op">=</span> <span class="va">cdm</span>,</span>
+<span>  targetCohortTable <span class="op">=</span> <span class="st">"ibuprofen"</span>,</span>
+<span>  outcomeCohortTable <span class="op">=</span> <span class="st">"ibuprofen"</span>,</span>
+<span>  outcomeDateVariable <span class="op">=</span> <span class="st">"cohort_end_date"</span>,</span>
+<span>  outcomeWashout <span class="op">=</span> <span class="cn">Inf</span>,</span>
+<span>  censorOnCohortExit <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  censorOnDate <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  followUpDays <span class="op">=</span> <span class="cn">Inf</span>,</span>
+<span>  strata <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  eventGap <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>  estimateGap <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  restrictedMeanFollowUp <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  minimumSurvivalDays <span class="op">=</span> <span class="fl">1</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="changing-inputs---example" class="slide level2"><h2>Changing inputs - Example</h2>
+<div style="margin-bottom: 10px;">
+
+</div>
+<p>Let’s change the event gap to a weekly aggregation and display the risk table under the plot.</p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">survivalResultEventGap</span> <span class="op">&lt;-</span> <span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
+<span>   <span class="va">cdm</span>,</span>
+<span>  <span class="st">"ibuprofen"</span>,</span>
+<span>  <span class="st">"ibuprofen"</span>,</span>
+<span>  outcomeDateVariable <span class="op">=</span> <span class="st">"cohort_end_date"</span>,</span>
+<span>  eventGap <span class="op">=</span> <span class="fl">7</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section><section id="changing-inputs---example-1" class="slide level2"><h2>Changing inputs - Example</h2>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResultEventGap</span>, riskTable <span class="op">=</span> <span class="cn">TRUE</span>, riskInterval <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section></section><section><section id="your-turn-2" class="title-slide slide level1 center"><h1>Your turn!</h1>
+
+</section><section id="exercise-3---changing-inputs" class="slide level2"><h2>Exercise 3 - Changing inputs</h2>
+<p><strong>Keep working with the cohort of individuals starting aspirin prescription.</strong></p>
+<ul>
+<li class="fragment">Now estimate survival with a 5-year washout period, instead of considering first events.</li>
+</ul></section><section id="exercise-3---changing-inputs-1" class="slide level2"><h2>Exercise 3 - Changing inputs</h2>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">survivalResultAspirinTuned</span> <span class="op">&lt;-</span> <span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
+<span>   <span class="va">cdm</span>,</span>
+<span>  <span class="st">"aspirin"</span>,</span>
+<span>  <span class="st">"aspirin"</span>,</span>
+<span>  outcomeDateVariable <span class="op">=</span> <span class="st">"cohort_end_date"</span>,</span>
+<span>  outcomeWashout <span class="op">=</span> <span class="fl">1825</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">omopgenerics</span><span class="fu">::</span><span class="fu"><a href="https://darwin-eu.github.io/omopgenerics/reference/bind.html">bind</a></span><span class="op">(</span><span class="va">survivalResultAspirin</span>, <span class="va">survivalResultAspirinTuned</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">tableSurvival</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="wflisylhcd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wflisylhcd table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wflisylhcd thead, #wflisylhcd tbody, #wflisylhcd tfoot, #wflisylhcd tr, #wflisylhcd td, #wflisylhcd th {
+  border-style: none;
+}
+
+#wflisylhcd p {
+  margin: 0;
+  padding: 0;
+}
+
+#wflisylhcd .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #D9D9D9;
+  border-right-style: solid;
+  border-right-width: 3px;
+  border-right-color: #D9D9D9;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: #D9D9D9;
+  border-left-style: solid;
+  border-left-width: 3px;
+  border-left-color: #D9D9D9;
+}
+
+#wflisylhcd .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wflisylhcd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wflisylhcd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wflisylhcd .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wflisylhcd .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wflisylhcd .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wflisylhcd .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wflisylhcd .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wflisylhcd .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wflisylhcd .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wflisylhcd .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wflisylhcd .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wflisylhcd .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wflisylhcd .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wflisylhcd .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wflisylhcd .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wflisylhcd .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wflisylhcd .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wflisylhcd .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wflisylhcd .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wflisylhcd .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wflisylhcd .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wflisylhcd .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wflisylhcd .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wflisylhcd .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wflisylhcd .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wflisylhcd .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wflisylhcd .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wflisylhcd .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wflisylhcd .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #D9D9D9;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wflisylhcd .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wflisylhcd .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wflisylhcd .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wflisylhcd .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wflisylhcd .gt_left {
+  text-align: left;
+}
+
+#wflisylhcd .gt_center {
+  text-align: center;
+}
+
+#wflisylhcd .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wflisylhcd .gt_font_normal {
+  font-weight: normal;
+}
+
+#wflisylhcd .gt_font_bold {
+  font-weight: bold;
+}
+
+#wflisylhcd .gt_font_italic {
+  font-style: italic;
+}
+
+#wflisylhcd .gt_super {
+  font-size: 65%;
+}
+
+#wflisylhcd .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wflisylhcd .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wflisylhcd .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wflisylhcd .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wflisylhcd .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wflisylhcd .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wflisylhcd .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#wflisylhcd .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#wflisylhcd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="CDM-name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">CDM name</th>
+<th rowspan="2" id="Target-cohort" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Target cohort</th>
+<th rowspan="2" id="Outcome-name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Outcome name</th>
+<th rowspan="2" id="Outcome-washout" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Outcome washout</th>
+<th colspan="4" id="spanner-[header_name]Estimate name
+[header_level]Number records" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="text-align: center; background-color: #D9D9D9; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="colgroup"><div class="gt_column_spanner">
+Estimate name
+</div></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="[header_name]Estimate-name-[header_level]Number-records" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Number records</th>
+<th id="[header_name]Estimate-name-[header_level]Number-events" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Number events</th>
+<th id="[header_name]Estimate-name-[header_level]Median-survival-(95%-CI)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Median survival (95% CI)</th>
+<th id="[header_name]Estimate-name-[header_level]Restricted-mean-survival-(95%-CI)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: center; background-color: #E1E1E1; font-weight: bold; border-left-width: 1px; border-left-style: solid; border-left-color: White; border-right-width: 1px; border-right-style: solid; border-right-color: White; border-top-width: 1px; border-top-style: solid; border-top-color: White; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: White;" scope="col">Restricted mean survival (95% CI)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: left;" headers="CDM name">Synthea</td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">aspirin</td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">aspirin</td>
+<td class="gt_row gt_left" headers="Outcome washout" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Inf</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number records" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">1,927</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">1,927</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Median survival (95% CI)" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">14.00 (14.00, 14.00)</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]Restricted mean survival (95% CI)">23.00 (22.00, 23.00)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CDM name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
+<td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Outcome washout" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">1825</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number records" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">3,020</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Number events" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">3,020</td>
+<td class="gt_row gt_right" headers="[header_name]Estimate name
+[header_level]Median survival (95% CI)" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">14.00 (14.00, 14.00)</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Estimate name
+[header_level]Restricted mean survival (95% CI)">25.00 (25.00, 26.00)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section><section id="exercise-3---changing-inputs-2" class="slide level2"><h2>Exercise 3 - Changing inputs</h2>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="fu">omopgenerics</span><span class="fu">::</span><span class="fu"><a href="https://darwin-eu.github.io/omopgenerics/reference/bind.html">bind</a></span><span class="op">(</span><span class="va">survivalResultAspirin</span>, <span class="va">survivalResultAspirinTuned</span><span class="op">)</span>, </span>
+<span>             colour <span class="op">=</span> <span class="st">"outcome_washout"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section><section id="exercise-4---survival-with-different-exposure-and-outcome" class="slide level2"><h2>Exercise 4 - Survival with different exposure and outcome</h2>
+<p>What is the time to first myocardial infraction after starting simvastatin or aspirin treatment, and how does this differ between both prescription drugs?</p>
+</section><section id="exercise-4---mi-after-start-of-simvastatin-or-aspirin" class="slide level2"><h2>Exercise 4 - MI after start of simvastatin or aspirin</h2>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">conceptSetMI</span> <span class="op">&lt;-</span> <span class="fu">CodelistGenerator</span><span class="fu">::</span><span class="fu"><a href="https://darwin-eu.github.io/CodelistGenerator/reference/getCandidateCodes.html">getCandidateCodes</a></span><span class="op">(</span><span class="va">cdm</span>, keywords <span class="op">=</span> <span class="st">"myocardial"</span><span class="op">)</span></span>
+<span><span class="va">mi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"mi"</span> <span class="op">=</span> <span class="va">conceptSetMI</span><span class="op">$</span><span class="va">concept_id</span><span class="op">)</span></span>
+<span><span class="va">cdm</span><span class="op">$</span><span class="va">mi</span> <span class="op">&lt;-</span> <span class="fu">CohortConstructor</span><span class="fu">::</span><span class="fu"><a href="https://ohdsi.github.io/CohortConstructor/reference/conceptCohort.html">conceptCohort</a></span><span class="op">(</span></span>
+<span>  <span class="va">cdm</span>, conceptSet <span class="op">=</span> <span class="va">mi</span>, name <span class="op">=</span> <span class="st">"mi"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu">DrugUtilisation</span><span class="fu">::</span><span class="fu"><a href="https://darwin-eu.github.io/DrugUtilisation/reference/generateIngredientCohortSet.html">generateIngredientCohortSet</a></span><span class="op">(</span></span>
+<span>  <span class="va">cdm</span>, </span>
+<span>  name <span class="op">=</span> <span class="st">"statins"</span>,</span>
+<span>  ingredient <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"simvastatin"</span>, <span class="st">"aspirin"</span><span class="op">)</span>,</span>
+<span>  gapEra <span class="op">=</span> <span class="fl">7</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">survivalStatin</span> <span class="op">&lt;-</span> <span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
+<span>  <span class="va">cdm</span>,</span>
+<span>  <span class="st">"statins"</span>,</span>
+<span>  <span class="st">"mi"</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="exercise-4---mi-after-start-of-simvastatin-or-aspirin-1" class="slide level2"><h2>Exercise 4 - MI after start of simvastatin or aspirin</h2>
+<div class="cell">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalStatin</span>, colour <span class="op">=</span> <span class="st">"target_cohort"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-25-1.png" width="960" class="r-stretch"></section></section><section id="thank-you" class="title-slide slide level1 center"><h1>Thank you!</h1>
+<p><strong>Questions?</strong></p>
 
 
 </section>
-    </div>
+</div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
 <div style="position: relative; width: 100%;">
@@ -159,24 +2808,7 @@ Real World Evidence Summer School 2025
 </div>
 </div></div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../../site_libs/revealjs/plugin/search/search.js"></script><script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -368,8 +3000,42 @@ Real World Evidence Summer School 2025
           RevealZoom
         ]
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
         tabsets.forEach(function(tabset) {
@@ -536,6 +3202,6 @@ Real World Evidence Summer School 2025
         }
       });
       </script>
-    
+
 
 </body></html>
