@@ -22,3 +22,4 @@
 
 - [**DrugUtilisation**](DrugUtilisation/index.qmd)
 - [**CohortSurvival**](CohortSurvival/index.qmd)
+- [**Final remarks**](final_remarks.qmd)
