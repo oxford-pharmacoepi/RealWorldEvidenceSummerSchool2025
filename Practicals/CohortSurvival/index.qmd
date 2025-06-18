@@ -24,4 +24,474 @@ execute:
 editor: visual
 ---
 
-## CohortSurvival
+## Introduction
+
+-   CohortSurvival is a package designed to support descriptive survival studies in R, using data mapped to the OMOP Common Data Model.
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   The code is publicly available in the DARWIN EU's GitHub repository [CohortSurvival](https://github.com/darwin-eu/CohortSurvival).
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   CohortSurvival v1.0.1 is available in [CRAN](https://cran.r-project.org/web/packages/CohortSurvival/CohortSurvival.pdf){.link}.
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   Vignettes with further information can be found in the package [website](https://ohdsi.github.io/CohortSurvival/index.html){.link}.
+
+## How do you use CohortSurvival?
+
+. . .
+
+::: {style="margin-bottom: 15px;"}
+:::
+
+**1) Create a cdm object with the cohorts of interest**
+
+You only need to specify the exposure and the outcome cohort names.
+
+. . .
+
+::: {style="margin-bottom: 25px;"}
+:::
+
+**2) Run the survival estimation**
+
+Add any additional strata or input parameters necessary for your study.
+
+. . .
+
+::: {style="margin-bottom: 25px;"}
+:::
+
+**3) Plot and tabulate the results**
+
+Use the in-built visualisation functions from the package to plot the survival estimates and display the survival summary in a neat table.
+
+## CohortSurvival's main functionality
+
+:::::::::::::: columns
+::: {.column width="10%"}
+:::
+
+:::::: {.column width="40%"}
+::::: bulletbox
+:::: {.fragment .fade-in-then-semi-out}
+::: {layout="[[-1], [1], [-1]]"}
+**Estimate single event survival** *Specify exposure and outcome cohorts.*
+:::
+::::
+:::::
+::::::
+
+::: {.column width="5%"}
+:::
+
+:::::: {.column width="40%"}
+::::: bulletbox
+:::: {.fragment .fade-in-then-semi-out}
+::: {layout="[[-1], [1], [-1]]"}
+**Estimate competing risk survival** *Specify exposure, outcome and competing outcome cohorts.*
+:::
+::::
+:::::
+::::::
+
+::: {.column width="5%"}
+:::
+::::::::::::::
+
+:::::::: columns
+::: {.column width="30%"}
+:::
+
+:::::: {.column width="40%"}
+::::: bulletbox
+:::: {.fragment .fade-in-then-semi-out}
+::: {layout="[[-1], [1], [-1]]"}
+**Do further survival analyses** *Add survival information to the cohort of interest to run survival models using other well-known packages (i.e. survival).*
+:::
+::::
+:::::
+::::::
+::::::::
+
+# Estimate survival
+
+## Create cdm and get cohorts
+
+```{r, echo=FALSE}
+# Load relevant packages (make sure you have the latest versions of all of them)
+library(CDMConnector)
+library(DrugUtilisation)
+library(dplyr)
+library(gt)
+library(CohortSurvival)
+library(ggplot2)
+library(patchwork)
+```
+
+```{r}
+# Download Eunomia 
+requireEunomia()
+
+# Connect to the "database"
+con <- DBI::dbConnect(duckdb::duckdb(), dbdir = eunomiaDir())
+# Create CDM reference object
+cdm <- cdmFromCon(
+  con, 
+  cdmSchema = "main", 
+  writeSchema = "main",
+  writePrefix = "my_study_"
+)
+
+```
+
+## Use estimateSingleSurvival() for treatment adherence
+
+Single event survival estimation function, with all its input parameters.
+
+```{r, eval = FALSE}
+estimateSingleEventSurvival(
+  cdm,
+  targetCohortTable,
+  outcomeCohortTable,
+  outcomeDateVariable = "cohort_start_date",
+  outcomeWashout = Inf,
+  censorOnCohortExit = FALSE,
+  censorOnDate = NULL,
+  followUpDays = Inf,
+  strata = NULL,
+  eventGap = 30,
+  estimateGap = 1,
+  restrictedMeanFollowUp = NULL,
+  minimumSurvivalDays = 1
+)
+```
+
+## Use estimateSingleSurvival() for treatment adherence
+
+Plotting function, with all its input parameters.
+
+```{r, eval = FALSE}
+plotSurvival(
+  result,
+  ribbon = TRUE,
+  facet = NULL,
+  colour = NULL,
+  cumulativeFailure = FALE,
+  riskTable = FALSE,
+  riskTable(30)
+)
+```
+
+## Use estimateSingleSurvival() for treatment adherence
+
+Main tabulating function, with all its input parameters.
+
+```{r, eval = FALSE}
+tableSurvival(
+  x,
+  times = NULL,
+  timeScale = "days",
+  header = c("estimate"),
+  type = "gt",
+  groupColumn = NULL,
+  .options = list()
+)
+```
+
+## Use estimateSingleSurvival() for treatment adherence
+
+In our case, we will study discontinuation of ibuprofen. Therefore, we will use the same cohort as both target and outcome. Additionally, we will need to change `outcomeDateVariable` to `cohort_end_date`.
+
+. . .
+
+```{r}
+cdm <- generateIngredientCohortSet(
+  cdm = cdm,
+  name = "ibuprofen",
+  ingredient = "ibuprofen",
+  gapEra = 7
+)
+
+survivalResult <- estimateSingleEventSurvival(
+  cdm = cdm, 
+  targetCohortTable = "ibuprofen",
+  outcomeCohortTable = "ibuprofen",
+  outcomeDateVariable = "cohort_end_date"
+)
+```
+
+## Use estimateSingleSurvival() for treatment adherence
+
+```{r}
+glimpse(survivalResult, width = 100)
+```
+
+## Use estimateSingleSurvival() for treatment adherence
+
+```{r}
+plotSurvival(survivalResult)
+```
+
+. . .
+
+```{r}
+tableSurvival(survivalResult, times = c(7, 30, 75))
+```
+
+## Use estimateSingleSurvival() for treatment adherence
+
+::: {style="margin-bottom: 20px;"}
+:::
+
+You can also visualise the risk table, with information on number of people at risk, number of events and number of people censored by event timepoint (defined by `eventGap`).
+
+```{r}
+riskTable(survivalResult)
+```
+
+# Your turn!
+
+## Exercise 1 - Estimate treatment adherence of aspirin users
+
+**Create a cohort of aspirin use and estimate treatment adherence.**
+
+-   How many people are at risk at cohort entry, and how many are left at risk after a month?
+-   Plot the drug discontinuation curve and compare it to the ibuprofen one. If you can, plot both Kaplan-Meier curves in the same survival plot.
+
+. . .
+
+*Hint:* use `omopgenerics::bind()` and the `colour` option in `plotSurvival()` for the two outcomes.
+
+## Exercise 1 - Estimate treatment adherence of aspirin users
+
+```{r}
+cdm <- generateIngredientCohortSet(
+  cdm = cdm,
+  name = "aspirin",
+  ingredient = "aspirin",
+  gapEra = 7
+)
+
+survivalResultAspirin <- estimateSingleEventSurvival(
+  cdm,
+  "aspirin",
+  "aspirin",
+  outcomeDateVariable = "cohort_end_date"
+)
+
+survivalResultAll <- omopgenerics::bind(
+  survivalResult,
+  survivalResultAspirin
+)
+```
+
+## Exercise 1 - Estimate treatment adherence of aspirin users
+
+```{r}
+riskTable(survivalResultAll)
+```
+
+## Exercise 1 - Estimate treatment adherence of aspirin users
+
+```{r}
+plotSurvival(survivalResultAll, colour = "outcome")
+```
+
+# Stratification
+
+## Adding strata - Example
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   We can stratify our survival study by any variables available in the target cohort provided. We can use `PatientProfiles` to add, for instance, demographic information.
+
+. . .
+
+```{r}
+cdm$ibuprofen_strata <- cdm$ibuprofen |> 
+  PatientProfiles::addAge(
+    ageGroup = list(c(0,40),c(41,70),c(71,150))
+  ) |>
+  compute(name = "ibuprofen_strata")
+
+cdm$ibuprofen_strata |>
+  dplyr::select(-"age") |>
+  head()
+```
+
+## Adding strata - Example
+
+```{r}
+survivalResultStrata <- estimateSingleEventSurvival(
+   cdm,
+  "ibuprofen_strata",
+  "ibuprofen_strata",
+  outcomeDateVariable = "cohort_end_date",
+  strata = list("age_group")
+)
+```
+
+## Adding strata - Example
+
+```{r, fig.height = 9}
+plotSurvival(survivalResultStrata, colour = "age_group", riskTable = TRUE)
+```
+
+# Your turn!
+
+## Exercise 2 - Stratification
+
+**Use the same aspirin cohort as before.**
+
+-   Add both sex and age_group information.
+
+-   Estimate treatment adherence and plot all Kaplan-Meier curves in one plot.
+
+## Exercise 2 - Stratification
+
+```{r}
+cdm$aspirin_strata <- cdm$aspirin |> 
+  PatientProfiles::addDemographics(
+    ageGroup = list("kids" = c(0,18), "adults" = c(19,150))
+  ) |>
+  compute(name = "aspirin_strata")
+
+survivalResultStrata <- estimateSingleEventSurvival(
+   cdm,
+  "aspirin_strata",
+  "aspirin_strata",
+  outcomeDateVariable = "cohort_end_date",
+  strata = list("age_group", "sex", c("age_group", "sex"))
+)
+```
+
+## Exercise 2 - Stratification
+
+```{r}
+plotSurvival(survivalResultStrata, colour = "age_group", facet = "sex")
+```
+
+# Additional input choices
+
+## Let's play with the parameters of the survival estimation function
+
+Reminder of all possible ways we can tweak our analysis:
+
+```{r, eval = FALSE}
+# don't run
+estimateSingleEventSurvival(
+  cdm = cdm,
+  targetCohortTable = "ibuprofen",
+  outcomeCohortTable = "ibuprofen",
+  outcomeDateVariable = "cohort_end_date",
+  outcomeWashout = Inf,
+  censorOnCohortExit = FALSE,
+  censorOnDate = NULL,
+  followUpDays = Inf,
+  strata = NULL,
+  eventGap = 30,
+  estimateGap = 1,
+  restrictedMeanFollowUp = NULL,
+  minimumSurvivalDays = 1
+)
+```
+
+## Changing inputs - Example
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+Let's change the event gap to a weekly aggregation and display the risk table under the plot.
+
+. . .
+
+```{r}
+survivalResultEventGap <- estimateSingleEventSurvival(
+   cdm,
+  "ibuprofen",
+  "ibuprofen",
+  outcomeDateVariable = "cohort_end_date",
+  eventGap = 7
+)
+```
+
+## Changing inputs - Example
+
+```{r, fig.height = 6}
+plotSurvival(survivalResultEventGap, riskTable = TRUE, riskInterval = 7)
+```
+
+# Your turn!
+
+## Exercise 3 - Changing inputs
+
+**Keep working with the cohort of individuals starting aspirin prescription.**
+
+-   Now estimate survival with a 5-year washout period, instead of considering first events.
+
+## Exercise 3 - Changing inputs
+
+```{r}
+survivalResultAspirinTuned <- estimateSingleEventSurvival(
+   cdm,
+  "aspirin",
+  "aspirin",
+  outcomeDateVariable = "cohort_end_date",
+  outcomeWashout = 1825
+)
+
+omopgenerics::bind(survivalResultAspirin, survivalResultAspirinTuned) |> 
+  tableSurvival()
+```
+
+## Exercise 3 - Changing inputs
+
+```{r}
+plotSurvival(omopgenerics::bind(survivalResultAspirin, survivalResultAspirinTuned), 
+             colour = "outcome_washout")
+```
+
+## Exercise 4 - Survival with different exposure and outcome
+
+What is the time to first myocardial infraction after starting simvastatin or aspirin treatment, and how does this differ between both prescription drugs?
+
+## Exercise 4 - MI after start of simvastatin or aspirin
+
+```{r}
+conceptSetMI <- CodelistGenerator::getCandidateCodes(cdm, keywords = "myocardial")
+mi <- list("mi" = conceptSetMI$concept_id)
+cdm$mi <- CohortConstructor::conceptCohort(
+  cdm, conceptSet = mi, name = "mi"
+)
+
+cdm <- DrugUtilisation::generateIngredientCohortSet(
+  cdm, 
+  name = "statins",
+  ingredient = c("simvastatin", "aspirin"),
+  gapEra = 7
+)
+
+survivalStatin <- estimateSingleEventSurvival(
+  cdm,
+  "statins",
+  "mi"
+)
+```
+
+## Exercise 4 - MI after start of simvastatin or aspirin
+
+```{r}
+plotSurvival(survivalStatin, colour = "target_cohort")
+```
+
+# Thank you!
+
+**Questions?**
