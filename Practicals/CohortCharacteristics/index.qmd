@@ -31,7 +31,8 @@ editor: visual
 ## Let's get started
 
 ```{r, echo = FALSE}
-options("width"=130)
+options("width"=120)
+library(DiagrammeR)
 ```
 
 ```{r, echo = TRUE}
@@ -334,11 +335,9 @@ cdm$new_sinusitis |>
 Another useful function is `plotCohortAttrition` and `summariseCohortAttrition`, it return the attrition flowchart of your cohorts.
 
 ```{r, echo = T, eval = T}
-
 cdm$new_sinusitis |> 
   summariseCohortAttrition(cohortId = 1) |> 
-  plotCohortAttrition()
-
+  plotCohortAttrition(type = "png")
 ```
 
 ## SummariseLargeScaleCharacteristics
@@ -354,7 +353,8 @@ result <- cdm$sinusitis |>
     eventInWindow = "condition_occurrence",
     minimumFrequency = 0.05
   )
-result |> glimpse()
+result |>
+  glimpse()
 ```
 
 ## SummariseLargeScaleCharacteristics
@@ -364,7 +364,8 @@ result |> glimpse()
 `tableLargeScaleCharacteristics` for tidy table
 
 ```{r, echo = T, eval = T}
-result |> tableLargeScaleCharacteristics(topConcepts = 5)
+result |> 
+  tableTopLargeScaleCharacteristics(topConcepts = 5)
 ```
 
 ## SummariseCohortOverlap
@@ -474,12 +475,12 @@ result |> plotCohortTiming(
 ::: {style="margin-bottom: 25px;"}
 :::
 
-:::::::::::::::::: columns
+::: columns
 ::: {.column width="35%"}
 ![](images/hexticker.png){style="right: 50%; top: 50%; height: 500; fig-align: center"}
 :::
 
-:::::::::::::::: {.column width="65%"}
+::: {.column width="65%"}
 ::: {style="margin-top: 135px;"}
 :::
 
@@ -493,37 +494,37 @@ result |> plotCohortTiming(
 ::: {style="margin-bottom: 25px;"}
 :::
 
-:::::::::::: columns
-:::: {.column width="22%"}
+::: columns
+::: {.column width="22%"}
 ::: {style="margin-bottom: 25px;"}
 :::
 
 [**CRAN**](https://cran.r-project.org/web/packages/CohortCharacteristics){style="color: #3a6ea5; text-decoration: underline;"}
-::::
+:::
 
-:::: {.column width="22%"}
+::: {.column width="22%"}
 ::: {style="margin-bottom: 25px;"}
 :::
 
 [**Manual**](https://cran.r-project.org/web/packages/CohortCharacteristics/CohortCharacteristics.pdf){style="color: #3a6ea5; text-decoration: underline; text-align:center"}
-::::
+:::
 
-:::: {.column width="22%"}
+::: {.column width="22%"}
 ::: {style="margin-bottom: 25px;"}
 :::
 
 [**GitHub**](https://github.com/darwin-eu-dev/CohortCharacteristics){style="color: #3a6ea5; text-decoration: underline; text-align:center"}
-::::
+:::
 
-:::: {.column width="22%"}
+::: {.column width="22%"}
 ::: {style="margin-bottom: 25px;"}
 :::
 
 [**Website**](https://darwin-eu-dev.github.io/CohortCharacteristics/){style="color: #3a6ea5; text-decoration: underline; text-align:center"}
-::::
+:::
 
 ::: {.column width="1.2%"}
 :::
-::::::::::::
-::::::::::::::::
-::::::::::::::::::
+:::
+:::
+:::
