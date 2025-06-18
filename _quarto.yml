@@ -27,8 +27,8 @@ website:
         href: setup.qmd
       - text: Practicals
         href: Practicals/index.qmd
-      - text: My first study
-        href: my_first_study.qmd
+      - text: Practical
+        href: practical.qmd
     right:
       - text: W
         href: https://oxford-pharmacoepi.github.io/Oxinfer/
