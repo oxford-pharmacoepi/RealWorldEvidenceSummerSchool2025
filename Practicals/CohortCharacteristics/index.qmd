@@ -34,6 +34,9 @@ editor: visual
 options("width"=120)
 library(DiagrammeR)
 library(DiagrammeRsvg)
+library(rsvg)
+library(grid)
+library(png)
 ```
 
 ```{r, echo = TRUE}
