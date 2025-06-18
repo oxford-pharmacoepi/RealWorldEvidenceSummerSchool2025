@@ -1,16 +1,121 @@
+---
+title: "Final remarks"
+subtitle: "Real World Evidence Summer School 2025"
+format:
+  revealjs: 
+    theme: [simple, ../styleSS25.scss]
+    incremental: true   
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    margin: 0.07
+    code-link: true
+    code-line-numbers: false
+    height: 900
+    width: 1600
+    footer: |
+      <div style="position: relative; width: 100%;">
+        <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2025</div>
+        <div style="position: fixed; top: 20px; right: 20px;"><a href="index.qmd" style="text-decoration: none;">⬅ Back to Practicals</a></div>
+      </div>
+execute:
+  echo: true
+  eval: true
+editor: visual
+---
 
-## Goals
+## What We Promised
 
-## What we covered
+. . .
 
-## Packages website
+<div style="text-align: center;">
+  <img src="images/programming.gif" alt="Programming gif" style="height: 600px;">
+</div>
 
-## Newsletter
+## What We Promised
 
-## Book
+- ~ General R programming ([*R for Data Science*](https://r4ds.hadley.nz))
+- ~ OMOP CDM ([*The Book of OHDSI*](https://ohdsi.github.io/TheBookOfOhdsi/))
+- ~ Epidemiology (Morning sessions)
+- ↑↑↑ How to conduct epidemiological analyses using R in OMOP
 
-## Thanks to all speakers
 
 ## Feedback
 
-## Thank you very much
+We’d love to hear your thoughts!
+
+Please take a moment to fill out the feedback form — especially the questions related to the **Analytics track**.
+
+All feedback is welcome — both positive and critical.  
+We hope the course met your expectations and helped you grow your skills.
+
+## Want more?
+
+Each of the packages we covered this week has its own website with vignettes and documentation to help you go further.
+
+. . .
+
+👉 [**Packages summary**](https://oxford-pharmacoepi.github.io/Oxinfer/packages/summary.html)
+
+. . .
+
+You can explore all the packages we've discussed — and more — on our website.
+
+## Stay connected
+
+Want updates on new packages, methods, and publications?
+
+. . .
+
+Subscribe to our monthly newsletter — just one brief update on the 1st of each month:
+. . .
+
+👉 [**Newsletter**](https://oxford-pharmacoepi.github.io/Oxinfer/packages/newsletter.html)
+
+. . .
+
+Have questions or suggestions?
+Please open a GitHub issue or email us. We welcome contributions to all packages hosted in the [`OHDSI`](https://github.com/OHDSI) organization.
+
+## Bonus resource
+
+We’ve put together a book that complements this week’s course:
+
+. . .
+
+👉 [**Tidy R Programming with OMOP**](https://oxford-pharmacoepi.github.io/Tidy-R-programming-with-OMOP/)
+
+. . .
+
+If you find it helpful, please ⭐ the repository on GitHub — and feel free to open an issue if anything’s unclear. Your feedback helps us improve.
+
+## Course materials
+
+All morning session materials will be shared with you at the end of the course.
+
+The afternoon session materials will remain available online for **two weeks** after the course ends. After that, the website will be taken down and the repository made private. Please download any slides or resources you'd like to keep before then.
+
+## Thanks to All Speakers
+
+. . .
+
+<table style="width:100%; text-align: center;">
+  <tr>
+    <td><img src="https://www.ndorms.ox.ac.uk/team/cecilia-campanile/@@haiku.profiles.portrait/3cea6ad525124e309939536967e7a2dc/@@images/image/w1140?b3eb9e3d-7c46-4865-9ccc-722b6343bb77" width="350"/></td>
+    <td><img src="https://www.ndorms.ox.ac.uk/team/edward-burn/@@haiku.profiles.portrait/8fbaee61a0be4f4dbc4f7cd361fefc36/@@images/image/w1140?025fd3b4-0f11-4c3f-bb69-9699078b7834" width="350"/></td>
+    <td><img src="https://www.ndorms.ox.ac.uk/team/marti-catala-sabate/@@haiku.profiles.portrait/9bb5a30b6c384dcfa014de76a46854e7/@@images/image/w1140?f0625fc8-413a-49a7-a949-110c73ec5633" width="350"/></td>
+    <td><img src="https://www.ndorms.ox.ac.uk/team/mike-du/@@haiku.profiles.portrait/440d77a80c0e4febbea6996b8bfb4ea7/@@images/image/w1140?2d1fa044-1807-4807-9831-2ad155d034f6" width="350"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://www.ndorms.ox.ac.uk/team/marta-alcalde-herraiz/@@haiku.profiles.portrait/dbc27382a34143f5b8c20955defec358/@@images/image/w1140?a164b431-26ab-4b35-86f6-e6024b0d6948" width="350"/></td>
+    <td><img src="https://www.ndorms.ox.ac.uk/team/nuria-mercade-besora/@@haiku.profiles.portrait/fd38ca12ac8542bd9e84c5bdd4c629f9/@@images/image/w1140?59a5c5a1-9176-4820-b87a-5aed09886553" width="350"/></td>
+    <td><img src="https://www.ndorms.ox.ac.uk/team/kim-lopez-guell/@@haiku.profiles.portrait/1f6345dce5934625a5785db65233eb33/@@images/image/w1140?c51db1cf-55b7-42ba-9836-8559b3ccd8ce" width="350"/></td>
+    <td></td>
+  </tr>
+</table>
+
+## Thanks!
+
+Thank you all for this amazing week 😊 
+
+We hope to see you again soon!
