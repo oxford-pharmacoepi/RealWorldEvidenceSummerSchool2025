@@ -4,7 +4,7 @@
 ## Monday
 
 | Time | Session |
-| ----- | ----- |
+| --- | --------- |
 | 13:30-14:00 | Welcome and Set up |
 | 14:00-14:45 | Introduction to OMOP and **CDMConnector** |
 | *14:45-14:55* | *Break* |
@@ -16,7 +16,7 @@
 ## Tuesday
 
 | Time | Session |
-| ----- | ----- |
+| --- | --------- |
 | 13:30-14:10 | Create codelist using **CodelistGenerator** |
 | *14:10-14:20* | *Break* |
 | 14:20-15:05 | Create cohorts using **CohortConstructor** |
@@ -27,7 +27,7 @@
 ## Wednesday
 
 | Time | Session |
-| ----- | ----- |
+| --- | --------- |
 | 13:30-14:20 | Characterise cohorts using **CohortCharacteristics** |
 | *14:20-14:30* | *Break* |
 | 14:30-15:20 | Estimate Incidence and Prevalence using **IncidencePrevalence** |
@@ -37,7 +37,7 @@
 ## Thursday
 
 | Time | Session |
-| ----- | ----- |
+| --- | --------- |
 | 13:30-14:20 | Conducting Drug Utilisation studies with **DrugUtilisation** |
 | *14:20-14:30* | *Break* |
 | 14:30-15:00 | Estimate Survival **CohortSurvival** |

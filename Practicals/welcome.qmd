@@ -26,14 +26,110 @@ editor: visual
 
 ## Welcome
 
-## The OMOP CDM
+![](https://raw.githubusercontent.com/oxford-pharmacoepi/RealWorldEvidenceSummerSchool2025/refs/heads/main/images/lmh.jpg)
 
-## The packages
+## Materials
+
+You can find all the materials of the summer school in the following website: <https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2025/>
+
+<div style="position: relative; height: 800px;">
+  <a href="https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2025/"
+     target="_blank"
+     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;">
+  </a>
+  <iframe src="https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2025/"
+          width="100%" height="600px"
+          style="border:none; position: absolute; top: 0; left: 0; z-index: 1;">
+  </iframe>
+</div>
+
+</iframe>
 
 ## What to expect
 
-## Goals
+. . .
 
-## Schedule
+<div style="text-align: center;">
+  <img src="images/programming.gif" alt="Programming gif" style="height: 600px;">
+</div>
+
+## What to expect
+
+- ~ General R programming ([R for Data Science](https://r4ds.hadley.nz))
+
+- ~ OMOP CDM ([Book of OHDSI](https://ohdsi.github.io/TheBookOfOhdsi/))
+
+- ~ Epidemiology (Morning sessions)
+
+- ↑↑↑ How to conduct epidemiological analyses using R in OMOP
+
+## Schedule - Monday
+
+| Time          | Session                                   |
+|---------------|-------------------------------------------|
+| 13:30-14:00   | Welcome and Set up                        |
+| 14:00-14:45   | Introduction to OMOP and **CDMConnector** |
+| *14:45-14:55* | *Break*                                   |
+| 14:55-15:25   | Character a database using **OmopSketch** |
+| *15:25-15:35* | *Break*                                   |
+| 15:35-15:45   | General practical introduction            |
+| 15:45-16:30   | General practical                         |
+
+## Schedule - Tuesday
+
+| Time          | Session                                           |
+|---------------|---------------------------------------------------|
+| 13:30-14:10   | Create codelist using **CodelistGenerator**       |
+| *14:10-14:20* | *Break*                                           |
+| 14:20-15:05   | Create cohorts using **CohortConstructor**        |
+| *15:05-15:15* | *Break*                                           |
+| 15:15-15:45   | Review codelists and cohorts using **PhenotypeR** |
+| 15:45-16:30   | General practical                                 |
+
+## Schedule - Wednesday
+
+| Time          | Session                                                         |
+|-------------------------|----------------------------------------------|
+| 13:30-14:20   | Characterise cohorts using **CohortCharacteristics**            |
+| *14:20-14:30* | *Break*                                                         |
+| 14:30-15:20   | Estimate Incidence and Prevalence using **IncidencePrevalence** |
+| *15:20-15:30* | *Break*                                                         |
+| 15:30-16:30   | General practical                                               |
+
+## Schedule - Thursday
+
+| Time          | Session                                                      |
+|-------------------------|----------------------------------------------|
+| 13:30-14:20   | Conducting Drug Utilisation studies with **DrugUtilisation** |
+| *14:20-14:30* | *Break*                                                      |
+| 14:30-15:00   | Estimate Survival **CohortSurvival**                         |
+| *15:00-15:10* | *Break*                                                      |
+| 15:30-16:30   | General practical                                            |
+
+## Introductions
+
+- Name
+
+- Job title
+
+- Knowledge of R
+
+- Knowledge of OMOP
+
+- What do you expect from this week?
 
 ## Set up
+
+**Download the project**:
+
+Please download the following project: [download project](https://github.com/oxford-pharmacoepi/AnalyticsTrack2025/archive/refs/heads/main.zip)
+
+or if you know about GitHub you can fork the repository: <https://github.com/oxford-pharmacoepi/AnalyticsTrack2025>
+
+. . .
+
+**Open Project**: open `Presentations/Presentations.Rproj` file with RStudio.
+
+. . .
+
+**Check setup**: open and run the `Setup.R` file that will check that all packages are installed.
