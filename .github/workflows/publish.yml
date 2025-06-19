@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      MOCK_DATASETS_FOLDER: /mock_datasets/
+      MOCK_DATASETS_FOLDER: ./mock_datasets/
 
     steps:
       - name: Check out repository
