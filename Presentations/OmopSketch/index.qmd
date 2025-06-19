@@ -16,7 +16,7 @@ format:
     footer: |
       <div style="position: relative; width: 100%;">
         <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2025</div>
-        <div style="position: absolute; right: 20px; top: -800px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Practicals</a></div>
+        <div style="position: absolute; right: 20px; top: -800px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Presentations</a></div>
       </div>
 execute:
   echo: true
@@ -658,7 +658,7 @@ See the package website to explore all available functionalities — and stay tu
 </div>
 
 <div>
-<a href="https://dpa-pde-oxford.quarto.pub/real-world-evidence-summer-school/Practicals/OmopSketch/index.html#/title-slide" target="_blank">🎞️<br>Presentation</a>
+<a href="https://dpa-pde-oxford.quarto.pub/real-world-evidence-summer-school/Presentations/OmopSketch/index.html#/title-slide" target="_blank">🎞️<br>Presentation</a>
 </div>
 
 :::

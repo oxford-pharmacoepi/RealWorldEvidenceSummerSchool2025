@@ -25,8 +25,8 @@ website:
         href: program.qmd
       - text: Setup
         href: setup.qmd
-      - text: Practicals
-        href: Practicals/index.qmd
+      - text: Presentations
+        href: Presentations/index.qmd
       - text: Practical
         href: practical.qmd
     right:
