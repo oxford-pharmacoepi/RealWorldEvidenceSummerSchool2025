@@ -40,14 +40,15 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Create data folder and download mock datasets
+      - name: Create mock dataset folder
+        run: mkdir -p "$MOCK_DATASETS_FOLDER"
+
+      - name: Download mock datasets
+        shell: Rscript {0}
         run: |
-          mkdir -p "$MOCK_DATASETS_FOLDER"
-          Rscript <<EOF
           omock::downloadMockDataset(datasetName = "GiBleed")
           omock::downloadMockDataset(datasetName = "synthea-covid19-10k")
           omock:::getDrugStrength()
-          EOF
 
       - name: Render Quarto website
         run: quarto render
