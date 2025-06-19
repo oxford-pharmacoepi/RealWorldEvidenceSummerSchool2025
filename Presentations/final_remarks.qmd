@@ -16,7 +16,7 @@ format:
     footer: |
       <div style="position: relative; width: 100%;">
         <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2025</div>
-        <div style="position: fixed; top: 20px; right: 20px;"><a href="index.qmd" style="text-decoration: none;">⬅ Back to Practicals</a></div>
+        <div style="position: fixed; top: 20px; right: 20px;"><a href="index.qmd" style="text-decoration: none;">⬅ Back to Presentations</a></div>
       </div>
 execute:
   echo: true
@@ -68,6 +68,7 @@ Want updates on new packages, methods, and publications?
 . . .
 
 Subscribe to our monthly newsletter — just one brief update on the 1st of each month:
+
 . . .
 
 👉 [**Newsletter**](https://oxford-pharmacoepi.github.io/Oxinfer/packages/newsletter.html)
@@ -88,6 +89,14 @@ We’ve put together a book that complements this week’s course:
 . . .
 
 If you find it helpful, please ⭐ the repository on GitHub — and feel free to open an issue if anything’s unclear. Your feedback helps us improve.
+
+## Youtube channel
+
+We have a YouTube channel with some videos that might be interesting:
+
+. . .
+
+👉 [**YouTube channel**](https://www.youtube.com/@oxinfer)
 
 ## Course materials
 
@@ -116,6 +125,10 @@ The afternoon session materials will remain available online for **two weeks** a
 
 ## Thanks!
 
+. . .
+
 Thank you all for this amazing week 😊 
+
+. . .
 
 We hope to see you again soon!

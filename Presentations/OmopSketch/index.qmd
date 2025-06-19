@@ -16,7 +16,7 @@ format:
     footer: |
       <div style="position: relative; width: 100%;">
         <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2025</div>
-        <div style="position: absolute; right: 20px; top: -800px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Practicals</a></div>
+        <div style="position: fixed; top: 20px; right: 20px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Presentations</a></div>
       </div>
 execute:
   echo: true
@@ -42,12 +42,7 @@ editor: visual
 
 ## Install the latest version of OmopSketch
 
-
-
-
-
 . . .
-
 
 ```{r, eval=FALSE}
 install.packages("OmopSketch")
@@ -81,7 +76,8 @@ cdm
 
 # 1. Snapshot
 
-## General info on your database  
+## General info on your database
+
 . . .
 
 `summariseOmopSnapshot()` function provides a real-time overview of the OMOP database, highlighting key characteristics at a specific moment.
@@ -95,7 +91,7 @@ cdm
 -   **Observation period span:** The full time range covered by the `observation_period` table.
 -   **Source type:** Identifies the origin or type of the data source.
 
-##  `summariseOmopSnapshot()`
+## `summariseOmopSnapshot()`
 
 -   Create the [summarised result](https://darwin-eu-dev.github.io/omopgenerics/articles/summarised_result.html) with the snapshot information
 
@@ -119,7 +115,8 @@ tableOmopSnapshot(snapshot, type = "gt")
 
 # 2. Observation Period
 
-## Summarise the content of your observation period table 
+## Summarise the content of your observation period table
+
 . . .
 
 `summariseObservationPeriod()` function generates essential statistics derived from the **observation_period** table.
@@ -248,6 +245,7 @@ result |>
   plotInObservation(facet = "age_group")
 ```
 :::
+
 ## Your turn: Visualising Observation Trends
 
 . . .
@@ -274,12 +272,13 @@ plotInObservation(result |> dplyr::filter(additional_name != "overall"), facet =
 
 2.  Create the plot using `plotInObservation()`, with:
 
--   `facet = "sex"` → Separate panels by sex 
+-   `facet = "sex"` → Separate panels by sex
 -   `colour = "age_group"` → Different colors for age groups (`0-30`, `31-60`, `61+`)
 
 . . .
 
 <details>
+
 <summary>💡 Click to show the code</summary>
 
 ```{r, eval = FALSE}
@@ -290,8 +289,6 @@ result <- summariseInObservation(cdm$observation_period,
                                  ageGroup = list(c(0,30), c(31,60), c(61, Inf)))
 plotInObservation(result, facet = "sex", colour = "age_group")
 ```
-
-
 
 # 3. Clinical tables characterisation
 
@@ -335,6 +332,7 @@ result <- summariseMissingData(cdm,
 tableMissingData(result, type = "gt")
 ```
 :::
+
 ## Content of the clinical tables
 
 . . .
@@ -446,13 +444,15 @@ plotRecordCount(result, facet = "omop_table", colour = "sex")
 
 2.  Create the plot using `plotRecordCount()`, with:
 
--   `facet = "omop_table"` → Separate panels by table 
+-   `facet = "omop_table"` → Separate panels by table
 -   `colour = "sex"` → Different colors for males and females
 
 . . .
 
 <details>
+
 <summary>💡 Click to show the code</summary>
+
 ```{r, eval=FALSE}
 result <- summariseRecordCount(cdm, omopTableName = c("drug_exposure", "condition_occurrence"),
                                interval = "years",
@@ -537,6 +537,7 @@ tableTopConceptCounts(result, countBy = "record", top = 10, type = "gt")
 Identify the **top 5** concepts in the drug_exposure table based on the number of **subjects**
 
 <center>
+
 ::: {.fragment style="overflow-y: scroll; height: 650px;"}
 ```{r, echo=FALSE}
 result <- summariseConceptIdCounts(cdm, omopTableName = "drug_exposure", countBy = "person")
@@ -551,11 +552,12 @@ tableTopConceptCounts(result, top = 5)
 
 2.  Display the 5 most frequent concept in using `tableTopConceptCounts()`, with:
 
--   `top = 5` → Show the 5 most frequent 
+-   `top = 5` → Show the 5 most frequent
 
 . . .
 
 <details>
+
 <summary>💡 Click to show the code</summary>
 
 ```{r, eval=FALSE}
@@ -563,7 +565,6 @@ result <- summariseConceptIdCounts(cdm, omopTableName = "drug_exposure", countBy
 
 tableTopConceptCounts(result, top = 5)
 ```
-
 
 # 5. Database Characterisation
 
@@ -630,15 +631,10 @@ shinyCharacteristics(result, directory = here::here())
 
 <center>
 
-::: {.stretch}
+::: stretch
+<iframe src="https://dpa-pde-oxford.shinyapps.io/OmopSketchCharacterisation/" width="100%" height="600" frameborder="0" allowfullscreen>
 
-<iframe src="https://dpa-pde-oxford.shinyapps.io/OmopSketchCharacterisation/" 
-        width="100%" 
-        height="600" 
-        frameborder="0"
-        allowfullscreen>
 </iframe>
-
 :::
 
 [Link to Shiny App](https://dpa-pde-oxford.shinyapps.io/OmopSketchCharacterisation/)
@@ -648,23 +644,27 @@ shinyCharacteristics(result, directory = here::here())
 See the package website to explore all available functionalities — and stay tuned for updates!
 
 ::: {style="display: flex; justify-content: center; align-items: center; gap: 40px; text-align: center; margin-top: 30px;"}
-
 <div>
+
 <a href="https://dpa-pde-oxford.shinyapps.io/OmopSketchCharacterisation/" target="_blank">🌐<br>Shiny App</a>
+
 </div>
 
 <div>
+
 <a href="https://ohdsi.github.io/OmopSketch/" target="_blank">📘<br>Documentation</a>
+
 </div>
 
 <div>
-<a href="https://dpa-pde-oxford.quarto.pub/real-world-evidence-summer-school/Practicals/OmopSketch/index.html#/title-slide" target="_blank">🎞️<br>Presentation</a>
-</div>
 
+<a href="https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2025/Practicals/OmopSketch/#/title-slide" target="_blank">🎞️<br>Presentation</a>
+
+</div>
 :::
 
 <br>
 
-<div style="text-align: center; font-size: 1.1em; margin-top: 20px;">
-📧 <a href="mailto:cecilia.campanile@ndorms.ox.ac.uk">cecilia.campanile@ndorms.ox.ac.uk</a>
-</div>
+::: {style="text-align: center; font-size: 1.1em; margin-top: 20px;"}
+📧 <a href="mailto:cecilia.campanile@ndorms.ox.ac.uk">cecilia.campanile\@ndorms.ox.ac.uk</a>
+:::

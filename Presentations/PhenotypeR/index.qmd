@@ -16,7 +16,7 @@ format:
     footer: |
       <div style="position: relative; width: 100%;">
         <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2025</div>
-        <div style="position: absolute; right: 20px; top: -800px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Practicals</a></div>
+        <div style="position: fixed; top: 20px; right: 20px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Presentations</a></div>
       </div>
 execute:
   echo: true
@@ -48,8 +48,8 @@ editor: visual
 ::: {style="margin-bottom: 10px;"}
 :::
 
-::::::: columns
-:::: {.column width="50%"}
+::: columns
+::: {.column width="50%"}
 -   **Database diagnostics**
 
     -   Summarises the databases metadata and the observation period.
@@ -62,9 +62,9 @@ editor: visual
 
     -   Summarises the codelist use associated to our cohort.
     -   `codelistDiagnostics()`
-::::
+:::
 
-:::: {.column width="50%"}
+::: {.column width="50%"}
 -   **Cohort diagnostics**
 
     -   Summarises baseline characteristics, attrition, overlap, and large-scale characteristics. It also allows to compare our results with a matched cohort.
@@ -77,10 +77,11 @@ editor: visual
 
     -   Incidence and prevalence of our cohort in the database.
     -   `populationDiagnostics()`
-::::
-:::::::
+:::
+:::
 
 ## Set of Functions: Phenotype Diagnostics
+
 -   Comprises all the diagnostics that are being offered in this package.
 
 . . .
@@ -108,6 +109,7 @@ shinyDiagnostics(result, directory = here())
 ```
 
 # Run Phenotype Diagnostics - Example
+
 ```{r, eval = FALSE}
 install.packages("PhenotypeR")
 
@@ -156,5 +158,6 @@ result <- phenotypeDiagnostics(cdm$medications,
 shinyDiagnostics(result, here::here())
 ```
 
-# Visualise the results 
+# Visualise the results
+
 See the results in the [shiny app](https://dpa-pde-oxford.shinyapps.io/PhenotypeR_RWESummerSchool/)
