@@ -16,7 +16,7 @@ format:
     footer: |
       <div style="position: relative; width: 100%;">
         <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2025</div>
-        <div style="position: absolute; right: 20px; top: -800px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Presentations</a></div>
+        <div style="position: fixed; top: 20px; right: 20px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Presentations</a></div>
       </div>
 execute:
   echo: true
@@ -68,67 +68,67 @@ Tranform base cohorts to meet study-specific inclusion criteria.
 
 ## Function Sets
 
-:::::::::::::: columns
+::: columns
 ::: {.column width="5%"}
 :::
 
-:::::: {.column width="40%"}
-::::: bulletbox
-:::: {.fragment .fade-in-then-semi-out}
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
 **Base cohorts** *Cohort construction based on clinical concepts or demographics.*
 :::
-::::
-:::::
-::::::
+:::
+:::
+:::
 
 ::: {.column width="5%"}
 :::
 
-:::::: {.column width="40%"}
-::::: bulletbox
-:::: {.fragment .fade-in-then-semi-out}
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
 **Requirements and Filtering** *Demographic restrictions, event presence/absence conditions, and filtering specific records.*
 :::
-::::
-:::::
-::::::
+:::
+:::
+:::
 
 ::: {.column width="5%"}
 :::
-::::::::::::::
+:::
 
-:::::::::::::: columns
+::: columns
 ::: {.column width="5%"}
 :::
 
-:::::: {.column width="40%"}
-::::: bulletbox
-:::: {.fragment .fade-in-then-semi-out}
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
 **Update cohort entry and exit** *Adjusting entry and exit dates to align with study periods, observation windows, or key events.*
 :::
-::::
-:::::
-::::::
+:::
+:::
+:::
 
 ::: {.column width="5%"}
 :::
 
-:::::: {.column width="40%"}
-::::: bulletbox
-:::: {.fragment .fade-in-then-semi-out}
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
 **Transformation and Combination** *Merging, stratifying, collapsing, matching, or intersecting cohorts.*
 :::
-::::
-:::::
-::::::
+:::
+:::
+:::
 
 ::: {.column width="5%"}
 :::
-::::::::::::::
+:::
 
 # Base cohorts
 
@@ -357,8 +357,8 @@ summariseCohortCount(cdm$aspirin) |> tableCohortCount()
 ::: {style="margin-bottom: 10px;"}
 :::
 
-::::::: columns
-:::: {.column width="50%"}
+::: columns
+::: {.column width="50%"}
 -   On demographics
 
     -   `requireDemographics()`
@@ -381,9 +381,9 @@ summariseCohortCount(cdm$aspirin) |> tableCohortCount()
     -   `requireIsLastEntry()`
 
     -   `requireIsEntry()`
-::::
+:::
 
-:::: {.column width="50%"}
+::: {.column width="50%"}
 -   Require presence or absence based on other cohorts, concepts, and tables
 
     -   `requireCohortIntersect()`
@@ -400,8 +400,8 @@ summariseCohortCount(cdm$aspirin) |> tableCohortCount()
     -   `requireInDateRange()`
 
     -   `requireMinCohortCount()`
-::::
-:::::::
+:::
+:::
 
 ## Requirement functions - Example
 
@@ -554,8 +554,8 @@ summariseCohortAttrition(cdm$aspirin_last) |> tableCohortAttrition()
 ::: {style="margin-bottom: 10px;"}
 :::
 
-::::::: columns
-:::: {.column width="50%"}
+::: columns
+::: {.column width="50%"}
 -   Cohort exit
 
     -   `exitAtObservationEnd()`
@@ -574,9 +574,9 @@ summariseCohortAttrition(cdm$aspirin_last) |> tableCohortAttrition()
     -   `entryAtFirstDate()`
 
     -   `entryAtLastDate()`
-::::
+:::
 
-:::: {.column width="50%"}
+::: {.column width="50%"}
 -   Trim start and end dates
 
     -   `trimDemographics()`
@@ -593,8 +593,8 @@ summariseCohortAttrition(cdm$aspirin_last) |> tableCohortAttrition()
     -   `padCohortEnd()`
 
     -   `padCohortStart()`
-::::
-:::::::
+:::
+:::
 
 ## Update cohort entry and exit - Example
 
@@ -655,8 +655,8 @@ summariseCohortAttrition(cdm$ibuprofen_death) |> tableCohortAttrition()
 
 ## Functions for Cohort Transformation and Combination
 
-::::::::: columns
-::::: {.column width="50%"}
+::: columns
+::: {.column width="50%"}
 -   Split cohorts
 
     -   `yearCohorts()`
@@ -680,9 +680,9 @@ summariseCohortAttrition(cdm$ibuprofen_death) |> tableCohortAttrition()
     -   `subsetCohorts()`
 
     -   `sampleCohorts()`
-:::::
+:::
 
-::::: {.column width="50%"}
+::: {.column width="50%"}
 -   Match cohorts
 
     -   `matchCohorts()`
@@ -702,8 +702,8 @@ summariseCohortAttrition(cdm$ibuprofen_death) |> tableCohortAttrition()
     -   `renameCohort()`
 
     -   `copyCohorts()`
-:::::
-:::::::::
+:::
+:::
 
 ## Cohort combinations - Example
 

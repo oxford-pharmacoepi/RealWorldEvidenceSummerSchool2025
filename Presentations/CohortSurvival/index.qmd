@@ -16,7 +16,7 @@ format:
     footer: |
       <div style="position: relative; width: 100%;">
         <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2025</div>
-        <div style="position: absolute; right: 20px; top: -800px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Presentations</a></div>
+        <div style="position: fixed; top: 20px; right: 20px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Presentations</a></div>
       </div>
 execute:
   echo: true
@@ -74,51 +74,51 @@ Use the in-built visualisation functions from the package to plot the survival e
 
 ## CohortSurvival's main functionality
 
-:::::::::::::: columns
+::: columns
 ::: {.column width="10%"}
 :::
 
-:::::: {.column width="40%"}
-::::: bulletbox
-:::: {.fragment .fade-in-then-semi-out}
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
 **Estimate single event survival** *Specify exposure and outcome cohorts.*
 :::
-::::
-:::::
-::::::
+:::
+:::
+:::
 
 ::: {.column width="5%"}
 :::
 
-:::::: {.column width="40%"}
-::::: bulletbox
-:::: {.fragment .fade-in-then-semi-out}
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
 **Estimate competing risk survival** *Specify exposure, outcome and competing outcome cohorts.*
 :::
-::::
-:::::
-::::::
+:::
+:::
+:::
 
 ::: {.column width="5%"}
 :::
-::::::::::::::
+:::
 
-:::::::: columns
+::: columns
 ::: {.column width="30%"}
 :::
 
-:::::: {.column width="40%"}
-::::: bulletbox
-:::: {.fragment .fade-in-then-semi-out}
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
 **Do further survival analyses** *Add survival information to the cohort of interest to run survival models using other well-known packages (i.e. survival).*
 :::
-::::
-:::::
-::::::
-::::::::
+:::
+:::
+:::
+:::
 
 # Estimate survival
 
