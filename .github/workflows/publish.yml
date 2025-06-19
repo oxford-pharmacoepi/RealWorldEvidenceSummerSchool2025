@@ -14,6 +14,9 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
+    env:
+      MOCK_DATASETS_FOLDER: ./mock_datasets/
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -36,6 +39,16 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Create mock dataset folder
+        run: mkdir -p "$MOCK_DATASETS_FOLDER"
+
+      - name: Download mock datasets
+        shell: Rscript {0}
+        run: |
+          omock::downloadMockDataset(datasetName = "GiBleed")
+          omock::downloadMockDataset(datasetName = "synthea-covid19-10k")
+          omock:::getDrugStrength()
 
       - name: Render Quarto website
         run: quarto render
