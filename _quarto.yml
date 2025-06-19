@@ -42,3 +42,10 @@ format:
     toc: true
     theme: cosmo
     search: false
+
+render:
+  - index.qmd
+  - practical.qmd
+  - Analytics track/*.qmd
+  - program.qmd
+  - setup.qmd
