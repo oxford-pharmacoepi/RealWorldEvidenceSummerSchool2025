@@ -52,7 +52,7 @@ jobs:
           omock::isMockDatasetDownloaded()
 
       - name: Render Quarto website
-        run: quarto render --exclude "EpiTrack"
+        run: quarto render
 
       - name: Publish
         if: github.event_name != 'pull_request'
