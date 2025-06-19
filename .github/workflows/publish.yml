@@ -14,6 +14,9 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
+    env:
+      MOCK_DATASETS_FOLDER: ./mock_datasets/
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -44,6 +47,8 @@ jobs:
           omock::downloadMockDataset(datasetName = "GiBleed")
           omock::downloadMockDataset(datasetName = "synthea-covid19-10k")
           omock:::getDrugStrength()
+          omock::mockDatasetsFolder()
+          omock::isMockDatasetDownloaded()
 
       - name: Render Quarto website
         run: quarto render
