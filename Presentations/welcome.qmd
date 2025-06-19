@@ -32,16 +32,13 @@ editor: visual
 
 You can find all the materials of the summer school in the following website: <https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2025/>
 
-<div style="position: relative; height: 800px;">
-  <a href="https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2025/"
+::: {style="position: relative; height: 800px;"}
+<a href="https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2025/"
      target="_blank"
-     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;">
-  </a>
-  <iframe src="https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2025/"
+     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;"> </a> <iframe src="https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2025/"
           width="100%" height="600px"
-          style="border:none; position: absolute; top: 0; left: 0; z-index: 1;">
-  </iframe>
-</div>
+          style="border:none; position: absolute; top: 0; left: 0; z-index: 1;"> </iframe>
+:::
 
 </iframe>
 
@@ -49,19 +46,19 @@ You can find all the materials of the summer school in the following website: <h
 
 . . .
 
-<div style="text-align: center;">
-  <img src="images/programming.gif" alt="Programming gif" style="height: 600px;">
-</div>
+::: {style="text-align: center;"}
+<img src="images/programming.gif" alt="Programming gif" style="height: 600px;"/>
+:::
 
 ## What to expect
 
-- ~ General R programming ([R for Data Science](https://r4ds.hadley.nz))
+-   \~ General R programming ([R for Data Science](https://r4ds.hadley.nz))
 
-- ~ OMOP CDM ([Book of OHDSI](https://ohdsi.github.io/TheBookOfOhdsi/))
+-   \~ OMOP CDM ([Book of OHDSI](https://ohdsi.github.io/TheBookOfOhdsi/))
 
-- ~ Epidemiology (Morning sessions)
+-   \~ Epidemiology (Morning sessions)
 
-- ↑↑↑ How to conduct epidemiological analyses using R in OMOP
+-   ↑↑↑ How to conduct epidemiological analyses using R in OMOP
 
 ## Schedule - Monday
 
@@ -89,7 +86,7 @@ You can find all the materials of the summer school in the following website: <h
 ## Schedule - Wednesday
 
 | Time          | Session                                                         |
-|-------------------------|----------------------------------------------|
+|--------------------------|----------------------------------------------|
 | 13:30-14:20   | Characterise cohorts using **CohortCharacteristics**            |
 | *14:20-14:30* | *Break*                                                         |
 | 14:30-15:20   | Estimate Incidence and Prevalence using **IncidencePrevalence** |
@@ -99,24 +96,12 @@ You can find all the materials of the summer school in the following website: <h
 ## Schedule - Thursday
 
 | Time          | Session                                                      |
-|-------------------------|----------------------------------------------|
+|--------------------------|----------------------------------------------|
 | 13:30-14:20   | Conducting Drug Utilisation studies with **DrugUtilisation** |
 | *14:20-14:30* | *Break*                                                      |
 | 14:30-15:00   | Estimate Survival **CohortSurvival**                         |
 | *15:00-15:10* | *Break*                                                      |
 | 15:30-16:30   | General practical                                            |
-
-## Introductions
-
-- Name
-
-- Job title
-
-- Knowledge of R
-
-- Knowledge of OMOP
-
-- What do you expect from this week?
 
 ## Set up
 
@@ -133,3 +118,15 @@ or if you know about GitHub you can fork the repository: <https://github.com/oxf
 . . .
 
 **Check setup**: open and run the `Setup.R` file that will check that all packages are installed.
+
+## Introductions
+
+-   Name
+
+-   Job title
+
+-   Knowledge of R
+
+-   Knowledge of OMOP
+
+-   What do you expect from this week?
