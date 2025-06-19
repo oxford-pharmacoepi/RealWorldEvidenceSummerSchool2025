@@ -37,6 +37,14 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
+      - name: Download mock datasets
+        shell: Rscript {0}
+        run: |
+          dir.create(Sys.getenv("MOCK_DATASETS_FOLDER"))
+          omock::downloadMockDataset(datasetName = "GiBleed")
+          omock::downloadMockDataset(datasetName = "synthea-covid19-10k")
+          omock:::getDrugStrength()
+
       - name: Render Quarto website
         run: quarto render
 
