@@ -14,9 +14,6 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
-    env:
-      MOCK_DATASETS_FOLDER: ./mock_datasets/
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -39,6 +36,10 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+
+       - name: Export path
+        run: |
+          echo "MOCK_DATASETS_FOLDER=${GITHUB_WORKSPACE}/mock_datasets/" >> $GITHUB_ENV
 
       - name: Download mock datasets
         shell: Rscript {0}
