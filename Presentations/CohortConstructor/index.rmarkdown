@@ -28,6 +28,8 @@ editor: visual
 options(width = 120)
 ```
 
+
+
 ## Introduction
 
 -   CohortConstructor package is designed to support cohort building pipelines in R, using data mapped to the OMOP Common Data Model.
@@ -158,6 +160,8 @@ Tranform base cohorts to meet study-specific inclusion criteria.
 
 -   `deathCohort()`
 
+
+
 ```{r, echo=FALSE, message=FALSE}
 # Load relevant packages
 library(CDMConnector)
@@ -185,6 +189,8 @@ cdm <- cdmFromCon(
 )
 ```
 
+
+
 ## Demographics based - Example
 
 ::: {style="margin-bottom: 15px;"}
@@ -193,6 +199,8 @@ cdm <- cdmFromCon(
 -   Two cohorts, females and males, both aged 18 to 60 years old, with at least 365 days of previous observation in the database.
 
 . . .
+
+
 
 ```{r}
 cdm$age_cohort <- demographicsCohort(
@@ -206,23 +214,33 @@ cdm$age_cohort <- demographicsCohort(
 settings(x = cdm$age_cohort)
 ```
 
+
+
 ## Demographics based - Example
 
 ::: {style="margin-bottom: 20px;"}
 :::
 
+
+
 ```{r}
 cohortCount(cohort = cdm$age_cohort)
 ```
+
+
 
 ::: {style="margin-bottom: 20px;"}
 :::
 
 . . .
 
+
+
 ```{r}
 attrition(x = cdm$age_cohort)
 ```
+
+
 
 ## Demographics based - Example
 
@@ -231,9 +249,13 @@ attrition(x = cdm$age_cohort)
 
 To better visualise the **attrition**, we can use the package `CohortCharacteristics` to create a **formatted table**:
 
+
+
 ```{r}
 cdm$age_cohort |> summariseCohortAttrition() |> tableCohortAttrition()
 ```
+
+
 
 ## Concept based - Example {.incremental:FALSE}
 
@@ -251,6 +273,8 @@ Let's create a cohort of medications that contains two drugs: diclofenac, and ac
 
 . . .
 
+
+
 ```{r}
 drug_codes <- getDrugIngredientCodes(
   cdm = cdm, 
@@ -260,11 +284,15 @@ drug_codes <- getDrugIngredientCodes(
 drug_codes
 ```
 
+
+
 ## Concept based - Example {.incremental:FALSE}
 
 2)  Create concept based cohorts
 
 . . .
+
+
 
 ```{r}
 cdm$medications <- conceptCohort(
@@ -276,6 +304,8 @@ cdm$medications <- conceptCohort(
 settings(x = cdm$medications)
 ```
 
+
+
 ## Concept based - Example
 
 ::: {style="margin-bottom: 15px;"}
@@ -284,6 +314,8 @@ settings(x = cdm$medications)
 -   Attrition
 
 . . .
+
+
 
 ```{r, echo=FALSE}
 result <- cdm$medications |> 
@@ -295,6 +327,8 @@ result |>
 )
 ```
 
+
+
 ## Concept based - Example
 
 ::: {style="margin-bottom: 15px;"}
@@ -304,9 +338,13 @@ result |>
 
 . . .
 
+
+
 ```{r}
 attr(cdm$medications, "cohort_codelist")
 ```
+
+
 
 # Your turn!
 
@@ -314,6 +352,8 @@ attr(cdm$medications, "cohort_codelist")
 
 ::: {style="margin-bottom: 15px;"}
 :::
+
+
 
 ```{r, eval=FALSE}
 # Load relevant packages
@@ -325,7 +365,6 @@ library(dplyr)
 library(DBI)
 library(duckdb)
 ```
-
 
 ```{r, eval=FALSE}
 # Download Eunomia 
@@ -343,6 +382,8 @@ cdm <- cdmFromCon(
 )
 ```
 
+
+
 ## Exercise 1 - Base cohorts
 
 ::: {style="margin-bottom: 15px;"}
@@ -354,14 +395,20 @@ cdm <- cdmFromCon(
 
 . . .
 
+
+
 ```{r, echo=FALSE}
 aspirin <- getDrugIngredientCodes(cdm = cdm, name  = "aspirin", nameStyle = "{concept_name}")
 cdm$aspirin <- conceptCohort(cdm = cdm, conceptSet = aspirin, name = "aspirin")
 summariseCohortCount(cohort = cdm$aspirin) |> tableCohortCount()
 ```
 
+
+
 <details>
   <summary>💡 Click to see solution</summary> 
+
+
 ```{r, eval=FALSE}
 aspirin <- getDrugIngredientCodes(
   cdm = cdm, name  = "aspirin", nameStyle = "{concept_name}"
@@ -369,6 +416,8 @@ aspirin <- getDrugIngredientCodes(
 cdm$aspirin <- conceptCohort(cdm = cdm, conceptSet = aspirin, name = "aspirin")
 summariseCohortCount(cohort = cdm$aspirin) |> tableCohortCount()
 ```
+
+
 </details>
 
 # Requirements and Filtering
@@ -441,6 +490,8 @@ summariseCohortCount(cohort = cdm$aspirin) |> tableCohortCount()
 
 . . .
 
+
+
 ```{r}
 cdm$medications_requirement <- cdm$medications |> 
   requireIsFirstEntry(name = "medications_requirement") |> 
@@ -451,12 +502,16 @@ cdm$medications_requirement <- cdm$medications |>
   )
 ```
 
+
+
 ## Requirement functions - Example
 
 ::: {style="margin-bottom: 10px;"}
 :::
 
 **Attrition Acetaminophen**
+
+
 
 ```{r, echo=FALSE}
 result <- cdm$medications_requirement |> 
@@ -467,6 +522,8 @@ result |>
   hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
 )
 ```
+
+
 
 
 ## Requirement functions - Example
@@ -478,6 +535,8 @@ result |>
 
 . . .
 
+
+
 ```{r}
 cdm$medications_requirement <- cdm$medications_requirement |> 
   requireTableIntersect(
@@ -487,12 +546,16 @@ cdm$medications_requirement <- cdm$medications_requirement |>
   )
 ```
 
+
+
 ## Requirement functions - Example
 
 ::: {style="margin-bottom: 10px;"}
 :::
 
 **Attrition Acetaminophen**
+
+
 
 ```{r, echo=FALSE}
 result <- cdm$medications_requirement |> 
@@ -503,6 +566,8 @@ result |>
   hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
 )
 ```
+
+
 
 
 # Your turn!
@@ -521,6 +586,8 @@ result |>
 
 <details>
   <summary>💡 Click to see solution</summary> 
+
+
 ```{r, eval=FALSE}
 amoxicillin <- getDrugIngredientCodes(
   cdm = cdm, name  = "amoxicillin", nameStyle = "{concept_name}"
@@ -535,11 +602,15 @@ cdm$aspirin_last <- cdm$aspirin |>
   )
 summariseCohortAttrition(cdm$aspirin_last) |> tableCohortAttrition()
 ```
+
+
 </details>
 
 *Move to the next slide to see the attrition.*
 
 ## Exercise 2 - Requirement and filtering
+
+
 
 ```{r, echo=FALSE}
 amoxicillin <- getDrugIngredientCodes(cdm = cdm, name  = "amoxicillin", nameStyle = "{concept_name}")
@@ -553,6 +624,8 @@ cdm$aspirin_last <- cdm$aspirin |>
   )
 summariseCohortAttrition(cdm$aspirin_last) |> tableCohortAttrition()
 ```
+
+
 
 # Update cohort entry and exit
 
@@ -618,6 +691,8 @@ summariseCohortAttrition(cdm$aspirin_last) |> tableCohortAttrition()
 
 . . .
 
+
+
 ```{r}
 cdm$medications_trimmed <- cdm$medications |>
   trimDemographics(
@@ -627,10 +702,14 @@ cdm$medications_trimmed <- cdm$medications |>
   )
 ```
 
+
+
 ## Update cohort entry and exit - Example
 
 ::: {style="margin-bottom: 10px;"}
 :::
+
+
 
 ```{r, echo=FALSE}
 result <- cdm$medications_trimmed |> 
@@ -642,6 +721,8 @@ result |>
 )
 ```
 
+
+
 # Your turn!
 
 ## Exercise 3 - Update cohort entry and exit
@@ -652,6 +733,8 @@ result |>
 
 <details>
   <summary>💡 Click to see solution</summary> 
+
+
 ```{r, eval=FALSE}
 ibuprofen <- getDrugIngredientCodes(
   cdm = cdm, name  = "ibuprofen", nameStyle = "{concept_name}"
@@ -664,12 +747,16 @@ cdm$ibuprofen_death <- cdm$ibuprofen |>
 
 summariseCohortAttrition(cdm$ibuprofen_death) |> tableCohortAttrition()
 ```
+
+
 </details>
 
 *Move to the next slide to see the attrition.*
 
 
 ## Exercise 3 - Update cohort entry and exit
+
+
 
 ```{r, echo=FALSE}
 ibuprofen <- getDrugIngredientCodes(cdm = cdm, name  = "ibuprofen", nameStyle = "{concept_name}")
@@ -678,6 +765,8 @@ cdm$ibuprofen_death <- cdm$ibuprofen |>
   exitAtDeath(requireDeath = TRUE, name = "ibuprofen_death")
 summariseCohortAttrition(cdm$ibuprofen_death) |> tableCohortAttrition()
 ```
+
+
 
 # Transformation and Combination
 
@@ -749,6 +838,8 @@ summariseCohortAttrition(cdm$ibuprofen_death) |> tableCohortAttrition()
 ::: {style="margin-bottom: 10px;"}
 :::
 
+
+
 ```{r}
 cdm$medications_collapsed <- cdm$medications |>
   collapseCohorts(gap = 7, name = "medications_collapsed")
@@ -763,6 +854,8 @@ result |>
   hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
 )
 ```
+
+
 
 ## Cohort combinations - Example
 
@@ -780,12 +873,16 @@ result |>
 ::: {style="margin-bottom: 10px;"}
 :::
 
+
+
 ```{r}
 cdm$intersection <- cdm$medications_collapsed |>
   intersectCohorts(name = "intersection")
 
 settings(x = cdm$intersection)
 ```
+
+
 
 # Your turn!
 
@@ -799,18 +896,26 @@ settings(x = cdm$intersection)
 
 <details>
   <summary>💡 Click to see solution</summary> 
+
+
 ```{r, eval=FALSE}
 cdm$ibuprofen_years <- cdm$ibuprofen |>
   yearCohorts(years = 1975:1980, name = "ibuprofen_years")
 summariseCohortCount(cohort = cdm$ibuprofen_years) |> tableCohortCount()
 ```
+
+
 </details>
+
+
 
 ```{r, echo=FALSE}
 cdm$ibuprofen_years <- cdm$ibuprofen |>
   yearCohorts(years = 1975:1980, name = "ibuprofen_years")
 summariseCohortCount(cohort = cdm$ibuprofen_years) |> tableCohortCount()
 ```
+
+
 
 ## [Optional] Exercise 5 
 
@@ -834,6 +939,8 @@ summariseCohortCount(cohort = cdm$ibuprofen_years) |> tableCohortCount()
 
 *Move to the next slide to see the solution.*
 
+
+
 ```{r, echo=FALSE}
 amoxicillin <- getDrugIngredientCodes(
   cdm = cdm, 
@@ -867,9 +974,13 @@ summariseCohortAttrition(cdm$diclofenac) |> tableCohortAttrition()
 ```
 
 
+
+
 ## [Optional] Exercise 5
 <details>
   <summary>💡 Click to see solution</summary> 
+
+
 ```{r, eval=FALSE}
 amoxicillin <- getDrugIngredientCodes(
   cdm = cdm, 
@@ -901,6 +1012,8 @@ cdm$diclofenac <- conceptCohort(
 
 summariseCohortAttrition(cdm$diclofenac) |> tableCohortAttrition()
 ```
+
+
 </details>
 
 ## CohortConstructor
@@ -922,4 +1035,5 @@ summariseCohortAttrition(cdm$diclofenac) |> tableCohortAttrition()
 </div>
 
 </div>
+
 
