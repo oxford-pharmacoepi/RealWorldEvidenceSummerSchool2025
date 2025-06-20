@@ -26,6 +26,10 @@ editor: visual
 
 ## Introduction
 
+```{r, echo=FALSE}
+options(width = 120)
+```
+
 -   CohortSurvival is a package designed to support descriptive survival studies in R, using data mapped to the OMOP Common Data Model.
 
 ::: {style="margin-bottom: 10px;"}
@@ -127,12 +131,16 @@ Use the in-built visualisation functions from the package to plot the survival e
 ```{r, echo=FALSE}
 # Load relevant packages (make sure you have the latest versions of all of them)
 library(CDMConnector)
+library(DBI)
+library(duckdb)
 library(DrugUtilisation)
 library(dplyr)
 library(gt)
 library(CohortSurvival)
 library(ggplot2)
 library(patchwork)
+library(omopgenerics)
+library(PatientProfiles)
 ```
 
 ```{r}
@@ -140,7 +148,7 @@ library(patchwork)
 requireEunomia()
 
 # Connect to the "database"
-con <- DBI::dbConnect(duckdb::duckdb(), dbdir = eunomiaDir())
+con <- dbConnect(duckdb(), dbdir = eunomiaDir())
 # Create CDM reference object
 cdm <- cdmFromCon(
   con, 
@@ -267,9 +275,13 @@ riskTable(survivalResult)
 
 . . .
 
-*Hint:* use `omopgenerics::bind()` and the `colour` option in `plotSurvival()` for the two outcomes.
+*Hint:* use `bind()` and the `colour` option in `plotSurvival()` for the two outcomes.
 
 ## Exercise 1 - Estimate treatment adherence of aspirin users
+
+<details>
+
+<summary>Click to see solution</summary>
 
 ```{r}
 cdm <- generateIngredientCohortSet(
@@ -286,23 +298,37 @@ survivalResultAspirin <- estimateSingleEventSurvival(
   outcomeDateVariable = "cohort_end_date"
 )
 
-survivalResultAll <- omopgenerics::bind(
+survivalResultAll <- bind(
   survivalResult,
   survivalResultAspirin
 )
 ```
 
+</details>
+
 ## Exercise 1 - Estimate treatment adherence of aspirin users
+
+<details>
+
+<summary>Click to see solution</summary>
 
 ```{r}
 riskTable(survivalResultAll)
 ```
 
+</details>
+
 ## Exercise 1 - Estimate treatment adherence of aspirin users
+
+<details>
+
+<summary>Click to see solution</summary>
 
 ```{r}
 plotSurvival(survivalResultAll, colour = "outcome")
 ```
+
+</details>
 
 # Stratification
 
@@ -317,13 +343,13 @@ plotSurvival(survivalResultAll, colour = "outcome")
 
 ```{r}
 cdm$ibuprofen_strata <- cdm$ibuprofen |> 
-  PatientProfiles::addAge(
+  addAge(
     ageGroup = list(c(0,40),c(41,70),c(71,150))
   ) |>
   compute(name = "ibuprofen_strata")
 
 cdm$ibuprofen_strata |>
-  dplyr::select(-"age") |>
+  select(-"age") |>
   head()
 ```
 
@@ -357,9 +383,13 @@ plotSurvival(survivalResultStrata, colour = "age_group", riskTable = TRUE)
 
 ## Exercise 2 - Stratification
 
+<details>
+
+<summary>Click to see solution</summary>
+
 ```{r}
 cdm$aspirin_strata <- cdm$aspirin |> 
-  PatientProfiles::addDemographics(
+  addDemographics(
     ageGroup = list("kids" = c(0,18), "adults" = c(19,150))
   ) |>
   compute(name = "aspirin_strata")
@@ -373,11 +403,19 @@ survivalResultStrata <- estimateSingleEventSurvival(
 )
 ```
 
+</details>
+
 ## Exercise 2 - Stratification
+
+<details>
+
+<summary>Click to see solution</summary>
 
 ```{r}
 plotSurvival(survivalResultStrata, colour = "age_group", facet = "sex")
 ```
+
+</details>
 
 # Additional input choices
 
@@ -439,6 +477,10 @@ plotSurvival(survivalResultEventGap, riskTable = TRUE, riskInterval = 7)
 
 ## Exercise 3 - Changing inputs
 
+<details>
+
+<summary>Click to see solution</summary>
+
 ```{r}
 survivalResultAspirinTuned <- estimateSingleEventSurvival(
    cdm,
@@ -448,16 +490,24 @@ survivalResultAspirinTuned <- estimateSingleEventSurvival(
   outcomeWashout = 1825
 )
 
-omopgenerics::bind(survivalResultAspirin, survivalResultAspirinTuned) |> 
+bind(survivalResultAspirin, survivalResultAspirinTuned) |> 
   tableSurvival()
 ```
 
+</details>
+
 ## Exercise 3 - Changing inputs
 
+<details>
+
+<summary>Click to see solution</summary>
+
 ```{r}
-plotSurvival(omopgenerics::bind(survivalResultAspirin, survivalResultAspirinTuned), 
+plotSurvival(bind(survivalResultAspirin, survivalResultAspirinTuned), 
              colour = "outcome_washout")
 ```
+
+</details>
 
 ## Exercise 4 - Survival with different exposure and outcome
 
@@ -465,14 +515,22 @@ What is the time to first myocardial infraction after starting simvastatin or as
 
 ## Exercise 4 - MI after start of simvastatin or aspirin
 
+<details>
+
+<summary>Click to see solution</summary>
+
 ```{r}
-conceptSetMI <- CodelistGenerator::getCandidateCodes(cdm, keywords = "myocardial")
+
+library(CodelistGenerator)
+library(CohortConstructor)
+
+conceptSetMI <- getCandidateCodes(cdm, keywords = "myocardial")
 mi <- list("mi" = conceptSetMI$concept_id)
-cdm$mi <- CohortConstructor::conceptCohort(
+cdm$mi <- conceptCohort(
   cdm, conceptSet = mi, name = "mi"
 )
 
-cdm <- DrugUtilisation::generateIngredientCohortSet(
+cdm <- generateIngredientCohortSet(
   cdm, 
   name = "statins",
   ingredient = c("simvastatin", "aspirin"),
@@ -486,12 +544,36 @@ survivalStatin <- estimateSingleEventSurvival(
 )
 ```
 
+</details>
+
 ## Exercise 4 - MI after start of simvastatin or aspirin
+
+<details>
+
+<summary>Click to see solution</summary>
 
 ```{r}
 plotSurvival(survivalStatin, colour = "target_cohort")
 ```
 
+</details>
+
 # Thank you!
 
 **Questions?**
+
+## CohortSurvival
+
+::::: {style="display: flex; align-items: center; justify-content: space-between;"}
+::: {style="flex: 1;"}
+👉 [**Packages website**](https://darwin-eu.github.io/CohortSurvival/)\
+👉 [**CRAN link**](https://cran.r-project.org/package=CohortSurvival)\
+👉 [**Manual**](https://cran.r-project.org/web/packages/CohortSurvival/CohortSurvival.pdf)
+
+📧 <a href="mailto:kim.lopez@spc.ox.ac.uk">kim.lopez\@spc.ox.ac.uk</a>
+:::
+
+::: {style="flex: 1; text-align: center;"}
+<img src="https://github.com/darwin-eu/CohortSurvival/blob/main/man/figures/logo.png?raw=true" width="600"/>
+:::
+:::::
