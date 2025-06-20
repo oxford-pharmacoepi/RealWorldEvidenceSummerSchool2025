@@ -1,6 +1,6 @@
 ---
 title: "CohortCharacteristics"
-subtitle: "Characterise cohorts"
+subtitle: "A R package to Characterise cohorts"
 format:
   revealjs: 
     theme: [simple, ../../styleSS25.scss]
@@ -30,6 +30,8 @@ editor: visual
 
 ## Let's get started
 
+First we going to need to create some cohorts for this session. Below's code create three different cohort tables from the synthetic database: sinusitis, new_sinusitis, conditions and medications and saved it inside the `cdm` object.
+
 ```{r, echo = FALSE}
 options("width"=120)
 library(DiagrammeR)
@@ -39,6 +41,21 @@ library(grid)
 library(png)
 ```
 
+```{r, echo=FALSE}
+    library(omock)
+    library(duckdb)
+    library(CDMConnector)
+
+    datasetName <- "GiBleed"
+    dbdir <- here::here(paste0(datasetName, ".duckdb"))
+    con <- dbConnect(drv = duckdb(dbdir = dbdir))
+
+    datasetName <- "GiBleed"
+    cdm <- mockCdmFromDataset(datasetName = datasetName)
+    insertCdmTo(cdm = cdm, to = dbSource(con = con, writeSchema = "main"))
+    dbDisconnect(conn = con)
+```
+
 ```{r, echo = TRUE}
 library(duckdb)
 library(CDMConnector)
@@ -46,10 +63,17 @@ library(PatientProfiles)
 library(dplyr)
 library(ggplot2)
 
-requireEunomia()
+datasetName <- "GiBleed"
+dbdir <- here::here(paste0(datasetName, ".duckdb"))
+con <- dbConnect(drv = duckdb(dbdir = dbdir))
 
-con <- dbConnect(duckdb(), eunomiaDir())
-cdm <- cdmFromCon(con = con, cdmSchema = "main", writeSchema = "main")
+cdm <- cdmFromCon(
+  con = con,
+  cdmSchema = "main",
+  writeSchema = "main",
+  writePrefix = "test_", # customise with your package
+  cdmName = datasetName
+)
 cdm <- generateConceptCohortSet(
   cdm = cdm,
   name = "sinusitis",
@@ -160,7 +184,7 @@ To get summarise characteristics for your cohort, pipe in below to your cohort t
 ```{r, echo = T, eval = T}
 library(CohortCharacteristics)
 
- results <- cdm$new_sinusitis |>
+ results <- cdm$sinusitis |>
   summariseCharacteristics()
 
 ```
@@ -207,23 +231,54 @@ results |> tableCharacteristics(header = "cohort_name")
 
 ## ageGroup example
 
-```{r, echo = T, eval = T}
+```{r, echo = T, eval = F}
 
-cdm$new_sinusitis |>
-  summariseCharacteristics(ageGroup = list(c(0,10),c(11,18))) |>
+cdm$sinusitis |>
+  summariseCharacteristics(ageGroup = list(c(0,10),c(11,18), c(19,150))) |>
   tableCharacteristics(header = "cohort_name")
+
+```
+## ageGroup example
+
+```{r, echo = F, eval = T, results = 'asis'}
+
+res <- cdm$sinusitis |>
+  summariseCharacteristics(ageGroup = list(c(0,10),c(11,18), c(19,150))) |>
+  tableCharacteristics(header = "cohort_name")
+
+# Wrap the result in a scrollable div
+cat("<div style='max-height:400px; overflow-y:auto; border:1px solid #ccc; padding:10px;'>")
+print(res)
+cat("</div>")
 
 ```
 
 ## strata example
 
-```{r, echo = T, eval = T}
+```{r, echo = T, eval = F}
 
-cdm$new_sinusitis |> 
-  addAge(ageGroup = list(c(0,10),c(11,18))) |>
+cdm$sinusitis |> 
+  addAge(ageGroup = list(c(0,10),c(11,18), c(19,150))) |>
   summariseCharacteristics(cohortId = 1,
                            strata = list("age_group")) |>
   tableCharacteristics(header = "age_group")
+
+```
+## strata example
+
+```{r, echo = F, eval = T, results = 'asis'}
+
+
+res <- cdm$sinusitis |> 
+  addAge(ageGroup = list(c(0,10),c(11,18), c(19,150))) |>
+  summariseCharacteristics(cohortId = 1,
+                           strata = list("age_group")) |>
+  tableCharacteristics(header = "age_group")
+
+# Wrap the result in a scrollable div
+cat("<div style='max-height:400px; overflow-y:auto; border:1px solid #ccc; padding:10px;'>")
+print(res)
+cat("</div>")
 
 ```
 
@@ -235,7 +290,7 @@ you can get the count/flag/date//days with other tables
 
 ```{r, echo = T, eval = F}
 
-cdm$new_sinusitis |>
+cdm$sinusitis |>
   summariseCharacteristics(
     tableIntersectCount = list(
       "Number of visits prior year" = list(
@@ -261,7 +316,8 @@ you can get the count/flag/date//days with other tables
 
 ```{r, echo = F, eval = T, results = 'asis'}
 
- res <- cdm$new_sinusitis |>
+
+ res <- cdm$sinusitis |>
   summariseCharacteristics(
     tableIntersectCount = list(
       "Number of visits prior year" = list(
@@ -286,6 +342,22 @@ cat("</div>")
 
 ```
 
+## Your turn
+
+Can you characterise the new_sinusitis table in the cdm object and see whats the different in terms of patient characteristics compare to the sinusitis cohort?
+
+<details>
+
+<summary>💡 Click to see solution</summary>
+
+```{r, eval = FALSE}
+cdm$new_sinusitis |>
+  summariseCharacteristics() |>
+  tableCharacteristics(header = "cohort_name")
+```
+
+</details>
+
 ## Plots
 
 . . .
@@ -294,7 +366,7 @@ you can obtain a plot of the variable you want from the summariseCharacteristics
 
 ```{r, echo = T, eval = T}
 
-cdm$new_sinusitis |>
+cdm$sinusitis |>
   summariseCharacteristics() |>
   filter(variable_name == "Age" & strata_level == "overall") |>
   plotCharacteristics(plotStyle = "boxplot")
@@ -305,7 +377,7 @@ cdm$new_sinusitis |>
 
 ```{r, echo = T, eval = T}
 
-cdm$new_sinusitis |>
+cdm$sinusitis |>
   summariseCharacteristics() |>
   filter(variable_name == "Age" & estimate_name == "median") |>
   plotCharacteristics(plotStyle = "barplot", 
@@ -322,7 +394,7 @@ these are ggplot object and are compatible with the usual ggplot command for edi
 
 ```{r, echo = T, eval = T}
 
-cdm$new_sinusitis |>
+cdm$sinusitis |>
   summariseCharacteristics() |>
   filter(variable_name == "Age" & estimate_name == "median") |>
   plotCharacteristics(plotStyle = "barplot", 
@@ -339,10 +411,29 @@ cdm$new_sinusitis |>
 Another useful function is `plotCohortAttrition` and `summariseCohortAttrition`, it return the attrition flowchart of your cohorts.
 
 ```{r, echo = T, eval = T}
-cdm$new_sinusitis |> 
+cdm$sinusitis |> 
   summariseCohortAttrition(cohortId = 1) |> 
   plotCohortAttrition(type = "png")
 ```
+
+## Your turn
+
+Can you create a bar plot for gender the new_sinusitis table in the cdm object?
+
+<details>
+
+<summary>💡 Click to see solution</summary>
+
+```{r, eval = FALSE}
+cdm$new_sinusitis |>
+  summariseCharacteristics() |>
+  filter(variable_name == "Sex" & estimate_name == "median") |>
+  plotCharacteristics(plotStyle = "barplot", 
+                      facet = "cohort_name",
+                      colour = "cdm_name")
+```
+
+</details>
 
 ## SummariseLargeScaleCharacteristics
 
@@ -471,64 +562,18 @@ result |> plotCohortTiming(
 
 ```
 
-#  {.end-slide}
+## CohortCharacteristics
 
-::: {style="margin-bottom: 25px;"}
-:::
+::::: {style="display: flex; align-items: center; justify-content: space-between;"}
+::: {style="flex: 1;"}
+👉 [**Packages website**](https://darwin-eu-dev.github.io/CohortCharacteristics)\
+👉 [**CRAN link**](https://cran.r-project.org/web/packages/CohortCharacteristics)\
+👉 [**Manual**](https://cran.r-project.org/web/packages/CohortCharacteristics/CohortCharacteristics.pdf)
 
-::: {style="margin-bottom: 25px;"}
-:::
-
-::: columns
-::: {.column width="35%"}
-![](images/hexticker.png){style="right: 50%; top: 50%; height: 500; fig-align: center"}
+📧 <a href="mailto:marti.catalasabate@ndorms.ox.ac.uk">marti.catalasabate\@ndorms.ox.ac.uk</a>
 :::
 
-::: {.column width="65%"}
-::: {style="margin-top: 135px;"}
+::: {style="flex: 1; text-align: center;"}
+<img src="https://github.com/darwin-eu/CohortCharacteristics/blob/main/man/figures/logo.png?raw=true" width="600"/>
 :::
-
-[**CohortCharacteristics**]{style="font-size: 100px;"}
-
-::: {style="margin-bottom: 25px;"}
-:::
-
-[**The end**]{style="font-size: 60px; text-align: left; color: grey"}
-
-::: {style="margin-bottom: 25px;"}
-:::
-
-::: columns
-::: {.column width="22%"}
-::: {style="margin-bottom: 25px;"}
-:::
-
-[**CRAN**](https://cran.r-project.org/web/packages/CohortCharacteristics){style="color: #3a6ea5; text-decoration: underline;"}
-:::
-
-::: {.column width="22%"}
-::: {style="margin-bottom: 25px;"}
-:::
-
-[**Manual**](https://cran.r-project.org/web/packages/CohortCharacteristics/CohortCharacteristics.pdf){style="color: #3a6ea5; text-decoration: underline; text-align:center"}
-:::
-
-::: {.column width="22%"}
-::: {style="margin-bottom: 25px;"}
-:::
-
-[**GitHub**](https://github.com/darwin-eu-dev/CohortCharacteristics){style="color: #3a6ea5; text-decoration: underline; text-align:center"}
-:::
-
-::: {.column width="22%"}
-::: {style="margin-bottom: 25px;"}
-:::
-
-[**Website**](https://darwin-eu-dev.github.io/CohortCharacteristics/){style="color: #3a6ea5; text-decoration: underline; text-align:center"}
-:::
-
-::: {.column width="1.2%"}
-:::
-:::
-:::
-:::
+:::::
