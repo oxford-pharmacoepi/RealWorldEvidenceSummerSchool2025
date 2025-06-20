@@ -17,3 +17,22 @@ You should have already [downloaded](https://github.com/oxford-pharmacoepi/Analy
 ## Database
 
 The script `createDatabase.R` will create the database that we will use during this week, please take into account that it is synthetic data so please interpret the results carefully. Please only run the script to create the database once.
+
+## Objectives
+
+### DAY 1
+
+- Extract the snapshot of the database and visualise (table) it. What information do you get from it? How long the data expands from?
+- Summarise `observation_period` table and visualise (table) it. Are there multiple observation periods per person? What is the median days in observation per person? Do you think that follow-up is long enough to conduct an incidence study?
+- We are mainly interested in conditions and drugs, can you characterise and visualise (table) what is on `condition_occurrence` and `drug_exposure` tables.
+  - Is the percentage of individuals records not in observation worrying?
+  - Are there records that do not come from Drug and Condition domains respectively?
+  - Are there non standard concepts?
+  - Where the records come from?
+- Characterise and visualise (plot) when individuals are in observation. Use yearly individuals in observation to decide a suitable study period that spans between 5 and 10 years.
+
+### DAY 2
+
+### DAY 3
+
+### DAY 4
