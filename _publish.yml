@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: 5be684f8-7872-4548-8c3e-274a6fdc35bc
+      url: 'https://dpa-pde-oxford.quarto.pub/omopsketch-summer-school25'
