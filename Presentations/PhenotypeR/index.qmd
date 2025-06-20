@@ -1,0 +1,163 @@
+---
+title: "PhenotypeR"
+subtitle: "Review codelists and cohorts in OMOP CDM"
+format:
+  revealjs: 
+    theme: [simple, ../../styleSS25.scss]
+    incremental: true   
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    margin: 0.07
+    code-link: true
+    code-line-numbers: false
+    height: 900
+    width: 1600
+    footer: |
+      <div style="position: relative; width: 100%;">
+        <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2025</div>
+        <div style="position: fixed; top: 20px; right: 20px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Presentations</a></div>
+      </div>
+execute:
+  echo: true
+  eval: true
+editor: visual
+---
+
+## Introduction
+
+-   PhenotypeR package is designed to review cohorts in OMOP CDM.
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   The code is publicly available in OHDSI's GitHub repository [PhenoypeR](https://github.com/OHDSI/PhenotypeR).
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   PhenotypeR 0.1.5 is available in [CRAN](https://cran.r-project.org/web/packages/PhenotypeR/index.html){.link}.
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   Vignettes with further information can be found in the package [website](https://ohdsi.github.io/PhenotypeR/){.link}.
+
+## Set of Functions: Individual Diagnostics Assessment
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+::: columns
+::: {.column width="50%"}
+-   **Database diagnostics**
+
+    -   Summarises the databases metadata and the observation period.
+    -   `databaseDiagnostics()`
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   **Codelist diagnostics**
+
+    -   Summarises the codelist use associated to our cohort.
+    -   `codelistDiagnostics()`
+:::
+
+::: {.column width="50%"}
+-   **Cohort diagnostics**
+
+    -   Summarises baseline characteristics, attrition, overlap, and large-scale characteristics. It also allows to compare our results with a matched cohort.
+    -   `cohortDiagnostics()`
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   **Population diagnostics**
+
+    -   Incidence and prevalence of our cohort in the database.
+    -   `populationDiagnostics()`
+:::
+:::
+
+## Set of Functions: Phenotype Diagnostics
+
+-   Comprises all the diagnostics that are being offered in this package.
+
+. . .
+
+```{r, eval = FALSE}
+result <- phenotypeDiagnostics(
+  cohort,
+  databaseDiagnostics = TRUE,
+  codelistDiagnostics = TRUE,
+  cohortDiagnostics = TRUE,
+  match = TRUE,
+  matchedSample = NULL,
+  populationDiagnostics = TRUE,
+  populationSample = NULL,
+  populationDateRange = as.Date(c(NA,NA))
+)
+```
+
+-   Create a shiny app to visualize all the results
+
+. . .
+
+```{r, eval = FALSE}
+shinyDiagnostics(result, directory = here())
+```
+
+# Run Phenotype Diagnostics - Example
+
+```{r, eval = FALSE}
+install.packages("PhenotypeR")
+
+library(CDMConnector)
+library(CodelistGenerator)
+library(CohortConstructor)
+library(CohortCharacteristics)
+library(dplyr)
+library(PhenotypeR)
+library(here)
+
+requireEunomia(datasetName = "synpuf-1k", cdmVersion = "5.3")
+
+con <- DBI::dbConnect(duckdb::duckdb(), dbdir = eunomiaDir(datasetName = "synpuf-1k", cdmVersion = "5.3"))
+cdm <- cdmFromCon(
+  con, 
+  cdmSchema = "main", 
+  writeSchema = "main",
+  writePrefix = "my_study_",
+  achillesSchema = "main"
+)
+
+drug_codes <- getDrugIngredientCodes(
+  cdm = cdm, 
+  name = c("diclofenac", "acetaminophen"),
+  nameStyle = "{concept_name}"
+)
+
+cdm$medications <- conceptCohort(
+  cdm = cdm, 
+  conceptSet = drug_codes, 
+  name = "medications"
+)
+
+# Run Phenotype Diagnostics 
+result <- phenotypeDiagnostics(cdm$medications,
+                     databaseDiagnostics = TRUE,
+                     codelistDiagnostics = TRUE,
+                     cohortDiagnostics = TRUE,
+                     matchedAnalysis = TRUE,
+                     matchedSample = NULL,
+                     populationDiagnostics = TRUE,
+                     populationSample = NULL,
+                     populationDateRange = as.Date(c(NA,NA)))
+
+shinyDiagnostics(result, here::here())
+```
+
+# Visualise the results
+
+See the results in the [shiny app](https://dpa-pde-oxford.shinyapps.io/PhenotypeR_RWESummerSchool/)

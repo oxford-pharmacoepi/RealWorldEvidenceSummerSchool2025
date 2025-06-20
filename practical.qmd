@@ -1,0 +1,19 @@
+
+# Final practical
+
+## Theme
+
+During this week you will conduct a study on opiod use. We will conduct the steps of a typical study:
+
+- The first day you will create and characterise the database that we are going to work with.
+- The second day you will create the codelist and cohorts of interest.
+- The third day you will characterise the cohorts of interest and calculate the incidence and prevalence of different opiods in your database.
+- The fourth day you will conduct a Drug Utilisation Study and analyse the treatment adherence of opiods.
+
+## Project
+
+You should have already [downloaded](https://github.com/oxford-pharmacoepi/AnalyticsTrack2025/archive/refs/heads/main.zip) the project, please open the `Practical` project and create the database.
+
+## Database
+
+The script `createDatabase.R` will create the database that we will use during this week, please take into account that it is synthetic data so please interpret the results carefully. Please only run the script to create the database once.

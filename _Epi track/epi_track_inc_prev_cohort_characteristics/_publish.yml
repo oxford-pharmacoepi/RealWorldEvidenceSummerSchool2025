@@ -1,0 +1,4 @@
+- source: epi_track_inc_prev_cohort_characteristics.qmd
+  quarto-pub:
+    - id: 47d5b41a-08ec-4438-949e-91754462f1f7
+      url: 'https://quartopub.com/sites/dpa-pde-oxford/epi_track_inc_prev_cohort_characteristics-ac70'
