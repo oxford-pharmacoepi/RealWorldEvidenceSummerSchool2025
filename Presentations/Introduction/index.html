@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.32">
-<meta name="dcterms.date" content="2025-06-21">
+<meta name="dcterms.date" content="2025-06-22">
 <title>Real World Evidence Summer School – OMOP and CDMConnector</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -203,7 +203,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-06-21</p>
+  <p class="date">2025-06-22</p>
 </section><section id="introduction-the-omop-common-data-model" class="slide level2"><h2>Introduction: The OMOP Common Data Model</h2>
 <ul>
 <li class="fragment"><p>Every time that someone goes to the doctor and something happens the doctors write it into their records.</p></li>
@@ -365,7 +365,7 @@ source_to_concept_map, drug_strength</code></pre>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">person</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   table&lt;person&gt; [?? x 18]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpjeOzqh/file276d1bdccf67.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpIdO4GF/file285426dc9a04.duckdb]
    person_id gender_concept_id year_of_birth month_of_birth day_of_birth birth_datetime      race_concept_id
        &lt;int&gt;             &lt;int&gt;         &lt;int&gt;          &lt;int&gt;        &lt;int&gt; &lt;dttm&gt;                        &lt;int&gt;
  1         6              8532          1963             12           31 1963-12-31 00:00:00            8516
@@ -392,7 +392,7 @@ source_to_concept_map, drug_strength</code></pre>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [?? x 1]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpjeOzqh/file276d1bdccf67.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpIdO4GF/file285426dc9a04.duckdb]
       n
   &lt;dbl&gt;
 1  2694</code></pre>
@@ -493,7 +493,7 @@ source_to_concept_map, drug_strength</code></pre>
 [21] "metadata"              "note"                  "note_nlp"              "observation"          
 [25] "observation_period"    "payer_plan_period"     "person"                "procedure_occurrence" 
 [29] "provider"              "relationship"          "source_to_concept_map" "specimen"             
-[33] "visit_detail"          "visit_occurrence"      "vocabulary"            "og_001_1750503051"    </code></pre>
+[33] "visit_detail"          "visit_occurrence"      "vocabulary"            "og_001_1750600839"    </code></pre>
 </div>
 </div>
 </div>
@@ -516,7 +516,7 @@ source_to_concept_map, drug_strength</code></pre>
 [25] "observation"           "observation_period"    "payer_plan_period"     "person"               
 [29] "procedure_occurrence"  "provider"              "relationship"          "source_to_concept_map"
 [33] "specimen"              "visit_detail"          "visit_occurrence"      "vocabulary"           
-[37] "og_001_1750503051"    </code></pre>
+[37] "og_001_1750600839"    </code></pre>
 </div>
 </div>
 </div>
@@ -548,7 +548,7 @@ source_to_concept_map, drug_strength</code></pre>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">my_saved_table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   table&lt;my_saved_table&gt; [?? x 2]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpjeOzqh/file276d1bdccf67.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpIdO4GF/file285426dc9a04.duckdb]
    person_id condition_start_date
        &lt;int&gt; &lt;date&gt;              
  1       263 2015-10-02          
@@ -611,7 +611,7 @@ source_to_concept_map, drug_strength</code></pre>
 [21] "metadata"              "note"                  "note_nlp"              "observation"          
 [25] "observation_period"    "payer_plan_period"     "person"                "procedure_occurrence" 
 [29] "provider"              "relationship"          "source_to_concept_map" "specimen"             
-[33] "visit_detail"          "visit_occurrence"      "vocabulary"            "og_001_1750503051"    </code></pre>
+[33] "visit_detail"          "visit_occurrence"      "vocabulary"            "og_001_1750600839"    </code></pre>
 </div>
 </div>
 </div>
@@ -703,7 +703,7 @@ source_to_concept_map, drug_strength</code></pre>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">my_test_table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   table&lt;my_test_table&gt; [?? x 2]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpjeOzqh/file276d1bdccf67.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpIdO4GF/file285426dc9a04.duckdb]
    speed  dist
    &lt;dbl&gt; &lt;dbl&gt;
  1     4     2
@@ -789,7 +789,7 @@ source_to_concept_map, drug_strength</code></pre>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">my_test_table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   table&lt;my_prefix_my_test_table&gt; [?? x 2]
-# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpjeOzqh/file276d1bdccf67.duckdb]
+# Database: DuckDB v1.3.0 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpIdO4GF/file285426dc9a04.duckdb]
    speed  dist
    &lt;dbl&gt; &lt;dbl&gt;
  1     4     2
