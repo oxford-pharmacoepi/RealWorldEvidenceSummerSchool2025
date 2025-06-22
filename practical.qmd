@@ -17,3 +17,7 @@ You should have already [downloaded](https://github.com/oxford-pharmacoepi/Analy
 ## Database
 
 The script `createDatabase.R` will create the database that we will use during this week, please take into account that it is synthetic data so please interpret the results carefully. Please only run the script to create the database once.
+
+## Practical
+
+Each comment gives you instructions to complete simple tasks, it should be followed by a block of 4/5 lines of code maximum. Ask for help to the teacher assistants if you get stuck.
