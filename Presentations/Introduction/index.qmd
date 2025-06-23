@@ -26,6 +26,10 @@ editor: visual
 
 ## Introduction: The OMOP Common Data Model
 
+```{r, echo = FALSE}
+options(width = 120)
+```
+
 -   Every time that someone goes to the doctor and something happens the doctors write it into their records.
 
 -   Each annotation of the doctor is translated into a code, combination of letters and numbers that refers to a condition. There exist several different codding languages: SNOMED, read codes, ICD10, ICD9, RxNorm, ATC, ... It depends on the region, language, type of record and others which one is used. This makes that the same condition or drug can be coded in different ways.
@@ -100,27 +104,148 @@ All details about OMOP CDM and more can be found in: [the book of ohdsi](https:/
 
 ![The book of ohdsi cover](https://ohdsi.github.io/TheBookOfOhdsi/images/Cover/Cover.png){width="300"}
 
-## Connecting to a database from R (the DBI package)
+## Let's start coding
 
 . . .
 
-Database connections from R can be made using the [DBI package](https://dbi.r-dbi.org/).
+These are the packages that we will use in this presentation:
 
-```{r, echo = FALSE}
-options(width = 120)
+. . .
+
+```{r}
+library(omock)
+library(DBI)
+library(CDMConnector)
+library(duckdb)
+library(here)
+library(dplyr)
+library(visOmopResults)
+library(omopgenerics)
 ```
+
+. . .
+
+You can click on the specific functions to see `?help` and what package they come from:
 
 ```{r, eval=FALSE}
-library(DBI)
+cdmFromCon()
 ```
+
+## Create a mock reference
+
+You can create a mock database using *omock* from one of the **24** available synthetic databases:
+
+. . .
+
+```{r, message=TRUE}
+availableMockDatasets()
+cdm <- mockCdmFromDataset(datasetName = "GiBleed")
+cdm
+```
+
+## `<cdm_reference>` object
+
+```{r}
+class(cdm)
+```
+
+. . .
+
+```{r}
+cdmName(cdm)
+```
+
+. . .
+
+```{r}
+cdmVersion(cdm)
+```
+
+. . .
+
+```{r, message=TRUE}
+cdmSource(cdm)
+```
+
+## `<cdm_reference>` object
+
+```{r, message=TRUE}
+attributes(cdm)
+```
+
+## `<cdm_table>` object
+
+. . .
+
+```{r}
+cdm$person
+```
+
+. . .
+
+```{r}
+class(cdm$person)
+```
+
+## `<cdm_table>` object
+. . .
+
+```{r, message=TRUE}
+cdmReference(cdm$person)
+```
+
+. . .
+
+```{r}
+tableName(cdm$person)
+```
+
+. . .
+
+```{r, message=TRUE}
+tableSource(cdm$person)
+```
+
+## `<cdm_table>` object
+
+```{r}
+cdmName(cdm$person)
+```
+
+. . .
+
+```{r}
+cdmVersion(cdm$person)
+```
+
+. . .
+
+```{r, message=TRUE}
+cdmSource(cdm$person)
+```
+
+## `<cdm_table>` object
+
+```{r, message=TRUE}
+attributes(cdm$person)
+```
+
+## Connecting to a database from R (the DBI package)
+
+In general the *OMOP* datasets that we will use won't be locally, and they will on a database.
+
+. . .
+
+Database connections from R can be made using the [DBI](https://dbi.r-dbi.org/) package.
 
 . . .
 
 Connect to postgres:
 
 ```{r, eval=FALSE}
-db <- DBI::dbConnect(
-  RPostgres::Postgres(),
+library(RPostgres)
+db <- dbConnect(
+  Postgres(),
   dbname = "...",
   host = "...",
   user = "...",
@@ -133,8 +258,9 @@ db <- DBI::dbConnect(
 Connect to Sql server:
 
 ```{r, eval = FALSE}
-db <- DBI::dbConnect(
-  odbc::odbc(),
+library(odbc)
+db <- dbConnect(
+  odbc(),
   Driver   = "ODBC Driver 18 for SQL Server",
   Server   = "...",
   Database = "...",
@@ -149,27 +275,6 @@ db <- DBI::dbConnect(
 
 In this [CDMConnector article](https://darwin-eu.github.io/CDMConnector/articles/a04_DBI_connection_examples.html) you can see how to connect to the different supported DBMS.
 
-## Connect to eunomia
-
-. . .
-
-Eunomia is a synthetic OMOP database with \~2,600 individuals. It is freely available and you can download it as:
-
-. . .
-
-```{r}
-dbName <- "GiBleed"
-CDMConnector::requireEunomia(datasetName = dbName)
-```
-
-. . .
-
-To connect to this database we are going to use `duckdb`
-
-```{r}
-db <- DBI::dbConnect(duckdb::duckdb(), dbdir = CDMConnector::eunomiaDir(datasetName = dbName))
-db
-```
 
 ## Databases organisation
 
@@ -185,38 +290,51 @@ In general, OMOP databases have two schemas:
 
 -   `write schema`: it is a place where we can store tables (like cohorts). We need writing permissions to this schema.
 
-. . .
+## Create a local database
 
-Eunomia only has a single schema (**main**) that will be used as cdm schema and write schema.
+**duckdb** is a package that allows us to create local databases.
 
-## [CDMConnector](https://cran.r-project.org/package=CDMConnector)
+```{r}
+# name of the dataset
+datasetName <- "GiBleed"
 
-![](cdmconnector_hex.png){fig-align="center"}
+# name of the database file
+dbdir <- here(paste0(datasetName, ".duckdb"))
 
-## Creating a reference to the OMOP common data model
+# create empty database
+con <- dbConnect(drv = duckdb(dbdir = dbdir))
 
-We already know what the structure of the OMOP CDM looks like. The `CDMConnector` package was made to help you to quickly create a reference to the OMOP CDM data as a whole.
+# create local reference
+cdm <- mockCdmFromDataset(datasetName = datasetName)
 
-```{r, eval=FALSE}
-library(CDMConnector)
+# copy local reference to connection
+insertCdmTo(cdm = cdm, to = dbSource(con = con, writeSchema = "main"))
+
+# disconnect
+dbDisconnect(conn = con)
 ```
-
--   To install any of these packages that we use you can type: `install.packages("CDMConnector")` in the console.
 
 ## Let's create our first cdm reference
 
+. . .
+
 ```{r, message=TRUE}
-cdm <- CDMConnector::cdmFromCon(con = db, cdmSchema = "main", writeSchema = "main")
+# connect to the database
+dbdir <- here("GiBleed.duckdb")
+con <- dbConnect(drv = duckdb(dbdir = dbdir))
+cdm <- cdmFromCon(con = con, cdmSchema = "main", writeSchema = "main")
 cdm
 ```
 
 ## Access to tables of the cdm reference
 
+. . .
+
 ```{r}
 cdm$person
 ```
 
-## Read tables in Eunomia
+## Read tables in GiBleed
 
 . . .
 
@@ -224,7 +342,7 @@ Once we read a table we can operate with it and for example count the number of 
 
 ```{r}
 cdm$person |>
-  dplyr::count()
+  count()
 ```
 
 ## Operation with tidyverse
@@ -235,46 +353,38 @@ If you are familiarised with [tidyverse](https://www.tidyverse.org/) you can use
 
 ```{r}
 cdm$drug_exposure |>
-  dplyr::group_by(drug_concept_id) |>
-  dplyr::summarise(number_persons = dplyr::n_distinct(person_id)) |>
-  dplyr::collect() |>
-  dplyr::arrange(dplyr::desc(number_persons))
+  group_by(drug_concept_id) |>
+  summarise(number_persons = n_distinct(person_id)) |>
+  collect() |>
+  arrange(desc(number_persons))
 ```
 
 ## Database name
 
 When we have a cdm object we can check which is the name of that database using:
 
-<br/>
-
 . . .
 
 ```{r}
-CDMConnector::cdmName(cdm)
+cdmName(cdm)
 ```
-
-<br/>
 
 . . .
 
 In some cases we want to give a database a name that we want, this can be done at the connection stage:
 
-<br/>
-
 . . .
 
 ```{r}
-cdm <- CDMConnector::cdmFromCon(
-  con = db, cdmSchema = "main", writeSchema = "main", cdmName = "EUNOMIA"
+cdm <- cdmFromCon(
+  con = con, cdmSchema = "main", writeSchema = "main", cdmName = "GiBleed"
 )
 ```
 
-<br/>
-
 . . .
 
 ```{r}
-CDMConnector::cdmName(cdm)
+cdmName(cdm)
 ```
 
 ## Create a new table
@@ -286,17 +396,11 @@ Let's say I want to subset the `condition_occurrence` table to a certain rows an
 temporary table (default):
 
 ```{r}
-CDMConnector::listSourceTables(cdm)
-```
-
-. . .
-
-```{r}
 cdm$my_saved_table <- cdm$condition_occurrence |>
-  dplyr::filter(condition_concept_id == 4112343) |>
-  dplyr::select(person_id, condition_start_date) |>
-  dplyr::compute()
-CDMConnector::listSourceTables(cdm)
+  filter(condition_concept_id == 4112343) |>
+  select(person_id, condition_start_date) |>
+  compute()
+listSourceTables(cdm)
 ```
 
 ## Create a new table
@@ -307,10 +411,10 @@ permanent table:
 
 ```{r}
 cdm$my_saved_table <- cdm$condition_occurrence |>
-  dplyr::filter(condition_concept_id == 4112343) |>
-  dplyr::select(person_id, condition_start_date) |>
-  dplyr::compute(name = "my_saved_table", temporary = FALSE)
-CDMConnector::listSourceTables(cdm)
+  filter(condition_concept_id == 4112343) |>
+  select(person_id, condition_start_date) |>
+  compute(name = "my_saved_table")
+listSourceTables(cdm)
 ```
 
 ## Create a new table
@@ -331,7 +435,7 @@ To drop an existing table:
 . . .
 
 ```{r, message=TRUE}
-cdm <- CDMConnector::dropSourceTable(cdm = cdm, name = "my_saved_table")
+cdm <- dropSourceTable(cdm = cdm, name = "my_saved_table")
 cdm
 ```
 
@@ -340,7 +444,7 @@ cdm
 . . .
 
 ```{r}
-CDMConnector::listSourceTables(cdm)
+listSourceTables(cdm)
 ```
 
 ## Drop an existing table
@@ -348,14 +452,14 @@ CDMConnector::listSourceTables(cdm)
 Let's drop also the other table that we created:
 
 ```{r, message=TRUE}
-cdm <- CDMConnector::dropSourceTable(cdm = cdm, name = dplyr::starts_with("og_"))
+cdm <- dropSourceTable(cdm = cdm, name = starts_with("og_"))
 cdm
 ```
 
 ## Drop an existing table
 
 ```{r}
-CDMConnector::listSourceTables(cdm)
+listSourceTables(cdm)
 ```
 
 ## Insert a table
@@ -363,14 +467,14 @@ CDMConnector::listSourceTables(cdm)
 Let's say we have a local tibble and we want to insert it in the cdm:
 
 ```{r, message=TRUE}
-cdm <- CDMConnector::insertTable(cdm = cdm, name = "my_test_table", table = cars)
+cdm <- insertTable(cdm = cdm, name = "my_test_table", table = cars)
 cdm
 ```
 
 ## Insert a table
 
 ```{r}
-CDMConnector::listSourceTables(cdm)
+listSourceTables(cdm)
 cdm$my_test_table
 ```
 
@@ -379,12 +483,12 @@ cdm$my_test_table
 It is **VERY IMPORTANT** that when we create the cdm object we use a prefix:
 
 ```{r, echo = FALSE}
-cdm <- CDMConnector::dropSourceTable(cdm = cdm, name = "my_test_table")
+cdm <- dropSourceTable(cdm = cdm, name = "my_test_table")
 ```
 
 ```{r, message=TRUE}
-cdm <- CDMConnector::cdmFromCon(
-  con = db, 
+cdm <- cdmFromCon(
+  con = con, 
   cdmSchema = "main", 
   writeSchema = "main", 
   writePrefix = "my_prefix_"
@@ -397,14 +501,14 @@ cdm
 Now when we create a new table the prefix will be automatically added:
 
 ```{r, message=TRUE}
-cdm <- CDMConnector::insertTable(cdm = cdm, name = "my_test_table", table = cars)
+cdm <- insertTable(cdm = cdm, name = "my_test_table", table = cars)
 cdm
 ```
 
 ## Use a prefix
 
 ```{r}
-CDMConnector::listSourceTables(cdm = cdm)
+listSourceTables(cdm = cdm)
 cdm$my_test_table
 ```
 
@@ -413,8 +517,8 @@ cdm$my_test_table
 **DO NOT** use the prefix to drop tables, you only care about the prefix at the connection stage!
 
 ```{r, message=TRUE}
-cdm <- CDMConnector::dropSourceTable(cdm = cdm, name = "my_prefix_my_test_table")
-CDMConnector::listSourceTables(cdm = cdm)
+cdm <- dropSourceTable(cdm = cdm, name = "my_prefix_my_test_table")
+listSourceTables(cdm = cdm)
 ```
 
 ## Use a prefix
@@ -428,8 +532,8 @@ cdm
 **DO NOT** use the prefix to drop tables, you only care about the prefix at the connection stage!
 
 ```{r, message=TRUE}
-cdm <- CDMConnector::dropSourceTable(cdm = cdm, name = "my_test_table")
-CDMConnector::listSourceTables(cdm = cdm)
+cdm <- dropSourceTable(cdm = cdm, name = "my_test_table")
+listSourceTables(cdm = cdm)
 ```
 
 ## Use a prefix
@@ -446,7 +550,7 @@ If it is a temporary table we can assign assign it to where I want for example:
 
 ```{r}
 cdm$my_custom_name <- cdm$person |> 
-  dplyr::compute()
+  compute()
 ```
 
 . . .
@@ -457,7 +561,7 @@ error:
 
 ```{r, error = TRUE}
 cdm$my_custom_name <- cdm$person |> 
-  dplyr::compute(name = "not_my_custom_name", temporary = FALSE)
+  compute(name = "not_my_custom_name")
 ```
 
 . . .
@@ -466,7 +570,7 @@ no error:
 
 ```{r}
 cdm$my_custom_name <- cdm$person |> 
-  dplyr::compute(name = "my_custom_name", temporary = FALSE)
+  compute(name = "my_custom_name")
 ```
 
 ## Consistency rules
@@ -477,13 +581,202 @@ Omop names are reserved words, e.g. we can not assign a table that is not the pe
 
 ```{r, error = TRUE}
 cdm$person <- cdm$drug_exposure |> 
-  dplyr::compute(name = "person", temporary = FALSE)
+  compute(name = "person", temporary = FALSE)
 ```
 
 . . .
 
 ```{r, error = TRUE}
 cdm$drug_exposure <- cdm$drug_exposure |> 
-  dplyr::rename("my_id" = "person_id") |> 
-  dplyr::compute(name = "drug_exposure", temporary = FALSE)
+  rename("my_id" = "person_id") |> 
+  compute(name = "drug_exposure", temporary = FALSE)
 ```
+
+## Result model
+
+The output of our analyses has been standardised to the `<summarised_result>` object.
+
+. . .
+
+```{r}
+x <- mockSummarisedResult()
+x
+```
+
+. . .
+
+```{r}
+class(x)
+```
+
+## `<summarised_result>`
+
+The summarised result object contains 13 columns:
+
+. . .
+
+```{r}
+glimpse(x)
+```
+
+## `<summarised_result>`
+
+And have some associated settings
+
+. . .
+
+```{r}
+settings(x)
+```
+
+## tidy the result object
+
+. . .
+
+```{r}
+x |>
+  splitGroup() |>
+  glimpse()
+```
+
+## tidy the result object
+
+. . .
+
+```{r}
+x |>
+  splitStrata() |>
+  glimpse()
+```
+
+## tidy the result object
+
+. . .
+
+```{r}
+x |>
+  splitAdditional() |>
+  glimpse()
+```
+
+## tidy the result object
+
+. . .
+
+```{r}
+x |>
+  pivotEstimates() |>
+  glimpse()
+```
+
+## tidy the result object
+
+. . .
+
+```{r}
+x |>
+  tidy() |>
+  glimpse()
+```
+
+## filtering the result object
+
+. . .
+
+```{r}
+x |>
+  filter(strata_name == "overall") |>
+  glimpse()
+```
+
+## filtering the result object
+
+. . .
+
+```{r}
+x |>
+  filterStrata(sex == "Female") |>
+  glimpse()
+```
+
+## Other objects and classes
+
+- `<codelist>`, `<codelist_with_details>`, `<conceptSetExpression>`
+- `<cohort_table>`
+- `<achilles_table>`
+
+## omock
+
+<div style="display: flex; align-items: center; justify-content: space-between;">
+
+<div style="flex: 1;">
+
+👉 [**Packages website**](https://ohdsi.github.io/omock/)  
+👉 [**CRAN link**](https://cran.r-project.org/package=omock)  
+👉 [**Manual**](https://cran.r-project.org/web/packages/omock/omock.pdf)
+
+📧 <a href="mailto:mike.du@ndorms.ox.ac.uk">mike.du\@ndorms.ox.ac.uk</a>
+
+</div>
+
+<div style="flex: 1; text-align: center;">
+  <img src="https://github.com/OHDSI/omock/blob/main/man/figures/logo.png?raw=true" width="600"/>
+</div>
+
+</div>
+
+## omopgenerics
+
+<div style="display: flex; align-items: center; justify-content: space-between;">
+
+<div style="flex: 1;">
+
+👉 [**Packages website**](https://darwin-eu.github.io/omopgenerics/)  
+👉 [**CRAN link**](https://cran.r-project.org/package=omopgenerics)  
+👉 [**Manual**](https://cran.r-project.org/web/packages/omopgenerics/omopgenerics.pdf)
+
+📧 <a href="mailto:marti.catalasabate@ndorms.ox.ac.uk">marti.catalasabate\@ndorms.ox.ac.uk</a>
+
+</div>
+
+</div>
+
+## visOmopResults
+
+<div style="display: flex; align-items: center; justify-content: space-between;">
+
+<div style="flex: 1;">
+
+👉 [**Packages website**](https://darwin-eu.github.io/visOmopResults/)  
+👉 [**CRAN link**](https://cran.r-project.org/package=visOmopResults)  
+👉 [**Manual**](https://cran.r-project.org/web/packages/visOmopResults/visOmopResults.pdf)
+
+📧 <a href="mailto:nuria.mercadebesora@ndorms.ox.ac.uk">nuria.mercadebesora\@ndorms.ox.ac.uk</a>
+
+</div>
+
+<div style="flex: 1; text-align: center;">
+  <img src="https://github.com/darwin-eu/visOmopResults/blob/main/man/figures/logo.png?raw=true" width="600"/>
+</div>
+
+</div>
+
+## CDMConnector
+
+<div style="display: flex; align-items: center; justify-content: space-between;">
+
+<div style="flex: 1;">
+
+👉 [**Packages website**](https://darwin-eu.github.io/CDMConnector/)  
+👉 [**CRAN link**](https://cran.r-project.org/package=CDMConnector)  
+👉 [**Manual**](https://cran.r-project.org/web/packages/CDMConnector/CDMConnector.pdf)
+
+📧 <a href="mailto:marti.catalasabate@ndorms.ox.ac.uk">marti.catalasabate\@ndorms.ox.ac.uk</a>
+
+</div>
+
+<div style="flex: 1; text-align: center;">
+  <img src="hexticker.png" width="600"/>
+</div>
+
+</div>
