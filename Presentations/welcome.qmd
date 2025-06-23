@@ -1,0 +1,171 @@
+---
+title: "Welcome to the Analytics track"
+subtitle: "Real World Evidence Summer School 2025"
+date: ""
+format:
+  revealjs: 
+    theme: [simple, ../styleSS25.scss]
+    incremental: true   
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    margin: 0.07
+    code-link: true
+    code-line-numbers: false
+    height: 900
+    width: 1600
+    footer: |
+      <div style="position: relative; width: 100%;">
+        <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2025</div>
+        <div style="position: fixed; top: 20px; right: 20px;"><a href="index.qmd" style="text-decoration: none;">⬅ Back to Practicals</a></div>
+      </div>
+execute:
+  echo: true
+  eval: true
+editor: visual
+---
+
+## Welcome to St Hilda's
+
+![](images/st_hildas.jpg){fig-align="center"}
+
+## Aims of the analytics track
+
+. . .
+
+By the end of the week:
+
+-   Be able to conduct descriptive analyses using R with data in the OMOP CDM format
+
+-   Understand how to approach writing bespoke code for complex studies
+
+-   Know where to look for help
+
+## What to expect
+
+. . .
+
+::: {style="text-align: center;"}
+<img src="images/programming.gif" alt="Programming gif" style="height: 600px;"/>
+:::
+
+## What to expect
+
+. . .
+
+-   Quarto presentations - most presentations correspond to an R package that works with data in the OMOP CDM format.
+
+-   "Your Turn" exercises - during presentations where you can practice using the package (solutions will be on the next slide, but first try without looking at these!)
+
+-   General practical - end of each day, which we will work on throughout the week.
+
+## Post-It notes
+
+. . .
+
+-   Green - all good, no code currently running
+
+-   Yellow - code running
+
+-   Red - help me!
+
+<br/>
+
+. . .
+
+![](images/BIEe.gif){fig-align="center" width="500"}
+
+## duckdb detour
+
+. . .
+
+duckdb is the R package we will use that can take the longest to install. Let's start installing it now.
+
+```{r, eval=FALSE}
+pak::pak("duckdb/duckdb-r")
+```
+
+## Schedule - Monday
+
+| Time          | Session                                      |
+|---------------|----------------------------------------------|
+| 13:30-14:00   | Welcome and Set up                           |
+| 14:00-14:45   | Introduction to OMOP and **CDMConnector**    |
+| *14:45-14:55* | *Break*                                      |
+| 14:55-15:25   | Characterise a database using **OmopSketch** |
+| *15:25-15:35* | *Break*                                      |
+| 15:35-15:45   | General practical introduction               |
+| 15:45-16:30   | General practical                            |
+
+## Schedule - Tuesday
+
+| Time          | Session                                           |
+|---------------|---------------------------------------------------|
+| 13:30-14:10   | Create codelist using **CodelistGenerator**       |
+| *14:10-14:20* | *Break*                                           |
+| 14:20-15:05   | Create cohorts using **CohortConstructor**        |
+| *15:05-15:15* | *Break*                                           |
+| 15:15-15:45   | Review codelists and cohorts using **PhenotypeR** |
+| 15:45-16:30   | General practical                                 |
+
+## Schedule - Wednesday
+
+| Time          | Session                                                         |
+|--------------------------|----------------------------------------------|
+| 13:30-14:20   | Characterise cohorts using **CohortCharacteristics**            |
+| *14:20-14:30* | *Break*                                                         |
+| 14:30-15:20   | Estimate Incidence and Prevalence using **IncidencePrevalence** |
+| *15:20-15:30* | *Break*                                                         |
+| 15:30-16:30   | General practical                                               |
+
+## Schedule - Thursday
+
+| Time          | Session                                                      |
+|--------------------------|----------------------------------------------|
+| 13:30-14:20   | Conducting Drug Utilisation studies with **DrugUtilisation** |
+| *14:20-14:30* | *Break*                                                      |
+| 14:30-15:00   | Estimate Survival **CohortSurvival**                         |
+| *15:00-15:10* | *Break*                                                      |
+| 15:30-16:30   | General practical                                            |
+
+## Introductions
+
+-   What's your name?
+
+-   Where do you work? What is your role?
+
+-   Have you used R before?
+
+-   Have you worked with OMOP CDM data before?
+
+-   What do you want to get from this week?
+
+## Materials
+
+You can find all the materials of the summer school in the following website: <https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2025/>
+
+::: {style="position: relative; height: 800px;"}
+<a href="https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2025/"
+     target="_blank"
+     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;"> </a> <iframe src="https://oxford-pharmacoepi.github.io/RealWorldEvidenceSummerSchool2025/"
+          width="100%" height="600px"
+          style="border:none; position: absolute; top: 0; left: 0; z-index: 1;"> </iframe>
+:::
+
+</iframe>
+
+## Set up
+
+**Download the project**:
+
+Please download the following project: [download project](https://github.com/oxford-pharmacoepi/AnalyticsTrack2025/archive/refs/heads/main.zip)
+
+or you can fork the repository from GitHub: <https://github.com/oxford-pharmacoepi/AnalyticsTrack2025>
+
+. . .
+
+**Open Project**: open `Presentations/Presentations.Rproj` file with RStudio.
+
+. . .
+
+**Check setup**: open and run the `Setup.R` file that will check that all packages are installed.

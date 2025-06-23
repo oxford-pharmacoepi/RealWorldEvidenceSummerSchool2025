@@ -1,0 +1,945 @@
+---
+title: "CohortConstructor"
+subtitle: "Build and Curate Study Cohorts in R Using the OMOP Common Data Model"
+format:
+  revealjs: 
+    theme: [simple, ../../styleSS25.scss]
+    incremental: true   
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    margin: 0.07
+    code-link: true
+    code-line-numbers: false
+    height: 900
+    width: 1600
+    footer: |
+      <div style="position: relative; width: 100%;">
+        <div style="text-align: center; font-weight: 500;">Real World Evidence Summer School 2025</div>
+        <div style="position: fixed; top: 20px; right: 20px;"><a href="../index.qmd" style="text-decoration: none;">⬅ Back to Presentations</a></div>
+      </div>
+execute:
+  echo: true
+  eval: true
+editor: visual
+---
+
+```{r, echo=FALSE}
+options(width = 120)
+```
+
+## Introduction
+
+-   CohortConstructor package is designed to support cohort building pipelines in R, using data mapped to the OMOP Common Data Model.
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   The code is publicly available in OHDSI's GitHub repository [CohortConstructor](https://github.com/OHDSI/CohortConstructor).
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   CohortConstructor v0.4.0 is available in [CRAN](https://cran.r-project.org/web/packages/CohortConstructor/CohortConstructor.pdf){.link}.
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   Vignettes with further information can be found in the package [website](https://ohdsi.github.io/CohortConstructor/index.html){.link}.
+
+## CohortConstructor pipeline
+
+. . .
+
+::: {style="margin-bottom: 15px;"}
+:::
+
+**1) Create base cohorts**
+
+Cohorts defined using clinical concepts (e.g., asthma diagnoses) or demographics (e.g., females aged \>18)
+
+. . .
+
+::: {style="margin-bottom: 25px;"}
+:::
+
+**2) Cohort-curation**
+
+Tranform base cohorts to meet study-specific inclusion criteria.
+
+::: {style="margin-bottom: 25px;"}
+:::
+
+## Function Sets
+
+::: columns
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
+::: {layout="[[-1], [1], [-1]]"}
+**Base cohorts** *Cohort construction based on clinical concepts or demographics.*
+:::
+:::
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
+::: {layout="[[-1], [1], [-1]]"}
+**Requirements and Filtering** *Demographic restrictions, event presence/absence conditions, and filtering specific records.*
+:::
+:::
+:::
+:::
+
+::: {.column width="5%"}
+:::
+:::
+
+::: columns
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
+::: {layout="[[-1], [1], [-1]]"}
+**Update cohort entry and exit** *Adjusting entry and exit dates to align with study periods, observation windows, or key events.*
+:::
+:::
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
+::: {layout="[[-1], [1], [-1]]"}
+**Transformation and Combination** *Merging, stratifying, collapsing, matching, or intersecting cohorts.*
+:::
+:::
+:::
+:::
+
+::: {.column width="5%"}
+:::
+:::
+
+# Base cohorts
+
+## Functions to build base cohorts
+
+::: {style="margin-bottom: 25px;"}
+:::
+
+-   `demographicsCohort()`
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   `conceptCohort()`
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   `measurementCohort()`
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   `deathCohort()`
+
+## Load requires libraries
+
+```{r, echo=FALSE, message=FALSE}
+# Load relevant packages
+library(CDMConnector)
+library(CodelistGenerator)
+library(CohortConstructor)
+library(CohortCharacteristics)
+library(duckdb)
+library(DBI)
+library(dplyr)
+library(gt)
+library(here)
+```
+
+## Create the cdm_reference object
+
+```{r, echo = FALSE}
+datasetName <- "GiBleed"
+dbdir <- here::here(paste0(datasetName, ".duckdb"))
+con <- duckdb::dbConnect(drv = duckdb::duckdb(dbdir = dbdir))
+
+cdm <- omock::mockCdmFromDataset(datasetName = datasetName)
+CDMConnector::insertCdmTo(cdm = cdm, to = CDMConnector::dbSource(con = con, writeSchema = "main"))
+duckdb::dbDisconnect(conn = con)
+```
+
+```{r}
+datasetName <- "GiBleed"
+dbdir <- here(paste0(datasetName, ".duckdb"))
+con <- dbConnect(drv = duckdb(dbdir = dbdir))
+
+cdm <- cdmFromCon(
+  con = con, 
+  cdmSchema = "main",
+  writeSchema = "main",
+  writePrefix = "my_study_", 
+  cdmName = datasetName
+)
+```
+
+## Demographics based - Example
+
+::: {style="margin-bottom: 15px;"}
+:::
+
+-   Two cohorts, females and males, both aged 18 to 60 years old, with at least 365 days of previous observation in the database.
+
+. . .
+
+```{r}
+cdm$age_cohort <- demographicsCohort(
+  cdm = cdm, 
+  ageRange = c(18, 60), 
+  sex = c("Female", "Male"),
+  minPriorObservation = 365,
+  name = "age_cohort"
+)
+
+settings(x = cdm$age_cohort)
+```
+
+## Demographics based - Example
+
+::: {style="margin-bottom: 20px;"}
+:::
+
+```{r}
+cohortCount(cohort = cdm$age_cohort)
+```
+
+::: {style="margin-bottom: 20px;"}
+:::
+
+. . .
+
+```{r}
+attrition(x = cdm$age_cohort)
+```
+
+## Demographics based - Example
+
+::: {style="margin-bottom: 20px;"}
+:::
+
+To better visualise the **attrition**, we can use the package `CohortCharacteristics` to create a **formatted table**:
+
+```{r}
+cdm$age_cohort |> summariseCohortAttrition() |> tableCohortAttrition()
+```
+
+## Concept based - Example {.incremental:FALSE}
+
+::: {style="margin-bottom: 20px;"}
+:::
+
+. . .
+
+Let's create a cohort of medications that contains two drugs: diclofenac, and acetaminophen.
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+1)  Get relevant codelists with `CodelistGenerator`
+
+. . .
+
+```{r}
+drug_codes <- getDrugIngredientCodes(
+  cdm = cdm, 
+  name = c("diclofenac", "acetaminophen"),
+  nameStyle = "{concept_name}"
+)
+drug_codes
+```
+
+## Concept based - Example {.incremental:FALSE}
+
+2)  Create concept based cohorts
+
+. . .
+
+```{r}
+cdm$medications <- conceptCohort(
+  cdm = cdm, 
+  conceptSet = drug_codes, 
+  name = "medications"
+)
+
+settings(x = cdm$medications)
+```
+
+## Concept based - Example
+
+::: {style="margin-bottom: 15px;"}
+:::
+
+-   Attrition
+
+. . .
+
+```{r, echo=FALSE}
+result <- cdm$medications |> 
+  summariseCohortAttrition() 
+result |> 
+  tableCohortAttrition(
+  groupColumn = c("cohort_name"),
+  hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
+)
+```
+
+## Concept based - Example
+
+::: {style="margin-bottom: 15px;"}
+:::
+
+-   Cohort codelist as an attribute
+
+. . .
+
+```{r}
+attr(cdm$medications, "cohort_codelist")
+```
+
+# Your turn!
+
+## Get started: connecto to Eunomia
+
+::: {style="margin-bottom: 15px;"}
+:::
+
+```{r, eval=FALSE}
+# Load relevant packages
+library(CDMConnector)
+library(CodelistGenerator)
+library(CohortConstructor)
+library(CohortCharacteristics)
+library(dplyr)
+library(DBI)
+library(duckdb)
+```
+
+```{r, eval=FALSE}
+# Download Eunomia 
+requireEunomia()
+
+# Create duckdb connection with Eunomia
+con <- dbConnect(drv = duckdb(), dbdir = eunomiaDir())
+
+# Create CDM reference object
+cdm <- cdmFromCon(
+  con = con, 
+  cdmSchema = "main", 
+  writeSchema = "main",
+  writePrefix = "my_study_"
+)
+```
+
+## Exercise 1 - Base cohorts
+
+::: {style="margin-bottom: 15px;"}
+:::
+
+**Create a cohort of aspirin use.**
+
+-   *How many records does it have? And how many subjects?*
+
+. . .
+
+```{r, echo=FALSE}
+aspirin <- getDrugIngredientCodes(cdm = cdm, name  = "aspirin", nameStyle = "{concept_name}")
+cdm$aspirin <- conceptCohort(cdm = cdm, conceptSet = aspirin, name = "aspirin")
+summariseCohortCount(cohort = cdm$aspirin) |> tableCohortCount()
+```
+
+<details>
+
+<summary>💡 Click to see solution</summary>
+
+```{r, eval=FALSE}
+aspirin <- getDrugIngredientCodes(
+  cdm = cdm, name  = "aspirin", nameStyle = "{concept_name}"
+)
+cdm$aspirin <- conceptCohort(cdm = cdm, conceptSet = aspirin, name = "aspirin")
+summariseCohortCount(cohort = cdm$aspirin) |> tableCohortCount()
+```
+
+</details>
+
+# Requirements and Filtering
+
+## Functions to apply requirements and filter
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+::: columns
+::: {.column width="50%"}
+-   On demographics
+
+    -   `requireDemographics()`
+
+    -   `requireAge()`
+
+    -   `requireSex()`
+
+    -   `requirePriorObservation()`
+
+    -   `requireFutureObservation()`
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   On cohort entries
+
+    -   `requireIsFirstEntry()`
+
+    -   `requireIsLastEntry()`
+
+    -   `requireIsEntry()`
+:::
+
+::: {.column width="50%"}
+-   Require presence or absence based on other cohorts, concepts, and tables
+
+    -   `requireCohortIntersect()`
+
+    -   `requireConceptIntersect()`
+
+    -   `requireTableIntersect()`
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   Other
+
+    -   `requireInDateRange()`
+
+    -   `requireMincohortCount(cohort = )`
+:::
+:::
+
+## Requirement functions - Example
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   We can apply different inclusion criteria using CohortConstructor's functions in a pipe-line fashion. For instance, in what follows we require
+
+    -   only first record per person
+
+    -   subjects 18 years old or more at cohort start date
+
+    -   only females
+
+    -   at least 30 days of prior observation at cohort start date
+
+. . .
+
+```{r}
+cdm$medications_requirement <- cdm$medications |> 
+  requireIsFirstEntry(name = "medications_requirement") |> 
+  requireDemographics(
+    ageRange = list(c(18, 150)),
+    sex = "Female", 
+    minPriorObservation = 30
+  )
+```
+
+## Requirement functions - Example
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+**Attrition Acetaminophen**
+
+```{r, echo=FALSE}
+result <- cdm$medications_requirement |> 
+  summariseCohortAttrition(cohortId = 1) 
+result |> 
+  tableCohortAttrition(
+  groupColumn = c("cohort_name"),
+  hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
+)
+```
+
+## Requirement functions - Example
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   Now, we only want to keep those exposures coinciding with at least one healthcare visit on that same day:
+
+. . .
+
+```{r}
+cdm$medications_requirement <- cdm$medications_requirement |> 
+  requireTableIntersect(
+    tableName = "visit_occurrence",
+    window = c(0, 0),
+    intersections = c(1, Inf)
+  )
+```
+
+## Requirement functions - Example
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+**Attrition Acetaminophen**
+
+```{r, echo=FALSE}
+result <- cdm$medications_requirement |> 
+  summariseCohortAttrition(cohortId = 1) 
+result |> 
+  tableCohortAttrition(
+  groupColumn = c("cohort_name"),
+  hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
+)
+```
+
+# Your turn!
+
+## Exercise 2 - Requirement and filtering
+
+**Create a new cohort named "aspirin_last" by applying the following criteria to the base aspirin cohort:**
+
+-   Include only the **last** drug exposure for each subject.
+
+-   Include exposures that **start between** January 1, 1960, and December 31, 1979.
+
+-   **Exclude** individuals with an **amoxicillin** exposure in the 7 days prior to the aspirin exposure.
+
+. . .
+
+<details>
+
+<summary>💡 Click to see solution</summary>
+
+```{r, eval=FALSE}
+amoxicillin <- getDrugIngredientCodes(
+  cdm = cdm, name  = "amoxicillin", nameStyle = "{concept_name}"
+)
+cdm$aspirin_last <- cdm$aspirin |>
+  requireIsLastEntry(name = "aspirin_last") |>
+  requireInDateRange(dateRange = as.Date(c("1960-01-01", "1979-12-31"))) |>
+  requireConceptIntersect(
+    conceptSet = amoxicillin,
+    window = list(c(-7, 0)),
+    intersections = 0
+  )
+summariseCohortAttrition(cdm$aspirin_last) |> tableCohortAttrition()
+```
+
+</details>
+
+*Move to the next slide to see the attrition.*
+
+## Exercise 2 - Requirement and filtering
+
+```{r, echo=FALSE}
+amoxicillin <- getDrugIngredientCodes(cdm = cdm, name  = "amoxicillin", nameStyle = "{concept_name}")
+cdm$aspirin_last <- cdm$aspirin |>
+  requireIsLastEntry(name = "aspirin_last") |>
+  requireInDateRange(dateRange = as.Date(c("1960-01-01", "1979-12-31"))) |>
+  requireConceptIntersect(
+    conceptSet = amoxicillin,
+    window = list(c(-7, 0)),
+    intersections = 0
+  )
+summariseCohortAttrition(cdm$aspirin_last) |> tableCohortAttrition()
+```
+
+# Update cohort entry and exit
+
+## Functions to update cohort start and end dates
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+::: columns
+::: {.column width="50%"}
+-   Cohort exit
+
+    -   `exitAtObservationEnd()`
+
+    -   `exitAtDeath()`
+
+    -   `exitAtFirstDate()`
+
+    -   `exitAtLastDate()`
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   Cohort entry
+
+    -   `entryAtFirstDate()`
+
+    -   `entryAtLastDate()`
+:::
+
+::: {.column width="50%"}
+-   Trim start and end dates
+
+    -   `trimDemographics()`
+
+    -   `trimToDateRange()`
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   Pad start and end dates
+
+    -   `padCohortDate()`
+
+    -   `padCohortEnd()`
+
+    -   `padCohortStart()`
+:::
+:::
+
+## Update cohort entry and exit - Example
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   We can trim start and end dates to match demographic requirements.
+
+-   For instance, cohort dates can be trimmed so the subject contributes time while:
+
+    -   Aged 20 to 40 years old
+
+    -   Prior observation of at least 365 days
+
+. . .
+
+```{r}
+cdm$medications_trimmed <- cdm$medications |>
+  trimDemographics(
+    ageRange = list(c(20, 40)),
+    minPriorObservation = 365,
+    name = "medications_trimmed"
+  )
+```
+
+## Update cohort entry and exit - Example
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+```{r, echo=FALSE}
+result <- cdm$medications_trimmed |> 
+  summariseCohortAttrition(cohortId = 1) 
+result |> 
+  tableCohortAttrition(
+  groupColumn = c("cohort_name"),
+  hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
+)
+```
+
+# Your turn!
+
+## Exercise 3 - Update cohort entry and exit
+
+**Create a cohort of ibuprofen. From it, create an "ibuprofen_death" cohort which includes only subjects that have a future record of death in the database, and update cohort end date to be the death date.**
+
+. . .
+
+<details>
+
+<summary>💡 Click to see solution</summary>
+
+```{r, eval=FALSE}
+ibuprofen <- getDrugIngredientCodes(
+  cdm = cdm, name  = "ibuprofen", nameStyle = "{concept_name}"
+)
+cdm$ibuprofen <- conceptCohort(
+  cdm = cdm, conceptSet = ibuprofen, name = "ibuprofen"
+)
+cdm$ibuprofen_death <- cdm$ibuprofen |> 
+  exitAtDeath(requireDeath = TRUE, name = "ibuprofen_death")
+
+summariseCohortAttrition(cdm$ibuprofen_death) |> tableCohortAttrition()
+```
+
+</details>
+
+*Move to the next slide to see the attrition.*
+
+## Exercise 3 - Update cohort entry and exit
+
+```{r, echo=FALSE}
+ibuprofen <- getDrugIngredientCodes(cdm = cdm, name  = "ibuprofen", nameStyle = "{concept_name}")
+cdm$ibuprofen <- conceptCohort(cdm = cdm, conceptSet = ibuprofen, name = "ibuprofen")
+cdm$ibuprofen_death <- cdm$ibuprofen |> 
+  exitAtDeath(requireDeath = TRUE, name = "ibuprofen_death")
+summariseCohortAttrition(cdm$ibuprofen_death) |> tableCohortAttrition()
+```
+
+# Transformation and Combination
+
+## Functions for Cohort Transformation and Combination
+
+::: columns
+::: {.column width="50%"}
+-   Split cohorts
+
+    -   `yearCohorts()`
+
+    -   `stratifyCohorts()`
+
+::: {style="margin-bottom: 10x;"}
+:::
+
+-   Combine cohorts
+
+    -   `unionCohorts()`
+
+    -   `intersectCohorts()`
+
+::: {style="margin-bottom: 10x;"}
+:::
+
+-   Filter cohorts
+
+    -   `subsetCohorts()`
+
+    -   `sampleCohorts()`
+:::
+
+::: {.column width="50%"}
+-   Match cohorts
+
+    -   `matchCohorts()`
+
+::: {style="margin-bottom: 10x;"}
+:::
+
+-   Concatenate entries
+
+    -   `collapseCohorts()`
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+-   Copy and rename cohorts
+
+    -   `renameCohort()`
+
+    -   `copyCohorts()`
+:::
+:::
+
+## Cohort combinations - Example
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+1)  Collapse drug exposures that are within a gap of 7 days.
+
+. . .
+
+![](collapse.png)
+
+## Cohort combinations - Example
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+```{r}
+cdm$medications_collapsed <- cdm$medications |>
+  collapseCohorts(gap = 7, name = "medications_collapsed")
+```
+
+```{r, echo=FALSE}
+result <- cdm$medications_collapsed |> 
+  summariseCohortAttrition(cohortId = 1) 
+result |> 
+  tableCohortAttrition(
+  groupColumn = c("cohort_name"),
+  hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
+)
+```
+
+## Cohort combinations - Example
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+2)  Create a new cohort that contains people who had an exposure to both **diclofenac and acetaminophen** at the same time using.
+
+. . .
+
+![](intersect.png)
+
+## Cohort combinations - Example
+
+::: {style="margin-bottom: 10px;"}
+:::
+
+```{r}
+cdm$intersection <- cdm$medications_collapsed |>
+  intersectCohorts(name = "intersection")
+
+settings(x = cdm$intersection)
+```
+
+# Your turn!
+
+## Exercise 4 - Transformation and Combination
+
+**From the ibuprofen base cohort (not subseted to death), create five separate cohorts. Each cohort should include records for one specific year from the following list: 1975, 1976, 1977, 1978, 1979, and 1980.**
+
+-   *How many records and subjects are in each cohort?*
+
+. . .
+
+<details>
+
+<summary>💡 Click to see solution</summary>
+
+```{r, eval=FALSE}
+cdm$ibuprofen_years <- cdm$ibuprofen |>
+  yearCohorts(years = 1975:1980, name = "ibuprofen_years")
+summariseCohortCount(cohort = cdm$ibuprofen_years) |> tableCohortCount()
+```
+
+</details>
+
+```{r, echo=FALSE}
+cdm$ibuprofen_years <- cdm$ibuprofen |>
+  yearCohorts(years = 1975:1980, name = "ibuprofen_years")
+summariseCohortCount(cohort = cdm$ibuprofen_years) |> tableCohortCount()
+```
+
+## \[Optional\] Exercise 5
+
+**Use CohortConstructor to create a cohort with the following criteria:**
+
+-   **Users of diclofenac**
+
+-   **Females aged 16 or older**
+
+-   **With at least 365 days of continuous observation prior to exposure**
+
+-   **Without prior exposure to amoxicillin**
+
+-   **With cohort exit defined as first discontinuation of exposure. An exposure being define as recorded exposures within 7-days gap**
+
+. . .
+
+*Move to the next slide to see the attrition.*
+
+## \[Optional\] Exercise 5
+
+*Move to the next slide to see the solution.*
+
+```{r, echo=FALSE}
+amoxicillin <- getDrugIngredientCodes(
+  cdm = cdm, 
+  name  = c("amoxicillin"), 
+  nameStyle = "{concept_name}"
+)
+diclofenac <- getDrugIngredientCodes(
+  cdm = cdm, 
+  name  = "diclofenac", 
+  nameStyle = "{concept_name}"
+)
+cdm$diclofenac <- conceptCohort(
+  cdm = cdm, 
+  conceptSet = diclofenac, 
+  name = "diclofenac"
+) |>
+  requireDemographics(
+    sex = "Female",
+    ageRange = list(c(16, 150)), 
+    minPriorObservation = 365
+  ) |>
+  requireConceptIntersect(
+    conceptSet = amoxicillin,
+    window = list(c(-Inf, -1)),
+    intersections = 0
+  ) |>
+  collapseCohorts(gap = 7) |>
+  requireIsFirstEntry()
+
+summariseCohortAttrition(cdm$diclofenac) |> tableCohortAttrition()
+```
+
+## \[Optional\] Exercise 5
+
+<details>
+
+<summary>💡 Click to see solution</summary>
+
+```{r, eval=FALSE}
+amoxicillin <- getDrugIngredientCodes(
+  cdm = cdm, 
+  name  = c("amoxicillin"), 
+  nameStyle = "{concept_name}"
+)
+diclofenac <- getDrugIngredientCodes(
+  cdm = cdm, 
+  name  = "diclofenac", 
+  nameStyle = "{concept_name}"
+)
+cdm$diclofenac <- conceptCohort(
+  cdm = cdm, 
+  conceptSet = diclofenac, 
+  name = "diclofenac"
+) |>
+  requireDemographics(
+    sex = "Female",
+    ageRange = list(c(16, 150)), 
+    minPriorObservation = 365
+  ) |>
+  requireConceptIntersect(
+    conceptSet = amoxicillin,
+    window = list(c(-Inf, -1)),
+    intersections = 0
+  ) |>
+  collapseCohorts(gap = 7) |>
+  requireIsFirstEntry()
+
+summariseCohortAttrition(cdm$diclofenac) |> tableCohortAttrition()
+```
+
+</details>
+
+## CohortConstructor
+
+::: {style="display: flex; align-items: center; justify-content: space-between;"}
+::: {style="flex: 1;"}
+👉 [**Packages website**](https://ohdsi.github.io/CohortConstructor/)\
+👉 [**CRAN link**](https://cran.r-project.org/package=CohortConstructor)\
+👉 [**Manual**](https://cran.r-project.org/web/packages/CohortConstructor/CohortConstructor)
+
+📧 <a href="mailto:nuria.mercadebesora@ndorms.ox.ac.uk">nuria.mercadebesora\@ndorms.ox.ac.uk</a>
+:::
+
+::: {style="flex: 1; text-align: center;"}
+<img src="https://github.com/OHDSI/CohortConstructor/blob/main/man/figures/logo.png?raw=true" width="600"/>
+:::
+:::

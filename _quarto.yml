@@ -25,10 +25,10 @@ website:
         href: program.qmd
       - text: Setup
         href: setup.qmd
-      - text: Practicals
-        href: Practicals/index.qmd
-      - text: My first study
-        href: my_first_study.qmd
+      - text: Presentations
+        href: Presentations/index.qmd
+      - text: Practical
+        href: practical.qmd
     right:
       - text: W
         href: https://oxford-pharmacoepi.github.io/Oxinfer/
@@ -42,3 +42,10 @@ format:
     toc: true
     theme: cosmo
     search: false
+
+render:
+  - index.qmd
+  - practical.qmd
+  - Analytics track/*.qmd
+  - program.qmd
+  - setup.qmd
