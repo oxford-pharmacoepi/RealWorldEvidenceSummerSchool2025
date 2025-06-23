@@ -53,11 +53,27 @@ By the end of the week:
 
 . . .
 
--   Quarto presentations - most presentations correspond to an R package that works with data in the OMOP CDM format
+-   Quarto presentations - most presentations correspond to an R package that works with data in the OMOP CDM format.
 
--   "Your Turn" exercises - during presentations where you can practice using the package
+-   "Your Turn" exercises - during presentations where you can practice using the package (solutions will be on the next slide, but first try without looking at these!)
 
 -   General practical - end of each day, which we will work on throughout the week.
+
+## Post-It notes
+
+. . .
+
+-   Green - all good, no code currently running
+
+-   Yellow - code running
+
+-   Red - help me!
+
+<br/>
+
+. . .
+
+![](images/BIEe.gif){fig-align="center" width="500"}
 
 ## duckdb detour
 
@@ -68,7 +84,6 @@ duckdb is the R package we will use that can take the longest to install. Let's 
 ```{r, eval=FALSE}
 pak::pak("duckdb/duckdb-r")
 ```
-
 
 ## Schedule - Monday
 
