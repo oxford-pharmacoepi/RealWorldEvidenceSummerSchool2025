@@ -78,51 +78,51 @@ Use the in-built visualisation functions from the package to plot the survival e
 
 ## CohortSurvival's main functionality
 
-::: columns
+:::::::::::::: columns
 ::: {.column width="10%"}
 :::
 
-::: {.column width="40%"}
-::: bulletbox
-::: {.fragment .fade-in-then-semi-out}
+:::::: {.column width="40%"}
+::::: bulletbox
+:::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
 **Estimate single event survival** *Specify exposure and outcome cohorts.*
 :::
-:::
-:::
-:::
+::::
+:::::
+::::::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column width="40%"}
-::: bulletbox
-::: {.fragment .fade-in-then-semi-out}
+:::::: {.column width="40%"}
+::::: bulletbox
+:::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
 **Estimate competing risk survival** *Specify exposure, outcome and competing outcome cohorts.*
 :::
-:::
-:::
-:::
+::::
+:::::
+::::::
 
 ::: {.column width="5%"}
 :::
-:::
+::::::::::::::
 
-::: columns
+:::::::: columns
 ::: {.column width="30%"}
 :::
 
-::: {.column width="40%"}
-::: bulletbox
-::: {.fragment .fade-in-then-semi-out}
+:::::: {.column width="40%"}
+::::: bulletbox
+:::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
 **Do further survival analyses** *Add survival information to the cohort of interest to run survival models using other well-known packages (i.e. survival).*
 :::
-:::
-:::
-:::
-:::
+::::
+:::::
+::::::
+::::::::
 
 # Estimate survival
 
@@ -133,6 +133,7 @@ Use the in-built visualisation functions from the package to plot the survival e
 library(CDMConnector)
 library(DBI)
 library(duckdb)
+library(here)
 library(DrugUtilisation)
 library(dplyr)
 library(gt)
@@ -143,20 +144,28 @@ library(omopgenerics)
 library(PatientProfiles)
 ```
 
+```{r, echo = FALSE}
+datasetName <- "GiBleed"
+dbdir <- here::here(paste0(datasetName, ".duckdb"))
+con <- duckdb::dbConnect(drv = duckdb::duckdb(dbdir = dbdir))
+
+cdm <- omock::mockCdmFromDataset(datasetName = datasetName)
+CDMConnector::insertCdmTo(cdm = cdm, to = CDMConnector::dbSource(con = con, writeSchema = "main"))
+duckdb::dbDisconnect(conn = con)
+```
+
 ```{r}
-# Download Eunomia 
-requireEunomia()
+datasetName <- "GiBleed"
+dbdir <- here(paste0(datasetName, ".duckdb"))
+con <- dbConnect(drv = duckdb(dbdir = dbdir))
 
-# Connect to the "database"
-con <- dbConnect(duckdb(), dbdir = eunomiaDir())
-# Create CDM reference object
 cdm <- cdmFromCon(
-  con, 
-  cdmSchema = "main", 
+  con = con, 
+  cdmSchema = "main",
   writeSchema = "main",
-  writePrefix = "my_study_"
+  writePrefix = "my_study_", 
+  cdmName = datasetName
 )
-
 ```
 
 ## Use estimateSingleSurvival() for treatment adherence
