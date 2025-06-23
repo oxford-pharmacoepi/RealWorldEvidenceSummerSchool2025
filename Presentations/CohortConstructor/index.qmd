@@ -246,7 +246,9 @@ attrition(x = cdm$age_cohort)
 To better visualise the **attrition**, we can use the package `CohortCharacteristics` to create a **formatted table**:
 
 ```{r}
-cdm$age_cohort |> summariseCohortAttrition() |> tableCohortAttrition()
+cdm$age_cohort |> 
+  summariseCohortAttrition() |>
+  tableCohortAttrition()
 ```
 
 ## Concept based - Example {.incremental:FALSE}
@@ -304,9 +306,9 @@ result <- cdm$medications |>
   summariseCohortAttrition() 
 result |> 
   tableCohortAttrition(
-  groupColumn = c("cohort_name"),
-  hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
-)
+    groupColumn = c("cohort_name"),
+    hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
+  )
 ```
 
 ## Concept based - Example
@@ -323,38 +325,6 @@ attr(cdm$medications, "cohort_codelist")
 ```
 
 # Your turn!
-
-## Get started: connecto to Eunomia
-
-::: {style="margin-bottom: 15px;"}
-:::
-
-```{r, eval=FALSE}
-# Load relevant packages
-library(CDMConnector)
-library(CodelistGenerator)
-library(CohortConstructor)
-library(CohortCharacteristics)
-library(dplyr)
-library(DBI)
-library(duckdb)
-```
-
-```{r, eval=FALSE}
-# Download Eunomia 
-requireEunomia()
-
-# Create duckdb connection with Eunomia
-con <- dbConnect(drv = duckdb(), dbdir = eunomiaDir())
-
-# Create CDM reference object
-cdm <- cdmFromCon(
-  con = con, 
-  cdmSchema = "main", 
-  writeSchema = "main",
-  writePrefix = "my_study_"
-)
-```
 
 ## Exercise 1 - Base cohorts
 
@@ -382,7 +352,8 @@ aspirin <- getDrugIngredientCodes(
   cdm = cdm, name  = "aspirin", nameStyle = "{concept_name}"
 )
 cdm$aspirin <- conceptCohort(cdm = cdm, conceptSet = aspirin, name = "aspirin")
-summariseCohortCount(cohort = cdm$aspirin) |> tableCohortCount()
+counts <- summariseCohortCount(cohort = cdm$aspirin) 
+tableCohortCount(reuslt = counts)
 ```
 
 </details>
@@ -477,8 +448,8 @@ cdm$medications_requirement <- cdm$medications |>
 ```{r, echo=FALSE}
 result <- cdm$medications_requirement |> 
   summariseCohortAttrition(cohortId = 1) 
-result |> 
-  tableCohortAttrition(
+tableCohortAttrition(
+  result = result,
   groupColumn = c("cohort_name"),
   hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
 )
@@ -512,8 +483,8 @@ cdm$medications_requirement <- cdm$medications_requirement |>
 ```{r, echo=FALSE}
 result <- cdm$medications_requirement |> 
   summariseCohortAttrition(cohortId = 1) 
-result |> 
-  tableCohortAttrition(
+tableCohortAttrition(
+  result = result,
   groupColumn = c("cohort_name"),
   hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
 )
@@ -549,7 +520,8 @@ cdm$aspirin_last <- cdm$aspirin |>
     window = list(c(-7, 0)),
     intersections = 0
   )
-summariseCohortAttrition(cdm$aspirin_last) |> tableCohortAttrition()
+result <- summariseCohortAttrition(cdm$aspirin_last)
+tableCohortAttrition(result = result)
 ```
 
 </details>
@@ -568,7 +540,8 @@ cdm$aspirin_last <- cdm$aspirin |>
     window = list(c(-7, 0)),
     intersections = 0
   )
-summariseCohortAttrition(cdm$aspirin_last) |> tableCohortAttrition()
+result <- summariseCohortAttrition(cdm$aspirin_last)
+tableCohortAttrition(result = result)
 ```
 
 # Update cohort entry and exit
@@ -652,8 +625,8 @@ cdm$medications_trimmed <- cdm$medications |>
 ```{r, echo=FALSE}
 result <- cdm$medications_trimmed |> 
   summariseCohortAttrition(cohortId = 1) 
-result |> 
-  tableCohortAttrition(
+tableCohortAttrition(
+  result = result, 
   groupColumn = c("cohort_name"),
   hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
 )
@@ -681,7 +654,8 @@ cdm$ibuprofen <- conceptCohort(
 cdm$ibuprofen_death <- cdm$ibuprofen |> 
   exitAtDeath(requireDeath = TRUE, name = "ibuprofen_death")
 
-summariseCohortAttrition(cdm$ibuprofen_death) |> tableCohortAttrition()
+result <- summariseCohortAttrition(cdm$ibuprofen_death)
+tableCohortAttrition(result = result)
 ```
 
 </details>
@@ -695,7 +669,8 @@ ibuprofen <- getDrugIngredientCodes(cdm = cdm, name  = "ibuprofen", nameStyle = 
 cdm$ibuprofen <- conceptCohort(cdm = cdm, conceptSet = ibuprofen, name = "ibuprofen")
 cdm$ibuprofen_death <- cdm$ibuprofen |> 
   exitAtDeath(requireDeath = TRUE, name = "ibuprofen_death")
-summariseCohortAttrition(cdm$ibuprofen_death) |> tableCohortAttrition()
+result <- summariseCohortAttrition(cohort = cdm$ibuprofen_death)
+tableCohortAttrition(result = result)
 ```
 
 # Transformation and Combination
@@ -776,8 +751,8 @@ cdm$medications_collapsed <- cdm$medications |>
 ```{r, echo=FALSE}
 result <- cdm$medications_collapsed |> 
   summariseCohortAttrition(cohortId = 1) 
-result |> 
-  tableCohortAttrition(
+tableCohortAttrition(
+  result = result,
   groupColumn = c("cohort_name"),
   hide = c("variable_level", "reason_id", "estimate_name", "cdm_name", settingsColumns(result))
 )
@@ -823,7 +798,8 @@ settings(x = cdm$intersection)
 ```{r, eval=FALSE}
 cdm$ibuprofen_years <- cdm$ibuprofen |>
   yearCohorts(years = 1975:1980, name = "ibuprofen_years")
-summariseCohortCount(cohort = cdm$ibuprofen_years) |> tableCohortCount()
+counts <- summariseCohortCount(cohort = cdm$ibuprofen_years)
+tableCohortCount(result = counts)
 ```
 
 </details>
@@ -831,7 +807,8 @@ summariseCohortCount(cohort = cdm$ibuprofen_years) |> tableCohortCount()
 ```{r, echo=FALSE}
 cdm$ibuprofen_years <- cdm$ibuprofen |>
   yearCohorts(years = 1975:1980, name = "ibuprofen_years")
-summariseCohortCount(cohort = cdm$ibuprofen_years) |> tableCohortCount()
+counts <- summariseCohortCount(cohort = cdm$ibuprofen_years)
+tableCohortCount(result = counts)
 ```
 
 ## \[Optional\] Exercise 5
@@ -885,7 +862,8 @@ cdm$diclofenac <- conceptCohort(
   collapseCohorts(gap = 7) |>
   requireIsFirstEntry()
 
-summariseCohortAttrition(cdm$diclofenac) |> tableCohortAttrition()
+result <- summariseCohortAttrition(cdm$diclofenac)
+tableCohortAttrition(result = result)
 ```
 
 ## \[Optional\] Exercise 5
@@ -923,7 +901,8 @@ cdm$diclofenac <- conceptCohort(
   collapseCohorts(gap = 7) |>
   requireIsFirstEntry()
 
-summariseCohortAttrition(cdm$diclofenac) |> tableCohortAttrition()
+result <- summariseCohortAttrition(cdm$diclofenac)
+tableCohortAttrition(result = result)
 ```
 
 </details>
