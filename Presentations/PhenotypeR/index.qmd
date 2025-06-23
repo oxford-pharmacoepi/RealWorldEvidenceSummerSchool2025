@@ -106,7 +106,7 @@ result <- phenotypeDiagnostics(
 . . .
 
 ```{r, eval = FALSE}
-shinyDiagnostics(result, directory = here())
+shinyDiagnostics(result = result, directory = here())
 ```
 
 ## Run Phenotype Diagnostics - Example
@@ -142,17 +142,17 @@ cdm$medications <- conceptCohort(
 
 # Run Phenotype Diagnostics 
 result <- phenotypeDiagnostics(cdm$medications,
-                     databaseDiagnostics = TRUE,
-                     codelistDiagnostics = TRUE,
-                     cohortDiagnostics = TRUE,
-                     survival = TRUE,
-                     match = TRUE,
-                     matchedSample = NULL,
-                     populationDiagnostics = TRUE,
-                     populationSample = NULL,
-                     populationDateRange = as.Date(c(NA,NA)))
+                               databaseDiagnostics = TRUE,
+                               codelistDiagnostics = TRUE,
+                               cohortDiagnostics = TRUE,
+                               survival = TRUE,
+                               match = TRUE,
+                               matchedSample = NULL,
+                               populationDiagnostics = TRUE,
+                               populationSample = NULL,
+                               populationDateRange = as.Date(c(NA,NA)))
 
-shinyDiagnostics(result, here::here())
+shinyDiagnostics(result = result, directory = here())
 ```
 
 # Visualise the results
