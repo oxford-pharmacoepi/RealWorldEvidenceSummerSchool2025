@@ -41,16 +41,8 @@ editor: visual
 <img src="https://github.com/OHDSI/OmopSketch/blob/main/man/figures/logo.png?raw=true" alt="Logo 2" class="logo"/>
 :::
 
-## Install the latest version of OmopSketch
-
 ```{r,echo=FALSE}
 options(width = 120)
-```
-
-. . .
-
-```{r, eval=FALSE}
-install.packages("OmopSketch")
 ```
 
 ## Create the CDM object
@@ -63,31 +55,26 @@ library(OmopSketch)
 library(CDMConnector)
 library(duckdb)
 library(dplyr)
+library(here)
 ```
 :::
 
 -   Create a cdm object containing syntethic data
 
 ```{r, echo = FALSE}
-library(omock)
-library(duckdb)
-library(CDMConnector)
-
 datasetName <- "GiBleed"
 dbdir <- here::here(paste0(datasetName, ".duckdb"))
-con <- dbConnect(drv = duckdb(dbdir = dbdir))
+con <- duckdb::dbConnect(drv = duckdb::duckdb(dbdir = dbdir))
 
-datasetName <- "GiBleed"
-cdm <- mockCdmFromDataset(datasetName = datasetName)
-insertCdmTo(cdm = cdm, to = dbSource(con = con, writeSchema = "main"))
-dbDisconnect(conn = con)
+cdm <- omock::mockCdmFromDataset(datasetName = datasetName)
+CDMConnector::insertCdmTo(cdm = cdm, to = CDMConnector::dbSource(con = con, writeSchema = "main"))
+duckdb::dbDisconnect(conn = con)
 ```
 
 ::: fragment
 ```{r}
 datasetName <- "GiBleed"
-dbdir <- here::here(paste0(datasetName, ".duckdb"))
-
+dbdir <- here(paste0(datasetName, ".duckdb"))
 con <- dbConnect(drv = duckdb(dbdir = dbdir))
 
 cdm <- cdmFromCon(
@@ -96,7 +83,7 @@ cdm <- cdmFromCon(
   writeSchema = "main",
   writePrefix = "os_", 
   cdmName = datasetName
-  )
+)
 ```
 :::
 
@@ -125,7 +112,7 @@ cdm <- cdmFromCon(
 ```{r, warning=FALSE}
 snapshot <- summariseOmopSnapshot(cdm = cdm)
 
-snapshot |> glimpse()
+glimpse(snapshot)
 ```
 :::
 
@@ -162,7 +149,7 @@ tableOmopSnapshot(result = snapshot, type = "gt")
 ::: fragment
 ```{r, warning=FALSE}
 result <- summariseObservationPeriod(observationPeriod = cdm$observation_period, sex = TRUE)
-result |> glimpse()
+glimpse(result)
 ```
 :::
 
@@ -240,8 +227,7 @@ plotObservationPeriod(result = result,
 result <- summariseInObservation(observationPeriod = cdm$observation_period,
                                  interval = "years",
                                  output = c("record","person", "person-days", "sex", "age"), 
-                                 ageGroup = list(c(0,50), c(51, Inf))
-                                 ) 
+                                 ageGroup = list(c(0,50), c(51, Inf))) 
 ```
 :::
 
@@ -346,7 +332,7 @@ plotInObservation(result = result, facet = "sex", colour = "age_group")
 result <- summariseMissingData(cdm = cdm, 
                                omopTableName = "drug_exposure",
                                col = NULL,
-                               sample = 1e03) 
+                               sample = 1000) 
 ```
 :::
 
@@ -428,8 +414,7 @@ tableClinicalRecords(result = result, type = "gt")
 result <- summariseRecordCount(cdm = cdm, 
                                omopTableName = "visit_occurrence", 
                                interval = "years",
-                               dateRange = as.Date(c("2000-01-01", "2015-12-31"))
-                               )
+                               dateRange = as.Date(c("2000-01-01", "2015-12-31")))
 ```
 :::
 
@@ -459,8 +444,7 @@ result <- summariseRecordCount(cdm = cdm,
                                omopTableName = c("drug_exposure", "condition_occurrence"),
                                interval = "years",
                                sex = TRUE,
-                               dateRange = as.Date(c("2010-01-01", "2018-12-31"))
-                               )
+                               dateRange = as.Date(c("2010-01-01", "2018-12-31")))
 
 plotRecordCount(result = result, facet = "omop_table", colour = "sex")
 ```
@@ -486,8 +470,7 @@ result <- summariseRecordCount(cdm = cdm,
                                omopTableName = c("drug_exposure", "condition_occurrence"),
                                interval = "years",
                                sex = TRUE,
-                               dateRange = as.Date(c("2010-01-01", "2018-12-31"))
-                               )
+                               dateRange = as.Date(c("2010-01-01", "2018-12-31")))
 
 plotRecordCount(result = result, facet = "omop_table", colour = "sex")
 ```
@@ -519,7 +502,7 @@ plotRecordCount(result = result, facet = "omop_table", colour = "sex")
 result <- summariseConceptIdCounts(cdm = cdm, 
                                    omopTableName = "procedure_occurrence",
                                    countBy = c("record", "person"))
-result |> glimpse()
+glimpse(result)
 ```
 :::
 
@@ -628,8 +611,7 @@ tableTopConceptCounts(result = result, top = 5)
 ::: {.fragment style="overflow-y: scroll; height: 650px;"}
 ```{r, warning=FALSE, eval=FALSE}
 result <- databaseCharacteristics(cdm = cdm, 
-                                  omopTableName = c("drug_exposure",
-                                                    "condition_occurrence"), 
+                                  omopTableName = c("drug_exposure", "condition_occurrence"), 
                                   sex = TRUE, 
                                   ageGroup = list(c(0,50), c(51, Inf)), 
                                   interval = "years", 
@@ -652,7 +634,7 @@ result <- databaseCharacteristics(cdm = cdm,
 
 ::: {.fragment style="overflow-y: scroll; height: 650px;"}
 ```{r, warning=FALSE, eval=FALSE}
-shinyCharacteristics(result = result, directory = here::here())
+shinyCharacteristics(result = result, directory = here())
 ```
 :::
 
