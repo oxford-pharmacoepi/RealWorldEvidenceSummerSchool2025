@@ -48,8 +48,8 @@ editor: visual
 ::: {style="margin-bottom: 10px;"}
 :::
 
-::: columns
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="45%"}
 -   **Database diagnostics**
 
     -   Summarises the databases metadata and the observation period.
@@ -64,7 +64,7 @@ editor: visual
     -   `codelistDiagnostics()`
 :::
 
-::: {.column width="50%"}
+:::: {.column width="55%"}
 -   **Cohort diagnostics**
 
     -   Summarises baseline characteristics, attrition, overlap, and large-scale characteristics. It also allows to compare our results with a matched cohort.
@@ -92,6 +92,7 @@ result <- phenotypeDiagnostics(
   databaseDiagnostics = TRUE,
   codelistDiagnostics = TRUE,
   cohortDiagnostics = TRUE,
+  survival = TRUE,
   match = TRUE,
   matchedSample = NULL,
   populationDiagnostics = TRUE,
@@ -105,14 +106,12 @@ result <- phenotypeDiagnostics(
 . . .
 
 ```{r, eval = FALSE}
-shinyDiagnostics(result, directory = here())
+shinyDiagnostics(result = result, directory = here())
 ```
 
-# Run Phenotype Diagnostics - Example
+## Run Phenotype Diagnostics - Example
 
 ```{r, eval = FALSE}
-install.packages("PhenotypeR")
-
 library(CDMConnector)
 library(CodelistGenerator)
 library(CohortConstructor)
@@ -120,17 +119,14 @@ library(CohortCharacteristics)
 library(dplyr)
 library(PhenotypeR)
 library(here)
+library(omock)
+library(duckdb)
 
-requireEunomia(datasetName = "synpuf-1k", cdmVersion = "5.3")
-
-con <- DBI::dbConnect(duckdb::duckdb(), dbdir = eunomiaDir(datasetName = "synpuf-1k", cdmVersion = "5.3"))
-cdm <- cdmFromCon(
-  con, 
-  cdmSchema = "main", 
-  writeSchema = "main",
-  writePrefix = "my_study_",
-  achillesSchema = "main"
-)
+datasetName <- "synpuf-1k_5.3"
+dbdir <- here(paste0(datasetName, ".duckdb"))
+con <- dbConnect(drv = duckdb(dbdir = dbdir))
+cdm <- mockCdmFromDataset(datasetName = datasetName)
+cdm <- insertCdmTo(cdm = cdm, to = dbSource(con = con, writeSchema = "main"))
 
 drug_codes <- getDrugIngredientCodes(
   cdm = cdm, 
@@ -146,18 +142,126 @@ cdm$medications <- conceptCohort(
 
 # Run Phenotype Diagnostics 
 result <- phenotypeDiagnostics(cdm$medications,
-                     databaseDiagnostics = TRUE,
-                     codelistDiagnostics = TRUE,
-                     cohortDiagnostics = TRUE,
-                     matchedAnalysis = TRUE,
-                     matchedSample = NULL,
-                     populationDiagnostics = TRUE,
-                     populationSample = NULL,
-                     populationDateRange = as.Date(c(NA,NA)))
+                               databaseDiagnostics = TRUE,
+                               codelistDiagnostics = TRUE,
+                               cohortDiagnostics = TRUE,
+                               survival = TRUE,
+                               match = TRUE,
+                               matchedSample = NULL,
+                               populationDiagnostics = TRUE,
+                               populationSample = NULL,
+                               populationDateRange = as.Date(c(NA,NA)))
 
-shinyDiagnostics(result, here::here())
+shinyDiagnostics(result = result, directory = here())
 ```
 
 # Visualise the results
 
 See the results in the [shiny app](https://dpa-pde-oxford.shinyapps.io/PhenotypeR_RWESummerSchool/)
+
+## PhenotypeR
+
+::::: {style="display: flex; align-items: center; justify-content: space-between;"}
+::: {style="flex: 1;"}
+👉 [**Packages website**](https://ohdsi.github.io/PhenotypeR/)\
+👉 [**CRAN link**](https://cran.r-project.org/package=PhenotypeR)\
+👉 [**Manual**](https://cran.r-project.org/web/packages/PhenotypeR/PhenotypeR.pdf)
+
+📧 <a href="mailto:marta.alcaldeherraiz@ndorms.ox.ac.uk">marta.alcaldeherraiz\@ndorms.ox.ac.uk</a>
+:::
+
+::: {style="flex: 1; text-align: center;"}
+<img src="https://github.com/OHDSI/PhenotypeR/blob/main/man/figures/logo.png?raw=true" width="600"/>
+:::
+:::::
+
+## Extra - PhenotypeR shiny app 
+![](s1.png)
+
+## Extra - PhenotypeR shiny app 
+![](s2.png)
+
+## Extra - PhenotypeR shiny app 
+![](s4.png)
+
+## Extra - PhenotypeR shiny app 
+![](s5.png)
+
+## Extra - PhenotypeR shiny app 
+![](s6.png)
+
+## Extra - PhenotypeR shiny app 
+![](s29.png)
+
+## Extra - PhenotypeR shiny app 
+![](s7.png)
+
+## Extra - PhenotypeR shiny app 
+![](s8.png)
+
+## Extra - PhenotypeR shiny app 
+![](s9.png)
+
+## Extra - PhenotypeR shiny app 
+![](s10.png)
+
+## Extra - PhenotypeR shiny app 
+![](s11.png)
+
+## Extra - PhenotypeR shiny app 
+![](s12.png)
+
+## Extra - PhenotypeR shiny app 
+![](s13.png)
+
+## Extra - PhenotypeR shiny app 
+![](s31.png)
+
+## Extra - PhenotypeR shiny app 
+![](s14.png)
+
+## Extra - PhenotypeR shiny app 
+![](s15.png)
+
+## Extra - PhenotypeR shiny app 
+![](s16.png)
+
+## Extra - PhenotypeR shiny app 
+![](s17.png)
+
+## Extra - PhenotypeR shiny app 
+![](s18.png)
+
+## Extra - PhenotypeR shiny app 
+![](s19.png)
+
+## Extra - PhenotypeR shiny app 
+![](s20.png)
+
+## Extra - PhenotypeR shiny app 
+![](s21.png)
+
+## Extra - PhenotypeR shiny app 
+![](s22.png)
+
+## Extra - PhenotypeR shiny app 
+![](s23.png)
+
+## Extra - PhenotypeR shiny app 
+![](s24.png)
+
+## Extra - PhenotypeR shiny app 
+![](s30.png)
+
+## Extra - PhenotypeR shiny app 
+![](s25.png)
+
+## Extra - PhenotypeR shiny app 
+![](s26.png)
+
+## Extra - PhenotypeR shiny app 
+![](s27.png)
+
+## Extra - PhenotypeR shiny app 
+![](s28.png)
+
