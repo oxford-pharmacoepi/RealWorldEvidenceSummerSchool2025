@@ -170,6 +170,7 @@ library(duckdb)
 library(DBI)
 library(dplyr)
 library(gt)
+library(here)
 ```
 
 ## Create the cdm_reference object
