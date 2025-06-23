@@ -42,29 +42,33 @@ library(png)
 ```
 
 ```{r, echo=FALSE}
-    library(omock)
-    library(duckdb)
-    library(CDMConnector)
+datasetName <- "GiBleed"
+dbdir <- here::here(paste0(datasetName, ".duckdb"))
+con <- duckdb::dbConnect(drv = duckdb::duckdb(dbdir = dbdir))
 
-    datasetName <- "GiBleed"
-    dbdir <- here::here(paste0(datasetName, ".duckdb"))
-    con <- dbConnect(drv = duckdb(dbdir = dbdir))
-
-    datasetName <- "GiBleed"
-    cdm <- mockCdmFromDataset(datasetName = datasetName)
-    insertCdmTo(cdm = cdm, to = dbSource(con = con, writeSchema = "main"))
-    dbDisconnect(conn = con)
+cdm <- omock::mockCdmFromDataset(datasetName = datasetName)
+CDMConnector::insertCdmTo(cdm = cdm, to = CDMConnector::dbSource(con = con, writeSchema = "main"))
+duckdb::dbDisconnect(conn = con)
 ```
+
+## Let's get started
 
 ```{r, echo = TRUE}
 library(duckdb)
 library(CDMConnector)
+library(CohortConstructor)
 library(PatientProfiles)
 library(dplyr)
 library(ggplot2)
+library(here)
+library(CohortCharacteristics)
+```
 
+## Let's get started
+
+```{r, echo = TRUE}
 datasetName <- "GiBleed"
-dbdir <- here::here(paste0(datasetName, ".duckdb"))
+dbdir <- here(paste0(datasetName, ".duckdb"))
 con <- dbConnect(drv = duckdb(dbdir = dbdir))
 
 cdm <- cdmFromCon(
@@ -74,57 +78,50 @@ cdm <- cdmFromCon(
   writePrefix = "test_", # customise with your package
   cdmName = datasetName
 )
-cdm <- generateConceptCohortSet(
+```
+
+## Let's get started
+
+```{r, echo = TRUE}
+cdm$sinusitis <- conceptCohort(
   cdm = cdm,
   name = "sinusitis",
   conceptSet = list(
-    "bacterial_sinusitis" = 4294548, 
-    "viral_sinusitis" = 40481087, 
-    "chronic_sinusitis" = 257012, 
-    "any_sinusitis" = c(4294548, 40481087, 257012)
-  ), 
-  limit = "all", 
-  end = 0
+    bacterial_sinusitis = 4294548L, 
+    viral_sinusitis = 40481087L, 
+    chronic_sinusitis = 257012L, 
+    any_sinusitis = c(4294548L, 40481087L, 257012L)
+  ),
+  exit = "event_start_date"
 )
 cdm$new_sinusitis <- cdm$sinusitis |>
-  addSex() |>
-  filter(sex == "Female") |>
-  select(-"sex") |>
-  compute(name = "new_sinusitis", temporary = F) |>
-  recordCohortAttrition("Restrict to Females") |>
-  addAge() |>
-  filter(age < 18) |>
-  select(-"age") |>
-  compute(name = "new_sinusitis", temporary = F) |>
-  recordCohortAttrition("Restrict to under 18")
+  requireSex(sex = "Female", name = "new_sinusitis") |>
+  requireAge(ageRange = c(0, 18))
 
-cdm <- generateConceptCohortSet(
+cdm$conditions <- conceptCohort(
   cdm = cdm, 
   conceptSet = list(
-    "myocardial_infarction" = c(4329847),
-    "fracture" = c(4048695, 4142905, 4278672, 4237458, 4230399, 40480160, 4066995, 4059173, 4134304),
-    "allergy" = c(4084167, 40486433, 4280726, 4048171),
-    "infection" =  c(4116491, 433125, 4056621, 40481087, 4112343),
-    "pneumonia" = c(255848),
-    "asthma" = c(4051466, 317009)
+    myocardial_infarction = c(4329847),
+    fracture = c(4048695, 4142905, 4278672, 4237458, 4230399, 40480160, 4066995, 4059173, 4134304),
+    allergy = c(4084167, 40486433, 4280726, 4048171),
+    infection =  c(4116491, 433125, 4056621, 40481087, 4112343),
+    pneumonia = c(255848),
+    asthma = c(4051466, 317009)
   ),
-  limit = "all",
-  end = 0,
+  exit = "event_start_date",
   name = "conditions"
 )
 
-cdm <- generateConceptCohortSet(
+cdm$medications <- conceptCohort(
   cdm = cdm, 
   conceptSet = list(
-    "antineoplastic_and_immunomodulating_agents" = c(1118088, 1118084, 40224132, 19010482, 40224805, 19007333, 1500211, 1305058, 1503184, 19134077, 1549786),
-    "musculoskeletal_system" = c(1118088, 1557272, 40162359, 1124300, 1115008, 40173590, 1118084, 42707627, 19019273, 19019979, 19078461, 19003953, 1112807, 1115171, 1177480),
-    "antiinfectives_for_systemic_use" = c(19129655, 1728416, 920293, 19074841, 920300, 920334, 19074843, 19075001, 19073183, 19073188, 1713671, 1729720, 19006318, 1778162, 46275444, 1717327, 1738521, 1741122, 1759842, 1713332, 1746114, 1768849, 46233710, 19133873, 46233988, 19133905),
-    "nervous_system" = c(708298, 701322, 723013, 1129625, 1110410, 753626, 1124957, 1102527, 1125315, 782043, 791967, 1119510, 19078219, 757627, 40220386, 740275, 40223774, 1154029, 1127078, 1127433, 40222846, 19057271, 40223768, 45892894, 705944, 715997, 19078924, 19076374, 19077572, 40229134, 19059056, 19016749, 40236446, 19074679, 742185, 40231925, 1112807, 35605858, 40162522, 782047, 19039298, 19059528, 836654, 836659, 19115351, 19023398, 19002770, 19123231, 19133768, 40165015),
-    "dermatologicals" = c(1129625, 1149380, 1124300, 836654, 1595799, 975125, 19008572),
-    "respiratory_system" = c(1129625, 1149196, 1149380, 1150770, 1150836, 1153428, 1107830, 1110410, 738818, 1124957, 40169216, 1125443, 1119510, 1137529, 1154615, 1154343, 40223821, 19019979, 19112599, 40223834, 43012036, 40229134, 19029476, 19078461, 40232448, 1177480, 1192710, 1343916, 1150771, 1150837, 1107882, 975125, 1174888, 40169281, 40228214, 40228230, 19125062)
+    antineoplastic_and_immunomodulating_agents = c(1118088, 1118084, 40224132, 19010482, 40224805, 19007333, 1500211, 1305058, 1503184, 19134077, 1549786),
+    musculoskeletal_system = c(1118088, 1557272, 40162359, 1124300, 1115008, 40173590, 1118084, 42707627, 19019273, 19019979, 19078461, 19003953, 1112807, 1115171, 1177480),
+    antiinfectives_for_systemic_use = c(19129655, 1728416, 920293, 19074841, 920300, 920334, 19074843, 19075001, 19073183, 19073188, 1713671, 1729720, 19006318, 1778162, 46275444, 1717327, 1738521, 1741122, 1759842, 1713332, 1746114, 1768849, 46233710, 19133873, 46233988, 19133905),
+    nervous_system = c(708298, 701322, 723013, 1129625, 1110410, 753626, 1124957, 1102527, 1125315, 782043, 791967, 1119510, 19078219, 757627, 40220386, 740275, 40223774, 1154029, 1127078, 1127433, 40222846, 19057271, 40223768, 45892894, 705944, 715997, 19078924, 19076374, 19077572, 40229134, 19059056, 19016749, 40236446, 19074679, 742185, 40231925, 1112807, 35605858, 40162522, 782047, 19039298, 19059528, 836654, 836659, 19115351, 19023398, 19002770, 19123231, 19133768, 40165015),
+    dermatologicals = c(1129625, 1149380, 1124300, 836654, 1595799, 975125, 19008572),
+    respiratory_system = c(1129625, 1149196, 1149380, 1150770, 1150836, 1153428, 1107830, 1110410, 738818, 1124957, 40169216, 1125443, 1119510, 1137529, 1154615, 1154343, 40223821, 19019979, 19112599, 40223834, 43012036, 40229134, 19029476, 19078461, 40232448, 1177480, 1192710, 1343916, 1150771, 1150837, 1107882, 975125, 1174888, 40169281, 40228214, 40228230, 19125062)
   ),
-  limit = "all",
-  end = "event_end_date",
   name = "medications"
 )
 ```
@@ -168,12 +165,12 @@ You can also install the development version from our github repo:
 . . .
 
 ```{r, eval = FALSE}
-remotes::install_github("darwin-eu-dev/CohortCharacteristics")
+remotes::install_github("darwin-eu/CohortCharacteristics")
 ```
 
 . . .
 
-The documentation and vignettes of the packages can be found in our page: <https://darwin-eu-dev.github.io/CohortCharacteristics/>
+The documentation and vignettes of the packages can be found in our page: <https://darwin-eu.github.io/CohortCharacteristics/>
 
 ## summariseCharacteristics
 
@@ -182,11 +179,8 @@ The documentation and vignettes of the packages can be found in our page: <https
 To get summarise characteristics for your cohort, pipe in below to your cohort table.
 
 ```{r, echo = T, eval = T}
-library(CohortCharacteristics)
-
  results <- cdm$sinusitis |>
   summariseCharacteristics()
-
 ```
 
 . . .
@@ -194,9 +188,7 @@ library(CohortCharacteristics)
 Its return the cohort characteristics in a `summarised_result` object format.
 
 ```{r, echo = T, eval = T}
-
-results |> glimpse()
-
+glimpse(results)
 ```
 
 ## tableCharacteristics
@@ -206,9 +198,7 @@ results |> glimpse()
 To get a tidy table from the `summarised_result` object.
 
 ```{r, echo = T, eval = T}
-
-results |> tableCharacteristics(header = "cohort_name")
-
+tableCharacteristics(result = results, header = "cohort_name")
 ```
 
 ## Commonly used arguement for summarisedCharacteristics
@@ -232,16 +222,13 @@ results |> tableCharacteristics(header = "cohort_name")
 ## ageGroup example
 
 ```{r, echo = T, eval = F}
-
 cdm$sinusitis |>
   summariseCharacteristics(ageGroup = list(c(0,10),c(11,18), c(19,150))) |>
   tableCharacteristics(header = "cohort_name")
-
 ```
 ## ageGroup example
 
 ```{r, echo = F, eval = T, results = 'asis'}
-
 res <- cdm$sinusitis |>
   summariseCharacteristics(ageGroup = list(c(0,10),c(11,18), c(19,150))) |>
   tableCharacteristics(header = "cohort_name")
@@ -250,25 +237,19 @@ res <- cdm$sinusitis |>
 cat("<div style='max-height:400px; overflow-y:auto; border:1px solid #ccc; padding:10px;'>")
 print(res)
 cat("</div>")
-
 ```
 
 ## strata example
 
 ```{r, echo = T, eval = F}
-
-cdm$sinusitis |> 
+result <- cdm$sinusitis |> 
   addAge(ageGroup = list(c(0,10),c(11,18), c(19,150))) |>
-  summariseCharacteristics(cohortId = 1,
-                           strata = list("age_group")) |>
-  tableCharacteristics(header = "age_group")
-
+  summariseCharacteristics(cohortId = 1, strata = list("age_group"))
+tableCharacteristics(result = result, header = "age_group")  
 ```
 ## strata example
 
 ```{r, echo = F, eval = T, results = 'asis'}
-
-
 res <- cdm$sinusitis |> 
   addAge(ageGroup = list(c(0,10),c(11,18), c(19,150))) |>
   summariseCharacteristics(cohortId = 1,
@@ -286,11 +267,10 @@ cat("</div>")
 
 . . .
 
-you can get the count/flag/date//days with other tables
+you can get the count/flag/date/days with other tables
 
 ```{r, echo = T, eval = F}
-
-cdm$sinusitis |>
+result <- cdm$sinusitis |>
   summariseCharacteristics(
     tableIntersectCount = list(
       "Number of visits prior year" = list(
@@ -305,9 +285,9 @@ cdm$sinusitis |>
         targetCohortTable = "medications", window = c(-365, 0)
       )
     )
-  ) |>
-  tableCharacteristics(header = "cohort_name")
+  )
 
+tableCharacteristics(result = result, header = "cohort_name")
 ```
 
 ## intersection with another table
@@ -315,9 +295,7 @@ cdm$sinusitis |>
 you can get the count/flag/date//days with other tables
 
 ```{r, echo = F, eval = T, results = 'asis'}
-
-
- res <- cdm$sinusitis |>
+res <- cdm$sinusitis |>
   summariseCharacteristics(
     tableIntersectCount = list(
       "Number of visits prior year" = list(
@@ -351,9 +329,9 @@ Can you characterise the new_sinusitis table in the cdm object and see whats the
 <summary>💡 Click to see solution</summary>
 
 ```{r, eval = FALSE}
-cdm$new_sinusitis |>
-  summariseCharacteristics() |>
-  tableCharacteristics(header = "cohort_name")
+result <- summariseCharacteristics(cdm$new_sinusitis)
+
+tableCharacteristics(result = result, header = "cohort_name")
 ```
 
 </details>
@@ -365,25 +343,24 @@ cdm$new_sinusitis |>
 you can obtain a plot of the variable you want from the summariseCharacteristics using the `plotCharacteristics` function
 
 ```{r, echo = T, eval = T}
-
-cdm$sinusitis |>
+result <- cdm$sinusitis |>
   summariseCharacteristics() |>
-  filter(variable_name == "Age" & strata_level == "overall") |>
-  plotCharacteristics(plotStyle = "boxplot")
+  filter(variable_name == "Age" & strata_level == "overall")
 
+plotCharacteristics(result = result, plotStyle = "boxplot")
 ```
 
 ## Plots
 
 ```{r, echo = T, eval = T}
-
-cdm$sinusitis |>
+result <- cdm$sinusitis |>
   summariseCharacteristics() |>
-  filter(variable_name == "Age" & estimate_name == "median") |>
-  plotCharacteristics(plotStyle = "barplot", 
-                      facet = "cohort_name",
-                      colour = "cdm_name")
+  filter(variable_name == "Age" & estimate_name == "median")
 
+plotCharacteristics(result = result,
+                    plotStyle = "barplot", 
+                    facet = "cohort_name",
+                    colour = "cdm_name")
 ```
 
 ## Plots
@@ -393,15 +370,15 @@ cdm$sinusitis |>
 these are ggplot object and are compatible with the usual ggplot command for editing.
 
 ```{r, echo = T, eval = T}
-
-cdm$sinusitis |>
+result <- cdm$sinusitis |>
   summariseCharacteristics() |>
-  filter(variable_name == "Age" & estimate_name == "median") |>
-  plotCharacteristics(plotStyle = "barplot", 
-                      facet = "cohort_name",
-                      colour = "cdm_name") +
-  ggtitle("Median age of the cohort")
+  filter(variable_name == "Age" & estimate_name == "median")
 
+plotCharacteristics(result = result, 
+                    plotStyle = "barplot", 
+                    facet = "cohort_name",
+                    colour = "cdm_name") +
+  ggtitle("Median age of the cohort")
 ```
 
 ## Plot cohort Attrition
@@ -411,9 +388,9 @@ cdm$sinusitis |>
 Another useful function is `plotCohortAttrition` and `summariseCohortAttrition`, it return the attrition flowchart of your cohorts.
 
 ```{r, echo = T, eval = T}
-cdm$sinusitis |> 
-  summariseCohortAttrition(cohortId = 1) |> 
-  plotCohortAttrition(type = "png")
+result <- summariseCohortAttrition(cohort = cdm$sinusitis, cohortId = 1) 
+
+plotCohortAttrition(result = result, type = "png")
 ```
 
 ## Your turn
@@ -425,12 +402,14 @@ Can you create a bar plot for gender the new_sinusitis table in the cdm object?
 <summary>💡 Click to see solution</summary>
 
 ```{r, eval = FALSE}
-cdm$new_sinusitis |>
+result <- cdm$new_sinusitis |>
   summariseCharacteristics() |>
-  filter(variable_name == "Sex" & estimate_name == "median") |>
-  plotCharacteristics(plotStyle = "barplot", 
-                      facet = "cohort_name",
-                      colour = "cdm_name")
+  filter(variable_name == "Sex" & estimate_name == "median")
+
+plotCharacteristics(result = result, 
+                    plotStyle = "barplot", 
+                    facet = "cohort_name",
+                    colour = "cdm_name")
 ```
 
 </details>
@@ -448,8 +427,8 @@ result <- cdm$sinusitis |>
     eventInWindow = "condition_occurrence",
     minimumFrequency = 0.05
   )
-result |>
-  glimpse()
+
+glimpse(result)
 ```
 
 ## SummariseLargeScaleCharacteristics
@@ -459,8 +438,7 @@ result |>
 `tableLargeScaleCharacteristics` for tidy table
 
 ```{r, echo = T, eval = T}
-result |> 
-  tableTopLargeScaleCharacteristics(topConcepts = 5)
+tableTopLargeScaleCharacteristics(result = result, topConcepts = 5)
 ```
 
 ## SummariseCohortOverlap
@@ -470,12 +448,10 @@ result |>
 When creating multiple cohort, we might be interested in the overlap of individuals between those cohorts. `SummariseCohortOverlap` does this for you.
 
 ```{r, echo = T, eval = T}
-
 result <- cdm$sinusitis |>
   summariseCohortOverlap()
 
-result |> glimpse()
-
+glimpse(result)
 ```
 
 ## SummariseCohortOverlap
@@ -485,9 +461,7 @@ result |> glimpse()
 Again can get a table with `tableCohortOverlap`
 
 ```{r, echo = T, eval = T}
-
-result |> tableCohortOverlap()
-
+tableCohortOverlap(result)
 ```
 
 ## plotCohortOverlap
@@ -497,9 +471,7 @@ result |> tableCohortOverlap()
 Again can get a plot with `plotCohortOverlap`
 
 ```{r, echo = T, eval = T}
-
-result |> plotCohortOverlap(uniqueCombinations = TRUE)
-
+plotCohortOverlap(result = result, uniqueCombinations = TRUE)
 ```
 
 ## SummariseCohortTiming
@@ -509,12 +481,10 @@ result |> plotCohortOverlap(uniqueCombinations = TRUE)
 When creating multiple cohort, we might be interested in timing of entry between cohorts. `SummariseCohortTiming` does this for you.
 
 ```{r, echo = T, eval = T}
-
 result <- cdm$sinusitis |>
   summariseCohortTiming(restrictToFirstEntry = TRUE)
 
-result |> glimpse()
-
+glimpse(result)
 ```
 
 ## SummariseCohortOverlap
@@ -524,10 +494,9 @@ result |> glimpse()
 Again can get a table with `tableCohortTiming`
 
 ```{r, echo = T, eval = T}
-
-result |> tableCohortTiming(timeScale = "years", 
-                            uniqueCombinations = FALSE)
-
+tableCohortTiming(result = result,
+                  timeScale = "years", 
+                  uniqueCombinations = FALSE)
 ```
 
 ## plotCohortOverlap
@@ -537,8 +506,8 @@ result |> tableCohortTiming(timeScale = "years",
 Again can get a plot with `plotCohortTiming`
 
 ```{r, echo = T, eval = T}
-
-result |> plotCohortTiming(
+plotCohortTiming(
+  result = result,
   plotType = "boxplot",
   timeScale = "years",
   uniqueCombinations = FALSE
@@ -553,13 +522,12 @@ result |> plotCohortTiming(
 Or return a densityplot
 
 ```{r, echo = T, eval = T}
-
-result |> plotCohortTiming(
+plotCohortTiming(
+  result = result,
   plotType = "densityplot",
   timeScale = "years",
   uniqueCombinations = FALSE
 )
-
 ```
 
 ## CohortCharacteristics
