@@ -81,6 +81,7 @@ editor: visual
 :::::::
 
 ## Set of Functions: Phenotype Diagnostics
+
 -   Comprises all the diagnostics that are being offered in this package.
 
 . . .
@@ -108,6 +109,7 @@ shinyDiagnostics(result, directory = here())
 ```
 
 # Run Phenotype Diagnostics - Example
+
 ```{r, eval = FALSE}
 install.packages("PhenotypeR")
 
@@ -119,16 +121,13 @@ library(dplyr)
 library(PhenotypeR)
 library(here)
 
-requireEunomia(datasetName = "synpuf-1k", cdmVersion = "5.3")
-
-con <- DBI::dbConnect(duckdb::duckdb(), dbdir = eunomiaDir(datasetName = "synpuf-1k", cdmVersion = "5.3"))
-cdm <- cdmFromCon(
-  con, 
-  cdmSchema = "main", 
-  writeSchema = "main",
-  writePrefix = "my_study_",
-  achillesSchema = "main"
-)
+con <- DBI::dbConnect(duckdb::duckdb(), 
+                      CDMConnector::eunomiaDir("synpuf-1k", "5.3"))
+cdm <- CDMConnector::cdmFromCon(con = con, 
+                                cdmName = "Eunomia Synpuf",
+                                cdmSchema   = "main",
+                                writeSchema = "main",
+                                achillesSchema = "main")
 
 drug_codes <- getDrugIngredientCodes(
   cdm = cdm, 
@@ -147,7 +146,8 @@ result <- phenotypeDiagnostics(cdm$medications,
                      databaseDiagnostics = TRUE,
                      codelistDiagnostics = TRUE,
                      cohortDiagnostics = TRUE,
-                     matchedAnalysis = TRUE,
+                     survival = TRUE,
+                     match = TRUE,
                      matchedSample = NULL,
                      populationDiagnostics = TRUE,
                      populationSample = NULL,
@@ -156,5 +156,24 @@ result <- phenotypeDiagnostics(cdm$medications,
 shinyDiagnostics(result, here::here())
 ```
 
-# Visualise the results 
+# Visualise the results
+
 See the results in the [shiny app](https://dpa-pde-oxford.shinyapps.io/PhenotypeR_RWESummerSchool/)
+
+## PhenotypeR
+
+::::: {style="display: flex; align-items: center; justify-content: space-between;"}
+::: {style="flex: 1;"}
+👉 [**Packages website**](https://ohdsi.github.io/PhenotypeR/)\
+👉 [**CRAN link**](https://cran.r-project.org/package=PhenotypeR)\
+👉 [**Manual**](https://cran.r-project.org/web/packages/PhenotypeR/PhenotypeR.pdf)
+
+📧 <a href="mailto:marta.alcaldeherraiz@ndorms.ox.ac.uk">marta.alcaldeherraiz\@ndorms.ox.ac.uk</a>
+:::
+
+::: {style="flex: 1; text-align: center;"}
+<img src="https://github.com/OHDSI/PhenotypeR/blob/main/man/figures/logo.png?raw=true" width="600"/>
+:::
+:::::
+
+## Extra - PhenotypeR shiny app
