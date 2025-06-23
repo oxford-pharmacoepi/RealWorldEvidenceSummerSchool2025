@@ -49,7 +49,7 @@ editor: visual
 :::
 
 ::::::: columns
-:::: {.column width="50%"}
+:::: {.column width="45%"}
 -   **Database diagnostics**
 
     -   Summarises the databases metadata and the observation period.
@@ -64,7 +64,7 @@ editor: visual
     -   `codelistDiagnostics()`
 ::::
 
-:::: {.column width="50%"}
+:::: {.column width="55%"}
 -   **Cohort diagnostics**
 
     -   Summarises baseline characteristics, attrition, overlap, and large-scale characteristics. It also allows to compare our results with a matched cohort.
@@ -92,6 +92,7 @@ result <- phenotypeDiagnostics(
   databaseDiagnostics = TRUE,
   codelistDiagnostics = TRUE,
   cohortDiagnostics = TRUE,
+  survival = TRUE,
   match = TRUE,
   matchedSample = NULL,
   populationDiagnostics = TRUE,
@@ -108,7 +109,7 @@ result <- phenotypeDiagnostics(
 shinyDiagnostics(result, directory = here())
 ```
 
-# Run Phenotype Diagnostics - Example
+## Run Phenotype Diagnostics - Example
 
 ```{r, eval = FALSE}
 install.packages("PhenotypeR")
@@ -176,4 +177,93 @@ See the results in the [shiny app](https://dpa-pde-oxford.shinyapps.io/Phenotype
 :::
 :::::
 
-## Extra - PhenotypeR shiny app
+## Extra - PhenotypeR shiny app 
+![](s1.png)
+
+## Extra - PhenotypeR shiny app 
+![](s2.png)
+
+## Extra - PhenotypeR shiny app 
+![](s4.png)
+
+## Extra - PhenotypeR shiny app 
+![](s5.png)
+
+## Extra - PhenotypeR shiny app 
+![](s6.png)
+
+## Extra - PhenotypeR shiny app 
+![](s29.png)
+
+## Extra - PhenotypeR shiny app 
+![](s7.png)
+
+## Extra - PhenotypeR shiny app 
+![](s8.png)
+
+## Extra - PhenotypeR shiny app 
+![](s9.png)
+
+## Extra - PhenotypeR shiny app 
+![](s10.png)
+
+## Extra - PhenotypeR shiny app 
+![](s11.png)
+
+## Extra - PhenotypeR shiny app 
+![](s12.png)
+
+## Extra - PhenotypeR shiny app 
+![](s13.png)
+
+## Extra - PhenotypeR shiny app 
+![](s31.png)
+
+## Extra - PhenotypeR shiny app 
+![](s14.png)
+
+## Extra - PhenotypeR shiny app 
+![](s15.png)
+
+## Extra - PhenotypeR shiny app 
+![](s16.png)
+
+## Extra - PhenotypeR shiny app 
+![](s17.png)
+
+## Extra - PhenotypeR shiny app 
+![](s18.png)
+
+## Extra - PhenotypeR shiny app 
+![](s19.png)
+
+## Extra - PhenotypeR shiny app 
+![](s20.png)
+
+## Extra - PhenotypeR shiny app 
+![](s21.png)
+
+## Extra - PhenotypeR shiny app 
+![](s22.png)
+
+## Extra - PhenotypeR shiny app 
+![](s23.png)
+
+## Extra - PhenotypeR shiny app 
+![](s24.png)
+
+## Extra - PhenotypeR shiny app 
+![](s30.png)
+
+## Extra - PhenotypeR shiny app 
+![](s25.png)
+
+## Extra - PhenotypeR shiny app 
+![](s26.png)
+
+## Extra - PhenotypeR shiny app 
+![](s27.png)
+
+## Extra - PhenotypeR shiny app 
+![](s28.png)
+
