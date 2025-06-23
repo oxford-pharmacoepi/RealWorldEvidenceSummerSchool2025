@@ -75,15 +75,23 @@ By the end of the week:
 
 ![](images/BIEe.gif){fig-align="center" width="500"}
 
-## duckdb detour
+
+## Set up
+
+**Download the project**:
+
+Please download the following project: [download project](https://github.com/oxford-pharmacoepi/AnalyticsTrack2025/archive/refs/heads/main.zip)
+
+or you can fork the repository from GitHub: <https://github.com/oxford-pharmacoepi/AnalyticsTrack2025>
 
 . . .
 
-duckdb is the R package we will use that can take the longest to install. Let's start installing it now.
+**Open Project**: open `Presentations/Presentations.Rproj` file with RStudio.
 
-```{r, eval=FALSE}
-pak::pak("duckdb/duckdb-r")
-```
+. . .
+
+**Check setup**: open and run the `Setup.R` file that will check that all packages are installed.
+
 
 ## Schedule - Monday
 
@@ -154,18 +162,3 @@ You can find all the materials of the summer school in the following website: <h
 
 </iframe>
 
-## Set up
-
-**Download the project**:
-
-Please download the following project: [download project](https://github.com/oxford-pharmacoepi/AnalyticsTrack2025/archive/refs/heads/main.zip)
-
-or you can fork the repository from GitHub: <https://github.com/oxford-pharmacoepi/AnalyticsTrack2025>
-
-. . .
-
-**Open Project**: open `Presentations/Presentations.Rproj` file with RStudio.
-
-. . .
-
-**Check setup**: open and run the `Setup.R` file that will check that all packages are installed.
