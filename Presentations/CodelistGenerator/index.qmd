@@ -147,39 +147,6 @@ cdm$concept_relationship %>% glimpse()
 cdm$concept_synonym %>% glimpse()
 ```
 
-# Achilles analysis results
-
-## Achilles
-
-Achilles provides descriptive statistics on an OMOP CDM database and is typically run after performing ETL.
-
-![](images/achilles.png)
-
-## Achilles
-
-![](images/achilles2.png)
-
-## Achilles
-
-```{r}
-cdm_mock$achilles_analysis |>
-  glimpse()
-```
-
-## Achilles
-
-```{r}
-cdm_mock$achilles_results |>
-  glimpse()
-```
-
-## Achilles
-
-```{r}
-cdm_mock$achilles_results_dist |>
-  glimpse()
-```
-
 # Exploring vocabulary tables using CodelistGenerator
 
 ## Vocabulary version
@@ -471,14 +438,6 @@ tableCodeUse(result = asthma_code_use |>
 ```{r}
 tableCodeUse(result = asthma_code_use |>
   filter(strata_name == "age_group"))
-```
-
-## Code counts using achilles
-
-We'll get an error if we try to use achilles tables as we don't have them in our cdm object.
-
-```{r, eval=FALSE}
-summariseAchillesCodeUse(x = asthma_cs, cdm = cdm)
 ```
 
 
