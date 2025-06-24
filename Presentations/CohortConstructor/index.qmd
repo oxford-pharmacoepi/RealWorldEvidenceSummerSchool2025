@@ -158,9 +158,9 @@ Tranform base cohorts to meet study-specific inclusion criteria.
 
 -   `deathCohort()`
 
-## Load requires libraries
+## Create the cdm_reference object
 
-```{r, echo=FALSE, message=FALSE}
+```{r, message=FALSE}
 # Load relevant packages
 library(CDMConnector)
 library(CodelistGenerator)
@@ -173,9 +173,10 @@ library(gt)
 library(here)
 ```
 
-## Create the cdm_reference object
 
-```{r, echo = FALSE}
+
+```{r, echo=FALSE}
+# Create cdm_reference object
 datasetName <- "GiBleed"
 dbdir <- here::here(paste0(datasetName, ".duckdb"))
 con <- duckdb::dbConnect(drv = duckdb::duckdb(dbdir = dbdir))
@@ -325,6 +326,35 @@ attr(cdm$medications, "cohort_codelist")
 ```
 
 # Your turn!
+
+## Get Started: Create the cdm_reference object
+
+```{r, message=FALSE, eval=FALSE}
+# Load relevant packages
+library(CDMConnector)
+library(CodelistGenerator)
+library(CohortConstructor)
+library(CohortCharacteristics)
+library(duckdb)
+library(DBI)
+library(dplyr)
+library(gt)
+library(here)
+```
+
+```{r, eval=FALSE}
+datasetName <- "GiBleed"
+dbdir <- here(paste0(datasetName, ".duckdb"))
+con <- dbConnect(drv = duckdb(dbdir = dbdir))
+
+cdm <- cdmFromCon(
+  con = con, 
+  cdmSchema = "main",
+  writeSchema = "main",
+  writePrefix = "my_study_", 
+  cdmName = datasetName
+)
+```
 
 ## Exercise 1 - Base cohorts
 
