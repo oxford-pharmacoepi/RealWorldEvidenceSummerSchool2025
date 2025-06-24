@@ -69,8 +69,6 @@ options(width = 120)
 
 ## OMOP Cohorts in R
 
-![](logoCC.png){.absolute right="70px" top="0px" width="65" height="70"} ![](logoOHDSI.png){.absolute right="0px" top="0px" width="65" height="70"}
-
 ```{r, echo=FALSE}
 library(CDMConnector)
 library(CodelistGenerator)
