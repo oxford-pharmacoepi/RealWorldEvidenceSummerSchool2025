@@ -78,6 +78,8 @@ library(CohortConstructor)
 library(CohortCharacteristics)
 library(dplyr)
 
+requireEunomia()
+
 con <- DBI::dbConnect(duckdb::duckdb(), dbdir = eunomiaDir())
 cdm <- cdmFromCon(
   con, 
