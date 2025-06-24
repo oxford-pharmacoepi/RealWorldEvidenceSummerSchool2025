@@ -47,6 +47,99 @@ options(width = 120)
 
 -   Vignettes with further information can be found in the package [website](https://ohdsi.github.io/CohortConstructor/index.html){.link}.
 
+
+# OMOP Cohorts in R
+
+## OMOP Cohorts in R
+
+-   The `<cohort_table>` class is defined in the R package `omopgenerics`.
+
+-   This is the class that `CohortConstructor` uses, as well as other OMOP analytical packages.
+
+-   As defined in `omopgenerics`, a `<cohort_table>` must have at least the following 4 columns (without any missing values in them):
+
+    -   **cohort_definition_id**: Unique identifier for each cohort in the table.
+
+    -   **subject_id**: Unique patient identifier.
+
+    -   **cohort_start_date**: Date when the person enters the cohort.
+
+    -   **cohort_end_date**: Date when the person exits the cohort.
+
+
+## OMOP Cohorts in R
+
+```{r, echo=FALSE}
+library(CDMConnector)
+library(CodelistGenerator)
+library(CohortConstructor)
+library(CohortCharacteristics)
+library(dplyr)
+
+requireEunomia()
+
+con <- DBI::dbConnect(duckdb::duckdb(), dbdir = eunomiaDir())
+cdm <- cdmFromCon(
+  con, 
+  cdmSchema = "main", 
+  writeSchema = "main",
+  writePrefix = "my_study_"
+)
+
+cdm$cohort <- conceptCohort(
+  cdm = cdm, 
+  conceptSet = list("viral_sinusitis" = 40481087L, "viral_pharyngitis" = 4112343L), 
+  name = "cohort"
+)
+```
+
+```{r}
+cdm$cohort
+```
+
+## OMOP Cohorts in R {.nonincremental}
+
+Additionally, the `<cohort_table>` object has the follwing **attributes**:
+
+-   **Settings**: Relate each cohort definition ID with a cohort name and other variables that define the cohort.
+
+. . .
+
+```{r}
+settings(cdm$cohort)
+```
+
+## OMOP Cohorts in R {.nonincremental}
+
+-   **Attrition**: Store information on each inclusion criteria applied and how many records and subjects were kept after.
+
+. . .
+
+```{r}
+attrition(cdm$cohort)
+```
+
+## OMOP Cohorts in R {.nonincremental}
+
+-   **Cohort count**: Number of records and subjects for each cohort.
+
+. . .
+
+```{r}
+cohortCount(cdm$cohort)
+```
+
+## OMOP Cohorts in R {.nonincremental}
+
+-   **Cohort codelist**: Codelists used to define entry events and inclusion criteria for each cohort.
+
+. . .
+
+```{r}
+attr(cdm$cohort, "cohort_codelist")
+```
+
+
 ## CohortConstructor pipeline
 
 . . .
