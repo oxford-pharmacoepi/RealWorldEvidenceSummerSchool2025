@@ -7,3 +7,5 @@ _site/
 /.quarto/
 *.html
 *.duckdb
+/shiny/
+synpuf-1k_5.3.duckdb.wal

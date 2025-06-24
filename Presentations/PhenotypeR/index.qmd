@@ -36,7 +36,7 @@ editor: visual
 ::: {style="margin-bottom: 10px;"}
 :::
 
--   PhenotypeR 0.1.5 is available in [CRAN](https://cran.r-project.org/web/packages/PhenotypeR/index.html){.link}.
+-   PhenotypeR 0.1.6 is available in [CRAN](https://cran.r-project.org/web/packages/PhenotypeR/index.html){.link}.
 
 ::: {style="margin-bottom: 10px;"}
 :::
@@ -122,12 +122,17 @@ library(here)
 library(omock)
 library(duckdb)
 
+# Create mock cdm
 datasetName <- "synpuf-1k_5.3"
 dbdir <- here(paste0(datasetName, ".duckdb"))
 con <- dbConnect(drv = duckdb(dbdir = dbdir))
 cdm <- mockCdmFromDataset(datasetName = datasetName)
 cdm <- insertCdmTo(cdm = cdm, to = dbSource(con = con, writeSchema = "main"))
 
+cdm <- cdm %>%
+  buildAchillesTables()
+
+# Create mock cohorts
 drug_codes <- getDrugIngredientCodes(
   cdm = cdm, 
   name = c("diclofenac", "acetaminophen"),
