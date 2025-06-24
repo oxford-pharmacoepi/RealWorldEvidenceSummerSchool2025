@@ -455,7 +455,7 @@ $ count_value  &lt;dbl&gt; 5</code></pre>
 <div class="cell">
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://darwin-eu.github.io/CodelistGenerator/reference/getDomains.html">getDomains</a></span><span class="op">(</span>cdm <span class="op">=</span> <span class="va">cdm</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Drug"        "Observation" "Visit"       "Gender"      "Procedure"   "Condition"   "Measurement"</code></pre>
+<pre><code>[1] "Measurement" "Procedure"   "Condition"   "Drug"        "Observation" "Visit"       "Gender"     </code></pre>
 </div>
 </div>
 </section><section id="concept-classes" class="slide level2"><h2>Concept classes</h2>
@@ -720,23 +720,23 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
 <span><span class="fu"><a href="https://darwin-eu.github.io/CodelistGenerator/reference/tableCodeUse.html">tableCodeUse</a></span><span class="op">(</span>result <span class="op">=</span> <span class="va">asthma_code_use</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">strata_name</span> <span class="op">==</span> <span class="st">"overall"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="zcsxskdoaa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zcsxskdoaa table {
+<div id="lxpihusmjf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lxpihusmjf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zcsxskdoaa thead, #zcsxskdoaa tbody, #zcsxskdoaa tfoot, #zcsxskdoaa tr, #zcsxskdoaa td, #zcsxskdoaa th {
+#lxpihusmjf thead, #lxpihusmjf tbody, #lxpihusmjf tfoot, #lxpihusmjf tr, #lxpihusmjf td, #lxpihusmjf th {
   border-style: none;
 }
 
-#zcsxskdoaa p {
+#lxpihusmjf p {
   margin: 0;
   padding: 0;
 }
 
-#zcsxskdoaa .gt_table {
+#lxpihusmjf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -762,12 +762,12 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   border-left-color: #D9D9D9;
 }
 
-#zcsxskdoaa .gt_caption {
+#lxpihusmjf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zcsxskdoaa .gt_title {
+#lxpihusmjf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -779,7 +779,7 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   border-bottom-width: 0;
 }
 
-#zcsxskdoaa .gt_subtitle {
+#lxpihusmjf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -791,7 +791,7 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   border-top-width: 0;
 }
 
-#zcsxskdoaa .gt_heading {
+#lxpihusmjf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -803,13 +803,13 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zcsxskdoaa .gt_bottom_border {
+#lxpihusmjf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zcsxskdoaa .gt_col_headings {
+#lxpihusmjf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -824,7 +824,7 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zcsxskdoaa .gt_col_heading {
+#lxpihusmjf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -844,7 +844,7 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   overflow-x: hidden;
 }
 
-#zcsxskdoaa .gt_column_spanner_outer {
+#lxpihusmjf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -856,15 +856,15 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   padding-right: 4px;
 }
 
-#zcsxskdoaa .gt_column_spanner_outer:first-child {
+#lxpihusmjf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zcsxskdoaa .gt_column_spanner_outer:last-child {
+#lxpihusmjf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zcsxskdoaa .gt_column_spanner {
+#lxpihusmjf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -876,11 +876,11 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   width: 100%;
 }
 
-#zcsxskdoaa .gt_spanner_row {
+#lxpihusmjf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zcsxskdoaa .gt_group_heading {
+#lxpihusmjf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -906,7 +906,7 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   text-align: left;
 }
 
-#zcsxskdoaa .gt_empty_group_heading {
+#lxpihusmjf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -921,15 +921,15 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   vertical-align: middle;
 }
 
-#zcsxskdoaa .gt_from_md > :first-child {
+#lxpihusmjf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zcsxskdoaa .gt_from_md > :last-child {
+#lxpihusmjf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zcsxskdoaa .gt_row {
+#lxpihusmjf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -948,7 +948,7 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   overflow-x: hidden;
 }
 
-#zcsxskdoaa .gt_stub {
+#lxpihusmjf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -961,7 +961,7 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   padding-right: 5px;
 }
 
-#zcsxskdoaa .gt_stub_row_group {
+#lxpihusmjf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -975,15 +975,15 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   vertical-align: top;
 }
 
-#zcsxskdoaa .gt_row_group_first td {
+#lxpihusmjf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zcsxskdoaa .gt_row_group_first th {
+#lxpihusmjf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zcsxskdoaa .gt_summary_row {
+#lxpihusmjf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -993,16 +993,16 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   padding-right: 5px;
 }
 
-#zcsxskdoaa .gt_first_summary_row {
+#lxpihusmjf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zcsxskdoaa .gt_first_summary_row.thick {
+#lxpihusmjf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zcsxskdoaa .gt_last_summary_row {
+#lxpihusmjf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1012,7 +1012,7 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zcsxskdoaa .gt_grand_summary_row {
+#lxpihusmjf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1022,7 +1022,7 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   padding-right: 5px;
 }
 
-#zcsxskdoaa .gt_first_grand_summary_row {
+#lxpihusmjf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1032,7 +1032,7 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#zcsxskdoaa .gt_last_grand_summary_row_top {
+#lxpihusmjf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1042,11 +1042,11 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zcsxskdoaa .gt_striped {
+#lxpihusmjf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zcsxskdoaa .gt_table_body {
+#lxpihusmjf .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #D9D9D9;
@@ -1055,7 +1055,7 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zcsxskdoaa .gt_footnotes {
+#lxpihusmjf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1069,7 +1069,7 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zcsxskdoaa .gt_footnote {
+#lxpihusmjf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1078,7 +1078,7 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   padding-right: 5px;
 }
 
-#zcsxskdoaa .gt_sourcenotes {
+#lxpihusmjf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1092,7 +1092,7 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zcsxskdoaa .gt_sourcenote {
+#lxpihusmjf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1100,72 +1100,72 @@ $ standard_concept &lt;chr&gt; "S", "S"</code></pre>
   padding-right: 5px;
 }
 
-#zcsxskdoaa .gt_left {
+#lxpihusmjf .gt_left {
   text-align: left;
 }
 
-#zcsxskdoaa .gt_center {
+#lxpihusmjf .gt_center {
   text-align: center;
 }
 
-#zcsxskdoaa .gt_right {
+#lxpihusmjf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zcsxskdoaa .gt_font_normal {
+#lxpihusmjf .gt_font_normal {
   font-weight: normal;
 }
 
-#zcsxskdoaa .gt_font_bold {
+#lxpihusmjf .gt_font_bold {
   font-weight: bold;
 }
 
-#zcsxskdoaa .gt_font_italic {
+#lxpihusmjf .gt_font_italic {
   font-style: italic;
 }
 
-#zcsxskdoaa .gt_super {
+#lxpihusmjf .gt_super {
   font-size: 65%;
 }
 
-#zcsxskdoaa .gt_footnote_marks {
+#lxpihusmjf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zcsxskdoaa .gt_asterisk {
+#lxpihusmjf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zcsxskdoaa .gt_indent_1 {
+#lxpihusmjf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zcsxskdoaa .gt_indent_2 {
+#lxpihusmjf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zcsxskdoaa .gt_indent_3 {
+#lxpihusmjf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zcsxskdoaa .gt_indent_4 {
+#lxpihusmjf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zcsxskdoaa .gt_indent_5 {
+#lxpihusmjf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zcsxskdoaa .katex-display {
+#lxpihusmjf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zcsxskdoaa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lxpihusmjf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1249,26 +1249,6 @@ Estimate name
 <td class="gt_row gt_left" headers="Year" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
 <td class="gt_row gt_left" headers="Sex" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
 <td class="gt_row gt_left" headers="Age group" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
-<td class="gt_row gt_left" headers="Standard concept name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Asthma</td>
-<td class="gt_row gt_right" headers="Standard concept ID" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">317009</td>
-<td class="gt_row gt_left" headers="Source concept name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Asthma</td>
-<td class="gt_row gt_left" headers="Source concept ID" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">317009</td>
-<td class="gt_row gt_left" headers="Source concept value" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">195967001</td>
-<td class="gt_row gt_left" headers="Domain ID" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">condition</td>
-<td class="gt_row gt_right" headers="[header_name]Database name
-[header_level]GiBleed
-[header_name]Estimate name
-[header_level]Record count" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">5</td>
-<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Database name
-[header_level]GiBleed
-[header_name]Estimate name
-[header_level]Person count">5</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Codelist name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
-<td class="gt_row gt_left" headers="Year" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
-<td class="gt_row gt_left" headers="Sex" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
-<td class="gt_row gt_left" headers="Age group" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
 <td class="gt_row gt_left" headers="Standard concept name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Childhood asthma</td>
 <td class="gt_row gt_right" headers="Standard concept ID" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">4051466</td>
 <td class="gt_row gt_left" headers="Source concept name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Childhood asthma</td>
@@ -1284,6 +1264,26 @@ Estimate name
 [header_name]Estimate name
 [header_level]Person count">96</td>
 </tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Codelist name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
+<td class="gt_row gt_left" headers="Year" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Sex" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Age group" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Standard concept name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Asthma</td>
+<td class="gt_row gt_right" headers="Standard concept ID" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">317009</td>
+<td class="gt_row gt_left" headers="Source concept name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Asthma</td>
+<td class="gt_row gt_left" headers="Source concept ID" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">317009</td>
+<td class="gt_row gt_left" headers="Source concept value" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">195967001</td>
+<td class="gt_row gt_left" headers="Domain ID" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">condition</td>
+<td class="gt_row gt_right" headers="[header_name]Database name
+[header_level]GiBleed
+[header_name]Estimate name
+[header_level]Record count" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">5</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Database name
+[header_level]GiBleed
+[header_name]Estimate name
+[header_level]Person count">5</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1297,23 +1297,23 @@ Estimate name
 <span>    <span class="va">strata_level</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2004"</span>, <span class="st">"2005"</span>, <span class="st">"2006"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="lolvfcyett" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lolvfcyett table {
+<div id="qkotfglldj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qkotfglldj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lolvfcyett thead, #lolvfcyett tbody, #lolvfcyett tfoot, #lolvfcyett tr, #lolvfcyett td, #lolvfcyett th {
+#qkotfglldj thead, #qkotfglldj tbody, #qkotfglldj tfoot, #qkotfglldj tr, #qkotfglldj td, #qkotfglldj th {
   border-style: none;
 }
 
-#lolvfcyett p {
+#qkotfglldj p {
   margin: 0;
   padding: 0;
 }
 
-#lolvfcyett .gt_table {
+#qkotfglldj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1339,12 +1339,12 @@ Estimate name
   border-left-color: #D9D9D9;
 }
 
-#lolvfcyett .gt_caption {
+#qkotfglldj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lolvfcyett .gt_title {
+#qkotfglldj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1356,7 +1356,7 @@ Estimate name
   border-bottom-width: 0;
 }
 
-#lolvfcyett .gt_subtitle {
+#qkotfglldj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1368,7 +1368,7 @@ Estimate name
   border-top-width: 0;
 }
 
-#lolvfcyett .gt_heading {
+#qkotfglldj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1380,13 +1380,13 @@ Estimate name
   border-right-color: #D3D3D3;
 }
 
-#lolvfcyett .gt_bottom_border {
+#qkotfglldj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lolvfcyett .gt_col_headings {
+#qkotfglldj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1401,7 +1401,7 @@ Estimate name
   border-right-color: #D3D3D3;
 }
 
-#lolvfcyett .gt_col_heading {
+#qkotfglldj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1421,7 +1421,7 @@ Estimate name
   overflow-x: hidden;
 }
 
-#lolvfcyett .gt_column_spanner_outer {
+#qkotfglldj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1433,15 +1433,15 @@ Estimate name
   padding-right: 4px;
 }
 
-#lolvfcyett .gt_column_spanner_outer:first-child {
+#qkotfglldj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lolvfcyett .gt_column_spanner_outer:last-child {
+#qkotfglldj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lolvfcyett .gt_column_spanner {
+#qkotfglldj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1453,11 +1453,11 @@ Estimate name
   width: 100%;
 }
 
-#lolvfcyett .gt_spanner_row {
+#qkotfglldj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lolvfcyett .gt_group_heading {
+#qkotfglldj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1483,7 +1483,7 @@ Estimate name
   text-align: left;
 }
 
-#lolvfcyett .gt_empty_group_heading {
+#qkotfglldj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1498,15 +1498,15 @@ Estimate name
   vertical-align: middle;
 }
 
-#lolvfcyett .gt_from_md > :first-child {
+#qkotfglldj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lolvfcyett .gt_from_md > :last-child {
+#qkotfglldj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lolvfcyett .gt_row {
+#qkotfglldj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1525,7 +1525,7 @@ Estimate name
   overflow-x: hidden;
 }
 
-#lolvfcyett .gt_stub {
+#qkotfglldj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1538,7 +1538,7 @@ Estimate name
   padding-right: 5px;
 }
 
-#lolvfcyett .gt_stub_row_group {
+#qkotfglldj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1552,15 +1552,15 @@ Estimate name
   vertical-align: top;
 }
 
-#lolvfcyett .gt_row_group_first td {
+#qkotfglldj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lolvfcyett .gt_row_group_first th {
+#qkotfglldj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lolvfcyett .gt_summary_row {
+#qkotfglldj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1570,16 +1570,16 @@ Estimate name
   padding-right: 5px;
 }
 
-#lolvfcyett .gt_first_summary_row {
+#qkotfglldj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lolvfcyett .gt_first_summary_row.thick {
+#qkotfglldj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lolvfcyett .gt_last_summary_row {
+#qkotfglldj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1589,7 +1589,7 @@ Estimate name
   border-bottom-color: #D3D3D3;
 }
 
-#lolvfcyett .gt_grand_summary_row {
+#qkotfglldj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1599,7 +1599,7 @@ Estimate name
   padding-right: 5px;
 }
 
-#lolvfcyett .gt_first_grand_summary_row {
+#qkotfglldj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1609,7 +1609,7 @@ Estimate name
   border-top-color: #D3D3D3;
 }
 
-#lolvfcyett .gt_last_grand_summary_row_top {
+#qkotfglldj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1619,11 +1619,11 @@ Estimate name
   border-bottom-color: #D3D3D3;
 }
 
-#lolvfcyett .gt_striped {
+#qkotfglldj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lolvfcyett .gt_table_body {
+#qkotfglldj .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #D9D9D9;
@@ -1632,7 +1632,7 @@ Estimate name
   border-bottom-color: #D3D3D3;
 }
 
-#lolvfcyett .gt_footnotes {
+#qkotfglldj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1646,7 +1646,7 @@ Estimate name
   border-right-color: #D3D3D3;
 }
 
-#lolvfcyett .gt_footnote {
+#qkotfglldj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1655,7 +1655,7 @@ Estimate name
   padding-right: 5px;
 }
 
-#lolvfcyett .gt_sourcenotes {
+#qkotfglldj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1669,7 +1669,7 @@ Estimate name
   border-right-color: #D3D3D3;
 }
 
-#lolvfcyett .gt_sourcenote {
+#qkotfglldj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1677,72 +1677,72 @@ Estimate name
   padding-right: 5px;
 }
 
-#lolvfcyett .gt_left {
+#qkotfglldj .gt_left {
   text-align: left;
 }
 
-#lolvfcyett .gt_center {
+#qkotfglldj .gt_center {
   text-align: center;
 }
 
-#lolvfcyett .gt_right {
+#qkotfglldj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lolvfcyett .gt_font_normal {
+#qkotfglldj .gt_font_normal {
   font-weight: normal;
 }
 
-#lolvfcyett .gt_font_bold {
+#qkotfglldj .gt_font_bold {
   font-weight: bold;
 }
 
-#lolvfcyett .gt_font_italic {
+#qkotfglldj .gt_font_italic {
   font-style: italic;
 }
 
-#lolvfcyett .gt_super {
+#qkotfglldj .gt_super {
   font-size: 65%;
 }
 
-#lolvfcyett .gt_footnote_marks {
+#qkotfglldj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lolvfcyett .gt_asterisk {
+#qkotfglldj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lolvfcyett .gt_indent_1 {
+#qkotfglldj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lolvfcyett .gt_indent_2 {
+#qkotfglldj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lolvfcyett .gt_indent_3 {
+#qkotfglldj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lolvfcyett .gt_indent_4 {
+#qkotfglldj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lolvfcyett .gt_indent_5 {
+#qkotfglldj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lolvfcyett .katex-display {
+#qkotfglldj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lolvfcyett div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qkotfglldj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1891,23 +1891,23 @@ Estimate name
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://darwin-eu.github.io/CodelistGenerator/reference/tableCodeUse.html">tableCodeUse</a></span><span class="op">(</span>result <span class="op">=</span> <span class="va">asthma_code_use</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">strata_name</span> <span class="op">==</span> <span class="st">"age_group"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="jozeuvyljl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jozeuvyljl table {
+<div id="ahiwmdvdqp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ahiwmdvdqp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jozeuvyljl thead, #jozeuvyljl tbody, #jozeuvyljl tfoot, #jozeuvyljl tr, #jozeuvyljl td, #jozeuvyljl th {
+#ahiwmdvdqp thead, #ahiwmdvdqp tbody, #ahiwmdvdqp tfoot, #ahiwmdvdqp tr, #ahiwmdvdqp td, #ahiwmdvdqp th {
   border-style: none;
 }
 
-#jozeuvyljl p {
+#ahiwmdvdqp p {
   margin: 0;
   padding: 0;
 }
 
-#jozeuvyljl .gt_table {
+#ahiwmdvdqp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1933,12 +1933,12 @@ Estimate name
   border-left-color: #D9D9D9;
 }
 
-#jozeuvyljl .gt_caption {
+#ahiwmdvdqp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jozeuvyljl .gt_title {
+#ahiwmdvdqp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1950,7 +1950,7 @@ Estimate name
   border-bottom-width: 0;
 }
 
-#jozeuvyljl .gt_subtitle {
+#ahiwmdvdqp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1962,7 +1962,7 @@ Estimate name
   border-top-width: 0;
 }
 
-#jozeuvyljl .gt_heading {
+#ahiwmdvdqp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1974,13 +1974,13 @@ Estimate name
   border-right-color: #D3D3D3;
 }
 
-#jozeuvyljl .gt_bottom_border {
+#ahiwmdvdqp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jozeuvyljl .gt_col_headings {
+#ahiwmdvdqp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1995,7 +1995,7 @@ Estimate name
   border-right-color: #D3D3D3;
 }
 
-#jozeuvyljl .gt_col_heading {
+#ahiwmdvdqp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2015,7 +2015,7 @@ Estimate name
   overflow-x: hidden;
 }
 
-#jozeuvyljl .gt_column_spanner_outer {
+#ahiwmdvdqp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2027,15 +2027,15 @@ Estimate name
   padding-right: 4px;
 }
 
-#jozeuvyljl .gt_column_spanner_outer:first-child {
+#ahiwmdvdqp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jozeuvyljl .gt_column_spanner_outer:last-child {
+#ahiwmdvdqp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jozeuvyljl .gt_column_spanner {
+#ahiwmdvdqp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2047,11 +2047,11 @@ Estimate name
   width: 100%;
 }
 
-#jozeuvyljl .gt_spanner_row {
+#ahiwmdvdqp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jozeuvyljl .gt_group_heading {
+#ahiwmdvdqp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2077,7 +2077,7 @@ Estimate name
   text-align: left;
 }
 
-#jozeuvyljl .gt_empty_group_heading {
+#ahiwmdvdqp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2092,15 +2092,15 @@ Estimate name
   vertical-align: middle;
 }
 
-#jozeuvyljl .gt_from_md > :first-child {
+#ahiwmdvdqp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jozeuvyljl .gt_from_md > :last-child {
+#ahiwmdvdqp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jozeuvyljl .gt_row {
+#ahiwmdvdqp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2119,7 +2119,7 @@ Estimate name
   overflow-x: hidden;
 }
 
-#jozeuvyljl .gt_stub {
+#ahiwmdvdqp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2132,7 +2132,7 @@ Estimate name
   padding-right: 5px;
 }
 
-#jozeuvyljl .gt_stub_row_group {
+#ahiwmdvdqp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2146,15 +2146,15 @@ Estimate name
   vertical-align: top;
 }
 
-#jozeuvyljl .gt_row_group_first td {
+#ahiwmdvdqp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jozeuvyljl .gt_row_group_first th {
+#ahiwmdvdqp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jozeuvyljl .gt_summary_row {
+#ahiwmdvdqp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2164,16 +2164,16 @@ Estimate name
   padding-right: 5px;
 }
 
-#jozeuvyljl .gt_first_summary_row {
+#ahiwmdvdqp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jozeuvyljl .gt_first_summary_row.thick {
+#ahiwmdvdqp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jozeuvyljl .gt_last_summary_row {
+#ahiwmdvdqp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2183,7 +2183,7 @@ Estimate name
   border-bottom-color: #D3D3D3;
 }
 
-#jozeuvyljl .gt_grand_summary_row {
+#ahiwmdvdqp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2193,7 +2193,7 @@ Estimate name
   padding-right: 5px;
 }
 
-#jozeuvyljl .gt_first_grand_summary_row {
+#ahiwmdvdqp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2203,7 +2203,7 @@ Estimate name
   border-top-color: #D3D3D3;
 }
 
-#jozeuvyljl .gt_last_grand_summary_row_top {
+#ahiwmdvdqp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2213,11 +2213,11 @@ Estimate name
   border-bottom-color: #D3D3D3;
 }
 
-#jozeuvyljl .gt_striped {
+#ahiwmdvdqp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jozeuvyljl .gt_table_body {
+#ahiwmdvdqp .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #D9D9D9;
@@ -2226,7 +2226,7 @@ Estimate name
   border-bottom-color: #D3D3D3;
 }
 
-#jozeuvyljl .gt_footnotes {
+#ahiwmdvdqp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2240,7 +2240,7 @@ Estimate name
   border-right-color: #D3D3D3;
 }
 
-#jozeuvyljl .gt_footnote {
+#ahiwmdvdqp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2249,7 +2249,7 @@ Estimate name
   padding-right: 5px;
 }
 
-#jozeuvyljl .gt_sourcenotes {
+#ahiwmdvdqp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2263,7 +2263,7 @@ Estimate name
   border-right-color: #D3D3D3;
 }
 
-#jozeuvyljl .gt_sourcenote {
+#ahiwmdvdqp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2271,72 +2271,72 @@ Estimate name
   padding-right: 5px;
 }
 
-#jozeuvyljl .gt_left {
+#ahiwmdvdqp .gt_left {
   text-align: left;
 }
 
-#jozeuvyljl .gt_center {
+#ahiwmdvdqp .gt_center {
   text-align: center;
 }
 
-#jozeuvyljl .gt_right {
+#ahiwmdvdqp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jozeuvyljl .gt_font_normal {
+#ahiwmdvdqp .gt_font_normal {
   font-weight: normal;
 }
 
-#jozeuvyljl .gt_font_bold {
+#ahiwmdvdqp .gt_font_bold {
   font-weight: bold;
 }
 
-#jozeuvyljl .gt_font_italic {
+#ahiwmdvdqp .gt_font_italic {
   font-style: italic;
 }
 
-#jozeuvyljl .gt_super {
+#ahiwmdvdqp .gt_super {
   font-size: 65%;
 }
 
-#jozeuvyljl .gt_footnote_marks {
+#ahiwmdvdqp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jozeuvyljl .gt_asterisk {
+#ahiwmdvdqp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jozeuvyljl .gt_indent_1 {
+#ahiwmdvdqp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jozeuvyljl .gt_indent_2 {
+#ahiwmdvdqp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jozeuvyljl .gt_indent_3 {
+#ahiwmdvdqp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jozeuvyljl .gt_indent_4 {
+#ahiwmdvdqp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jozeuvyljl .gt_indent_5 {
+#ahiwmdvdqp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jozeuvyljl .katex-display {
+#ahiwmdvdqp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jozeuvyljl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ahiwmdvdqp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2439,26 +2439,6 @@ Estimate name
 <td class="gt_row gt_left" headers="Codelist name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
 <td class="gt_row gt_left" headers="Year" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
 <td class="gt_row gt_left" headers="Sex" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
-<td class="gt_row gt_left" headers="Age group" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
-<td class="gt_row gt_left" headers="Standard concept name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Asthma</td>
-<td class="gt_row gt_right" headers="Standard concept ID" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">317009</td>
-<td class="gt_row gt_left" headers="Source concept name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Asthma</td>
-<td class="gt_row gt_left" headers="Source concept ID" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">317009</td>
-<td class="gt_row gt_left" headers="Source concept value" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">195967001</td>
-<td class="gt_row gt_left" headers="Domain ID" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">condition</td>
-<td class="gt_row gt_right" headers="[header_name]Database name
-[header_level]GiBleed
-[header_name]Estimate name
-[header_level]Record count" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">5</td>
-<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Database name
-[header_level]GiBleed
-[header_name]Estimate name
-[header_level]Person count">5</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Codelist name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
-<td class="gt_row gt_left" headers="Year" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
-<td class="gt_row gt_left" headers="Sex" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
 <td class="gt_row gt_left" headers="Age group" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">0 to 17</td>
 <td class="gt_row gt_left" headers="Standard concept name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Childhood asthma</td>
 <td class="gt_row gt_right" headers="Standard concept ID" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">4051466</td>
@@ -2474,6 +2454,26 @@ Estimate name
 [header_level]GiBleed
 [header_name]Estimate name
 [header_level]Person count">96</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Codelist name" style="text-align: left; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000;"></td>
+<td class="gt_row gt_left" headers="Year" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Sex" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: hidden; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;"></td>
+<td class="gt_row gt_left" headers="Age group" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">18 to 65</td>
+<td class="gt_row gt_left" headers="Standard concept name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Asthma</td>
+<td class="gt_row gt_right" headers="Standard concept ID" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">317009</td>
+<td class="gt_row gt_left" headers="Source concept name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Asthma</td>
+<td class="gt_row gt_left" headers="Source concept ID" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">317009</td>
+<td class="gt_row gt_left" headers="Source concept value" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">195967001</td>
+<td class="gt_row gt_left" headers="Domain ID" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">condition</td>
+<td class="gt_row gt_right" headers="[header_name]Database name
+[header_level]GiBleed
+[header_name]Estimate name
+[header_level]Record count" style="text-align: right; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">5</td>
+<td class="gt_row gt_right" style="text-align: right;" headers="[header_name]Database name
+[header_level]GiBleed
+[header_name]Estimate name
+[header_level]Person count">5</td>
 </tr>
 </tbody>
 </table>

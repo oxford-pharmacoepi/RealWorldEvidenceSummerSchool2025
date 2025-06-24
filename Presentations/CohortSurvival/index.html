@@ -315,26 +315,22 @@
 
 </section><section id="create-cdm-and-get-cohorts" class="slide level2"><h2>Create cdm and get cohorts</h2>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Download Eunomia </span></span>
-<span><span class="fu">requireEunomia</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Download completed!</code></pre>
-</div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Connect to the "database"</span></span>
-<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">duckdb</span><span class="op">(</span><span class="op">)</span>, dbdir <span class="op">=</span> <span class="fu">eunomiaDir</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co"># Create CDM reference object</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">datasetName</span> <span class="op">&lt;-</span> <span class="st">"GiBleed"</span></span>
+<span><span class="va">dbdir</span> <span class="op">&lt;-</span> <span class="fu">here</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">datasetName</span>, <span class="st">".duckdb"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span>drv <span class="op">=</span> <span class="fu">duckdb</span><span class="op">(</span>dbdir <span class="op">=</span> <span class="va">dbdir</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
 <span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu">cdmFromCon</span><span class="op">(</span></span>
-<span>  <span class="va">con</span>, </span>
-<span>  cdmSchema <span class="op">=</span> <span class="st">"main"</span>, </span>
+<span>  con <span class="op">=</span> <span class="va">con</span>, </span>
+<span>  cdmSchema <span class="op">=</span> <span class="st">"main"</span>,</span>
 <span>  writeSchema <span class="op">=</span> <span class="st">"main"</span>,</span>
-<span>  writePrefix <span class="op">=</span> <span class="st">"my_study_"</span></span>
+<span>  writePrefix <span class="op">=</span> <span class="st">"my_study_"</span>, </span>
+<span>  cdmName <span class="op">=</span> <span class="va">datasetName</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="use-estimatesinglesurvival-for-treatment-adherence" class="slide level2"><h2>Use estimateSingleSurvival() for treatment adherence</h2>
 <p>Single event survival estimation function, with all its input parameters.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
 <span>  <span class="va">cdm</span>,</span>
 <span>  <span class="va">targetCohortTable</span>,</span>
 <span>  <span class="va">outcomeCohortTable</span>,</span>
@@ -353,7 +349,7 @@ Download completed!</code></pre>
 </section><section id="use-estimatesinglesurvival-for-treatment-adherence-1" class="slide level2"><h2>Use estimateSingleSurvival() for treatment adherence</h2>
 <p>Plotting function, with all its input parameters.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span></span>
 <span>  <span class="va">result</span>,</span>
 <span>  ribbon <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  facet <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -366,7 +362,7 @@ Download completed!</code></pre>
 </section><section id="use-estimatesinglesurvival-for-treatment-adherence-2" class="slide level2"><h2>Use estimateSingleSurvival() for treatment adherence</h2>
 <p>Main tabulating function, with all its input parameters.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tableSurvival</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tableSurvival</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
 <span>  times <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  timeScale <span class="op">=</span> <span class="st">"days"</span>,</span>
@@ -380,7 +376,7 @@ Download completed!</code></pre>
 <p>In our case, we will study discontinuation of ibuprofen. Therefore, we will use the same cohort as both target and outcome. Additionally, we will need to change <code>outcomeDateVariable</code> to <code>cohort_end_date</code>.</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu">generateIngredientCohortSet</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu">generateIngredientCohortSet</span><span class="op">(</span></span>
 <span>  cdm <span class="op">=</span> <span class="va">cdm</span>,</span>
 <span>  name <span class="op">=</span> <span class="st">"ibuprofen"</span>,</span>
 <span>  ingredient <span class="op">=</span> <span class="st">"ibuprofen"</span>,</span>
@@ -397,12 +393,12 @@ Download completed!</code></pre>
 </div>
 </section><section id="use-estimatesinglesurvival-for-treatment-adherence-4" class="slide level2"><h2>Use estimateSingleSurvival() for treatment adherence</h2>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">survivalResult</span>, width <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">survivalResult</span>, width <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 325
 Columns: 13
 $ result_id        &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-$ cdm_name         &lt;chr&gt; "Synthea", "Synthea", "Synthea", "Synthea", "Synthea", "Synthea", "Synthe…
+$ cdm_name         &lt;chr&gt; "GiBleed", "GiBleed", "GiBleed", "GiBleed", "GiBleed", "GiBleed", "GiBlee…
 $ group_name       &lt;chr&gt; "target_cohort", "target_cohort", "target_cohort", "target_cohort", "targ…
 $ group_level      &lt;chr&gt; "ibuprofen", "ibuprofen", "ibuprofen", "ibuprofen", "ibuprofen", "ibuprof…
 $ strata_name      &lt;chr&gt; "overall", "overall", "overall", "overall", "overall", "overall", "overal…
@@ -418,30 +414,30 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
 </div>
 </section><section id="use-estimatesinglesurvival-for-treatment-adherence-5" class="slide level2"><h2>Use estimateSingleSurvival() for treatment adherence</h2>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResult</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResult</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"><div class="fragment">
+<img data-src="index_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"><div class="fragment">
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tableSurvival</span><span class="op">(</span><span class="va">survivalResult</span>, times <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">30</span>, <span class="fl">75</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tableSurvival</span><span class="op">(</span><span class="va">survivalResult</span>, times <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">30</span>, <span class="fl">75</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="voubsnrsap" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#voubsnrsap table {
+<div id="ggnciokbpe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ggnciokbpe table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#voubsnrsap thead, #voubsnrsap tbody, #voubsnrsap tfoot, #voubsnrsap tr, #voubsnrsap td, #voubsnrsap th {
+#ggnciokbpe thead, #ggnciokbpe tbody, #ggnciokbpe tfoot, #ggnciokbpe tr, #ggnciokbpe td, #ggnciokbpe th {
   border-style: none;
 }
 
-#voubsnrsap p {
+#ggnciokbpe p {
   margin: 0;
   padding: 0;
 }
 
-#voubsnrsap .gt_table {
+#ggnciokbpe .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -467,12 +463,12 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   border-left-color: #D9D9D9;
 }
 
-#voubsnrsap .gt_caption {
+#ggnciokbpe .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#voubsnrsap .gt_title {
+#ggnciokbpe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -484,7 +480,7 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   border-bottom-width: 0;
 }
 
-#voubsnrsap .gt_subtitle {
+#ggnciokbpe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -496,7 +492,7 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   border-top-width: 0;
 }
 
-#voubsnrsap .gt_heading {
+#ggnciokbpe .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -508,13 +504,13 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   border-right-color: #D3D3D3;
 }
 
-#voubsnrsap .gt_bottom_border {
+#ggnciokbpe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#voubsnrsap .gt_col_headings {
+#ggnciokbpe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -529,7 +525,7 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   border-right-color: #D3D3D3;
 }
 
-#voubsnrsap .gt_col_heading {
+#ggnciokbpe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -549,7 +545,7 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   overflow-x: hidden;
 }
 
-#voubsnrsap .gt_column_spanner_outer {
+#ggnciokbpe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -561,15 +557,15 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   padding-right: 4px;
 }
 
-#voubsnrsap .gt_column_spanner_outer:first-child {
+#ggnciokbpe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#voubsnrsap .gt_column_spanner_outer:last-child {
+#ggnciokbpe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#voubsnrsap .gt_column_spanner {
+#ggnciokbpe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -581,11 +577,11 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   width: 100%;
 }
 
-#voubsnrsap .gt_spanner_row {
+#ggnciokbpe .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#voubsnrsap .gt_group_heading {
+#ggnciokbpe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -611,7 +607,7 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   text-align: left;
 }
 
-#voubsnrsap .gt_empty_group_heading {
+#ggnciokbpe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -626,15 +622,15 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   vertical-align: middle;
 }
 
-#voubsnrsap .gt_from_md > :first-child {
+#ggnciokbpe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#voubsnrsap .gt_from_md > :last-child {
+#ggnciokbpe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#voubsnrsap .gt_row {
+#ggnciokbpe .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -653,7 +649,7 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   overflow-x: hidden;
 }
 
-#voubsnrsap .gt_stub {
+#ggnciokbpe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -666,7 +662,7 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   padding-right: 5px;
 }
 
-#voubsnrsap .gt_stub_row_group {
+#ggnciokbpe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -680,15 +676,15 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   vertical-align: top;
 }
 
-#voubsnrsap .gt_row_group_first td {
+#ggnciokbpe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#voubsnrsap .gt_row_group_first th {
+#ggnciokbpe .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#voubsnrsap .gt_summary_row {
+#ggnciokbpe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -698,16 +694,16 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   padding-right: 5px;
 }
 
-#voubsnrsap .gt_first_summary_row {
+#ggnciokbpe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#voubsnrsap .gt_first_summary_row.thick {
+#ggnciokbpe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#voubsnrsap .gt_last_summary_row {
+#ggnciokbpe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -717,7 +713,7 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   border-bottom-color: #D3D3D3;
 }
 
-#voubsnrsap .gt_grand_summary_row {
+#ggnciokbpe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -727,7 +723,7 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   padding-right: 5px;
 }
 
-#voubsnrsap .gt_first_grand_summary_row {
+#ggnciokbpe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -737,7 +733,7 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   border-top-color: #D3D3D3;
 }
 
-#voubsnrsap .gt_last_grand_summary_row_top {
+#ggnciokbpe .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -747,11 +743,11 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   border-bottom-color: #D3D3D3;
 }
 
-#voubsnrsap .gt_striped {
+#ggnciokbpe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#voubsnrsap .gt_table_body {
+#ggnciokbpe .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #D9D9D9;
@@ -760,7 +756,7 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   border-bottom-color: #D3D3D3;
 }
 
-#voubsnrsap .gt_footnotes {
+#ggnciokbpe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -774,7 +770,7 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   border-right-color: #D3D3D3;
 }
 
-#voubsnrsap .gt_footnote {
+#ggnciokbpe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -783,7 +779,7 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   padding-right: 5px;
 }
 
-#voubsnrsap .gt_sourcenotes {
+#ggnciokbpe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -797,7 +793,7 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   border-right-color: #D3D3D3;
 }
 
-#voubsnrsap .gt_sourcenote {
+#ggnciokbpe .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -805,72 +801,72 @@ $ additional_level &lt;chr&gt; "0", "0", "0", "1", "1", "1", "2", "2", "2", "3",
   padding-right: 5px;
 }
 
-#voubsnrsap .gt_left {
+#ggnciokbpe .gt_left {
   text-align: left;
 }
 
-#voubsnrsap .gt_center {
+#ggnciokbpe .gt_center {
   text-align: center;
 }
 
-#voubsnrsap .gt_right {
+#ggnciokbpe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#voubsnrsap .gt_font_normal {
+#ggnciokbpe .gt_font_normal {
   font-weight: normal;
 }
 
-#voubsnrsap .gt_font_bold {
+#ggnciokbpe .gt_font_bold {
   font-weight: bold;
 }
 
-#voubsnrsap .gt_font_italic {
+#ggnciokbpe .gt_font_italic {
   font-style: italic;
 }
 
-#voubsnrsap .gt_super {
+#ggnciokbpe .gt_super {
   font-size: 65%;
 }
 
-#voubsnrsap .gt_footnote_marks {
+#ggnciokbpe .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#voubsnrsap .gt_asterisk {
+#ggnciokbpe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#voubsnrsap .gt_indent_1 {
+#ggnciokbpe .gt_indent_1 {
   text-indent: 5px;
 }
 
-#voubsnrsap .gt_indent_2 {
+#ggnciokbpe .gt_indent_2 {
   text-indent: 10px;
 }
 
-#voubsnrsap .gt_indent_3 {
+#ggnciokbpe .gt_indent_3 {
   text-indent: 15px;
 }
 
-#voubsnrsap .gt_indent_4 {
+#ggnciokbpe .gt_indent_4 {
   text-indent: 20px;
 }
 
-#voubsnrsap .gt_indent_5 {
+#ggnciokbpe .gt_indent_5 {
   text-indent: 25px;
 }
 
-#voubsnrsap .katex-display {
+#ggnciokbpe .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#voubsnrsap div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ggnciokbpe div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -908,7 +904,7 @@ Estimate name
 </tr>
 </thead>
 <tbody class="gt_table_body"><tr class="odd">
-<td class="gt_row gt_left" style="text-align: left;" headers="CDM name">Synthea</td>
+<td class="gt_row gt_left" style="text-align: left;" headers="CDM name">GiBleed</td>
 <td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">ibuprofen</td>
 <td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">ibuprofen</td>
 <td class="gt_row gt_right" headers="[header_name]Estimate name
@@ -937,25 +933,25 @@ Estimate name
 </div>
 <p>You can also visualise the risk table, with information on number of people at risk, number of events and number of people censored by event timepoint (defined by <code>eventGap</code>).</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">riskTable</span><span class="op">(</span><span class="va">survivalResult</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">riskTable</span><span class="op">(</span><span class="va">survivalResult</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="tcsizdkmks" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tcsizdkmks table {
+<div id="mgbwzpwmzh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mgbwzpwmzh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tcsizdkmks thead, #tcsizdkmks tbody, #tcsizdkmks tfoot, #tcsizdkmks tr, #tcsizdkmks td, #tcsizdkmks th {
+#mgbwzpwmzh thead, #mgbwzpwmzh tbody, #mgbwzpwmzh tfoot, #mgbwzpwmzh tr, #mgbwzpwmzh td, #mgbwzpwmzh th {
   border-style: none;
 }
 
-#tcsizdkmks p {
+#mgbwzpwmzh p {
   margin: 0;
   padding: 0;
 }
 
-#tcsizdkmks .gt_table {
+#mgbwzpwmzh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -981,12 +977,12 @@ Estimate name
   border-left-color: #D9D9D9;
 }
 
-#tcsizdkmks .gt_caption {
+#mgbwzpwmzh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tcsizdkmks .gt_title {
+#mgbwzpwmzh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -998,7 +994,7 @@ Estimate name
   border-bottom-width: 0;
 }
 
-#tcsizdkmks .gt_subtitle {
+#mgbwzpwmzh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1010,7 +1006,7 @@ Estimate name
   border-top-width: 0;
 }
 
-#tcsizdkmks .gt_heading {
+#mgbwzpwmzh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1022,13 +1018,13 @@ Estimate name
   border-right-color: #D3D3D3;
 }
 
-#tcsizdkmks .gt_bottom_border {
+#mgbwzpwmzh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tcsizdkmks .gt_col_headings {
+#mgbwzpwmzh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1043,7 +1039,7 @@ Estimate name
   border-right-color: #D3D3D3;
 }
 
-#tcsizdkmks .gt_col_heading {
+#mgbwzpwmzh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1063,7 +1059,7 @@ Estimate name
   overflow-x: hidden;
 }
 
-#tcsizdkmks .gt_column_spanner_outer {
+#mgbwzpwmzh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1075,15 +1071,15 @@ Estimate name
   padding-right: 4px;
 }
 
-#tcsizdkmks .gt_column_spanner_outer:first-child {
+#mgbwzpwmzh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tcsizdkmks .gt_column_spanner_outer:last-child {
+#mgbwzpwmzh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tcsizdkmks .gt_column_spanner {
+#mgbwzpwmzh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1095,11 +1091,11 @@ Estimate name
   width: 100%;
 }
 
-#tcsizdkmks .gt_spanner_row {
+#mgbwzpwmzh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tcsizdkmks .gt_group_heading {
+#mgbwzpwmzh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1125,7 +1121,7 @@ Estimate name
   text-align: left;
 }
 
-#tcsizdkmks .gt_empty_group_heading {
+#mgbwzpwmzh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1140,15 +1136,15 @@ Estimate name
   vertical-align: middle;
 }
 
-#tcsizdkmks .gt_from_md > :first-child {
+#mgbwzpwmzh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tcsizdkmks .gt_from_md > :last-child {
+#mgbwzpwmzh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tcsizdkmks .gt_row {
+#mgbwzpwmzh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1167,7 +1163,7 @@ Estimate name
   overflow-x: hidden;
 }
 
-#tcsizdkmks .gt_stub {
+#mgbwzpwmzh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1180,7 +1176,7 @@ Estimate name
   padding-right: 5px;
 }
 
-#tcsizdkmks .gt_stub_row_group {
+#mgbwzpwmzh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1194,15 +1190,15 @@ Estimate name
   vertical-align: top;
 }
 
-#tcsizdkmks .gt_row_group_first td {
+#mgbwzpwmzh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tcsizdkmks .gt_row_group_first th {
+#mgbwzpwmzh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tcsizdkmks .gt_summary_row {
+#mgbwzpwmzh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1212,16 +1208,16 @@ Estimate name
   padding-right: 5px;
 }
 
-#tcsizdkmks .gt_first_summary_row {
+#mgbwzpwmzh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tcsizdkmks .gt_first_summary_row.thick {
+#mgbwzpwmzh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tcsizdkmks .gt_last_summary_row {
+#mgbwzpwmzh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1231,7 +1227,7 @@ Estimate name
   border-bottom-color: #D3D3D3;
 }
 
-#tcsizdkmks .gt_grand_summary_row {
+#mgbwzpwmzh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1241,7 +1237,7 @@ Estimate name
   padding-right: 5px;
 }
 
-#tcsizdkmks .gt_first_grand_summary_row {
+#mgbwzpwmzh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1251,7 +1247,7 @@ Estimate name
   border-top-color: #D3D3D3;
 }
 
-#tcsizdkmks .gt_last_grand_summary_row_top {
+#mgbwzpwmzh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1261,11 +1257,11 @@ Estimate name
   border-bottom-color: #D3D3D3;
 }
 
-#tcsizdkmks .gt_striped {
+#mgbwzpwmzh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tcsizdkmks .gt_table_body {
+#mgbwzpwmzh .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #D9D9D9;
@@ -1274,7 +1270,7 @@ Estimate name
   border-bottom-color: #D3D3D3;
 }
 
-#tcsizdkmks .gt_footnotes {
+#mgbwzpwmzh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1288,7 +1284,7 @@ Estimate name
   border-right-color: #D3D3D3;
 }
 
-#tcsizdkmks .gt_footnote {
+#mgbwzpwmzh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1297,7 +1293,7 @@ Estimate name
   padding-right: 5px;
 }
 
-#tcsizdkmks .gt_sourcenotes {
+#mgbwzpwmzh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1311,7 +1307,7 @@ Estimate name
   border-right-color: #D3D3D3;
 }
 
-#tcsizdkmks .gt_sourcenote {
+#mgbwzpwmzh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1319,72 +1315,72 @@ Estimate name
   padding-right: 5px;
 }
 
-#tcsizdkmks .gt_left {
+#mgbwzpwmzh .gt_left {
   text-align: left;
 }
 
-#tcsizdkmks .gt_center {
+#mgbwzpwmzh .gt_center {
   text-align: center;
 }
 
-#tcsizdkmks .gt_right {
+#mgbwzpwmzh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tcsizdkmks .gt_font_normal {
+#mgbwzpwmzh .gt_font_normal {
   font-weight: normal;
 }
 
-#tcsizdkmks .gt_font_bold {
+#mgbwzpwmzh .gt_font_bold {
   font-weight: bold;
 }
 
-#tcsizdkmks .gt_font_italic {
+#mgbwzpwmzh .gt_font_italic {
   font-style: italic;
 }
 
-#tcsizdkmks .gt_super {
+#mgbwzpwmzh .gt_super {
   font-size: 65%;
 }
 
-#tcsizdkmks .gt_footnote_marks {
+#mgbwzpwmzh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tcsizdkmks .gt_asterisk {
+#mgbwzpwmzh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tcsizdkmks .gt_indent_1 {
+#mgbwzpwmzh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tcsizdkmks .gt_indent_2 {
+#mgbwzpwmzh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tcsizdkmks .gt_indent_3 {
+#mgbwzpwmzh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tcsizdkmks .gt_indent_4 {
+#mgbwzpwmzh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tcsizdkmks .gt_indent_5 {
+#mgbwzpwmzh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#tcsizdkmks .katex-display {
+#mgbwzpwmzh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#tcsizdkmks div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mgbwzpwmzh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1419,7 +1415,7 @@ Estimate name
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" style="text-align: left;" headers="CDM name">Synthea</td>
+<td class="gt_row gt_left" style="text-align: left;" headers="CDM name">GiBleed</td>
 <td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">ibuprofen</td>
 <td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">ibuprofen</td>
 <td class="gt_row gt_right" headers="Time" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">0</td>
@@ -1490,7 +1486,7 @@ Estimate name
 <details><summary>
 Click to see solution
 </summary><div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu">generateIngredientCohortSet</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu">generateIngredientCohortSet</span><span class="op">(</span></span>
 <span>  cdm <span class="op">=</span> <span class="va">cdm</span>,</span>
 <span>  name <span class="op">=</span> <span class="st">"aspirin"</span>,</span>
 <span>  ingredient <span class="op">=</span> <span class="st">"aspirin"</span>,</span>
@@ -1513,25 +1509,25 @@ Click to see solution
 <details><summary>
 Click to see solution
 </summary><div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">riskTable</span><span class="op">(</span><span class="va">survivalResultAll</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">riskTable</span><span class="op">(</span><span class="va">survivalResultAll</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="sznztkrfxm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#sznztkrfxm table {
+<div id="qgtcaqlcce" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qgtcaqlcce table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#sznztkrfxm thead, #sznztkrfxm tbody, #sznztkrfxm tfoot, #sznztkrfxm tr, #sznztkrfxm td, #sznztkrfxm th {
+#qgtcaqlcce thead, #qgtcaqlcce tbody, #qgtcaqlcce tfoot, #qgtcaqlcce tr, #qgtcaqlcce td, #qgtcaqlcce th {
   border-style: none;
 }
 
-#sznztkrfxm p {
+#qgtcaqlcce p {
   margin: 0;
   padding: 0;
 }
 
-#sznztkrfxm .gt_table {
+#qgtcaqlcce .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1557,12 +1553,12 @@ Click to see solution
   border-left-color: #D9D9D9;
 }
 
-#sznztkrfxm .gt_caption {
+#qgtcaqlcce .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#sznztkrfxm .gt_title {
+#qgtcaqlcce .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1574,7 +1570,7 @@ Click to see solution
   border-bottom-width: 0;
 }
 
-#sznztkrfxm .gt_subtitle {
+#qgtcaqlcce .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1586,7 +1582,7 @@ Click to see solution
   border-top-width: 0;
 }
 
-#sznztkrfxm .gt_heading {
+#qgtcaqlcce .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1598,13 +1594,13 @@ Click to see solution
   border-right-color: #D3D3D3;
 }
 
-#sznztkrfxm .gt_bottom_border {
+#qgtcaqlcce .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#sznztkrfxm .gt_col_headings {
+#qgtcaqlcce .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1619,7 +1615,7 @@ Click to see solution
   border-right-color: #D3D3D3;
 }
 
-#sznztkrfxm .gt_col_heading {
+#qgtcaqlcce .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1639,7 +1635,7 @@ Click to see solution
   overflow-x: hidden;
 }
 
-#sznztkrfxm .gt_column_spanner_outer {
+#qgtcaqlcce .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1651,15 +1647,15 @@ Click to see solution
   padding-right: 4px;
 }
 
-#sznztkrfxm .gt_column_spanner_outer:first-child {
+#qgtcaqlcce .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#sznztkrfxm .gt_column_spanner_outer:last-child {
+#qgtcaqlcce .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#sznztkrfxm .gt_column_spanner {
+#qgtcaqlcce .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1671,11 +1667,11 @@ Click to see solution
   width: 100%;
 }
 
-#sznztkrfxm .gt_spanner_row {
+#qgtcaqlcce .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#sznztkrfxm .gt_group_heading {
+#qgtcaqlcce .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1701,7 +1697,7 @@ Click to see solution
   text-align: left;
 }
 
-#sznztkrfxm .gt_empty_group_heading {
+#qgtcaqlcce .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1716,15 +1712,15 @@ Click to see solution
   vertical-align: middle;
 }
 
-#sznztkrfxm .gt_from_md > :first-child {
+#qgtcaqlcce .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#sznztkrfxm .gt_from_md > :last-child {
+#qgtcaqlcce .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#sznztkrfxm .gt_row {
+#qgtcaqlcce .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1743,7 +1739,7 @@ Click to see solution
   overflow-x: hidden;
 }
 
-#sznztkrfxm .gt_stub {
+#qgtcaqlcce .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1756,7 +1752,7 @@ Click to see solution
   padding-right: 5px;
 }
 
-#sznztkrfxm .gt_stub_row_group {
+#qgtcaqlcce .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1770,15 +1766,15 @@ Click to see solution
   vertical-align: top;
 }
 
-#sznztkrfxm .gt_row_group_first td {
+#qgtcaqlcce .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#sznztkrfxm .gt_row_group_first th {
+#qgtcaqlcce .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#sznztkrfxm .gt_summary_row {
+#qgtcaqlcce .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1788,16 +1784,16 @@ Click to see solution
   padding-right: 5px;
 }
 
-#sznztkrfxm .gt_first_summary_row {
+#qgtcaqlcce .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#sznztkrfxm .gt_first_summary_row.thick {
+#qgtcaqlcce .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#sznztkrfxm .gt_last_summary_row {
+#qgtcaqlcce .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1807,7 +1803,7 @@ Click to see solution
   border-bottom-color: #D3D3D3;
 }
 
-#sznztkrfxm .gt_grand_summary_row {
+#qgtcaqlcce .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1817,7 +1813,7 @@ Click to see solution
   padding-right: 5px;
 }
 
-#sznztkrfxm .gt_first_grand_summary_row {
+#qgtcaqlcce .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1827,7 +1823,7 @@ Click to see solution
   border-top-color: #D3D3D3;
 }
 
-#sznztkrfxm .gt_last_grand_summary_row_top {
+#qgtcaqlcce .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1837,11 +1833,11 @@ Click to see solution
   border-bottom-color: #D3D3D3;
 }
 
-#sznztkrfxm .gt_striped {
+#qgtcaqlcce .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#sznztkrfxm .gt_table_body {
+#qgtcaqlcce .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #D9D9D9;
@@ -1850,7 +1846,7 @@ Click to see solution
   border-bottom-color: #D3D3D3;
 }
 
-#sznztkrfxm .gt_footnotes {
+#qgtcaqlcce .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1864,7 +1860,7 @@ Click to see solution
   border-right-color: #D3D3D3;
 }
 
-#sznztkrfxm .gt_footnote {
+#qgtcaqlcce .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1873,7 +1869,7 @@ Click to see solution
   padding-right: 5px;
 }
 
-#sznztkrfxm .gt_sourcenotes {
+#qgtcaqlcce .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1887,7 +1883,7 @@ Click to see solution
   border-right-color: #D3D3D3;
 }
 
-#sznztkrfxm .gt_sourcenote {
+#qgtcaqlcce .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1895,72 +1891,72 @@ Click to see solution
   padding-right: 5px;
 }
 
-#sznztkrfxm .gt_left {
+#qgtcaqlcce .gt_left {
   text-align: left;
 }
 
-#sznztkrfxm .gt_center {
+#qgtcaqlcce .gt_center {
   text-align: center;
 }
 
-#sznztkrfxm .gt_right {
+#qgtcaqlcce .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#sznztkrfxm .gt_font_normal {
+#qgtcaqlcce .gt_font_normal {
   font-weight: normal;
 }
 
-#sznztkrfxm .gt_font_bold {
+#qgtcaqlcce .gt_font_bold {
   font-weight: bold;
 }
 
-#sznztkrfxm .gt_font_italic {
+#qgtcaqlcce .gt_font_italic {
   font-style: italic;
 }
 
-#sznztkrfxm .gt_super {
+#qgtcaqlcce .gt_super {
   font-size: 65%;
 }
 
-#sznztkrfxm .gt_footnote_marks {
+#qgtcaqlcce .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#sznztkrfxm .gt_asterisk {
+#qgtcaqlcce .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#sznztkrfxm .gt_indent_1 {
+#qgtcaqlcce .gt_indent_1 {
   text-indent: 5px;
 }
 
-#sznztkrfxm .gt_indent_2 {
+#qgtcaqlcce .gt_indent_2 {
   text-indent: 10px;
 }
 
-#sznztkrfxm .gt_indent_3 {
+#qgtcaqlcce .gt_indent_3 {
   text-indent: 15px;
 }
 
-#sznztkrfxm .gt_indent_4 {
+#qgtcaqlcce .gt_indent_4 {
   text-indent: 20px;
 }
 
-#sznztkrfxm .gt_indent_5 {
+#qgtcaqlcce .gt_indent_5 {
   text-indent: 25px;
 }
 
-#sznztkrfxm .katex-display {
+#qgtcaqlcce .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#sznztkrfxm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qgtcaqlcce div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1995,7 +1991,7 @@ Estimate name
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" style="text-align: left;" headers="CDM name">Synthea</td>
+<td class="gt_row gt_left" style="text-align: left;" headers="CDM name">GiBleed</td>
 <td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">ibuprofen</td>
 <td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">ibuprofen</td>
 <td class="gt_row gt_right" headers="Time" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">0</td>
@@ -2107,10 +2103,10 @@ Estimate name
 <details><summary>
 Click to see solution
 </summary><div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResultAll</span>, colour <span class="op">=</span> <span class="st">"outcome"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResultAll</span>, colour <span class="op">=</span> <span class="st">"outcome"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="index_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<figure><p><img data-src="index_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -2126,7 +2122,7 @@ Click to see solution
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">ibuprofen_strata</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">ibuprofen</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">ibuprofen_strata</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">ibuprofen</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">addAge</span><span class="op">(</span></span>
 <span>    ageGroup <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">40</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">41</span>,<span class="fl">70</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">71</span>,<span class="fl">150</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -2137,7 +2133,7 @@ Click to see solution
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [?? x 5]
-# Database: DuckDB v1.3.1 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//tmp/RtmpP35azZ/file319d616cca21.duckdb]
+# Database: DuckDB v1.3.1 [unknown@Linux 6.11.0-1015-azure:R 4.5.1//home/runner/work/RealWorldEvidenceSummerSchool2025/RealWorldEvidenceSummerSchool2025/GiBleed.duckdb]
   cohort_definition_id subject_id cohort_start_date cohort_end_date age_group
                  &lt;int&gt;      &lt;int&gt; &lt;date&gt;            &lt;date&gt;          &lt;chr&gt;    
 1                    1          6 1976-05-01        1976-06-30      0 to 40  
@@ -2151,7 +2147,7 @@ Click to see solution
 </div>
 </section><section id="adding-strata---example-1" class="slide level2"><h2>Adding strata - Example</h2>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">survivalResultStrata</span> <span class="op">&lt;-</span> <span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">survivalResultStrata</span> <span class="op">&lt;-</span> <span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
 <span>   <span class="va">cdm</span>,</span>
 <span>  <span class="st">"ibuprofen_strata"</span>,</span>
 <span>  <span class="st">"ibuprofen_strata"</span>,</span>
@@ -2161,10 +2157,10 @@ Click to see solution
 </div>
 </section><section id="adding-strata---example-2" class="slide level2"><h2>Adding strata - Example</h2>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResultStrata</span>, colour <span class="op">=</span> <span class="st">"age_group"</span>, riskTable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResultStrata</span>, colour <span class="op">=</span> <span class="st">"age_group"</span>, riskTable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section></section><section><section id="your-turn-1" class="title-slide slide level1 center"><h1>Your turn!</h1>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section></section><section><section id="your-turn-1" class="title-slide slide level1 center"><h1>Your turn!</h1>
 
 </section><section id="exercise-2---stratification" class="slide level2"><h2>Exercise 2 - Stratification</h2>
 <p><strong>Use the same aspirin cohort as before.</strong></p>
@@ -2175,7 +2171,7 @@ Click to see solution
 <details><summary>
 Click to see solution
 </summary><div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">aspirin_strata</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">aspirin</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cdm</span><span class="op">$</span><span class="va">aspirin_strata</span> <span class="op">&lt;-</span> <span class="va">cdm</span><span class="op">$</span><span class="va">aspirin</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">addDemographics</span><span class="op">(</span></span>
 <span>    ageGroup <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"kids"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">18</span><span class="op">)</span>, <span class="st">"adults"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">19</span>,<span class="fl">150</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -2193,10 +2189,10 @@ Click to see solution
 <details><summary>
 Click to see solution
 </summary><div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResultStrata</span>, colour <span class="op">=</span> <span class="st">"age_group"</span>, facet <span class="op">=</span> <span class="st">"sex"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResultStrata</span>, colour <span class="op">=</span> <span class="st">"age_group"</span>, facet <span class="op">=</span> <span class="st">"sex"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="index_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+<figure><p><img data-src="index_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -2206,7 +2202,7 @@ Click to see solution
 </section><section id="lets-play-with-the-parameters-of-the-survival-estimation-function" class="slide level2"><h2>Let’s play with the parameters of the survival estimation function</h2>
 <p>Reminder of all possible ways we can tweak our analysis:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># don't run</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># don't run</span></span>
 <span><span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
 <span>  cdm <span class="op">=</span> <span class="va">cdm</span>,</span>
 <span>  targetCohortTable <span class="op">=</span> <span class="st">"ibuprofen"</span>,</span>
@@ -2230,7 +2226,7 @@ Click to see solution
 <p>Let’s change the event gap to a weekly aggregation and display the risk table under the plot.</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">survivalResultEventGap</span> <span class="op">&lt;-</span> <span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">survivalResultEventGap</span> <span class="op">&lt;-</span> <span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
 <span>   <span class="va">cdm</span>,</span>
 <span>  <span class="st">"ibuprofen"</span>,</span>
 <span>  <span class="st">"ibuprofen"</span>,</span>
@@ -2241,10 +2237,10 @@ Click to see solution
 </div>
 </section><section id="changing-inputs---example-1" class="slide level2"><h2>Changing inputs - Example</h2>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResultEventGap</span>, riskTable <span class="op">=</span> <span class="cn">TRUE</span>, riskInterval <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalResultEventGap</span>, riskTable <span class="op">=</span> <span class="cn">TRUE</span>, riskInterval <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section></section><section><section id="your-turn-2" class="title-slide slide level1 center"><h1>Your turn!</h1>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section></section><section><section id="your-turn-2" class="title-slide slide level1 center"><h1>Your turn!</h1>
 
 </section><section id="exercise-3---changing-inputs" class="slide level2"><h2>Exercise 3 - Changing inputs</h2>
 <p><strong>Keep working with the cohort of individuals starting aspirin prescription.</strong></p>
@@ -2254,7 +2250,7 @@ Click to see solution
 <details><summary>
 Click to see solution
 </summary><div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">survivalResultAspirinTuned</span> <span class="op">&lt;-</span> <span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">survivalResultAspirinTuned</span> <span class="op">&lt;-</span> <span class="fu">estimateSingleEventSurvival</span><span class="op">(</span></span>
 <span>   <span class="va">cdm</span>,</span>
 <span>  <span class="st">"aspirin"</span>,</span>
 <span>  <span class="st">"aspirin"</span>,</span>
@@ -2265,23 +2261,23 @@ Click to see solution
 <span><span class="fu">bind</span><span class="op">(</span><span class="va">survivalResultAspirin</span>, <span class="va">survivalResultAspirinTuned</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">tableSurvival</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="trzqqbwbbi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#trzqqbwbbi table {
+<div id="aputfhxowm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aputfhxowm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#trzqqbwbbi thead, #trzqqbwbbi tbody, #trzqqbwbbi tfoot, #trzqqbwbbi tr, #trzqqbwbbi td, #trzqqbwbbi th {
+#aputfhxowm thead, #aputfhxowm tbody, #aputfhxowm tfoot, #aputfhxowm tr, #aputfhxowm td, #aputfhxowm th {
   border-style: none;
 }
 
-#trzqqbwbbi p {
+#aputfhxowm p {
   margin: 0;
   padding: 0;
 }
 
-#trzqqbwbbi .gt_table {
+#aputfhxowm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2307,12 +2303,12 @@ Click to see solution
   border-left-color: #D9D9D9;
 }
 
-#trzqqbwbbi .gt_caption {
+#aputfhxowm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#trzqqbwbbi .gt_title {
+#aputfhxowm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2324,7 +2320,7 @@ Click to see solution
   border-bottom-width: 0;
 }
 
-#trzqqbwbbi .gt_subtitle {
+#aputfhxowm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2336,7 +2332,7 @@ Click to see solution
   border-top-width: 0;
 }
 
-#trzqqbwbbi .gt_heading {
+#aputfhxowm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2348,13 +2344,13 @@ Click to see solution
   border-right-color: #D3D3D3;
 }
 
-#trzqqbwbbi .gt_bottom_border {
+#aputfhxowm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#trzqqbwbbi .gt_col_headings {
+#aputfhxowm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2369,7 +2365,7 @@ Click to see solution
   border-right-color: #D3D3D3;
 }
 
-#trzqqbwbbi .gt_col_heading {
+#aputfhxowm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2389,7 +2385,7 @@ Click to see solution
   overflow-x: hidden;
 }
 
-#trzqqbwbbi .gt_column_spanner_outer {
+#aputfhxowm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2401,15 +2397,15 @@ Click to see solution
   padding-right: 4px;
 }
 
-#trzqqbwbbi .gt_column_spanner_outer:first-child {
+#aputfhxowm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#trzqqbwbbi .gt_column_spanner_outer:last-child {
+#aputfhxowm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#trzqqbwbbi .gt_column_spanner {
+#aputfhxowm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2421,11 +2417,11 @@ Click to see solution
   width: 100%;
 }
 
-#trzqqbwbbi .gt_spanner_row {
+#aputfhxowm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#trzqqbwbbi .gt_group_heading {
+#aputfhxowm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2451,7 +2447,7 @@ Click to see solution
   text-align: left;
 }
 
-#trzqqbwbbi .gt_empty_group_heading {
+#aputfhxowm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2466,15 +2462,15 @@ Click to see solution
   vertical-align: middle;
 }
 
-#trzqqbwbbi .gt_from_md > :first-child {
+#aputfhxowm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#trzqqbwbbi .gt_from_md > :last-child {
+#aputfhxowm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#trzqqbwbbi .gt_row {
+#aputfhxowm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2493,7 +2489,7 @@ Click to see solution
   overflow-x: hidden;
 }
 
-#trzqqbwbbi .gt_stub {
+#aputfhxowm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2506,7 +2502,7 @@ Click to see solution
   padding-right: 5px;
 }
 
-#trzqqbwbbi .gt_stub_row_group {
+#aputfhxowm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2520,15 +2516,15 @@ Click to see solution
   vertical-align: top;
 }
 
-#trzqqbwbbi .gt_row_group_first td {
+#aputfhxowm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#trzqqbwbbi .gt_row_group_first th {
+#aputfhxowm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#trzqqbwbbi .gt_summary_row {
+#aputfhxowm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2538,16 +2534,16 @@ Click to see solution
   padding-right: 5px;
 }
 
-#trzqqbwbbi .gt_first_summary_row {
+#aputfhxowm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#trzqqbwbbi .gt_first_summary_row.thick {
+#aputfhxowm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#trzqqbwbbi .gt_last_summary_row {
+#aputfhxowm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2557,7 +2553,7 @@ Click to see solution
   border-bottom-color: #D3D3D3;
 }
 
-#trzqqbwbbi .gt_grand_summary_row {
+#aputfhxowm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2567,7 +2563,7 @@ Click to see solution
   padding-right: 5px;
 }
 
-#trzqqbwbbi .gt_first_grand_summary_row {
+#aputfhxowm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2577,7 +2573,7 @@ Click to see solution
   border-top-color: #D3D3D3;
 }
 
-#trzqqbwbbi .gt_last_grand_summary_row_top {
+#aputfhxowm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2587,11 +2583,11 @@ Click to see solution
   border-bottom-color: #D3D3D3;
 }
 
-#trzqqbwbbi .gt_striped {
+#aputfhxowm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#trzqqbwbbi .gt_table_body {
+#aputfhxowm .gt_table_body {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: #D9D9D9;
@@ -2600,7 +2596,7 @@ Click to see solution
   border-bottom-color: #D3D3D3;
 }
 
-#trzqqbwbbi .gt_footnotes {
+#aputfhxowm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2614,7 +2610,7 @@ Click to see solution
   border-right-color: #D3D3D3;
 }
 
-#trzqqbwbbi .gt_footnote {
+#aputfhxowm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2623,7 +2619,7 @@ Click to see solution
   padding-right: 5px;
 }
 
-#trzqqbwbbi .gt_sourcenotes {
+#aputfhxowm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2637,7 +2633,7 @@ Click to see solution
   border-right-color: #D3D3D3;
 }
 
-#trzqqbwbbi .gt_sourcenote {
+#aputfhxowm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2645,72 +2641,72 @@ Click to see solution
   padding-right: 5px;
 }
 
-#trzqqbwbbi .gt_left {
+#aputfhxowm .gt_left {
   text-align: left;
 }
 
-#trzqqbwbbi .gt_center {
+#aputfhxowm .gt_center {
   text-align: center;
 }
 
-#trzqqbwbbi .gt_right {
+#aputfhxowm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#trzqqbwbbi .gt_font_normal {
+#aputfhxowm .gt_font_normal {
   font-weight: normal;
 }
 
-#trzqqbwbbi .gt_font_bold {
+#aputfhxowm .gt_font_bold {
   font-weight: bold;
 }
 
-#trzqqbwbbi .gt_font_italic {
+#aputfhxowm .gt_font_italic {
   font-style: italic;
 }
 
-#trzqqbwbbi .gt_super {
+#aputfhxowm .gt_super {
   font-size: 65%;
 }
 
-#trzqqbwbbi .gt_footnote_marks {
+#aputfhxowm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#trzqqbwbbi .gt_asterisk {
+#aputfhxowm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#trzqqbwbbi .gt_indent_1 {
+#aputfhxowm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#trzqqbwbbi .gt_indent_2 {
+#aputfhxowm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#trzqqbwbbi .gt_indent_3 {
+#aputfhxowm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#trzqqbwbbi .gt_indent_4 {
+#aputfhxowm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#trzqqbwbbi .gt_indent_5 {
+#aputfhxowm .gt_indent_5 {
   text-indent: 25px;
 }
 
-#trzqqbwbbi .katex-display {
+#aputfhxowm .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#trzqqbwbbi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#aputfhxowm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2745,7 +2741,7 @@ Estimate name
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" style="text-align: left;" headers="CDM name">Synthea</td>
+<td class="gt_row gt_left" style="text-align: left;" headers="CDM name">GiBleed</td>
 <td class="gt_row gt_left" headers="Target cohort" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">aspirin</td>
 <td class="gt_row gt_left" headers="Outcome name" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">aspirin</td>
 <td class="gt_row gt_left" headers="Outcome washout" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: #D3D3D3; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #D3D3D3; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #D3D3D3;">Inf</td>
@@ -2781,11 +2777,11 @@ Estimate name
 <details><summary>
 Click to see solution
 </summary><div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="fu">bind</span><span class="op">(</span><span class="va">survivalResultAspirin</span>, <span class="va">survivalResultAspirinTuned</span><span class="op">)</span>, </span>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="fu">bind</span><span class="op">(</span><span class="va">survivalResultAspirin</span>, <span class="va">survivalResultAspirinTuned</span><span class="op">)</span>, </span>
 <span>             colour <span class="op">=</span> <span class="st">"outcome_washout"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="index_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
+<figure><p><img data-src="index_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -2796,7 +2792,7 @@ Click to see solution
 <details><summary>
 Click to see solution
 </summary><div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://darwin-eu.github.io/CodelistGenerator/">CodelistGenerator</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://darwin-eu.github.io/CodelistGenerator/">CodelistGenerator</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ohdsi.github.io/CohortConstructor/">CohortConstructor</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">conceptSetMI</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://darwin-eu.github.io/CodelistGenerator/reference/getCandidateCodes.html">getCandidateCodes</a></span><span class="op">(</span><span class="va">cdm</span>, keywords <span class="op">=</span> <span class="st">"myocardial"</span><span class="op">)</span></span>
@@ -2822,10 +2818,10 @@ Click to see solution
 <details><summary>
 Click to see solution
 </summary><div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalStatin</span>, colour <span class="op">=</span> <span class="st">"target_cohort"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plotSurvival</span><span class="op">(</span><span class="va">survivalStatin</span>, colour <span class="op">=</span> <span class="st">"target_cohort"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="index_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
+<figure><p><img data-src="index_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
 </figure>
 </div>
 </div>
