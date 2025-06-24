@@ -218,7 +218,7 @@
 
 </div>
 <ul>
-<li class="fragment">PhenotypeR 0.1.5 is available in <a href="https://cran.r-project.org/web/packages/PhenotypeR/index.html" class="link">CRAN</a>.</li>
+<li class="fragment">PhenotypeR 0.1.6 is available in <a href="https://cran.r-project.org/web/packages/PhenotypeR/index.html" class="link">CRAN</a>.</li>
 </ul>
 <div style="margin-bottom: 10px;">
 
@@ -315,12 +315,17 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ohdsi.github.io/omock/">omock</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r.duckdb.org/">duckdb</a></span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># Create mock cdm</span></span>
 <span><span class="va">datasetName</span> <span class="op">&lt;-</span> <span class="st">"synpuf-1k_5.3"</span></span>
 <span><span class="va">dbdir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">datasetName</span>, <span class="st">".duckdb"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span>drv <span class="op">=</span> <span class="fu"><a href="https://r.duckdb.org/reference/duckdb.html">duckdb</a></span><span class="op">(</span>dbdir <span class="op">=</span> <span class="va">dbdir</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ohdsi.github.io/omock/reference/mockCdmFromDataset.html">mockCdmFromDataset</a></span><span class="op">(</span>datasetName <span class="op">=</span> <span class="va">datasetName</span><span class="op">)</span></span>
 <span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://darwin-eu.github.io/omopgenerics/reference/insertCdmTo.html">insertCdmTo</a></span><span class="op">(</span>cdm <span class="op">=</span> <span class="va">cdm</span>, to <span class="op">=</span> <span class="fu"><a href="https://darwin-eu.github.io/CDMConnector/reference/dbSource.html">dbSource</a></span><span class="op">(</span>con <span class="op">=</span> <span class="va">con</span>, writeSchema <span class="op">=</span> <span class="st">"main"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
+<span><span class="va">cdm</span> <span class="op">&lt;-</span> <span class="va">cdm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://darwin-eu.github.io/CodelistGenerator/reference/buildAchillesTables.html">buildAchillesTables</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create mock cohorts</span></span>
 <span><span class="va">drug_codes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://darwin-eu.github.io/CodelistGenerator/reference/getDrugIngredientCodes.html">getDrugIngredientCodes</a></span><span class="op">(</span></span>
 <span>  cdm <span class="op">=</span> <span class="va">cdm</span>, </span>
 <span>  name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"diclofenac"</span>, <span class="st">"acetaminophen"</span><span class="op">)</span>,</span>
