@@ -69,7 +69,7 @@ options(width = 120)
 
 ## OMOP Cohorts in R
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE}
 library(CDMConnector)
 library(CodelistGenerator)
 library(CohortConstructor)
