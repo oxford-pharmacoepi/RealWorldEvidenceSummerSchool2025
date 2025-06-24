@@ -48,6 +48,8 @@ options(width = 120)
 -   Vignettes with further information can be found in the package [website](https://ohdsi.github.io/CohortConstructor/index.html){.link}.
 
 
+# OMOP Cohorts in R
+
 ## OMOP Cohorts in R
 
 -   The `<cohort_table>` class is defined in the R package `omopgenerics`.
