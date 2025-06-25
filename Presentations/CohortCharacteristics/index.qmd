@@ -26,7 +26,31 @@ editor: visual
 
 ## CohortCharacteristics
 
-![](https://github.com/darwin-eu-dev/CohortCharacteristics/blob/main/man/figures/logo.png?raw=true){fig-align="center"}
+![](https://github.com/darwin-eu/CohortCharacteristics/blob/main/man/figures/logo.png?raw=true){fig-align="center"}
+
+## Website
+
+Cohort characteristics is on cran:
+
+. . .
+
+```{r, eval = FALSE}
+install.packages("CohortCharacteristics")
+```
+
+. . .
+
+You can also install the development version from our github repo:
+
+. . .
+
+```{r, eval = FALSE}
+remotes::install_github("darwin-eu/CohortCharacteristics")
+```
+
+. . .
+
+The documentation and vignettes of the packages can be found in our page: <https://darwin-eu.github.io/CohortCharacteristics/>
 
 ## Let's get started
 
@@ -148,29 +172,6 @@ We have three types of functions:
 
 -   [summariseCohortOverlap](https://darwin-eu.github.io/CohortCharacteristics/articles/summarise_cohort_overlap.html)
 
-## Website
-
-Cohort characteristics is on cran:
-
-. . .
-
-```{r, eval = FALSE}
-install.packages("CohortCharacteristics")
-```
-
-. . .
-
-You can also install the development version from our github repo:
-
-. . .
-
-```{r, eval = FALSE}
-remotes::install_github("darwin-eu/CohortCharacteristics")
-```
-
-. . .
-
-The documentation and vignettes of the packages can be found in our page: <https://darwin-eu.github.io/CohortCharacteristics/>
 
 ## summariseCharacteristics
 
@@ -226,6 +227,7 @@ cdm$sinusitis |>
   summariseCharacteristics(ageGroup = list(c(0,10),c(11,18), c(19,150))) |>
   tableCharacteristics(header = "cohort_name")
 ```
+
 ## ageGroup example
 
 ```{r, echo = F, eval = T, results = 'asis'}
@@ -247,6 +249,7 @@ result <- cdm$sinusitis |>
   summariseCharacteristics(cohortId = 1, strata = list("age_group"))
 tableCharacteristics(result = result, header = "age_group")  
 ```
+
 ## strata example
 
 ```{r, echo = F, eval = T, results = 'asis'}
@@ -401,15 +404,15 @@ Can you create a bar plot for gender the new_sinusitis table in the cdm object?
 
 <summary>💡 Click to see solution</summary>
 
-```{r, eval = FALSE}
+```{r, eval = TRUE}
 result <- cdm$new_sinusitis |>
   summariseCharacteristics() |>
-  filter(variable_name == "Sex" & estimate_name == "median")
+  filter(variable_name == "Sex" & estimate_name == "count")
 
-plotCharacteristics(result = result, 
-                    plotStyle = "barplot", 
+plotCharacteristics(result = result,
+                    plotStyle = "barplot",
                     facet = "cohort_name",
-                    colour = "cdm_name")
+                    colour = "variable_level")
 ```
 
 </details>
@@ -529,6 +532,25 @@ plotCohortTiming(
   uniqueCombinations = FALSE
 )
 ```
+
+## Your Turn
+
+Can you get the large scale characteristics for drug exposure table with for the new_sinusitis cohort table with time window anytime prior.
+
+<details>
+
+<summary>💡 Click to see solution</summary>
+
+```{r, eval = TRUE}
+result <- cdm$new_sinusitis |>
+  summariseLargeScaleCharacteristics(
+    window = list(c(-Inf, -1)),
+    eventInWindow = "drug_exposure",
+    minimumFrequency = 0.05
+  )
+tableTopLargeScaleCharacteristics(result = result, topConcepts = 5)
+```
+</details>
 
 ## CohortCharacteristics
 
