@@ -318,7 +318,7 @@ Attaching package: 'dbplyr'</code></pre>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu">requireEunomia</span>(<span class="at">datasetName =</span> <span class="st">"GiBleed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>ℹ `EUNOMIA_DATA_FOLDER` set to: '/tmp/RtmpdZd6Qy'.</code></pre>
+<pre><code>ℹ `EUNOMIA_DATA_FOLDER` set to: '/tmp/RtmpxOb72N'.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -326,7 +326,7 @@ Download completed!</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">duckdb</span>(), <span class="at">dbdir =</span> <span class="fu">eunomiaDir</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Creating CDM database /tmp/RtmpdZd6Qy/GiBleed_5.3.zip</code></pre>
+<pre><code>Creating CDM database /tmp/RtmpxOb72N/GiBleed_5.3.zip</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>cdm <span class="ot">&lt;-</span> <span class="fu">cdmFromCon</span>(<span class="at">con =</span> db, <span class="at">cdmSchema =</span> <span class="st">"main"</span>, <span class="at">writeSchema =</span> <span class="st">"main"</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cdm<span class="sc">$</span>my_cohort <span class="ot">&lt;-</span> <span class="fu">conceptCohort</span>(</span>
