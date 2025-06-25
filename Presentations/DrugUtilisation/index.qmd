@@ -38,17 +38,6 @@ This package aims to standardise and provide the tools to conduct Drug Utilisati
 
 ![](https://www.darwin-eu.org/templates/rt_horizon/custom/images/darwin-eu-logo.png){fig-align="center" width="45%"}
 
-## Content
-
--   Create a base cohort of drug users
-
--   Apply inclusion criteria to the drug users cohort:
-
-    -   Washout
-    -   First observation
-    -   Prior observation
-    -   Date range
-
 ## The package
 
 <br>
@@ -74,6 +63,9 @@ library(omock)
 library(duckdb)
 library(CDMConnector)
 library(dplyr)
+library(CodelistGenerator)
+library(DrugUtilisation)
+library(CohortConstructor)
 
 cdm <- mockCdmFromDataset(datasetName = "synthea-covid19-10k")
 cdm$drug_exposure <- cdm$drug_exposure |>
@@ -85,60 +77,16 @@ cdm <- insertCdmTo(cdm = cdm, to = src)
 
 ## Generate a drug cohort
 
-To generate a drug cohort we need a conceptSet (named list of concepts). Each element will be a different cohort, so we can instantiate multiple cohorts following the same logic at the same time.
-
-Methods to create a conceptSet:
-
--   read it from JSON [CodelistGenerator::codesFromConceptSet](https://darwin-eu.github.io/CodelistGenerator/reference/codesFromConceptSet.html)
-
--   create from an ingredient [CodelistGenerator::getDrugIngredientCodes](https://darwin-eu.github.io/CodelistGenerator/reference/getDrugIngredientCodes.html)
-
--   create from a text search [CodelistGenerator::getCandidateCodes](https://darwin-eu.github.io/CodelistGenerator/reference/getCandidateCodes.html)
-
--   custom creation:
-
-. . .
-
-```{r, eval = FALSE}
-list(concept1 = c(1, 2, 3, 4), concept2 = c(3, 4, 5))
-```
-
-## Generate a drug cohort
-
 For this example we are going to use all records of `acteaminophen`:
 
 . . .
 
 ```{r}
-library(CodelistGenerator)
 codelist <- getDrugIngredientCodes(cdm = cdm, name = "acetaminophen", nameStyle = "{concept_name}")
 ```
 
-.
-
-. . .
-
-```{r}
-codelist
-```
-
-.
-
-. . .
-
-```{r}
-codelist$acetaminophen
-```
-
-## Generate a drug cohort
-
-Once we have our conceptSet we can create a simple cohort:
-
-. . .
-
 ```{r, message=FALSE}
-library(DrugUtilisation)
-cdm <- generateDrugUtilisationCohortSet(
+cdm$dus_cohort <- conceptCohort(
   cdm = cdm,
   name = "dus_cohort",
   conceptSet = codelist
@@ -153,12 +101,6 @@ The results is the cdm object with the new cohort instantiated.
 
 ```{r, message=TRUE}
 cdm
-```
-
-. . .
-
-```{r}
-cdm$dus_cohort
 ```
 
 ## Cohort objects
@@ -224,14 +166,6 @@ cohortCodelist(cdm$dus_cohort, cohortId = 1)
 Number of days between two continuous exposures to be considered in the same era. Records that have fewer days between them than this gap will be concatenated into the same cohort record.
 ```
 
-. . .
-
-By default: `gapEra = 1` which means that:
-
--   Overlapping records will be joined (this will happen always).
-
--   Consecutive records will be joined
-
 ## gapEra parameter
 
 ```{r, echo=FALSE}
@@ -264,12 +198,8 @@ x2 |>
 . . .
 
 ```{r, message=FALSE}
-cdm <- generateDrugUtilisationCohortSet(
-  cdm = cdm,
-  name = "dus_cohort",
-  conceptSet = codelist,
-  gapEra = 30
-)
+cdm$dus_cohort <- cdm$dus_cohort |>
+  collapseCohorts(gap = 30)
 ```
 
 . . .
@@ -280,106 +210,14 @@ Let's check the settings again:
 settings(cdm$dus_cohort)
 ```
 
-## Some helpers
-
-. . .
-
-```{r, eval = FALSE}
-?generateIngredientCohortSet
-```
-
-<br>
-
-. . .
-
-```{r, eval = FALSE}
-?generateAtcCohortSet
-```
-
 ## Inclusion criteria
 
 Four functions to add inclusion criteria to our cohort:
 
--   Washout `requirePriorDrugWashout()`
--   First observation `requireIsFirstDrugEntry()`
--   Prior observation `requireObservationBeforeDrug()`
--   Date range `requireDrugInDateRange()`
-
-## Inclusion criteria
-
-`requirePriorDrugWashout()`
-
-. . .
-
-```{r, eval = FALSE}
-cdm$dus_cohort |>
-  requirePriorDrugWashout(days = 180)
-```
-
-## Inclusion criteria
-
-`requireObservationBeforeDrug()`
-
-. . .
-
-```{r, eval = FALSE}
-cdm$dus_cohort |>
-  requireObservationBeforeDrug(days = 180)
-```
-
-## Inclusion criteria
-
-`requireDrugInDateRange()`
-
-. . .
-
-```{r, eval = FALSE}
-cdm$dus_cohort |>
-  requireDrugInDateRange(dateRange = as.Date(c("2000-01-01", "2022-12-31")))
-```
-
-## Inclusion criteria
-
-`requireIsFirstDrugEntry()`
-
-. . .
-
-```{r, eval = FALSE}
-cdm$dus_cohort |>
-  requireIsFirstDrugEntry()
-```
-
-## Inclusion criteria
-
-```{r}
-cdm <- generateDrugUtilisationCohortSet(
-  cdm = cdm,
-  name = "dus_cohort",
-  conceptSet = codelist,
-  gapEra = 30
-)
-cdm$dus_cohort <- cdm$dus_cohort |>
-  requirePriorDrugWashout(days = 180) |>
-  requireObservationBeforeDrug(days = 180) |>
-  requireDrugInDateRange(dateRange = as.Date(c("2000-01-01", "2022-12-31")))
-```
-
-## Generate a drug cohort
-
-. . .
-
-```{r}
-settings(cdm$dus_cohort) |> glimpse()
-```
-
-## Generate a drug cohort
-
-. . .
-
-```{r}
-attrition(cdm$dus_cohort) |>
-  glimpse()
-```
+-   Washout `requirePriorDrugWashout()` (`requireConceptIntersect`)
+-   First observation `requireIsFirstDrugEntry()` (`requireIsFirstEntry`)
+-   Prior observation `requireObservationBeforeDrug()` (`requirePriorObservation`)
+-   Date range `requireDrugInDateRange()` (`requireInDateRange`)
 
 ## Important considerations
 
@@ -423,24 +261,40 @@ Can you create a cohort with all the records of 'simvastatin' concatenating reco
 
 -   Cohort start date between '2010-01-01' and '2021-12-31'.
 
-## Result
-
-```{r, echo=FALSE}
+```{r, echo = FALSE}
 codelist <- getDrugIngredientCodes(cdm = cdm, name = "simvastatin")
-cdm <- generateDrugUtilisationCohortSet(
-  cdm = cdm,
-  name = "simvastatin_cohort",
-  conceptSet = codelist,
-  gapEra = 90
-)
-cdm$simvastatin_cohort <- cdm$simvastatin_cohort |>
-  requireIsFirstDrugEntry() |>
-  requireObservationBeforeDrug(days = 365) |>
-  requireDrugInDateRange(dateRange = as.Date(c('2010-01-01', '2021-12-31')))
+cdm$simvastatin_cohort <- conceptCohort(
+  cdm = cdm, 
+  conceptSet = codelist, 
+  name = "simvastatin_cohort"
+) |>
+  collapseCohorts(gap = 90) |>
+  requireIsFirstEntry() |>
+  requirePriorObservation(minPriorObservation = 365) |>
+  requireInDateRange(dateRange = as.Date(c('2010-01-01', '2021-12-31')))
 cohortCount(cdm$simvastatin_cohort)
 ```
 
+<details>
+  <summary>💡 Click to see solution</summary> 
+```{r}
+codelist <- getDrugIngredientCodes(cdm = cdm, name = "simvastatin")
+cdm$simvastatin_cohort <- conceptCohort(
+  cdm = cdm, 
+  conceptSet = codelist, 
+  name = "simvastatin_cohort"
+) |>
+  collapseCohorts(gap = 90) |>
+  requireIsFirstEntry() |>
+  requirePriorObservation(minPriorObservation = 365) |>
+  requireInDateRange(dateRange = as.Date(c('2010-01-01', '2021-12-31')))
+cohortCount(cdm$simvastatin_cohort)
+```
+</details>
+
 ## Drug usage
+
+. . .
 
 ```{r}
 result <- cdm$dus_cohort |>
@@ -489,16 +343,14 @@ result |>
 Let's instantiate the cohorts of interest:
 
 ```{r}
-cdm <- generateConceptCohortSet(
+cdm$indications <- conceptCohort(
   cdm = cdm,
   conceptSet = list(
     arteriosclerosis = 317576, 
     myocardial_infarction = 4329847, 
     pain = getCandidateCodes(cdm = cdm, keywords = "pain")$concept_id
   ),
-  name = "indications",
-  limit = "all",
-  end = 0
+  name = "indications"
 )
 ```
 
@@ -590,18 +442,38 @@ Can you create a cohort of a certain ingredient and analyse its persistence in t
 
 *suggestions: 'clopidogrel', 'nitroglycerin', 'simvastatin', 'amlodipine', 'verapamil' are the 5 most common ingredients in this database*
 
-## Result
-
 ```{r, echo=FALSE}
-cdm <- generateIngredientCohortSet(
+codelist <- getDrugIngredientCodes(
   cdm = cdm, 
-  name = "persistence", 
-  ingredient = c('clopidogrel', 'nitroglycerin', 'simvastatin', 'amlodipine', 'verapamil')
+  name = c('clopidogrel', 'nitroglycerin', 'simvastatin', 'amlodipine', 'verapamil')
 )
-result <- cdm$persistence |>
-  summariseProportionOfPatientsCovered(followUpDays = 365)
-plotProportionOfPatientsCovered(result, colour = "cohort_name")
+cdm$persistence <- conceptCohort(
+  cdm = cdm, 
+  name = "persistence",
+  conceptSet = codelist
+)
+result <- summariseProportionOfPatientsCovered(cohort = cdm$persistence, followUpDays = 365)
+plotProportionOfPatientsCovered(result = result, colour = "cohort_name")
 ```
+
+## Solution
+
+<details>
+  <summary>💡 Click to see solution</summary> 
+```{r}
+codelist <- getDrugIngredientCodes(
+  cdm = cdm, 
+  name = c('clopidogrel', 'nitroglycerin', 'simvastatin', 'amlodipine', 'verapamil')
+)
+cdm$persistence <- conceptCohort(
+  cdm = cdm, 
+  name = "persistence",
+  conceptSet = codelist
+)
+result <- summariseProportionOfPatientsCovered(cohort = cdm$persistence, followUpDays = 365)
+plotProportionOfPatientsCovered(result = result, colour = "cohort_name")
+```
+<details>
 
 ## Drug restart and drug switching
 
@@ -628,10 +500,14 @@ We have the ability to study drug restart or drug switching after a discontinuat
 Let's define the cohorts of interest for switching:
 
 ```{r}
-cdm <- generateIngredientCohortSet(
-  cdm = cdm,
+codelist <- getDrugIngredientCodes(
+  cdm = cdm, 
+  name = c("clopidogrel", "simvastatin", "warfarin")
+)
+cdm$switch <- conceptCohort(
+  cdm = cdm, 
   name = "switch",
-  ingredient = c("clopidogrel", "simvastatin", "warfarin")
+  conceptSet = codelist
 )
 ```
 
@@ -681,10 +557,14 @@ plotDrugRestart(result)
 You have to instantiate the treatments that you are interested in a cohort:
 
 ```{r}
-cdm <- generateIngredientCohortSet(
-  cdm = cdm,
+codelist <- getDrugIngredientCodes(
+  cdm = cdm, 
+  name = c("clopidogrel", "simvastatin", "warfarin", "nitroglycerin")
+)
+cdm$treatments <- conceptCohort(
+  cdm = cdm, 
   name = "treatments",
-  ingredient = c("clopidogrel", "simvastatin", "warfarin", "nitroglycerin")
+  conceptSet = codelist
 )
 result <- cdm$dus_cohort |>
   summariseTreatment(
@@ -708,3 +588,24 @@ tableTreatment(result)
 ```{r}
 plotTreatment(result)
 ```
+
+## DrugUtilisation
+
+<div style="display: flex; align-items: center; justify-content: space-between;">
+
+<div style="flex: 1;">
+
+👉 [**Packages website**](https://darwin-eu.github.io/DrugUtilisation/)  
+👉 [**CRAN link**](https://cran.r-project.org/package=DrugUtilisation)  
+👉 [**Manual**](https://cran.r-project.org/web/packages/DrugUtilisation/DrugUtilisation.pdf)
+
+📧 <a href="mailto:marti.catalasabate@ndorms.ox.ac.uk">marti.catalasabate\@ndorms.ox.ac.uk</a>
+
+</div>
+
+<div style="flex: 1; text-align: center;">
+  <img src="https://github.com/darwin-eu/DrugUtilisation/blob/main/man/figures/logo.png?raw=true" width="600"/>
+</div>
+
+</div>
+
