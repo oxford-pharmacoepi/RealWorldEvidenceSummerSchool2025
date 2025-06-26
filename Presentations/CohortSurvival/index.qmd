@@ -78,81 +78,85 @@ Use the in-built visualisation functions from the package to plot the survival e
 
 ## CohortSurvival's main functionality
 
-:::::::::::::: columns
+::: columns
 ::: {.column width="10%"}
 :::
 
-:::::: {.column width="40%"}
-::::: bulletbox
-:::: {.fragment .fade-in-then-semi-out}
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
 **Estimate single event survival** *Specify exposure and outcome cohorts.*
 :::
-::::
-:::::
-::::::
+:::
+:::
+:::
 
 ::: {.column width="5%"}
 :::
 
-:::::: {.column width="40%"}
-::::: bulletbox
-:::: {.fragment .fade-in-then-semi-out}
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
 **Estimate competing risk survival** *Specify exposure, outcome and competing outcome cohorts.*
 :::
-::::
-:::::
-::::::
+:::
+:::
+:::
 
 ::: {.column width="5%"}
 :::
-::::::::::::::
+:::
 
-:::::::: columns
+::: columns
 ::: {.column width="30%"}
 :::
 
-:::::: {.column width="40%"}
-::::: bulletbox
-:::: {.fragment .fade-in-then-semi-out}
+::: {.column width="40%"}
+::: bulletbox
+::: {.fragment .fade-in-then-semi-out}
 ::: {layout="[[-1], [1], [-1]]"}
 **Do further survival analyses** *Add survival information to the cohort of interest to run survival models using other well-known packages (i.e. survival).*
 :::
-::::
-:::::
-::::::
-::::::::
+:::
+:::
+:::
+:::
 
 # Estimate survival
 
-## Create cdm and get cohorts
+## Libraries we are going to use
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 # Load relevant packages (make sure you have the latest versions of all of them)
-library(CDMConnector)
-library(DBI)
+library(omock)
 library(duckdb)
+library(CDMConnector)
 library(here)
-library(DrugUtilisation)
 library(dplyr)
-library(gt)
 library(CohortSurvival)
-library(ggplot2)
-library(patchwork)
-library(omopgenerics)
 library(PatientProfiles)
+library(CodelistGenerator)
+library(CohortConstructor)
+library(patchwork)
 ```
 
-```{r, echo = FALSE}
+## Let's create the database
+
+This should have been done in the first day, but if someone does not have it created this is a remminder of the code:
+
+```{r}
 datasetName <- "GiBleed"
-dbdir <- here::here(paste0(datasetName, ".duckdb"))
-con <- duckdb::dbConnect(drv = duckdb::duckdb(dbdir = dbdir))
+dbdir <- here(paste0(datasetName, ".duckdb"))
+con <- dbConnect(drv = duckdb(dbdir = dbdir))
 
-cdm <- omock::mockCdmFromDataset(datasetName = datasetName)
-CDMConnector::insertCdmTo(cdm = cdm, to = CDMConnector::dbSource(con = con, writeSchema = "main"))
-duckdb::dbDisconnect(conn = con)
+cdm <- mockCdmFromDataset(datasetName = datasetName)
+insertCdmTo(cdm = cdm, to = dbSource(con = con, writeSchema = "main"))
+dbDisconnect(conn = con)
 ```
+
+## Create cdm and get cohorts
 
 ```{r}
 datasetName <- "GiBleed"
@@ -212,7 +216,7 @@ Main tabulating function, with all its input parameters.
 
 ```{r, eval = FALSE}
 tableSurvival(
-  x,
+  x = x,
   times = NULL,
   timeScale = "days",
   header = c("estimate"),
@@ -229,12 +233,13 @@ In our case, we will study discontinuation of ibuprofen. Therefore, we will use 
 . . .
 
 ```{r}
-cdm <- generateIngredientCohortSet(
-  cdm = cdm,
-  name = "ibuprofen",
-  ingredient = "ibuprofen",
-  gapEra = 7
-)
+codelist <- getDrugIngredientCodes(cdm = cdm, name = "ibuprofen")
+cdm$ibuprofen <- conceptCohort(
+  cdm = cdm, 
+  conceptSet = codelist,
+  name = "ibuprofen"
+) |>
+  collapseCohorts(gap = 7)
 
 survivalResult <- estimateSingleEventSurvival(
   cdm = cdm, 
@@ -259,7 +264,7 @@ plotSurvival(survivalResult)
 . . .
 
 ```{r}
-tableSurvival(survivalResult, times = c(7, 30, 75))
+tableSurvival(x = survivalResult, times = c(7, 30, 75))
 ```
 
 ## Use estimateSingleSurvival() for treatment adherence
@@ -293,24 +298,22 @@ riskTable(survivalResult)
 <summary>Click to see solution</summary>
 
 ```{r}
-cdm <- generateIngredientCohortSet(
-  cdm = cdm,
-  name = "aspirin",
-  ingredient = "aspirin",
-  gapEra = 7
-)
+codelist <- getDrugIngredientCodes(cdm = cdm, name = "aspirin")
+cdm$aspirin <- conceptCohort(
+  cdm = cdm, 
+  conceptSet = codelist,
+  name = "aspirin"
+) |>
+  collapseCohorts(gap = 7)
 
 survivalResultAspirin <- estimateSingleEventSurvival(
-  cdm,
-  "aspirin",
-  "aspirin",
+  cdm = cdm, 
+  targetCohortTable = "aspirin", 
+  outcomeCohortTable = "aspirin",
   outcomeDateVariable = "cohort_end_date"
 )
 
-survivalResultAll <- bind(
-  survivalResult,
-  survivalResultAspirin
-)
+survivalResultAll <- bind(survivalResult, survivalResultAspirin)
 ```
 
 </details>
@@ -334,7 +337,7 @@ riskTable(survivalResultAll)
 <summary>Click to see solution</summary>
 
 ```{r}
-plotSurvival(survivalResultAll, colour = "outcome")
+plotSurvival(result = survivalResultAll, colour = "outcome")
 ```
 
 </details>
@@ -353,9 +356,9 @@ plotSurvival(survivalResultAll, colour = "outcome")
 ```{r}
 cdm$ibuprofen_strata <- cdm$ibuprofen |> 
   addAge(
-    ageGroup = list(c(0,40),c(41,70),c(71,150))
-  ) |>
-  compute(name = "ibuprofen_strata")
+    ageGroup = list(c(0,40),c(41,70),c(71,150)),
+    name = "ibuprofen_strata"
+  )
 
 cdm$ibuprofen_strata |>
   select(-"age") |>
@@ -366,9 +369,9 @@ cdm$ibuprofen_strata |>
 
 ```{r}
 survivalResultStrata <- estimateSingleEventSurvival(
-   cdm,
-  "ibuprofen_strata",
-  "ibuprofen_strata",
+  cdm = cdm,
+  targetCohortTable = "ibuprofen_strata", 
+  outcomeCohortTable = "ibuprofen_strata",
   outcomeDateVariable = "cohort_end_date",
   strata = list("age_group")
 )
@@ -377,7 +380,7 @@ survivalResultStrata <- estimateSingleEventSurvival(
 ## Adding strata - Example
 
 ```{r, fig.height = 9}
-plotSurvival(survivalResultStrata, colour = "age_group", riskTable = TRUE)
+plotSurvival(result = survivalResultStrata, colour = "age_group", riskTable = TRUE)
 ```
 
 # Your turn!
@@ -399,14 +402,14 @@ plotSurvival(survivalResultStrata, colour = "age_group", riskTable = TRUE)
 ```{r}
 cdm$aspirin_strata <- cdm$aspirin |> 
   addDemographics(
-    ageGroup = list("kids" = c(0,18), "adults" = c(19,150))
-  ) |>
-  compute(name = "aspirin_strata")
+    ageGroup = list("kids" = c(0,18), "adults" = c(19,150)),
+    name = "aspirin_strata"
+  )
 
 survivalResultStrata <- estimateSingleEventSurvival(
-   cdm,
-  "aspirin_strata",
-  "aspirin_strata",
+  cdm = cdm,
+  targetCohortTable = "aspirin_strata", 
+  outcomeCohortTable = "aspirin_strata",
   outcomeDateVariable = "cohort_end_date",
   strata = list("age_group", "sex", c("age_group", "sex"))
 )
@@ -421,7 +424,7 @@ survivalResultStrata <- estimateSingleEventSurvival(
 <summary>Click to see solution</summary>
 
 ```{r}
-plotSurvival(survivalResultStrata, colour = "age_group", facet = "sex")
+plotSurvival(result = survivalResultStrata, colour = "age_group", facet = "sex")
 ```
 
 </details>
@@ -462,9 +465,9 @@ Let's change the event gap to a weekly aggregation and display the risk table un
 
 ```{r}
 survivalResultEventGap <- estimateSingleEventSurvival(
-   cdm,
-  "ibuprofen",
-  "ibuprofen",
+  cdm = cdm, 
+  targetCohortTable = "ibuprofen", 
+  outcomeCohortTable = "ibuprofen",
   outcomeDateVariable = "cohort_end_date",
   eventGap = 7
 )
@@ -473,7 +476,7 @@ survivalResultEventGap <- estimateSingleEventSurvival(
 ## Changing inputs - Example
 
 ```{r, fig.height = 6}
-plotSurvival(survivalResultEventGap, riskTable = TRUE, riskInterval = 7)
+plotSurvival(result = survivalResultEventGap, riskTable = TRUE, riskInterval = 7)
 ```
 
 # Your turn!
@@ -492,15 +495,14 @@ plotSurvival(survivalResultEventGap, riskTable = TRUE, riskInterval = 7)
 
 ```{r}
 survivalResultAspirinTuned <- estimateSingleEventSurvival(
-   cdm,
-  "aspirin",
-  "aspirin",
+  cdm = cdm,
+  targetCohortTable = "aspirin",
+  outcomeCohortTable = "aspirin",
   outcomeDateVariable = "cohort_end_date",
   outcomeWashout = 1825
 )
 
-bind(survivalResultAspirin, survivalResultAspirinTuned) |> 
-  tableSurvival()
+tableSurvival(x = bind(survivalResultAspirin, survivalResultAspirinTuned))
 ```
 
 </details>
@@ -512,7 +514,7 @@ bind(survivalResultAspirin, survivalResultAspirinTuned) |>
 <summary>Click to see solution</summary>
 
 ```{r}
-plotSurvival(bind(survivalResultAspirin, survivalResultAspirinTuned), 
+plotSurvival(result = bind(survivalResultAspirin, survivalResultAspirinTuned), 
              colour = "outcome_washout")
 ```
 
@@ -529,27 +531,22 @@ What is the time to first myocardial infraction after starting simvastatin or as
 <summary>Click to see solution</summary>
 
 ```{r}
-
-library(CodelistGenerator)
-library(CohortConstructor)
-
-conceptSetMI <- getCandidateCodes(cdm, keywords = "myocardial")
+conceptSetMI <- getCandidateCodes(cdm = cdm, keywords = "myocardial")
 mi <- list("mi" = conceptSetMI$concept_id)
-cdm$mi <- conceptCohort(
-  cdm, conceptSet = mi, name = "mi"
-)
+cdm$mi <- conceptCohort(cdm, conceptSet = mi, name = "mi")
 
-cdm <- generateIngredientCohortSet(
-  cdm, 
-  name = "statins",
-  ingredient = c("simvastatin", "aspirin"),
-  gapEra = 7
-)
+codelist <- getDrugIngredientCodes(cdm = cdm, name = c("simvastatin", "aspirin"))
+cdm$statins <- conceptCohort(
+  cdm = cdm, 
+  conceptSet = codelist,
+  name = "statins"
+) |>
+  collapseCohorts(gap = 7)
 
 survivalStatin <- estimateSingleEventSurvival(
-  cdm,
-  "statins",
-  "mi"
+  cdm = cdm, 
+  targetCohortTable = "statins", 
+  outcomeCohortTable = "mi"
 )
 ```
 
@@ -562,7 +559,7 @@ survivalStatin <- estimateSingleEventSurvival(
 <summary>Click to see solution</summary>
 
 ```{r}
-plotSurvival(survivalStatin, colour = "target_cohort")
+plotSurvival(result = survivalStatin, colour = "target_cohort")
 ```
 
 </details>
@@ -573,7 +570,7 @@ plotSurvival(survivalStatin, colour = "target_cohort")
 
 ## CohortSurvival
 
-::::: {style="display: flex; align-items: center; justify-content: space-between;"}
+::: {style="display: flex; align-items: center; justify-content: space-between;"}
 ::: {style="flex: 1;"}
 👉 [**Packages website**](https://darwin-eu.github.io/CohortSurvival/)\
 👉 [**CRAN link**](https://cran.r-project.org/package=CohortSurvival)\
@@ -585,4 +582,4 @@ plotSurvival(survivalStatin, colour = "target_cohort")
 ::: {style="flex: 1; text-align: center;"}
 <img src="https://github.com/darwin-eu/CohortSurvival/blob/main/man/figures/logo.png?raw=true" width="600"/>
 :::
-:::::
+:::
