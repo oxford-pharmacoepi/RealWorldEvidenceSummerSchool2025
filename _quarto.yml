@@ -23,8 +23,6 @@ website:
     left:
       - text: Program
         href: program.qmd
-      - text: Setup
-        href: setup.qmd
       - text: Presentations
         href: Presentations/index.qmd
       - text: Practical
@@ -42,10 +40,3 @@ format:
     toc: true
     theme: cosmo
     search: false
-
-render:
-  - index.qmd
-  - practical.qmd
-  - Analytics track/*.qmd
-  - program.qmd
-  - setup.qmd

@@ -3,7 +3,6 @@
 This website is used for the **Analytical track** practical sessions.
 
 -   [**Program**](program.qmd) contains the schedule of the practical sessions.
--   [**Set up**](setup.qmd) contains the steps to set up your laptop or desktop to conduct the practical sessions.
 -   [**Presentations**](Presentations/index.qmd) contains the presentations that will be conducted during the Summer School.
 -   [**Practical**](practical.qmd) contains the details of the final practical session conducted during the Summer School.
 

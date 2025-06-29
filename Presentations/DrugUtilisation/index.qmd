@@ -276,7 +276,9 @@ cohortCount(cdm$simvastatin_cohort)
 ```
 
 <details>
-  <summary>💡 Click to see solution</summary> 
+
+<summary>💡 Click to see solution</summary>
+
 ```{r}
 codelist <- getDrugIngredientCodes(cdm = cdm, name = "simvastatin")
 cdm$simvastatin_cohort <- conceptCohort(
@@ -290,6 +292,7 @@ cdm$simvastatin_cohort <- conceptCohort(
   requireInDateRange(dateRange = as.Date(c('2010-01-01', '2021-12-31')))
 cohortCount(cdm$simvastatin_cohort)
 ```
+
 </details>
 
 ## Drug usage
@@ -398,7 +401,7 @@ Currently considering to add support for **plotly**.
 
 . . .
 
-```{r}
+```{r, eval=FALSE}
 plotIndication(result) |>
   plotly::ggplotly()
 ```
@@ -459,7 +462,9 @@ plotProportionOfPatientsCovered(result = result, colour = "cohort_name")
 ## Solution
 
 <details>
-  <summary>💡 Click to see solution</summary> 
+
+<summary>💡 Click to see solution</summary>
+
 ```{r}
 codelist <- getDrugIngredientCodes(
   cdm = cdm, 
@@ -473,6 +478,7 @@ cdm$persistence <- conceptCohort(
 result <- summariseProportionOfPatientsCovered(cohort = cdm$persistence, followUpDays = 365)
 plotProportionOfPatientsCovered(result = result, colour = "cohort_name")
 ```
+
 <details>
 
 ## Drug restart and drug switching
@@ -591,21 +597,16 @@ plotTreatment(result)
 
 ## DrugUtilisation
 
-<div style="display: flex; align-items: center; justify-content: space-between;">
-
-<div style="flex: 1;">
-
-👉 [**Packages website**](https://darwin-eu.github.io/DrugUtilisation/)  
-👉 [**CRAN link**](https://cran.r-project.org/package=DrugUtilisation)  
+::: {style="display: flex; align-items: center; justify-content: space-between;"}
+::: {style="flex: 1;"}
+👉 [**Packages website**](https://darwin-eu.github.io/DrugUtilisation/)\
+👉 [**CRAN link**](https://cran.r-project.org/package=DrugUtilisation)\
 👉 [**Manual**](https://cran.r-project.org/web/packages/DrugUtilisation/DrugUtilisation.pdf)
 
 📧 <a href="mailto:marti.catalasabate@ndorms.ox.ac.uk">marti.catalasabate\@ndorms.ox.ac.uk</a>
+:::
 
-</div>
-
-<div style="flex: 1; text-align: center;">
-  <img src="https://github.com/darwin-eu/DrugUtilisation/blob/main/man/figures/logo.png?raw=true" width="600"/>
-</div>
-
-</div>
-
+::: {style="flex: 1; text-align: center;"}
+<img src="https://github.com/darwin-eu/DrugUtilisation/blob/main/man/figures/logo.png?raw=true" width="600"/>
+:::
+:::
